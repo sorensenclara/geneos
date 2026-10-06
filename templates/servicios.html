@@ -3,7 +3,7 @@
 {% set FAQS = [
   ("¿Qué es el software libre y por qué conviene para mi organización?", "<p>El software libre puede usarse, estudiarse, modificarse y compartirse sin pagar licencias por usuario. Para tu organización significa <strong>no depender de un único proveedor</strong>, adaptar las herramientas a tus procesos y crecer sin que los costos de licencias crezcan con vos.</p>"),
   ("¿Trabajan con clientes fuera de Argentina?", "<p>Sí. Somos una cooperativa de Tandil, Argentina, y trabajamos de forma remota con organizaciones de todo el país y de Latinoamérica, por ejemplo con equipos de México. Coordinamos por videollamada y en tu zona horaria.</p>"),
-  ("¿Hacen desarrollos a medida o solo productos cerrados?", "<p>Las dos cosas. Tenemos productos propios listos para usar, como <a href=\"" ~ url('/software-de-gestion-completo/') ~ "\">GERP</a> y <a href=\"" ~ url('/software-gestion-matafuegos-extintores/') ~ "\">GEMA</a>, y también relevamos, diseñamos y desarrollamos software a medida con Django, Odoo, Angular, React Native o WordPress.</p>"),
+  ("¿Hacen desarrollos a medida o solo productos cerrados?", "<p>Las dos cosas. Tenemos productos propios listos para usar, como <a href=\"" ~ url('/software-de-gestion-completo/') ~ "\">GERP</a> y <a href=\"" ~ url('/software-gestion-matafuegos-extintores/') ~ "\">GEMA</a> o <a href=\"" ~ url('/software-agropecuario-geagro/') ~ "\">GEAGRO</a>, y también relevamos, diseñamos y desarrollamos software a medida con Django, Odoo, Angular, React Native o WordPress.</p>"),
   ("¿Qué pasa después de entregar el proyecto?", "<p>Te acompañamos con <strong>implementación, capacitación y soporte</strong>. Podemos seguir manteniendo y mejorando la solución, o dejar todo documentado para que tu equipo la administre.</p>"),
 ] %}
 {% block schema %}
@@ -35,13 +35,14 @@
       {% for href, ic, name, text in [
         ("/software-de-gestion-completo/", "gestion", "Software de gestión ERP con Odoo", "Implementamos <strong>GERP</strong>, nuestro sistema de gestión basado en Odoo Community: inventario, compras, ventas, facturación y contabilidad en una sola plataforma online. También desarrollamos módulos a medida."),
         ("/software-gestion-matafuegos-extintores/", "gestion", "Software para talleres de matafuegos", "<strong>GEMA</strong> es el sistema online para talleres de recarga de extintores: controla vencimientos, registra servicios, genera obleas y avisa a tus clientes por mail."),
+        ("/software-agropecuario-geagro/", "img:geagro/Isologo-geagro.svg", "Software agropecuario GEAGRO", "<strong>GEAGRO</strong> ordena la información del campo o del viñedo: campañas, lotes, clima, insumos, labores y acopio con <strong>GEAGRO CEREALES</strong>, y gestión de viñedos con <strong>GEAGRO VID</strong>."),
         ("/staff-augmentation/", "staff", "Staff augmentation", "Sumá a tu equipo desarrolladores, DevOps, analistas funcionales, gestores de proyecto y diseñadores UX/UI de Argentina, de forma individual o como equipo completo."),
         ("/desarrollo-apps-sitios-web-cooperativos/", "apps", "Desarrollo de apps y sitios web", "Sitios institucionales, tiendas online, plataformas y aplicaciones móviles con WordPress, Django, Angular y React Native, pensadas para todos los dispositivos."),
         ("/plataformas-e-learning-lms-moodle/", "elearning", "Plataformas e-learning con Moodle", "Creamos y personalizamos campus virtuales en Moodle para universidades, institutos, colegios profesionales y empresas, con capacitación para docentes y administradores."),
         ("/diseno-sitios-web-identidades/", "diseno", "Diseño web e identidad visual", "Diseño de interfaces UX/UI, isologotipos, identidades visuales y estrategia de comunicación para que tu marca sea coherente en cada pieza."),
       ] %}
       <li>
-        <span class="related-icon">{{ icon(ic) }}</span>
+        <span class="related-icon">{{ m.svc_icon(ic) }}</span>
         <h3><a href="{{ url(href) }}">{{ name }}</a></h3>
         <p>{{ text|safe }}</p>
         <a class="more-link" href="{{ url(href) }}">Más sobre {{ name[0]|lower ~ name[1:] }} →</a>

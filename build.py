@@ -74,6 +74,10 @@ PAGES = [
          title="Software para talleres de matafuegos y extintores | GEMA",
          description="GEMA es el sistema online para talleres de recarga de matafuegos: control de vencimientos, historial de servicios, obleas, presupuestos y avisos a clientes.",
          crumb="Software de Matafuegos GEMA", og="2024/04/5-1024x637.webp", priority="0.9"),
+    dict(tpl="geagro.html", out="software-agropecuario-geagro/", parent="servicios/",
+         title="Software agropecuario GEAGRO: gestión agrícola y viñedos",
+         description="GEAGRO, software de gestión agropecuaria: campañas, lotes, clima, insumos y acopio con GEAGRO CEREALES, y gestión de viñedos con GEAGRO VID.",
+         crumb="Software Agropecuario GEAGRO", og="geagro/geagro-hero.webp", priority="0.9"),
     dict(tpl="staff-augmentation.html", out="staff-augmentation/", parent="servicios/",
          title="Staff augmentation: desarrolladores para tu equipo | GENEOS",
          description="Sumá desarrolladores, DevOps, analistas, PM y diseñadores UX/UI de Argentina a tu equipo. Staff augmentation nearshore para empresas de Latinoamérica.",
@@ -191,7 +195,8 @@ def faq_entities(items):
              "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in items]
 
 
-SERVICE_PAGES = ["software-de-gestion-completo/", "software-gestion-matafuegos-extintores/", "staff-augmentation/",
+SERVICE_PAGES = ["software-de-gestion-completo/", "software-gestion-matafuegos-extintores/",
+                 "software-agropecuario-geagro/", "staff-augmentation/",
                  "desarrollo-apps-sitios-web-cooperativos/", "plataformas-e-learning-lms-moodle/",
                  "diseno-sitios-web-identidades/"]
 
@@ -219,7 +224,7 @@ def org_schema():
                     "addressRegion": s["province"], "postalCode": s["postal_code"], "addressCountry": s["country"]},
         "hasMap": s["maps"],
         "areaServed": [{"@type": "Country", "name": "Argentina"}, {"@type": "Place", "name": "Latinoamérica"}],
-        "knowsAbout": ["Software libre", "Odoo", "ERP", "Django", "Python", "WordPress", "Moodle", "Angular",
+        "knowsAbout": ["Software libre", "Odoo", "ERP", "Software agropecuario", "Django", "Python", "WordPress", "Moodle", "Angular",
                        "React Native", "Desarrollo web", "Diseño UX/UI", "Staff augmentation"],
         "memberOf": {"@type": "Organization", "name": "FACTTIC", "url": "https://facttic.org.ar/"},
         "sameAs": [href for _, href, _ in s["social"]],

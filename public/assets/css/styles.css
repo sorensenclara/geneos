@@ -488,3 +488,41 @@ dialog.member::backdrop { background: rgba(0,0,0,.7); }
 @media (max-width: 560px) { .footer-cols { grid-template-columns: 1fr; } }
 .service-hero h1 small, .about-hero h1 small { display: block; font-size: .5em; font-weight: 400; text-transform: none; letter-spacing: .02em; margin-top: 6px; opacity: .9; }
 .prose + .feature-row, .prose + .flip-grid { margin-top: 36px; }
+
+/* ---------- GEAGRO ---------- */
+.theme-geagro { background: #f4f8ee; color: #1c2a12; }
+.theme-geagro-dark { background: linear-gradient(180deg, #148238 0%, #0b3f1b 100%); color: #fff; }
+.geagro-hero { position: relative; color: #fff; padding: clamp(72px, 10vw, 140px) 0 clamp(90px, 11vw, 150px); background: #0b3f1b url("../img/geagro/geagro-hero.webp") center / cover no-repeat; }
+.geagro-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.45) 60%, rgba(0,0,0,.15) 100%); }
+.geagro-hero .container { position: relative; max-width: var(--container); }
+.geagro-logo { width: min(300px, 70%); margin-bottom: 28px; }
+.geagro-hero h1 { font-size: clamp(32px, 4.8vw, 56px); font-weight: 300; max-width: 720px; }
+.geagro-hero h1 strong { font-weight: 700; color: #f3c600; }
+.geagro-hero p { font-size: clamp(18px, 2vw, 22px); max-width: 620px; margin-bottom: 28px; }
+.btn-geagro { background: #f3c600; border-color: #f3c600; color: #1c2a12; }
+.btn-geagro:hover { background: #ffd83a; border-color: #ffd83a; }
+.btn-outline-dark { border-color: #1c2a12; color: #1c2a12; }
+.btn-outline-dark:hover { background: #1c2a12; color: #fff; }
+.geagro-steps .step-n { background: #148238; width: auto; padding: 0 12px; border-radius: 999px; }
+.geagro-versions { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.geagro-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 30px rgba(20,60,20,.1); display: flex; flex-direction: column; }
+.geagro-card-photo { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; }
+.geagro-card-body { padding: 26px 28px 30px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.geagro-card-title { display: flex; align-items: center; gap: 14px; }
+.geagro-card-title img { width: 52px; height: 52px; }
+.geagro-card-title h3 { margin: 0; font-size: 26px; color: #148238; }
+.geagro-card p { margin: 0; }
+.geagro-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.geagro-tags li { font-size: 14px; padding: 4px 12px; border-radius: 999px; background: #eaf4e2; color: #14532d; }
+.geagro-card .btn-row { margin-top: auto; padding-top: 6px; }
+.geagro-pricing { max-width: 760px; margin: 0 auto; }
+.geagro-price header { background: #148238; }
+.geagro-price.featured header { background: #0b3f1b; }
+.page-geagro .accordion .answer a, .page-geagro .text-block a { color: #148238; }
+.related-icon img { width: 100%; height: 100%; }
+@media (max-width: 860px) { .geagro-versions { grid-template-columns: 1fr; } }
+ol.steps { padding: 0; margin: 0; }
+.geagro-steps .step-n { width: fit-content; min-width: 48px; }
+.media-text .text-block .eyebrow { justify-content: flex-start; }
+.media-text .text-block .eyebrow::before { display: none; }
+.geagro-card .btn { padding: 11px 22px; font-size: 15px; }

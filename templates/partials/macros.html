@@ -197,11 +197,16 @@
 {% set ALL_SERVICES = [
   ("/software-de-gestion-completo/", "gestion", "Software de gestión ERP", "Sistema de gestión GERP basado en Odoo para pymes."),
   ("/software-gestion-matafuegos-extintores/", "gestion", "Software para matafuegos", "GEMA: gestión online para talleres de extintores."),
+  ("/software-agropecuario-geagro/", "img:geagro/Isologo-geagro.svg", "Software agropecuario", "GEAGRO: gestión de campañas agrícolas y viñedos."),
   ("/staff-augmentation/", "staff", "Staff augmentation", "Desarrolladores y perfiles IT que se suman a tu equipo."),
   ("/desarrollo-apps-sitios-web-cooperativos/", "apps", "Apps y sitios web", "Webs, tiendas online y apps a medida con tecnología libre."),
   ("/plataformas-e-learning-lms-moodle/", "elearning", "Campus virtual Moodle", "Plataformas e-learning personalizadas para educar online."),
   ("/diseno-sitios-web-identidades/", "diseno", "Diseño y comunicación", "Diseño web UX/UI, identidad visual y comunicación."),
 ] %}
+
+{% macro svc_icon(ic) -%}
+{% if ic.startswith("img:") %}<img src="{{ img(ic[4:]) }}" alt="" width="54" height="54" loading="lazy">{% else %}{{ icon(ic) }}{% endif %}
+{%- endmacro %}
 
 {% macro related(current, title="Otros servicios de GENEOS") -%}
 <section class="section theme-black related">
@@ -209,7 +214,7 @@
     {{ section_head("TAMBIÉN HACEMOS", title) }}
     <ul class="related-grid">
       {% for href, ic, name, text in ALL_SERVICES if href != current %}
-      <li><a href="{{ url(href) }}"><span class="related-icon">{{ icon(ic) }}</span><strong>{{ name }}</strong><span>{{ text }}</span></a></li>
+      <li><a href="{{ url(href) }}"><span class="related-icon">{{ svc_icon(ic) }}</span><strong>{{ name }}</strong><span>{{ text }}</span></a></li>
       {% endfor %}
     </ul>
   </div>
