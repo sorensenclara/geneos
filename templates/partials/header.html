@@ -17,10 +17,9 @@
 ] %}
 <div class="topbar">
   <div class="container topbar-inner">
-    <span class="topbar-label">Nuestros productos</span>
     <ul class="topbar-products">
-      {% for name, desc, href in site.products %}
-      <li><a href="{{ href }}" target="_blank" rel="noopener" title="{{ name }} · {{ desc }} (se abre en una pestaña nueva)"><strong>{{ name }}</strong><span class="topbar-desc">{{ desc }}</span>{{ icon('ui-external') }}</a></li>
+      {% for name, desc, href, logo in site.products %}
+      <li><a href="{{ href }}" target="_blank" rel="noopener" title="{{ name }} · {{ desc }}" aria-label="{{ name }}, {{ desc }} (se abre en una pestaña nueva)"><img src="{{ img(logo) }}" alt="{{ name }}" height="20" width="80"></a></li>
       {% endfor %}
     </ul>
   </div>

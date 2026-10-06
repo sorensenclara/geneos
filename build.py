@@ -49,9 +49,9 @@ SITE = {
     "form_action": "https://formsubmit.co/info@geneos.com.ar",
     # Productos propios: se muestran en la barra superior y abren en pestaña nueva
     "products": [
-        ("GERP", "Software de gestión", "https://gerp.ar/"),
-        ("GEAGRO", "Gestión agropecuaria", "https://geagro.ar/"),
-        ("GEMA", "Gestión de matafuegos", "https://gema.geneos.com.ar/"),
+        ("GERP", "Software de gestión", "https://gerp.ar/", "productos/gerp.svg"),
+        ("GEAGRO", "Gestión agropecuaria", "https://geagro.ar/", "productos/geagro.svg"),
+        ("GEMA", "Gestión de matafuegos", "https://gema.geneos.com.ar/", "productos/gema.svg"),
     ],
     "social": [
         ("Facebook", "https://www.facebook.com/coopgeneos/", "facebook"),
