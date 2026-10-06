@@ -47,6 +47,12 @@ SITE = {
     # (la primera vez manda un mail de activación). Se puede cambiar por Formspree,
     # un endpoint propio en Django, etc.
     "form_action": "https://formsubmit.co/info@geneos.com.ar",
+    # Productos propios: se muestran en la barra superior y abren en pestaña nueva
+    "products": [
+        ("GERP", "Software de gestión", "https://gerp.ar/"),
+        ("GEAGRO", "Gestión agropecuaria", "https://geagro.ar/"),
+        ("GEMA", "Gestión de matafuegos", "https://gema.geneos.com.ar/"),
+    ],
     "social": [
         ("Facebook", "https://www.facebook.com/coopgeneos/", "facebook"),
         ("Instagram", "https://www.instagram.com/coopgeneos/", "instagram"),

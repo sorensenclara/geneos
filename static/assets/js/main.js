@@ -8,6 +8,7 @@
   const nav = $("#menu");
   if (toggle && nav) {
     toggle.addEventListener("click", () => {
+      nav.style.top = `${document.querySelector(".site-header").getBoundingClientRect().bottom}px`;
       const open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open);
       document.body.classList.toggle("nav-open", open);

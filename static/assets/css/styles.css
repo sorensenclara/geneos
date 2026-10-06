@@ -526,3 +526,19 @@ ol.steps { padding: 0; margin: 0; }
 .media-text .text-block .eyebrow { justify-content: flex-start; }
 .media-text .text-block .eyebrow::before { display: none; }
 .geagro-card .btn { padding: 11px 22px; font-size: 15px; }
+
+/* ---------- Barra superior de productos ---------- */
+.topbar { background: #111; color: rgba(255,255,255,.85); font-size: 13px; border-bottom: 1px solid #1f1f1f; }
+.topbar-inner { display: flex; align-items: center; justify-content: flex-end; gap: 16px; min-height: 36px; }
+.topbar-label { letter-spacing: .12em; text-transform: uppercase; font-size: 11px; opacity: .6; }
+.topbar-products { list-style: none; display: flex; gap: 6px; }
+.topbar-products a { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; text-decoration: none; transition: background .2s, color .2s; }
+.topbar-products a:hover, .topbar-products a:focus-visible { background: #222; color: var(--green-bright); }
+.topbar-products strong { font-weight: 700; letter-spacing: .04em; color: #fff; }
+.topbar-products a:hover strong { color: var(--green-bright); }
+.topbar-desc { opacity: .7; }
+.topbar-products .icon { width: 12px; height: 12px; fill: none; opacity: .7; }
+@media (max-width: 760px) {
+  .topbar-inner { justify-content: center; }
+  .topbar-label, .topbar-desc { display: none; }
+}

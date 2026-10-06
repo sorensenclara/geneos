@@ -15,6 +15,16 @@
   ]),
   ("Contacto", "/contacto-geneos/", []),
 ] %}
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="topbar-label">Nuestros productos</span>
+    <ul class="topbar-products">
+      {% for name, desc, href in site.products %}
+      <li><a href="{{ href }}" target="_blank" rel="noopener" title="{{ name }} · {{ desc }} (se abre en una pestaña nueva)"><strong>{{ name }}</strong><span class="topbar-desc">{{ desc }}</span>{{ icon('ui-external') }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="{{ url('/') }}">
