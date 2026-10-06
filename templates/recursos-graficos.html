@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ icon('ui-pencil-ruler') }}
+    <h1>RECURSOS <span>GRÁFICOS</span></h1>
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    <h2 class="section-title center">ISO-LOGOTIPOS</h2>
+    <div class="logos-row">
+      <figure><img src="{{ img('2024/12/isologotipo-GENEOS-02.svg') }}" alt="Isologotipo GENEOS horizontal" loading="lazy" width="320" height="120"></figure>
+      <figure><img src="{{ img('2025/01/isologotipo-GENEOS.svg') }}" alt="Isologotipo GENEOS" loading="lazy" width="320" height="120"></figure>
+      <figure class="dark"><img src="{{ img('2024/12/isologotipo-GENEOS-03.svg') }}" alt="Isologotipo GENEOS en negativo" loading="lazy" width="320" height="120"></figure>
+    </div>
+    <div class="btn-row center">
+      <a class="btn btn-solid" href="{{ asset('descargas/Logos-GENEOS-Vector.zip') }}" download>{{ icon('ui-download') }} Descargar SVG</a>
+      <a class="btn btn-solid" href="{{ asset('descargas/Logos-GENEOS-PNG.zip') }}" download>{{ icon('ui-download') }} Descargar PNG</a>
+    </div>
+  </div>
+</section>
+
+<div class="brand-banner" role="img" aria-label="Manual de marca GENEOS"></div>
+
+<section class="section theme-black">
+  <div class="container narrow center">
+    <p class="eyebrow"><span>BRANDBOOK</span></p>
+    <h2 class="section-title">MANUAL DE MARCA</h2>
+    <p class="lead">Nuestro Brandbook actúa como un manual de referencia, estableciendo los lineamientos esenciales para el uso adecuado de nuestra marca.</p>
+    <a class="btn btn-outline" href="{{ asset('descargas/Manual-de-MARCA-G-ERP.pdf') }}" target="_blank" rel="noopener">VER MANUAL</a>
+  </div>
+</section>
+
+<section class="section gerp-section">
+  <div class="container">
+    {{ m.section_head("IMAGEN DE MARCA", "PRODUCTO PROPIO") }}
+    <div class="logos-row">
+      <figure class="glass"><img src="{{ img('2025/03/Imagenes-GERP-WEB-03.svg') }}" alt="Isologotipo GERP" loading="lazy" width="320" height="120"></figure>
+      <figure class="glass"><img src="{{ img('2025/03/Imagenes-GERP-WEB-01.svg') }}" alt="Isologotipo GERP" loading="lazy" width="320" height="120"></figure>
+      <figure class="glass"><img src="{{ img('2025/03/Imagenes-GERP-WEB-02.svg') }}" alt="Isologotipo GERP" loading="lazy" width="320" height="120"></figure>
+    </div>
+    <div class="btn-row center">
+      <a class="btn btn-white" href="{{ asset('descargas/GERP-Vector.zip') }}" download>{{ icon('ui-download') }} Descargar SVG</a>
+      <a class="btn btn-white" href="{{ asset('descargas/GERP-PNG.zip') }}" download>{{ icon('ui-download') }} Descargar PNG</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

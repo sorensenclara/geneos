@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <a class="footer-item" href="{{ wa() }}" target="_blank" rel="noopener">
+      <span class="footer-icon">{{ icon('ui-whatsapp') }}</span>
+      <span>{{ site.whatsapp_label }}</span>
+    </a>
+    <a class="footer-item" href="mailto:{{ site.email }}">
+      <span class="footer-icon">{{ icon('ui-mail') }}</span>
+      <span>{{ site.email }}</span>
+    </a>
+    <a class="footer-item" href="{{ site.maps }}" target="_blank" rel="noopener">
+      <span class="footer-icon">{{ icon('ui-map') }}</span>
+      <span>{{ site.address }}<br><small>{{ site.region }}</small></span>
+    </a>
+  </div>
+  <div class="container footer-bottom">
+    <ul class="social">
+      {% for label, href, ic in site.social %}
+      <li><a href="{{ href }}" target="_blank" rel="noopener" aria-label="{{ label }}">{{ icon('ui-' ~ ic) }}</a></li>
+      {% endfor %}
+    </ul>
+    <p class="credit">Diseñado por Cooperativa GENEOS Ltda. · {{ year }}</p>
+  </div>
+</footer>

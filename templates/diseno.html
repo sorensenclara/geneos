@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+{{ m.service_hero("green", "diseno", "Diseño &amp;<br>Comunicación", "Diseño de Sitios Web e Identidades Visuales, la clave para <strong>destacarte</strong> y <strong>conectar</strong>.", "design") }}
+
+<section class="section theme-white" id="design">
+  <div class="container">
+    <p class="prose">En <strong>Geneos</strong> nos especializamos en el <strong>diseño de sitios web e identidades visuales</strong> utilizando tecnologías libres como WordPress, Odoo y Moodle. Ya sea que necesites un sitio web funcional, una tienda online o una nueva identidad para tu marca, trabajamos para crear soluciones digitales únicas y sostenibles que representen lo mejor de tu proyecto.</p>
+    <div class="flip-grid" style="margin-top:48px">
+      {% for ic, title, text, link in [
+        ("flip-web", "DESARROLLAMOS<br>SITIOS WEB", "Diseñamos la interfaz del usuario, UX y UI, e implementamos un sitio web con base en código abierto, seguro, responsive y personalizable.", ("#wordpress", "WORDPRESS")),
+        ("flip-identidad", "DISEÑAMOS<br>IDENTIDADES", "Diseñamos isologotipos e identidades visuales, definiendo la paleta de colores, tipografía y elementos gráficos coherentes con tu negocio, para atraer y construir relaciones duraderas con clientes.", None),
+        ("flip-comunicacion", "CREAMOS<br>LA COMUNICACIÓN", "Tener sinergia de marca en todas las piezas de comunicación es crucial para construir una imagen sólida, e ideamos toda la estrategia de comunicación para lograrlo.", None),
+      ] %}
+      <div class="flip" tabindex="0">
+        <div class="flip-inner">
+          <div class="flip-face flip-front">{{ icon(ic) }}<h3>{{ title|safe }}</h3><small>VER MÁS &gt;&gt;&gt;</small></div>
+          <div class="flip-face flip-back"><p>{{ text }}</p>{% if link %}<a class="btn btn-white" href="{{ link[0] }}">{{ link[1] }}</a>{% endif %}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section theme-black" id="wordpress">
+  <div class="container">
+    {{ m.section_head("TU SITIO CON", "WORDPRESS") }}
+    {{ m.wordpress_block("CONTACTANOS") }}
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("DISEÑO", "CLIENTES") }}
+  </div>
+  {{ m.logo_marquee([
+    "2024/03/CONEPO.png", "2024/03/Red-de-Repositorios-Documentales.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png",
+    "2024/03/Red-de-Espacios-Culturales-Mar-Chiquita.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/CHAPALEOFU.png",
+    "2024/03/DIVERSA-COPA.png", "2024/03/Universidad-UNAJ.png", "2024/03/Universidad-Nacional-Hurlingham.png",
+    ("2024/03/Union-Agruicola-de-Avellaneda.png", "https://www.uaa.com.ar/"), ("2024/03/Edunet-Cooperativa.png", "https://edunet.coop/"),
+    ("2024/03/Colegio-de-Trabajadores-Sociales.png", "https://catspba.org.ar/"), ("2024/03/CINEA.png", "https://cinea.fch.unicen.edu.ar/"), "2024/03/CIEP.png",
+  ]) }}
+</section>
+{% endblock %}

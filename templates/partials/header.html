@@ -1,0 +1,44 @@
+{% set nav = [
+  ("GENEOS", "/", []),
+  ("Servicios", "/servicios/", [
+    ("Software de Gestión – GERP", "/software-de-gestion-completo/"),
+    ("Software de Matafuegos – GEMA", "/software-gestion-matafuegos-extintores/"),
+    ("Staff Augmentation", "/staff-augmentation/"),
+    ("Apps y Webs", "/desarrollo-apps-sitios-web-cooperativos/"),
+    ("E-learning", "/plataformas-e-learning-lms-moodle/"),
+    ("Diseño", "/diseno-sitios-web-identidades/"),
+  ]),
+  ("Génesis", "/quienes-somos/", [
+    ("Quiénes somos", "/quienes-somos/"),
+    ("Recursos Gráficos", "/recursos-graficos/"),
+  ]),
+  ("Contacto", "/contacto-geneos/", []),
+] %}
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ url('/') }}">
+      <img src="{{ img('2023/10/Logo-Geneos-white.png') }}" alt="GENEOS · Cooperativa de Software Libre" width="156" height="50">
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      {{ icon('ui-menu') }}
+    </button>
+    <nav class="site-nav" id="menu" aria-label="Navegación principal">
+      <ul>
+        {% for label, href, children in nav %}
+        {% set active = (path == href) or (children and path in children|map(attribute=1)|list) %}
+        <li class="{{ 'has-sub' if children }}{{ ' is-active' if active }}">
+          <a href="{{ url(href) }}"{% if path == href %} aria-current="page"{% endif %}>{{ label }}</a>
+          {% if children %}
+          <button class="sub-toggle" aria-expanded="false" aria-label="Submenú {{ label }}">{{ icon('ui-chevron') }}</button>
+          <ul class="sub">
+            {% for clabel, chref in children %}
+            <li><a href="{{ url(chref) }}"{% if path == chref %} aria-current="page"{% endif %}>{{ clabel }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

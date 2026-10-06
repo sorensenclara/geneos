@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block body_class %}page-e-learning{% endblock %}
+{% block content %}
+<section class="service-hero theme-orange">
+  <div class="container service-hero-inner">
+    <span class="service-hero-icon">{{ icon('elearning') }}</span>
+    <div class="service-hero-text">
+      <h1>E-Learning</h1>
+      <blockquote class="quote">
+        <p>Enseñar en la era de Internet… significa que <strong>debemos enseñar las habilidades de mañana desde hoy.</strong></p>
+        <cite>Jennifer Fleming</cite>
+      </blockquote>
+    </div>
+  </div>
+  {{ m.scroll_down("moodle") }}
+</section>
+
+<section class="section theme-white" id="moodle">
+  <div class="container media-text">
+    <img src="{{ img('2023/11/notebook_moodle.png') }}" alt="Notebook mostrando un campus Moodle" loading="lazy" width="800" height="560">
+    <div>
+      <h2 class="section-title">La MEJOR HERRAMIENTA<br>para la EDUCACIÓN VIRTUAL</h2>
+      <div class="accordion">
+        {% for q, a in [
+          ("PERSONALIZABLE", "Personalizamos los cursos y la plataforma de acuerdo con las necesidades e imagen de marca de la organización."),
+          ("CÓDIGO ABIERTO", "Cualquier persona que desee modificar el código o mejorarlo puede hacerlo. Esto fomenta la flexibilidad y la adaptabilidad según las necesidades del cliente."),
+          ("MULTILINGÜE", "Se encuentra traducido a más de 70 idiomas, por lo que facilita su uso en entornos internacionales y multiculturales."),
+          ("RESPONSIVE", "Es accesible desde diversos dispositivos, lo que permite a los usuarios acceder al contenido desde cualquier lugar con conexión a Internet."),
+          ("SEGURA", "Cuenta con medidas de seguridad robustas para proteger la información del usuario y garantizar la integridad de los datos."),
+        ] %}
+        <details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a }}</p></details>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section theme-black">
+  <div class="container">
+    {{ m.section_head("POR QUÉ", "MOODLE") }}
+    <div class="feature-row">
+      <div class="feature">
+        <span class="feature-icon circle-icon">{{ icon('moodle-gamificacion') }}</span>
+        <h3>Gamificación</h3>
+        <p>Con el complemento H5P integramos contenidos interactivos como videos, cuestionarios, juegos y más, logrando el aprendizaje a partir del entretenimiento.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon circle-icon">{{ icon('moodle-diseno') }}</span>
+        <h3>Diseño</h3>
+        <p>Diseñamos la plataforma y los cursos en base a la identidad de la organización que lo solicita, logrando sinergia marcaria en cada pieza del entorno.</p>
+        <img class="feature-img" src="{{ img('2023/10/Icon_moodle.svg') }}" alt="Moodle" loading="lazy" width="220" height="160">
+      </div>
+      <div class="feature">
+        <span class="feature-icon circle-icon">{{ icon('moodle-capacitacion') }}</span>
+        <h3>Capacitación</h3>
+        <p>Brindamos este servicio a todas las personas involucradas tanto en la administración como en el uso de la plataforma, para que puedan entender el correcto funcionamiento de los módulos que la integran.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("MOODLE", "CLIENTES") }}
+  </div>
+  {{ m.logo_marquee(["2024/03/Universidad-UNAJ.png", "2024/03/Universidad-Nacional-Hurlingham.png", "2024/03/Union-Agruicola-de-Avellaneda.png", "2024/03/Edunet-Cooperativa.png", "2024/03/Colegio-de-Trabajadores-Sociales.png", "2024/03/CINEA.png", "2024/03/CIEP.png"]) }}
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+{{ m.service_hero("yellow", "staff-hero", "Staff<br>Augmentation", "<b>Potenciá a tu equipo</b><br>garantizando <b>el éxito juntos</b>", "roles") }}
+
+<section class="section theme-white" id="roles">
+  <div class="container">
+    {{ m.section_head("CONTAMOS CON", "LOS ROLES") }}
+    <div class="feature-row cols-5 roles">
+      {% for ic, title in [("rol-dev", "Desarrolladores"), ("rol-devops", "DevOps"), ("rol-analisis", "Análisis Funcional"), ("rol-pm", "Gestor de proyectos"), ("rol-ux", "Diseño UX/UI")] %}
+      <div class="feature">
+        <span class="feature-icon role-icon">{{ icon(ic) }}</span>
+        <h3>{{ title }}</h3>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section theme-purple" id="tecnologias">
+  <div class="container">
+    {{ m.section_head("TRABAJAMOS CON", "Plataformas, Frameworks &amp; Lenguajes"|safe) }}
+    {{ m.tech_grid() }}
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("CASOS DE", "ÉXITO") }}
+    <div class="success-cases">
+      <article class="card">
+        <img src="{{ img('2024/03/Limousine-e1710421259980.png') }}" alt="Limousine" loading="lazy" width="220" height="124">
+        <h3>Augmented Services</h3>
+        <p>Integramos tecnologías para mejorar la calidad, la funcionalidad y la experiencia de los servicios que ofrece Limousine en México, con el desarrollo de una plataforma online.</p>
+      </article>
+      <article class="card">
+        <img src="{{ img('2024/03/Betterez-1-e1710421281233.png') }}" alt="Betterez" loading="lazy" width="220" height="124">
+        <h3>DevOps &amp; Developers</h3>
+        <p>Contribuimos con la plataforma de gestión de reservas Betterez, integrando tecnologías que ayudan a los operadores de viajes terrestres, turísticos y de venta de boletos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section theme-green" id="ventajas">
+  <div class="container">
+    {{ m.section_head("VENTAJAS", "STAFF AUGMENTATION") }}
+    <div class="feature-row">
+      {% for ic, title, text in [
+        ("ventaja-profesionales", "Profesionales<br>capacitados", "Proporciona talentos calificados en diferentes roles y tecnologías, capaces de ser contratados de forma individual o en equipo."),
+        ("ventaja-flexible", "Flexible<br>a los cambios", "Nuestres asociades se capacitan constantemente, lo que te permitirá estar adaptado a las necesidades cambiantes del mercado."),
+        ("ventaja-costos", "Reducí<br>tus costos", "Evitarás costos asociados con la contratación de empleados a tiempo completo o la expansión de tu infraestructura interna."),
+      ] %}
+      <div class="feature">
+        <span class="feature-icon circle-icon on-green">{{ icon(ic) }}</span>
+        <h3>{{ title|safe }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section theme-green-black">
+  <div class="container narrow center">
+    <p class="lead"><strong>Conocé a nuestros socios</strong><br>y encontrá el talento ideal para tu proyecto.</p>
+    <a class="btn btn-outline" href="{{ url('/quienes-somos/') }}">NUESTRO EQUIPO</a>
+  </div>
+</section>
+{% endblock %}

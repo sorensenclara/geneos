@@ -1,0 +1,15 @@
+ErrorDocument 404 /404.html
+RewriteEngine On
+RewriteRule ^index.php/apps-y-sitios-web/?$ /desarrollo-apps-sitios-web-cooperativos/ [R=301,L]
+RewriteRule ^index.php/plataformas-e-learning/?$ /plataformas-e-learning-lms-moodle/ [R=301,L]
+RewriteRule ^index.php/disenamos-sitios-web-identidades/?$ /diseno-sitios-web-identidades/ [R=301,L]
+RewriteRule ^index.php/plataformas-de-gestion/?$ /software-de-gestion-completo/ [R=301,L]
+RewriteRule ^index.php/software-de-gestion/?$ /software-de-gestion-completo/ [R=301,L]
+RewriteRule ^index.php/app-webs/?$ /desarrollo-apps-sitios-web-cooperativos/ [R=301,L]
+RewriteRule ^index.php/diseno-grafico-y-web/?$ /diseno-sitios-web-identidades/ [R=301,L]
+RewriteRule ^index.php/contact/?$ /contacto-geneos/ [R=301,L]
+RewriteRule ^apps-y-sitios-web/?$ /desarrollo-apps-sitios-web-cooperativos/ [R=301,L]
+RewriteRule ^plataformas-e-learning/?$ /plataformas-e-learning-lms-moodle/ [R=301,L]
+RewriteRule ^disenamos-sitios-web-identidades/?$ /diseno-sitios-web-identidades/ [R=301,L]
+RewriteRule ^contact/?$ /contacto-geneos/ [R=301,L]
+RewriteRule ^index\.php/(.*)$ /$1 [R=301,L]

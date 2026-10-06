@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ icon('ui-envelope-open') }}
+    <div>
+      <h1>CONTACTO</h1>
+      <p>Descubrí soluciones digitales con tecnologías libres: Odoo, WordPress, Moodle y más. ¡Escribinos!</p>
+    </div>
+  </div>
+</section>
+
+<section class="section theme-blue">
+  <div class="container split contact-split">
+    <div>
+      <h2 class="section-title">Hablemos</h2>
+      <p>Somos un equipo especializado en el desarrollo de soluciones digitales con tecnologías libres como <strong>Odoo</strong>, <strong>WordPress</strong>, <strong>Moodle</strong>, <strong>Django</strong>, entre otras. Nos enfocamos en crear plataformas que sean accesibles, sostenibles y adaptadas a cada necesidad.</p>
+      <ul class="contact-list">
+        <li><a href="{{ wa() }}" target="_blank" rel="noopener">{{ icon('ui-whatsapp') }} {{ site.whatsapp_label }}</a></li>
+        <li><a href="mailto:{{ site.email }}">{{ icon('ui-mail') }} {{ site.email }}</a></li>
+        <li><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ icon('ui-map') }} {{ site.address }}, {{ site.region }}</a></li>
+      </ul>
+    </div>
+    {{ m.contact_form("full") }}
+  </div>
+</section>
+
+<section class="map">
+  <iframe title="Mapa: {{ site.address }}" src="https://maps.google.com/maps?q=Alem%201015%20-%20Tandil&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<section class="section theme-green-black">
+  <div class="container split">
+    <div class="split-media">
+      {{ m.photo_carousel([
+        ("elementor/thumbs/photo1698259428-qehlfk1q3efgp6dr7x20k4vsjp6kicufqer8i8akdc.jpeg", "Equipo de GENEOS"),
+        ("elementor/thumbs/20220831_112038-01-scaled-qmevf8fds8smpfx7za6ggnv527ybcic3gwr08t8qlc.jpeg", "Ibrian, socio de GENEOS"),
+        ("elementor/thumbs/20220831_112124-01-scaled-qmevfab25wv7cnuhoazplne28zp1rwjk561z7d5y8w.jpeg", "Marcos, socio de GENEOS"),
+        ("elementor/thumbs/20220831_112145-01-scaled-qe1wooud8507a43m7aesw24jhnfqgjpotyn1jv2lr4.jpeg", "Socio de GENEOS"),
+        ("elementor/thumbs/20220831_112152-01-scaled-qmew42bwbosbelurzikntwahznkdonwtvt5rmyfc80.jpeg", "Socio de GENEOS"),
+        ("elementor/thumbs/photo1698236571-2-qehlg7jou9bmrffmep7osgybebyqusfq5n2di5bq1s.jpeg", "Equipo de GENEOS"),
+        ("elementor/thumbs/photo1698236571-4-qehlgd6pz9jcp37fhrng7fj2yn6y4z246ezadt3d0g.jpeg", "Equipo de GENEOS"),
+        ("elementor/thumbs/photo1698237434-qehlghvwxfpsb50lqbol1wcdxkjs7gkrv28ps6we5c.jpeg", "Equipo de GENEOS"),
+        ("elementor/thumbs/photo1698244568-1-qehlgpemg402w0poiexllug2onipx1emk3glmel8rk.jpeg", "Asamblea de GENEOS"),
+        ("elementor/thumbs/WhatsApp-Image-2023-10-17-at-07.54.45-1-qehlik55xcjfsc0qops40vlsv0ds3jrkh9s2p1uahs.jpeg", "Trabajo de la cooperativa"),
+        ("elementor/thumbs/WhatsApp-Image-2023-10-17-at-07.55.08-qehlil3046kq3xzdj86qldd9ge95b8vatefk6bswbk.jpeg", "Trabajo de la cooperativa"),
+      ]) }}
+    </div>
+    <div class="split-text">
+      {{ m.eyebrow("DUDAS E INQUIETUDES") }}
+      <h2 class="section-title">¿Qué desarrollamos?</h2>
+      {{ m.check_list(["Sitios web institucionales o de servicios", "Tiendas online con pedidos de cotización", "Plataformas educativas", "Sistemas de gestión con Odoo", "Diseño UI/UX y comunicación digital", "Automatización y procesos digitales"], "check-list big") }}
+    </div>
+  </div>
+</section>
+{% endblock %}

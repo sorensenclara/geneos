@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+<section class="service-hero theme-purple">
+  <div class="container service-hero-inner">
+    <span class="service-hero-icon">{{ icon('gerp') }}</span>
+    <div class="service-hero-text">
+      <h1 class="gerp-title">El <strong>sistema de gestión</strong> online, ágil e integral para todo tu <strong>negocio</strong></h1>
+      <p>Nuestro Software de Gestión Empresarial – ERP es una herramienta robusta con un enfoque práctico, configurado y <b>listo para usar.</b></p>
+      <div class="btn-row">
+        <a class="btn btn-white" href="{{ wa('Hola, quiero hablar con un asesor sobre GERP') }}" target="_blank" rel="noopener">CONTACTÁ UN ASESOR</a>
+        <a class="btn btn-outline" href="https://gerp.ar/" target="_blank" rel="noopener">SITIO WEB OFICIAL</a>
+      </div>
+    </div>
+  </div>
+  {{ m.scroll_down("gerp") }}
+</section>
+
+<section class="section theme-white" id="gerp">
+  <div class="container">
+    <img class="gerp-logo" src="{{ img('2025/02/Isologo-GERP-Full.svg') }}" alt="GERP" width="280" height="90">
+    {{ m.section_head("ORGANIZACIÓN, EFICIENCIA Y CONTROL", "TODO TU NEGOCIO EN UN SOLO SOFTWARE") }}
+    <p class="prose">Si buscás un <strong>ERP</strong> que sea sencillo y efectivo, <strong>GERP</strong> es tu solución ideal. Dejá atrás las planillas de cálculo, elegí el pack que mejor se adapte a tu negocio.</p>
+    <div class="media-text gerp-benefits">
+      <img src="{{ img('2026/01/Beneficios-GERP-1536x1029-1-1024x686.png') }}" alt="Beneficios de GERP" loading="lazy" width="1024" height="686">
+      {{ m.check_list([
+        "<strong>TE ACOMPAÑAMOS SIEMPRE.</strong> Tanto en la implementación, capacitación y soporte de la plataforma.",
+        "<strong>CRECEMOS JUNTOS.</strong> Mejoramos juntos. Nuestro equipo se actualiza constantemente para atender tus requisitos, los del país y ofrecerte un servicio de excelencia.",
+      ], "check-list big") }}
+    </div>
+    <div class="cards-3">
+      {% for logo, name, text, href in [
+        ("G-ERP-Lite.svg", "LITE", "Destinada a pequeños emprendimientos que necesitan gestionar Clientes, Proveedores, Inventario, Facturación, pudiendo tener una revisión periódica.", "https://gerp.ar/index.php/gerp-lite-odoo/"),
+        ("G-ERP-Core.svg", "CORE", "Ideal para medianas empresas que requieren incorporar circuitos de compras y ventas, aprovechando la personalización de informes y evitando planillas de cálculo.", "https://gerp.ar/index.php/gerp-core-odoo/"),
+        ("G-ERP-Plus.svg", "PLUS", "Indispensable para emprendimientos que necesitan CRM y MRP, gestión de producción, seguimiento de productos, oportunidades comerciales, leads.", "https://gerp.ar/index.php/gerp-plus-odoo/"),
+      ] %}
+      <article class="card">
+        <img class="card-img" src="{{ img('2024/11/' ~ logo) }}" alt="GERP {{ name }}" loading="lazy" width="140" height="140">
+        <h3>{{ name }}</h3>
+        <p>{{ text }}</p>
+        <a class="btn btn-solid" href="{{ href }}" target="_blank" rel="noopener">Ver Plan</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section dev-banner">
+  <div class="container narrow center">
+    <h2 class="section-title">DESARROLLAMOS SOFTWARE A MEDIDA</h2>
+    <p class="lead">Contanos qué necesitás, lo analizamos, relevamos y creamos la solución con tecnología.</p>
+    <a class="btn btn-white" href="{{ wa('Hola, quiero consultar por un desarrollo a medida') }}" target="_blank" rel="noopener">{{ icon('ui-whatsapp') }} WhatsApp</a>
+  </div>
+</section>
+
+<section class="section theme-gray" id="planes">
+  <div class="container">
+    {{ m.section_head("ALTERNATIVAS", "PLANES Y PRECIOS") }}
+    <div class="pricing">
+      {% for name, sub, price, feats, impl, cls in [
+        ("LITE", "Plan base pequeños emprendimientos", "89.250", ["Máximo 3 usuarios", "Módulo Inventario", "Módulo Compra y Venta", "Contabilidad y Facturación"], "446.250", ""),
+        ("CORE", "Circuito completo Compras y Ventas", "178.500", ["Múltiples usuarios diferenciados", "Módulo Inventario", "Módulo Compra", "Módulo Venta", "Módulo Facturación", "Módulo Contabilidad"], "892.500", "featured"),
+        ("PLUS", "Esencial con CRM y MRP", "446.250", ["Múltiples usuarios diferenciados", "Módulo Inventario", "Módulo Compra", "Módulo Venta", "Módulo Facturación", "Módulo Contabilidad", "Módulo CRM", "Módulo MRP"], "1.785.000", ""),
+      ] %}
+      <article class="price-card {{ cls }}">
+        <header><h3>{{ name }}</h3><p>{{ sub }}</p></header>
+        <div class="price"><strong><sup>$</sup>{{ price }}</strong><span>+ IVA por mes (*)</span></div>
+        {{ m.check_list(feats) }}
+        <footer>
+          <a class="btn btn-solid" href="{{ wa('Hola, quiero consultar por el plan GERP ' ~ name) }}" target="_blank" rel="noopener">¡Contactanos!</a>
+          <small>$ {{ impl }} + IVA implementación</small>
+        </footer>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="note">(*) Precios válidos para los meses de Octubre, Noviembre y Diciembre 2026. Actualización bimensual.</p>
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("ES EL MEJOR", "SOFTWARE DE GESTIÓN") }}
+    <div class="feature-row">
+      {% for ic, title, text in [
+        ("inventario", "Inventario<br>&amp; Compras", "Analizá productos, costos, trazabilidad, vencimientos y todo tu inventario. Podrás crear reglas de abastecimiento automáticas para que nunca te quedes sin stock."),
+        ("ventas", "Ventas<br>&amp; E-Commerce", "Gestioná tu proceso de ventas a través de la tienda online maximizando tus ingresos y manteniendo el control de stock de tus productos. Publicá productos en la tienda."),
+        ("facturacion", "Facturación<br>&amp; Contabilidad", "Registrá todas las transacciones financieras, facturas, pagos, cobranzas y generá informes financieros personalizados."),
+      ] %}
+      <div class="feature">
+        <span class="feature-icon ring-icon green-icon">{{ icon(ic) }}</span>
+        <h3>{{ title|safe }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section theme-white pt-0">
+  <div class="container">
+    {{ m.section_head("ODOO", "NUESTROS CLIENTES") }}
+  </div>
+  {{ m.logo_marquee([
+    "2024/03/INBIO-HIGHWAY.png", "2024/03/Mercado-de-Consumo-Popular-Organizado-Para-la-Vida-Digna-ME.CO_.PO_.png",
+    ("2024/03/VIAL-AGRO.png", "https://www.vialagro.com.ar/"), ("2024/03/Celimundo.png", "https://www.celimundo.com/"),
+    ("2024/03/WM-Argentina.png", "https://wmargentina.com/"), "2024/03/Phujoyapu.png",
+    ("2024/03/Redimec-Proveedor-de-Soluciones.png", "https://www.redimec.com.ar/"), ("2024/03/Divina-Lenceria.png", "https://lenceriadivina.com.ar/"),
+    ("2024/08/Clientes-GENEOS_Korronte.png", "https://www.instagram.com/korronteaceros/"), ("2024/08/Clientes-GENEOS_GEA.png", "https://gea-srl.com.ar/"),
+  ]) }}
+</section>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+<section class="home-hero services-hero">
+  <div class="container">
+    <h1>SOLUCIONES INFORMÁTICAS</h1>
+    <p class="hero-sub">BASADAS EN EL SOFTWARE LIBRE</p>
+    {{ m.service_cards([
+      ("gestion", "Software de Gestión", "ODOO o PERSONALIZADO", "/software-de-gestion-completo/"),
+      ("staff", "Staff<br>Augmentation", "DESARROLLADORES", "/staff-augmentation/"),
+      ("apps", "Sitios Web<br>&amp; Apps", "WORDPRESS", "/desarrollo-apps-sitios-web-cooperativos/"),
+      ("elearning", "Plataformas<br>E-Learning", "MOODLE", "/plataformas-e-learning-lms-moodle/"),
+      ("diseno", "Diseño &amp;<br>Comunicación", "DIGITAL", "/diseno-sitios-web-identidades/"),
+    ]) }}
+    <p class="services-gema"><a class="btn btn-outline" href="{{ url('/software-gestion-matafuegos-extintores/') }}">Software de Matafuegos – GEMA</a></p>
+  </div>
+  <svg class="wave" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100V60c120-40 260-55 420-30s320 45 580-20v90z"/></svg>
+</section>
+{% endblock %}

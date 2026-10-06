@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+<section class="service-hero theme-orange-rev">
+  <div class="container split">
+    <div class="gema-hero-text">
+      <span class="gema-logo">{{ icon('gema') }}</span>
+      <h1 class="gema-title">El software para la <strong>GESTIÓN</strong> de talleres de <strong>MATAFUEGOS</strong></h1>
+      <a class="btn btn-white" href="{{ wa('Hola, quiero solicitar una demo de GEMA') }}" target="_blank" rel="noopener">Solicitá una demo</a>
+    </div>
+    <img src="{{ img('2024/04/5-1024x637.png') }}" alt="Matafuego junto a dispositivos accediendo al software de gestión GEMA" width="1024" height="637">
+  </div>
+  {{ m.scroll_down("atributos") }}
+</section>
+
+<section class="section theme-white" id="atributos">
+  <div class="container">
+    {{ m.section_head("PLATAFORMA GEMA", "ATRIBUTOS") }}
+    <p class="prose">Es la <strong>solución online e integral</strong> creada por la cooperativa que permite a los talleres <strong>gestionar eficientemente los plazos de vencimiento y los servicios prestados a los extintores</strong> de sus clientes.</p>
+    <div class="feature-row gema-features">
+      {% for file, title, text, alt in [
+        ("1.svg", "ACCESO REMOTO", "Accedé a la plataforma desde cualquier ubicación con conexión a Internet, facilitando la gestión remota.", "Diversos dispositivos accediendo a GEMA"),
+        ("2-1.svg", "AUTO REFRESH", "Actualización automática garantizando tener la última versión sin necesidad de intervención adicional.", ""),
+        ("3.svg", "SEGURO", "Medidas de seguridad robustas y copias de seguridad automáticas, resguardando la información confidencial.", "Escudo con wifi y protección"),
+      ] %}
+      <div class="feature">
+        <img src="{{ img('2024/04/' ~ file) }}" alt="{{ alt }}" loading="lazy" width="180" height="180" class="gema-feature-img">
+        <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section theme-gray-light">
+  <div class="container media-text">
+    <img src="{{ img('2024/10/6.svg') }}" alt="Logo de GEMA con las funciones que cubre para talleres de matafuegos" loading="lazy" width="560" height="560">
+    <div>
+      <h2 class="section-title">FUNCIONALIDADES</h2>
+      {{ m.check_list([
+        "Registra servicios realizados, por ej. el historial de recargas.",
+        "Informa los matafuegos próximos a vencerse.",
+        "Notifica los trabajos realizados al mail del cliente.",
+        "Informa las órdenes de trabajo para facturación.",
+        "Genera obleas imprimibles de matafuegos.",
+        "Presupuesta automáticamente con precios actuales.",
+        "Personaliza el software con la identidad marcaria.",
+      ], "check-list orange") }}
+      <p style="margin-top:24px"><a class="btn btn-solid btn-orange" href="{{ wa('Hola, quiero solicitar una demo de GEMA') }}" target="_blank" rel="noopener">Solicitá una demo</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("NUESTROS", "PLANES") }}
+    <div class="pricing single">
+      <article class="price-card theme-orange-head">
+        <header><h3>PLAN MENSUAL</h3><p>$ 349.750 + IVA implementación por única vez</p></header>
+        <div class="price"><strong><sup>$</sup>89.250</strong><span>+ IVA por mes (*)</span></div>
+        {{ m.check_list(["Plataforma online personalizada", "Carga ILIMITADA de clientes", "Uso de todas las funciones"], "check-list orange") }}
+        <footer>
+          <a class="btn btn-solid btn-orange" href="{{ wa('Hola, quiero consultar por el plan mensual de GEMA') }}" target="_blank" rel="noopener">¡Contactanos!</a>
+          <small>(*) Precios válidos para Octubre, Noviembre y Diciembre. Actualización bimestral.</small>
+        </footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section theme-gray-light">
+  <div class="container media-text">
+    <div>
+      <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
+      <div class="accordion">
+        {% for q, a in [
+          ("¿Puedo gestionar mi negocio desde mi casa?", "Sí, podrás abrir el software desde DÓNDE y CUÁNDO quieras, siempre y cuando tengas conexión a Internet. No es necesario instalar nada en ninguna computadora, smartphone ni dispositivo digital: con sólo tener tu usuario y clave podrás ingresar fácilmente."),
+          ("¿Si se me rompe la computadora donde estaba trabajando pierdo toda la info?", "No, no perderás ni tendrás que pagar nada para volver a tener tus datos, ya que se guardan en el servidor/nube automáticamente y no en tu computadora; podrás acceder a ellos con otro dispositivo que cuente con Internet."),
+          ("¿El pago es mensual y fijo?", "El pago del uso de la plataforma es mensual de 30 dólares oficiales, incluye actualizaciones y soporte técnico sin costo adicional."),
+          ("¿Puedo personalizar la aplicación en función de mi marca?", "Sí, podrás pasarnos tu brandbook o manual de marca, con tu logotipo, colores y tipografías y ajustaremos la plataforma según tu identidad."),
+          ("¿Puedo desuscribirme cuando desee?", "Sí, una vez cumplido el plazo del plan contratado podrás dejar de usar el software si lo deseás, sin compromiso alguno."),
+        ] %}
+        <details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a }}</p></details>
+        {% endfor %}
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-solid btn-orange" href="{{ wa('Hola, quiero solicitar una demo de GEMA') }}" target="_blank" rel="noopener">Solicitar DEMO</a></p>
+    </div>
+    <img src="{{ img('2024/04/700x800.png') }}" alt="" loading="lazy" width="700" height="800">
+  </div>
+</section>
+{% endblock %}

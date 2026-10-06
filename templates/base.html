@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  {% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ site_url }}/assets/img/og-geneos.webp">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="{{ asset('img/favicon-32.png') }}" sizes="32x32">
+  <link rel="icon" href="{{ asset('img/favicon-192.png') }}" sizes="192x192">
+  <link rel="apple-touch-icon" href="{{ asset('img/favicon-180.png') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  {% include "partials/header.html" %}
+  <main id="contenido">
+    {% block content %}{% endblock %}
+  </main>
+  {% include "partials/footer.html" %}
+  <a class="wa-float" href="{{ wa() }}" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">{{ icon('ui-whatsapp') }}</a>
+  <script src="{{ asset('js/main.js') }}" defer></script>
+</body>
+</html>

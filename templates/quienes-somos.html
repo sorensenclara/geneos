@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% set TEAM = [
+  ("jose", "José Fantasía", ["Desarrollador"], ["Comercial", "Consultor", "Analista Funcional", "Gestor de Proyectos"], "Jose.jpg", "Jose2.jpg", "Jose3.jpg", "jose.fantasia@geneos.com.ar", "http://www.linkedin.com/in/josé-maria-fantasia-b9b00373"),
+  ("florencia", "Florencia Paglione", ["Desarrolladora de Software", "Desarrolladora Web Backend"], ["Python", "Django"], "Florencia.jpg", "Florencia2.jpg", "Florencia3.jpg", "florencia.paglione@geneos.com.ar", "http://www.linkedin.com/in/florencia-paglione-65045320a"),
+  ("diego", "Diego Nouchi", ["Contador Público"], ["Comercial", "Analista Funcional", "Gestor de Proyectos"], "Diego-2.jpg", "Diego2-2.jpg", "Diego-2.jpg", "diego.nouchi@geneos.com.ar", "http://www.linkedin.com/in/diegonouchi"),
+  ("martin", "Martín Di Lisio", ["Desarrollador de Software", "Gestor de Proyectos"], ["Analista Funcional", "Dirección de Proyectos", "Odoo"], "Martin-1.jpg", "Martin2.jpg", "Martin4.jpg", "martin.dilisio@geneos.com.ar", "http://www.linkedin.com/in/martin-di-lisio-300680136"),
+  ("mario", "Mario Ferreyra", ["Desarrollador de Software", "Administrativo"], ["Moodle", "Gestor de Proyectos", "Analista Funcional", "Especialista QA"], "mario-1.jpg", "mario2-1.jpg", "mario3-3.jpg", "mario.ferreyra@geneos.com.ar", "http://www.linkedin.com/in/mario-césar-ferreyra-3b7969a"),
+  ("pablo", "Pablo Velázquez", ["Desarrollador de Software", "Presidente"], ["Angular", "Node", "Vue", "PHP", "Moodle"], "Pablo-1.jpg", "Pablo2-1.jpg", "Pablo3-2.jpg", "pablo.velazquez@geneos.com.ar", "http://www.linkedin.com/in/pablo-emanuel-velazquez-97b95b76"),
+  ("clara", "Ma. Clara Sorensen", ["Diseñadora Gráfica", "Licenciada en Publicidad"], ["Diseño de marcas", "Diseño de sitios web", "Animaciones multimedia", "UX / UI"], "clara.jpg", "clara2-1.jpg", "clara3-1.jpg", "clara.sorensen@geneos.com.ar", "http://www.linkedin.com/in/sorensenclara"),
+  ("ibrian", "Ibrian Gómez", ["Desarrollador de Software", "Desarrollador Web Fullstack"], ["Angular", "Node", "Python", "Odoo", "Plataform"], "ibrian.jpg", "ibrian2.jpg", "ibrian3.jpg", "ibrian.gomez@geneos.com.ar", "http://www.linkedin.com/in/ibrian-gomez-ortiz-0b447986"),
+  ("marcos", "Marcos Reginato", ["Desarrollador de Software", "Desarrollador Web"], ["Backend", "Odoo", "Frontend"], "Marcos2A.jpg", "Marcos4.jpg", "Marcos2B.jpg", "marcos.reginato@geneos.com.ar", "http://www.linkedin.com/in/marcos-reginato"),
+  ("fernando", "Fernando Recci", ["Desarrollador de Software", "DevOps"], ["Python", "Odoo", "DevOps"], "Fernando.jpg", "Fernando2.jpg", "Fernando3.jpg", "fernando.recci@geneos.com.ar", "http://linkedin.com/in/fernando-javier-recci-3a0696a5"),
+  ("santiago", "Santiago Costa", ["Desarrollador de Software", "Desarrollador Web Backend"], ["Angular", "Node", "Odoo", "Python"], "Santiago.jpg", "Santiago2.jpg", "Santiago3.jpg", "santiago.costa@geneos.com.ar", "http://www.linkedin.com/in/santcosta"),
+] %}
+{% block content %}
+<section class="section theme-black-green about-hero">
+  <div class="container">
+    {{ m.eyebrow("QUIÉNES SOMOS") }}
+    <h1 class="section-title center">DESARROLLADORES DE SOLUCIONES TECNOLÓGICAS</h1>
+    <div class="mv">
+      <article>
+        <h2>Misión</h2>
+        <p>Somos una <strong>cooperativa</strong> que desarrolla software con <strong>tecnologías innovadoras y proyectos personalizados</strong>, buscando impulsar el éxito de nuestros clientes.</p>
+      </article>
+      <article>
+        <h2>Visión</h2>
+        <p>Ser reconocidos por la entrega de <strong>productos escalables y efectivos</strong>, y por <strong>crear un ecosistema colaborativo</strong> que fomente la transparencia y la inclusión.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section theme-blue-up" id="equipo">
+  <div class="container">
+    {{ m.section_head("LA COOPE", "GRAN GRUPO") }}
+    <p class="prose" style="margin-bottom:40px">Profesionales talentosos y comprometidos con una cultura colaborativa, dedicados a ser <strong>socios estratégicos de nuestros clientes</strong>.</p>
+    <ul class="team">
+      {% for slug, name, roles, skills, front, back, pop, mail, li in TEAM %}
+      <li>
+        <button class="team-card" type="button" data-member="m-{{ slug }}">
+          <span class="team-photo">
+            <img src="{{ img('2023/10/' ~ front) }}" alt="{{ name }}" loading="lazy" width="400" height="400">
+            <img src="{{ img('2023/10/' ~ back) }}" alt="" loading="lazy" width="400" height="400">
+          </span>
+          <strong>{{ name }}</strong>
+          <small>{{ roles[0] }}</small>
+          <span class="more">VER MÁS</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% for slug, name, roles, skills, front, back, pop, mail, li in TEAM %}
+<dialog class="member" id="m-{{ slug }}" aria-label="{{ name }}">
+  <button class="member-close" type="button" aria-label="Cerrar">{{ icon('ui-x') }}</button>
+  <div class="member-body">
+    <img src="{{ img('2023/10/' ~ pop) }}" alt="{{ name }}" loading="lazy" width="180" height="180">
+    <div>
+      <h3>{{ name }}</h3>
+      <p class="roles">{{ roles|join(' · ') }}</p>
+      <h4>CAPACIDADES</h4>
+      <ul class="tags">{% for s in skills %}<li>{{ s }}</li>{% endfor %}</ul>
+      <div class="member-links">
+        <a href="mailto:{{ mail }}" aria-label="Email de {{ name }}">{{ icon('ui-mail') }}</a>
+        <a href="{{ li }}" target="_blank" rel="noopener" aria-label="LinkedIn de {{ name }}">{{ icon('ui-linkedin') }}</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+{% endfor %}
+
+{% set coop_title = "Desarrolladores de soluciones tecnológicas" %}
+{% include "partials/coop.html" %}
+
+<section class="section theme-black">
+  <div class="container">
+    {{ m.section_head("NUESTRAS ÁREAS", "SOFTWARE CON SENTIDO") }}
+    {{ m.service_cards() }}
+  </div>
+</section>
+{% endblock %}

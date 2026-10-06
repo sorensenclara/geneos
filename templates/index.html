@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block body_class %}page-home{% endblock %}
+{% block content %}
+<section class="home-hero">
+  <div class="container">
+    <p class="hero-kicker">Soluciones Informáticas con software libre</p>
+    <h1>CREAMOS SOLUCIONES INFORMÁTICAS</h1>
+    <p class="hero-sub">DESARROLLAMOS Y DISEÑAMOS SOFTWARE DE GESTIÓN</p>
+    {{ m.service_cards() }}
+  </div>
+  <svg class="wave" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100V60c120-40 260-55 420-30s320 45 580-20v90z"/></svg>
+</section>
+
+<section class="section theme-green-black">
+  <div class="container split">
+    <div class="split-media">
+      {{ m.photo_carousel([
+        ("elementor/thumbs/5-rh26ect4j6zr6ywqu4myqmyj8w1qub7ot9nx5za9i8.png", "Un equipo que crea soluciones informáticas con software libre"),
+        ("elementor/thumbs/1-rh26dypjooggcth84gjk78imc3z8munprbvmytv63k.png", "Asamblea de GENEOS"),
+        ("elementor/thumbs/2-rh26e1j296kbbnd4nzrfwpt049lc9xywrpu3enqzkw.png", "Diseño geométrico de la imagen de GENEOS"),
+        ("elementor/thumbs/3-rh26e4cktoo6ah917izbm73dwf7fx1a3s3sjuhmt28.png", "El diálogo como base de cada solución"),
+        ("elementor/thumbs/4-rh26e91rruulwj27g30ggnwovck9zisrgr1z8vfu74.png", "Mate cooperativo de GENEOS"),
+        ("elementor/thumbs/photo1698244568-4-qehlgv1nl47stohhlhdd0t0u8yqx7810kvdii2cvq8.jpeg", "Asamblea de la cooperativa GENEOS"),
+        ("elementor/thumbs/20220831_112038-01-scaled-qmevf8fds8smpfx7za6ggnv527ybcic3gwr08t8qlc.jpeg", "Ibrian, socio tecnológico de GENEOS"),
+        ("elementor/thumbs/20220831_112124-01-scaled-qmevfab25wv7cnuhoazplne28zp1rwjk561z7d5y8w.jpeg", "Marcos, socio tecnológico de GENEOS"),
+        ("elementor/thumbs/photo1698245973-3-qehlh0ooq4firc9aojt4frllt9z4henelnafdq4iow.jpeg", "Equipo de GENEOS trabajando"),
+        ("elementor/thumbs/WhatsApp-Image-2023-10-17-at-07.55.08-1-qehlinwioool2rva2remaunn8jv8yc6htse0m5opsw.jpeg", "Trabajo de la cooperativa GENEOS"),
+        ("elementor/thumbs/WhatsApp-Image-2023-10-17-at-07.55.08-2-qehlimyohunar5wn88zzqcw6n5zvqn2rhnqj4vq3z4.jpeg", "Trabajo de la cooperativa GENEOS"),
+      ]) }}
+    </div>
+    <div class="split-text">
+      {{ m.eyebrow("NOSOTRES") }}
+      <h2 class="section-title">¿Quiénes somos?</h2>
+      <p>En GENEOS creamos soluciones informáticas desarrollando <strong>Software de Gestión, Tecnología, Análisis de Datos, Plataformas y aplicaciones digitales.</strong> El <strong>diseño y la comunicación</strong> acompañan cada proyecto para su implementación y adopción de imagen marcaria.</p>
+      <p>Somos un grupo de <strong>profesionales de Tecnología, Económicas, Comunicación y Diseño.</strong> Desde hace 10 años estamos unidos bajo la Cooperativa Geneos, para desarrollar <strong>soluciones informáticas con software libre y con sentido.</strong></p>
+      <p>Además buscamos <em>mejorar o potenciar tu modelo de negocios</em> acompañándolos en cada etapa del proceso.</p>
+      <p><a class="btn btn-outline" href="{{ url('/quienes-somos/') }}">CONOCÉ MÁS +</a></p>
+    </div>
+  </div>
+</section>
+
+{% include "partials/coop.html" %}
+
+<section class="section theme-purple">
+  <div class="container">
+    {{ m.section_head("SOFTWARE LIBRE", "Plataformas, Frameworks &amp; Lenguajes"|safe) }}
+    {{ m.tech_grid() }}
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("NUESTROS", "Clientes", "Cada creación de soluciones informáticas es reconocida por los beneficios del software libre y la calidad del desarrollo a medida.") }}
+  </div>
+  {{ m.logo_marquee([
+    "2024/03/Betterez-2.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png",
+    "2024/03/Celimundo.png", "2024/03/CENTEC-Tierra-del-Fuego.png", "2024/03/CHAPALEOFU.png", "2024/03/CIEP.png", "2024/03/CINEA.png",
+    "2024/03/Colegio-de-Trabajadores-Sociales.png", "2024/03/Coletio-de-Profesionales-de-Trabajo-Social-Santa-Fe.png", "2024/03/CONEPO.png",
+    "2024/03/DIVERSA-COPA.png", "2024/03/Divina-Lenceria.png", "2024/03/Edunet-Cooperativa.png", "2024/03/EL-LOGRO.png",
+    ("2024/08/Clientes-GENEOS_GEA.png", "https://gea-srl.com.ar/"), "2024/03/INBIO-HIGHWAY.png",
+    ("2024/08/Clientes-GENEOS_Korronte.png", "https://www.instagram.com/korronteaceros/"), "2024/03/La-Poderosa.png",
+    "2024/03/Limousine-1.png",
+  ]) }}
+  {{ m.logo_marquee([
+    "2024/03/Mercado-de-Consumo-Popular-Organizado-Para-la-Vida-Digna-ME.CO_.PO_.png", "2024/03/Phujoyapu.png",
+    "2024/03/Raffo-Laboratorio-Farmacovigilancia.png", "2024/03/Red-de-Espacios-Culturales-Mar-Chiquita.png",
+    "2024/03/Red-de-Repositorios-Documentales.png", "2024/03/Redimec-Proveedor-de-Soluciones.png",
+    "2024/03/Rompecabezas-Coop-de-Contenidos.png", "2024/03/Union-Agruicola-de-Avellaneda.png",
+    "2024/03/Universidad-Nacional-Hurlingham.png", "2024/03/Universidad-UNAJ.png", "2024/03/VIAL-AGRO.png", "2024/03/WM-Argentina.png",
+  ], "Más clientes") }}
+</section>
+
+<section class="section theme-green-deep">
+  <div class="container narrow center">
+    <h2 class="section-title">¿Por qué elegir software libre?</h2>
+    <p class="lead">El software libre te da libertad para adaptar, escalar y mejorar tus herramientas según las necesidades de tu organización. Por eso en GENEOS lo usamos como base para crear soluciones informáticas.</p>
+    <div class="why-box">
+      <h3>¿Qué soluciones informáticas ofrecemos?</h3>
+      {{ m.check_list([
+        '<a href="https://www.gerp.ar" target="_blank" rel="noopener">Software ERP 100% libre</a>',
+        '<a href="' ~ url('/desarrollo-apps-sitios-web-cooperativos/') ~ '">Desarrollo y diseño de sitios webs</a>',
+        '<a href="' ~ url('/plataformas-e-learning-lms-moodle/') ~ '">Campus virtuales en Moodle</a>',
+        'Automatización de procesos y dashboard',
+      ]) }}
+    </div>
+    <p><a class="btn btn-solid" href="{{ wa() }}" target="_blank" rel="noopener">Contactanos</a></p>
+  </div>
+</section>
+
+<section class="section theme-blue" id="contacto">
+  <div class="container narrow">
+    {{ m.section_head("ANTE DUDAS", "¡Contactanos!", "Escribinos y te ayudaremos a potenciar tu proyecto.") }}
+    {{ m.contact_form("simple") }}
+  </div>
+</section>
+{% endblock %}

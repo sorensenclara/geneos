@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+{{ m.service_hero("blue", "apps", "Apps &amp; Webs", "Especialistas en el desarrollo de <strong>apps y sitios web cooperativos</strong>", "tecnologias") }}
+
+<section class="section theme-white" id="tecnologias">
+  <div class="container">
+    {{ m.section_head("TU PROYECTO VIRTUAL", "TECNOLOGÍAS LIBRES") }}
+    <p class="prose">En Geneos creamos plataformas digitales con el <strong>desarrollo de apps y sitios web cooperativos</strong>, brindando soluciones digitales que combinan tecnología libre, el diseño centrado en las personas y una fuerte mirada comunitaria.</p>
+    <div class="feature-row tech-features">
+      {% for ic, title, text, href in [
+        ("angular", "Angular", "El framework de desarrollo frontend de código abierto basado en TypeScript, usado para crear aplicaciones web dinámicas.", "https://angular.dev/"),
+        ("django", "Django", "Facilita la organización del código, mejorando la mantenibilidad, escalabilidad, seguridad e interacción con la base de datos.", "https://www.djangoproject.com/"),
+        ("react", "React Native", "La popular biblioteca de JavaScript para crear interfaces de usuario, compatible con múltiples bibliotecas.", "https://reactnative.dev/"),
+      ] %}
+      <div class="feature">
+        <a class="feature-icon" href="{{ href }}" target="_blank" rel="noopener" aria-label="{{ title }}">{{ icon(ic) }}</a>
+        <h3><a href="{{ href }}" target="_blank" rel="noopener">{{ title }}</a></h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section theme-blue">
+  <div class="container split">
+    <h2 class="section-title">¿Qué tipo de desarrollo de apps y sitios web hacemos?</h2>
+    {{ m.check_list(["Geolocalizador y mapeo", "Gamificación y juegos", "Identificadores de QR", "Encuestas y sondeos", "Comercio electrónico"], "check-list big") }}
+  </div>
+</section>
+
+<section class="section theme-black">
+  <div class="container">
+    {{ m.section_head("DESARROLLAMOS TU SITIO WEB EN", "WORDPRESS - ODOO - DJANGO", "Ya sea que necesites una web institucional, una tienda online o una plataforma de gestión, usamos herramientas como WordPress, Odoo o Django para garantizar autonomía y eficiencia.") }}
+    {{ m.wordpress_block() }}
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("NUESTROS", "DESARROLLOS WEB Y APPS") }}
+  </div>
+  {{ m.logo_marquee(["2024/03/Limousine-1.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/La-Poderosa.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png", "2024/03/Limousine-1.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/La-Poderosa.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png"]) }}
+</section>
+{% endblock %}

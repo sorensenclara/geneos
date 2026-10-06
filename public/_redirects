@@ -1,0 +1,13 @@
+/index.php/apps-y-sitios-web/ /desarrollo-apps-sitios-web-cooperativos/ 301
+/index.php/plataformas-e-learning/ /plataformas-e-learning-lms-moodle/ 301
+/index.php/disenamos-sitios-web-identidades/ /diseno-sitios-web-identidades/ 301
+/index.php/plataformas-de-gestion/ /software-de-gestion-completo/ 301
+/index.php/software-de-gestion/ /software-de-gestion-completo/ 301
+/index.php/app-webs/ /desarrollo-apps-sitios-web-cooperativos/ 301
+/index.php/diseno-grafico-y-web/ /diseno-sitios-web-identidades/ 301
+/index.php/contact/ /contacto-geneos/ 301
+/apps-y-sitios-web/ /desarrollo-apps-sitios-web-cooperativos/ 301
+/plataformas-e-learning/ /plataformas-e-learning-lms-moodle/ 301
+/disenamos-sitios-web-identidades/ /diseno-sitios-web-identidades/ 301
+/contact/ /contacto-geneos/ 301
+/index.php/* /:splat 301

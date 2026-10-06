@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block content %}
+<section class="home-hero">
+  <div class="container">
+    <p class="hero-kicker">Error 404</p>
+    <h1>No encontramos esta página</h1>
+    <p class="hero-sub">Puede que se haya movido. Probá con alguno de nuestros servicios:</p>
+    {{ m.service_cards() }}
+    <p style="margin-top:32px"><a class="btn btn-outline" href="{{ url('/') }}">Ir al inicio</a></p>
+  </div>
+  <svg class="wave" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100V60c120-40 260-55 420-30s320 45 580-20v90z"/></svg>
+</section>
+{% endblock %}
