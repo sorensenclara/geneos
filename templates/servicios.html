@@ -1,19 +1,74 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% set FAQS = [
+  ("¿Qué es el software libre y por qué conviene para mi organización?", "<p>El software libre puede usarse, estudiarse, modificarse y compartirse sin pagar licencias por usuario. Para tu organización significa <strong>no depender de un único proveedor</strong>, adaptar las herramientas a tus procesos y crecer sin que los costos de licencias crezcan con vos.</p>"),
+  ("¿Trabajan con clientes fuera de Argentina?", "<p>Sí. Somos una cooperativa de Tandil, Argentina, y trabajamos de forma remota con organizaciones de todo el país y de Latinoamérica, por ejemplo con equipos de México. Coordinamos por videollamada y en tu zona horaria.</p>"),
+  ("¿Hacen desarrollos a medida o solo productos cerrados?", "<p>Las dos cosas. Tenemos productos propios listos para usar, como <a href=\"" ~ url('/software-de-gestion-completo/') ~ "\">GERP</a> y <a href=\"" ~ url('/software-gestion-matafuegos-extintores/') ~ "\">GEMA</a>, y también relevamos, diseñamos y desarrollamos software a medida con Django, Odoo, Angular, React Native o WordPress.</p>"),
+  ("¿Qué pasa después de entregar el proyecto?", "<p>Te acompañamos con <strong>implementación, capacitación y soporte</strong>. Podemos seguir manteniendo y mejorando la solución, o dejar todo documentado para que tu equipo la administre.</p>"),
+] %}
+{% block schema %}
+{{ m.faq_schema(FAQS) }}
+{{ jsonld({"@context": "https://schema.org", "@type": "ItemList", "name": "Servicios de GENEOS",
+  "itemListElement": service_items()}) }}
+{% endblock %}
 {% block content %}
 <section class="home-hero services-hero">
   <div class="container">
-    <h1>SOLUCIONES INFORMÁTICAS</h1>
-    <p class="hero-sub">BASADAS EN EL SOFTWARE LIBRE</p>
+    <p class="hero-kicker">Soluciones informáticas basadas en software libre</p>
+    <h1>SERVICIOS DE DESARROLLO DE SOFTWARE</h1>
+    <p class="hero-sub">Gestión, apps, webs, e-learning y diseño para organizaciones de Argentina y Latinoamérica</p>
     {{ m.service_cards([
       ("gestion", "Software de Gestión", "ODOO o PERSONALIZADO", "/software-de-gestion-completo/"),
       ("staff", "Staff<br>Augmentation", "DESARROLLADORES", "/staff-augmentation/"),
-      ("apps", "Sitios Web<br>&amp; Apps", "WORDPRESS", "/desarrollo-apps-sitios-web-cooperativos/"),
+      ("apps", "Sitios Web<br>&amp; Apps", "WORDPRESS · DJANGO", "/desarrollo-apps-sitios-web-cooperativos/"),
       ("elearning", "Plataformas<br>E-Learning", "MOODLE", "/plataformas-e-learning-lms-moodle/"),
       ("diseno", "Diseño &amp;<br>Comunicación", "DIGITAL", "/diseno-sitios-web-identidades/"),
     ]) }}
-    <p class="services-gema"><a class="btn btn-outline" href="{{ url('/software-gestion-matafuegos-extintores/') }}">Software de Matafuegos – GEMA</a></p>
   </div>
   <svg class="wave" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100V60c120-40 260-55 420-30s320 45 580-20v90z"/></svg>
 </section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("QUÉ HACEMOS", "Soluciones informáticas con software libre", "Somos una cooperativa de profesionales de tecnología, economía, comunicación y diseño. Combinamos esos saberes para que cada proyecto funcione, se entienda y se use.") }}
+    <ul class="services-list">
+      {% for href, ic, name, text in [
+        ("/software-de-gestion-completo/", "gestion", "Software de gestión ERP con Odoo", "Implementamos <strong>GERP</strong>, nuestro sistema de gestión basado en Odoo Community: inventario, compras, ventas, facturación y contabilidad en una sola plataforma online. También desarrollamos módulos a medida."),
+        ("/software-gestion-matafuegos-extintores/", "gestion", "Software para talleres de matafuegos", "<strong>GEMA</strong> es el sistema online para talleres de recarga de extintores: controla vencimientos, registra servicios, genera obleas y avisa a tus clientes por mail."),
+        ("/staff-augmentation/", "staff", "Staff augmentation", "Sumá a tu equipo desarrolladores, DevOps, analistas funcionales, gestores de proyecto y diseñadores UX/UI de Argentina, de forma individual o como equipo completo."),
+        ("/desarrollo-apps-sitios-web-cooperativos/", "apps", "Desarrollo de apps y sitios web", "Sitios institucionales, tiendas online, plataformas y aplicaciones móviles con WordPress, Django, Angular y React Native, pensadas para todos los dispositivos."),
+        ("/plataformas-e-learning-lms-moodle/", "elearning", "Plataformas e-learning con Moodle", "Creamos y personalizamos campus virtuales en Moodle para universidades, institutos, colegios profesionales y empresas, con capacitación para docentes y administradores."),
+        ("/diseno-sitios-web-identidades/", "diseno", "Diseño web e identidad visual", "Diseño de interfaces UX/UI, isologotipos, identidades visuales y estrategia de comunicación para que tu marca sea coherente en cada pieza."),
+      ] %}
+      <li>
+        <span class="related-icon">{{ icon(ic) }}</span>
+        <h3><a href="{{ url(href) }}">{{ name }}</a></h3>
+        <p>{{ text|safe }}</p>
+        <a class="more-link" href="{{ url(href) }}">Más sobre {{ name[0]|lower ~ name[1:] }} →</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{{ m.steps([
+  ("Relevamiento", "Escuchamos qué necesitás y analizamos tus procesos, usuarios y objetivos."),
+  ("Propuesta", "Definimos alcance, tecnología, tiempos y costos con una propuesta clara."),
+  ("Diseño y desarrollo", "Construimos la solución por etapas, mostrando avances para validar en cada paso."),
+  ("Implementación", "Ponemos todo en marcha, migramos datos y capacitamos a tu equipo."),
+  ("Soporte y mejora", "Acompañamos el uso diario y seguimos mejorando la solución con vos."),
+], "Cómo trabajamos en cada proyecto", "METODOLOGÍA", "theme-purple") }}
+
+<section class="section theme-white">
+  <div class="container text-block">
+    <h2>¿Por qué elegir una cooperativa de software libre?</h2>
+    <p>En GENEOS somos dueñes y trabajadores de la cooperativa: quienes atienden tu proyecto son las mismas personas que toman las decisiones. Eso se traduce en <strong>trato directo, compromiso a largo plazo y transparencia</strong> en cada etapa.</p>
+    <p>Trabajamos con tecnologías libres y de código abierto como <strong>Odoo, Django, Python, Angular, Vue, React, Node.js, WordPress y Moodle</strong>. Así tu organización evita costos de licencias, conserva el control de sus datos y puede crecer sin quedar atada a un proveedor.</p>
+    <p>Formamos parte de <a href="https://facttic.org.ar/" target="_blank" rel="noopener">FACTTIC</a>, la Federación Argentina de Cooperativas de Trabajo de Tecnología, Innovación y Conocimiento. Conocé más sobre <a href="{{ url('/quienes-somos/') }}">quiénes somos</a>.</p>
+  </div>
+</section>
+
+{{ m.faq(FAQS) }}
+
+{{ m.cta("¿Tenés un proyecto en mente?", "Contanos qué necesitás y te respondemos con una propuesta a medida.", "Hola, quiero consultar por un proyecto") }}
 {% endblock %}

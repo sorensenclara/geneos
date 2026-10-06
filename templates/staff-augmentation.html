@@ -1,16 +1,42 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% set FAQS = [
+  ("¿Qué es el staff augmentation?", "<p>Es un modelo en el que sumás profesionales externos a tu equipo por el tiempo que los necesites. Trabajan con tus herramientas, tus procesos y tu equipo, como parte de él, sin que tengas que hacer una contratación permanente ni ampliar tu estructura.</p>"),
+  ("¿En qué se diferencia de tercerizar un proyecto?", "<p>Cuando tercerizás, delegás un proyecto completo y recibís un resultado. Con staff augmentation <strong>vos mantenés el control</strong> del producto y las prioridades: nuestros profesionales se integran a tu equipo y a tu forma de trabajo.</p>"),
+  ("¿Qué perfiles pueden sumar a mi equipo?", "<p>Desarrolladores (backend, frontend y fullstack), DevOps, analistas funcionales, gestores de proyecto y diseñadores UX/UI, con experiencia en Python, Django, Odoo, Angular, Vue, React, Node.js, PHP y Moodle, entre otras tecnologías.</p>"),
+  ("¿Trabajan con empresas de otros países?", "<p>Sí. Trabajamos de forma remota con empresas de Argentina y Latinoamérica: por ejemplo, desarrollamos una plataforma online para Limousine en México. Al estar en Argentina compartimos idioma y horarios similares con la región, una ventaja frente al <em>offshore</em> tradicional.</p>"),
+  ("¿Puedo sumar una sola persona o un equipo completo?", "<p>Las dos opciones. Podés incorporar un perfil puntual o un equipo multidisciplinario, y ajustar la cantidad de personas según cambien las necesidades de tu proyecto.</p>"),
+] %}
+{% block schema %}
+{{ m.faq_schema(FAQS) }}
+{{ m.service_schema("Staff augmentation", "Staff augmentation de desarrolladores de software", "Incorporación de desarrolladores, DevOps, analistas funcionales, gestores de proyecto y diseñadores UX/UI a equipos de empresas de Argentina y Latinoamérica.") }}
+{% endblock %}
 {% block content %}
-{{ m.service_hero("yellow", "staff-hero", "Staff<br>Augmentation", "<b>Potenciá a tu equipo</b><br>garantizando <b>el éxito juntos</b>", "roles") }}
+{{ m.service_hero("yellow", "staff-hero", "Staff Augmentation<br><small>desarrolladores para tu equipo</small>", "<b>Potenciá a tu equipo</b><br>garantizando <b>el éxito juntos</b>", "roles") }}
 
-<section class="section theme-white" id="roles">
+<section class="section theme-white">
+  <div class="container text-block">
+    <h2>Sumá talento IT de Argentina a tu equipo</h2>
+    <p>Con nuestro servicio de <strong>staff augmentation</strong> incorporás profesionales de tecnología con experiencia, listos para integrarse a tu equipo y a tus proyectos. Sin procesos de selección largos ni contrataciones permanentes: sumás las personas que necesitás, por el tiempo que las necesitás.</p>
+    <p>Somos una cooperativa de software libre de Tandil, Argentina, y trabajamos de forma remota con empresas de todo el país y de <strong>Latinoamérica</strong>. Nuestros socios y socias se capacitan constantemente en las tecnologías que usan los equipos de hoy.</p>
+  </div>
+</section>
+
+<section class="section theme-gray-light" id="roles">
   <div class="container">
     {{ m.section_head("CONTAMOS CON", "LOS ROLES") }}
     <div class="feature-row cols-5 roles">
-      {% for ic, title in [("rol-dev", "Desarrolladores"), ("rol-devops", "DevOps"), ("rol-analisis", "Análisis Funcional"), ("rol-pm", "Gestor de proyectos"), ("rol-ux", "Diseño UX/UI")] %}
+      {% for ic, title, text in [
+        ("rol-dev", "Desarrolladores", "Backend, frontend y fullstack."),
+        ("rol-devops", "DevOps", "Infraestructura, despliegues y automatización."),
+        ("rol-analisis", "Análisis Funcional", "Relevamiento de procesos y requerimientos."),
+        ("rol-pm", "Gestor de proyectos", "Planificación, seguimiento y coordinación."),
+        ("rol-ux", "Diseño UX/UI", "Interfaces claras centradas en las personas."),
+      ] %}
       <div class="feature">
         <span class="feature-icon role-icon">{{ icon(ic) }}</span>
         <h3>{{ title }}</h3>
+        <p>{{ text }}</p>
       </div>
       {% endfor %}
     </div>
@@ -29,12 +55,12 @@
     {{ m.section_head("CASOS DE", "ÉXITO") }}
     <div class="success-cases">
       <article class="card">
-        <img src="{{ img('2024/03/Limousine-e1710421259980.png') }}" alt="Limousine" loading="lazy" width="220" height="124">
-        <h3>Augmented Services</h3>
+        <img src="{{ img('2024/03/Limousine-e1710421259980.png') }}" alt="Logo de Limousine" loading="lazy" width="220" height="124">
+        <h3>Augmented Services · México</h3>
         <p>Integramos tecnologías para mejorar la calidad, la funcionalidad y la experiencia de los servicios que ofrece Limousine en México, con el desarrollo de una plataforma online.</p>
       </article>
       <article class="card">
-        <img src="{{ img('2024/03/Betterez-1-e1710421281233.png') }}" alt="Betterez" loading="lazy" width="220" height="124">
+        <img src="{{ img('2024/03/Betterez-1-e1710421281233.png') }}" alt="Logo de Betterez" loading="lazy" width="220" height="124">
         <h3>DevOps &amp; Developers</h3>
         <p>Contribuimos con la plataforma de gestión de reservas Betterez, integrando tecnologías que ayudan a los operadores de viajes terrestres, turísticos y de venta de boletos.</p>
       </article>
@@ -44,7 +70,7 @@
 
 <section class="section theme-green" id="ventajas">
   <div class="container">
-    {{ m.section_head("VENTAJAS", "STAFF AUGMENTATION") }}
+    {{ m.section_head("VENTAJAS DEL", "STAFF AUGMENTATION") }}
     <div class="feature-row">
       {% for ic, title, text in [
         ("ventaja-profesionales", "Profesionales<br>capacitados", "Proporciona talentos calificados en diferentes roles y tecnologías, capaces de ser contratados de forma individual o en equipo."),
@@ -61,10 +87,23 @@
   </div>
 </section>
 
+{{ m.steps([
+  ("Contanos qué necesitás", "Perfiles, tecnologías, duración y forma de trabajo de tu equipo."),
+  ("Te proponemos el equipo", "Seleccionamos a las personas de la cooperativa que mejor encajan con tu proyecto."),
+  ("Integración", "Se suman a tus herramientas, reuniones y procesos desde el primer día."),
+  ("Seguimiento", "Acompañamos la relación y ajustamos el equipo cuando cambian tus necesidades."),
+], "Cómo sumar profesionales a tu equipo", "EN 4 PASOS") }}
+
+{{ m.faq(FAQS, "Preguntas frecuentes sobre staff augmentation") }}
+
 <section class="section theme-green-black">
   <div class="container narrow center">
     <p class="lead"><strong>Conocé a nuestros socios</strong><br>y encontrá el talento ideal para tu proyecto.</p>
-    <a class="btn btn-outline" href="{{ url('/quienes-somos/') }}">NUESTRO EQUIPO</a>
+    <div class="btn-row center">
+      <a class="btn btn-outline" href="{{ url('/quienes-somos/') }}#equipo">NUESTRO EQUIPO</a>
+      <a class="btn btn-white" href="{{ wa('Hola, quiero sumar profesionales a mi equipo') }}" target="_blank" rel="noopener">{{ icon('ui-whatsapp') }} CONSULTANOS</a>
+    </div>
   </div>
 </section>
+{{ m.related("/staff-augmentation/") }}
 {% endblock %}

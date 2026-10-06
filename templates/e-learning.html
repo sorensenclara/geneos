@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% set FAQS = [
+  ("¿Qué es Moodle?", "<p>Moodle es la plataforma de aprendizaje en línea (LMS) de código abierto más usada del mundo. Permite crear aulas virtuales con cursos, materiales, foros, tareas, cuestionarios, calificaciones y certificados, y gestionar estudiantes y docentes desde un mismo lugar.</p>"),
+  ("¿Para qué tipo de organizaciones es un campus virtual?", "<p>Para universidades, institutos, colegios, colegios profesionales, cooperativas y empresas que quieren dictar cursos o capacitar a su personal de forma online. Ya trabajamos con universidades nacionales, cooperativas y colegios profesionales de Argentina.</p>"),
+  ("¿Pueden personalizar el campus con nuestra identidad?", "<p>Sí. Diseñamos la plataforma y los cursos en base a la identidad de tu organización: logo, colores, tipografías y piezas gráficas, logrando sinergia marcaria en cada parte del entorno.</p>"),
+  ("¿Qué es H5P y para qué sirve?", "<p>H5P es un complemento que permite integrar contenidos interactivos en Moodle: videos con preguntas, presentaciones, cuestionarios, juegos y más. Lo usamos para sumar <strong>gamificación</strong> y lograr el aprendizaje a partir del entretenimiento.</p>"),
+  ("¿Capacitan a docentes y administradores?", "<p>Sí. Brindamos capacitación a todas las personas involucradas en la administración y el uso de la plataforma, para que entiendan el funcionamiento de cada módulo y puedan aprovecharla al máximo.</p>"),
+] %}
+{% block schema %}
+{{ m.faq_schema(FAQS) }}
+{{ m.service_schema("Plataformas e-learning y campus virtual Moodle", "Implementación de LMS Moodle", "Creación, diseño y personalización de campus virtuales en Moodle con gamificación H5P, capacitación y soporte.") }}
+{% endblock %}
 {% block body_class %}page-e-learning{% endblock %}
 {% block content %}
 <section class="service-hero theme-orange">
   <div class="container service-hero-inner">
     <span class="service-hero-icon">{{ icon('elearning') }}</span>
     <div class="service-hero-text">
-      <h1>E-Learning</h1>
+      <h1>Plataformas E-Learning<br><small>campus virtual con Moodle</small></h1>
       <blockquote class="quote">
         <p>Enseñar en la era de Internet… significa que <strong>debemos enseñar las habilidades de mañana desde hoy.</strong></p>
         <cite>Jennifer Fleming</cite>
@@ -16,9 +27,17 @@
   {{ m.scroll_down("moodle") }}
 </section>
 
-<section class="section theme-white" id="moodle">
+<section class="section theme-white">
+  <div class="container text-block">
+    <h2>Tu campus virtual, listo para enseñar</h2>
+    <p>Creamos <strong>plataformas e-learning en Moodle</strong>, el sistema de gestión de aprendizaje (LMS) libre más usado del mundo, para que universidades, institutos, organizaciones y empresas puedan dictar cursos, capacitar a sus equipos y acompañar a sus estudiantes en línea.</p>
+    <p>Nos ocupamos de todo: la puesta en marcha del campus, el diseño a medida con la identidad de tu organización, los contenidos interactivos y la capacitación de quienes lo van a usar. Trabajamos con instituciones de Argentina y Latinoamérica.</p>
+  </div>
+</section>
+
+<section class="section theme-gray-light" id="moodle">
   <div class="container media-text">
-    <img src="{{ img('2023/11/notebook_moodle.png') }}" alt="Notebook mostrando un campus Moodle" loading="lazy" width="800" height="560">
+    <img src="{{ img('2023/11/notebook_moodle.png') }}" alt="Notebook mostrando un campus virtual Moodle" loading="lazy" width="800" height="560">
     <div>
       <h2 class="section-title">La MEJOR HERRAMIENTA<br>para la EDUCACIÓN VIRTUAL</h2>
       <div class="accordion">
@@ -38,7 +57,7 @@
 
 <section class="section theme-black">
   <div class="container">
-    {{ m.section_head("POR QUÉ", "MOODLE") }}
+    {{ m.section_head("POR QUÉ ELEGIR", "MOODLE CON GENEOS") }}
     <div class="feature-row">
       <div class="feature">
         <span class="feature-icon circle-icon">{{ icon('moodle-gamificacion') }}</span>
@@ -49,7 +68,7 @@
         <span class="feature-icon circle-icon">{{ icon('moodle-diseno') }}</span>
         <h3>Diseño</h3>
         <p>Diseñamos la plataforma y los cursos en base a la identidad de la organización que lo solicita, logrando sinergia marcaria en cada pieza del entorno.</p>
-        <img class="feature-img" src="{{ img('2023/10/Icon_moodle.svg') }}" alt="Moodle" loading="lazy" width="220" height="160">
+        <img class="feature-img" src="{{ img('2023/10/Icon_moodle.svg') }}" alt="Logo de Moodle en un monitor" loading="lazy" width="220" height="160">
       </div>
       <div class="feature">
         <span class="feature-icon circle-icon">{{ icon('moodle-capacitacion') }}</span>
@@ -60,10 +79,22 @@
   </div>
 </section>
 
-<section class="section theme-white">
+{{ m.steps([
+  ("Relevamiento", "Conocemos tu propuesta educativa, tus cursos y a quiénes van dirigidos."),
+  ("Puesta en marcha", "Instalamos y configuramos Moodle con los módulos que necesitás."),
+  ("Diseño", "Personalizamos el campus y los cursos con tu identidad visual."),
+  ("Contenidos", "Sumamos actividades interactivas y gamificación con H5P."),
+  ("Capacitación y soporte", "Formamos a docentes y administradores y te acompañamos después."),
+], "Cómo creamos tu plataforma e-learning", "PASO A PASO") }}
+
+<section class="section theme-gray-light">
   <div class="container">
-    {{ m.section_head("MOODLE", "CLIENTES") }}
+    {{ m.section_head("MOODLE", "INSTITUCIONES QUE CONFÍAN EN NOSOTROS") }}
   </div>
   {{ m.logo_marquee(["2024/03/Universidad-UNAJ.png", "2024/03/Universidad-Nacional-Hurlingham.png", "2024/03/Union-Agruicola-de-Avellaneda.png", "2024/03/Edunet-Cooperativa.png", "2024/03/Colegio-de-Trabajadores-Sociales.png", "2024/03/CINEA.png", "2024/03/CIEP.png"]) }}
 </section>
+
+{{ m.faq(FAQS, "Preguntas frecuentes sobre Moodle y e-learning", "DUDAS", "theme-white") }}
+{{ m.cta("¿Querés tu propio campus virtual?", "Contanos qué querés enseñar y te ayudamos a armar la plataforma.", "Hola, quiero consultar por una plataforma e-learning Moodle", "Escribinos por WhatsApp", "theme-orange") }}
+{{ m.related("/plataformas-e-learning-lms-moodle/") }}
 {% endblock %}

@@ -150,3 +150,81 @@
   {{ scroll_down(target) }}
 </section>
 {%- endmacro %}
+
+{# ================= SEO: bloques de contenido ================= #}
+
+{% macro faq(items, title="Preguntas frecuentes", kicker="DUDAS", theme="theme-gray-light", id="preguntas") -%}
+<section class="section {{ theme }}" id="{{ id }}">
+  <div class="container narrow">
+    {{ section_head(kicker, title) }}
+    <div class="accordion">
+      {% for q, a in items %}
+      <details{% if loop.first %} open{% endif %}><summary><h3>{{ q }}</h3></summary><div class="answer">{{ a|safe }}</div></details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro faq_schema(items) -%}
+{{ jsonld({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq_entities(items)}) }}
+{%- endmacro %}
+
+{% macro service_schema(name, service_type, desc, offers=None) -%}
+{% set data = {
+  "@context": "https://schema.org", "@type": "Service", "name": name, "serviceType": service_type,
+  "description": desc, "url": abs_url(page.out), "inLanguage": "es",
+  "provider": {"@id": abs_url("#organizacion")},
+  "areaServed": [{"@type": "Country", "name": "Argentina"}, {"@type": "Place", "name": "Latinoamérica"}]
+} %}
+{% if offers %}{% set _ = data.update({"offers": offers}) %}{% endif %}
+{{ jsonld(data) }}
+{%- endmacro %}
+
+{% macro steps(items, title="Cómo trabajamos", kicker="PASO A PASO", theme="theme-white") -%}
+<section class="section {{ theme }}">
+  <div class="container">
+    {{ section_head(kicker, title) }}
+    <ol class="steps">
+      {% for t, d in items %}
+      <li><span class="step-n">{{ loop.index }}</span><h3>{{ t }}</h3><p>{{ d|safe }}</p></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{%- endmacro %}
+
+{% set ALL_SERVICES = [
+  ("/software-de-gestion-completo/", "gestion", "Software de gestión ERP", "Sistema de gestión GERP basado en Odoo para pymes."),
+  ("/software-gestion-matafuegos-extintores/", "gestion", "Software para matafuegos", "GEMA: gestión online para talleres de extintores."),
+  ("/staff-augmentation/", "staff", "Staff augmentation", "Desarrolladores y perfiles IT que se suman a tu equipo."),
+  ("/desarrollo-apps-sitios-web-cooperativos/", "apps", "Apps y sitios web", "Webs, tiendas online y apps a medida con tecnología libre."),
+  ("/plataformas-e-learning-lms-moodle/", "elearning", "Campus virtual Moodle", "Plataformas e-learning personalizadas para educar online."),
+  ("/diseno-sitios-web-identidades/", "diseno", "Diseño y comunicación", "Diseño web UX/UI, identidad visual y comunicación."),
+] %}
+
+{% macro related(current, title="Otros servicios de GENEOS") -%}
+<section class="section theme-black related">
+  <div class="container">
+    {{ section_head("TAMBIÉN HACEMOS", title) }}
+    <ul class="related-grid">
+      {% for href, ic, name, text in ALL_SERVICES if href != current %}
+      <li><a href="{{ url(href) }}"><span class="related-icon">{{ icon(ic) }}</span><strong>{{ name }}</strong><span>{{ text }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro cta(title, text, wa_text="", button="Escribinos por WhatsApp", theme="theme-blue") -%}
+<section class="section {{ theme }} cta-band">
+  <div class="container narrow center">
+    <h2 class="section-title">{{ title }}</h2>
+    <p class="lead">{{ text|safe }}</p>
+    <div class="btn-row center">
+      <a class="btn btn-white" href="{{ wa(wa_text) }}" target="_blank" rel="noopener">{{ icon('ui-whatsapp') }} {{ button }}</a>
+      <a class="btn btn-outline" href="{{ url('/contacto-geneos/') }}">Formulario de contacto</a>
+    </div>
+  </div>
+</section>
+{%- endmacro %}

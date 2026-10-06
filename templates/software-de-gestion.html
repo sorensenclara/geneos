@@ -1,15 +1,42 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% set PLANS = [
+  ("LITE", "Plan base pequeños emprendimientos", "89.250", 89250, ["Máximo 3 usuarios", "Módulo Inventario", "Módulo Compra y Venta", "Contabilidad y Facturación"], "446.250", ""),
+  ("CORE", "Circuito completo Compras y Ventas", "178.500", 178500, ["Múltiples usuarios diferenciados", "Módulo Inventario", "Módulo Compra", "Módulo Venta", "Módulo Facturación", "Módulo Contabilidad"], "892.500", "featured"),
+  ("PLUS", "Esencial con CRM y MRP", "446.250", 446250, ["Múltiples usuarios diferenciados", "Módulo Inventario", "Módulo Compra", "Módulo Venta", "Módulo Facturación", "Módulo Contabilidad", "Módulo CRM", "Módulo MRP"], "1.785.000", ""),
+] %}
+{% set FAQS = [
+  ("¿Qué es un software de gestión ERP?", "<p>Un ERP (<em>Enterprise Resource Planning</em>) es un sistema que reúne en un solo lugar las áreas de tu negocio: stock, compras, ventas, facturación, contabilidad, clientes y producción. En lugar de planillas sueltas, todos trabajan sobre la misma información actualizada.</p>"),
+  ("¿Qué es GERP y qué relación tiene con Odoo?", "<p>GERP es el software de gestión de GENEOS. Está construido sobre <strong>Odoo Community</strong>, la versión libre y de código abierto de uno de los ERP más usados del mundo, y lo entregamos <strong>configurado y listo para usar</strong>, con implementación, capacitación y soporte de nuestro equipo.</p>"),
+  ("¿Necesito instalar algo en mi computadora?", "<p>No. GERP es un sistema de gestión <strong>online</strong>: se usa desde el navegador en computadoras, tablets o celulares, con tu usuario y contraseña, desde donde estés.</p>"),
+  ("¿Qué plan me conviene?", "<p><strong>LITE</strong> es para emprendimientos que necesitan gestionar clientes, proveedores, inventario y facturación con hasta 3 usuarios. <strong>CORE</strong> suma el circuito completo de compras y ventas con múltiples usuarios. <strong>PLUS</strong> agrega CRM y MRP para gestionar oportunidades comerciales y producción. Si tenés dudas, <a href=\"" ~ wa('Hola, quiero que me asesoren sobre qué plan de GERP me conviene') ~ "\">escribinos y te asesoramos</a>.</p>"),
+  ("¿Pueden adaptar el sistema a mi negocio?", "<p>Sí. Además de los planes, <strong>desarrollamos módulos y funcionalidades a medida</strong> sobre Odoo: relevamos tus procesos, los analizamos y creamos la solución con tecnología.</p>"),
+  ("¿Cómo es la implementación?", "<p>Configuramos el sistema, cargamos tus datos iniciales, capacitamos a las personas que lo van a usar y te acompañamos con soporte. Nuestro equipo se actualiza constantemente para atender tus requisitos y los cambios del país.</p>"),
+] %}
+{% block schema %}
+{{ m.faq_schema(FAQS) }}
+{% set offers = [] %}
+{% for name, sub, price, num, feats, impl, cls in PLANS %}
+{% set _ = offers.append({"@type": "Offer", "name": "GERP " ~ name, "description": sub, "price": num, "priceCurrency": "ARS",
+  "priceSpecification": {"@type": "UnitPriceSpecification", "price": num, "priceCurrency": "ARS", "unitText": "mes", "valueAddedTaxIncluded": false},
+  "url": abs_url(page.out) ~ "#planes"}) %}
+{% endfor %}
+{{ jsonld({"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "GERP", "alternateName": "GERP Software de Gestión Empresarial",
+  "applicationCategory": "BusinessApplication", "applicationSubCategory": "ERP", "operatingSystem": "Web",
+  "description": description, "url": "https://gerp.ar/", "image": abs_url("assets/img/2026/01/Beneficios-GERP-1536x1029-1-1024x686.webp"),
+  "publisher": {"@id": abs_url("#organizacion")}, "offers": offers}) }}
+{{ m.service_schema("Implementación de software de gestión ERP Odoo", "Implementación de ERP", "Implementación, desarrollo a medida, capacitación y soporte del software de gestión GERP basado en Odoo Community.") }}
+{% endblock %}
 {% block content %}
 <section class="service-hero theme-purple">
   <div class="container service-hero-inner">
     <span class="service-hero-icon">{{ icon('gerp') }}</span>
     <div class="service-hero-text">
-      <h1 class="gerp-title">El <strong>sistema de gestión</strong> online, ágil e integral para todo tu <strong>negocio</strong></h1>
-      <p>Nuestro Software de Gestión Empresarial – ERP es una herramienta robusta con un enfoque práctico, configurado y <b>listo para usar.</b></p>
+      <h1 class="gerp-title">Software de gestión <strong>ERP</strong> online, ágil e integral para todo tu <strong>negocio</strong></h1>
+      <p>GERP es nuestro sistema de gestión empresarial basado en <strong>Odoo</strong>: una herramienta robusta con un enfoque práctico, configurado y <b>listo para usar.</b></p>
       <div class="btn-row">
         <a class="btn btn-white" href="{{ wa('Hola, quiero hablar con un asesor sobre GERP') }}" target="_blank" rel="noopener">CONTACTÁ UN ASESOR</a>
-        <a class="btn btn-outline" href="https://gerp.ar/" target="_blank" rel="noopener">SITIO WEB OFICIAL</a>
+        <a class="btn btn-outline" href="#planes">VER PLANES Y PRECIOS</a>
       </div>
     </div>
   </div>
@@ -18,14 +45,16 @@
 
 <section class="section theme-white" id="gerp">
   <div class="container">
-    <img class="gerp-logo" src="{{ img('2025/02/Isologo-GERP-Full.svg') }}" alt="GERP" width="280" height="90">
+    <img class="gerp-logo" src="{{ img('2025/02/Isologo-GERP-Full.svg') }}" alt="GERP, software de gestión empresarial" width="280" height="90">
     {{ m.section_head("ORGANIZACIÓN, EFICIENCIA Y CONTROL", "TODO TU NEGOCIO EN UN SOLO SOFTWARE") }}
-    <p class="prose">Si buscás un <strong>ERP</strong> que sea sencillo y efectivo, <strong>GERP</strong> es tu solución ideal. Dejá atrás las planillas de cálculo, elegí el pack que mejor se adapte a tu negocio.</p>
+    <p class="prose">Si buscás un <strong>ERP para pymes</strong> que sea sencillo y efectivo, <strong>GERP</strong> es tu solución ideal. Dejá atrás las planillas de cálculo: gestioná inventario, compras, ventas, facturación y contabilidad en una sola plataforma online y elegí el plan que mejor se adapte a tu negocio.</p>
     <div class="media-text gerp-benefits">
-      <img src="{{ img('2026/01/Beneficios-GERP-1536x1029-1-1024x686.png') }}" alt="Beneficios de GERP" loading="lazy" width="1024" height="686">
+      <img src="{{ img('2026/01/Beneficios-GERP-1536x1029-1-1024x686.png') }}" alt="Pantallas de GERP en computadora y celular: inventario, ventas y reportes" loading="lazy" width="1024" height="686">
       {{ m.check_list([
         "<strong>TE ACOMPAÑAMOS SIEMPRE.</strong> Tanto en la implementación, capacitación y soporte de la plataforma.",
-        "<strong>CRECEMOS JUNTOS.</strong> Mejoramos juntos. Nuestro equipo se actualiza constantemente para atender tus requisitos, los del país y ofrecerte un servicio de excelencia.",
+        "<strong>CRECEMOS JUNTOS.</strong> Nuestro equipo se actualiza constantemente para atender tus requisitos, los del país y ofrecerte un servicio de excelencia.",
+        "<strong>SOFTWARE LIBRE.</strong> Basado en Odoo Community: sin licencias por usuario y con tus datos bajo tu control.",
+        "<strong>100% ONLINE.</strong> Accedé desde la computadora, la tablet o el celular, estés donde estés.",
       ], "check-list big") }}
     </div>
     <div class="cards-3">
@@ -35,51 +64,19 @@
         ("G-ERP-Plus.svg", "PLUS", "Indispensable para emprendimientos que necesitan CRM y MRP, gestión de producción, seguimiento de productos, oportunidades comerciales, leads.", "https://gerp.ar/index.php/gerp-plus-odoo/"),
       ] %}
       <article class="card">
-        <img class="card-img" src="{{ img('2024/11/' ~ logo) }}" alt="GERP {{ name }}" loading="lazy" width="140" height="140">
-        <h3>{{ name }}</h3>
+        <img class="card-img" src="{{ img('2024/11/' ~ logo) }}" alt="Logo GERP {{ name }}" loading="lazy" width="140" height="140">
+        <h3>GERP {{ name }}</h3>
         <p>{{ text }}</p>
-        <a class="btn btn-solid" href="{{ href }}" target="_blank" rel="noopener">Ver Plan</a>
+        <a class="btn btn-solid" href="{{ href }}" target="_blank" rel="noopener">Ver plan {{ name|title }}</a>
       </article>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="section dev-banner">
-  <div class="container narrow center">
-    <h2 class="section-title">DESARROLLAMOS SOFTWARE A MEDIDA</h2>
-    <p class="lead">Contanos qué necesitás, lo analizamos, relevamos y creamos la solución con tecnología.</p>
-    <a class="btn btn-white" href="{{ wa('Hola, quiero consultar por un desarrollo a medida') }}" target="_blank" rel="noopener">{{ icon('ui-whatsapp') }} WhatsApp</a>
-  </div>
-</section>
-
-<section class="section theme-gray" id="planes">
+<section class="section theme-white pt-0">
   <div class="container">
-    {{ m.section_head("ALTERNATIVAS", "PLANES Y PRECIOS") }}
-    <div class="pricing">
-      {% for name, sub, price, feats, impl, cls in [
-        ("LITE", "Plan base pequeños emprendimientos", "89.250", ["Máximo 3 usuarios", "Módulo Inventario", "Módulo Compra y Venta", "Contabilidad y Facturación"], "446.250", ""),
-        ("CORE", "Circuito completo Compras y Ventas", "178.500", ["Múltiples usuarios diferenciados", "Módulo Inventario", "Módulo Compra", "Módulo Venta", "Módulo Facturación", "Módulo Contabilidad"], "892.500", "featured"),
-        ("PLUS", "Esencial con CRM y MRP", "446.250", ["Múltiples usuarios diferenciados", "Módulo Inventario", "Módulo Compra", "Módulo Venta", "Módulo Facturación", "Módulo Contabilidad", "Módulo CRM", "Módulo MRP"], "1.785.000", ""),
-      ] %}
-      <article class="price-card {{ cls }}">
-        <header><h3>{{ name }}</h3><p>{{ sub }}</p></header>
-        <div class="price"><strong><sup>$</sup>{{ price }}</strong><span>+ IVA por mes (*)</span></div>
-        {{ m.check_list(feats) }}
-        <footer>
-          <a class="btn btn-solid" href="{{ wa('Hola, quiero consultar por el plan GERP ' ~ name) }}" target="_blank" rel="noopener">¡Contactanos!</a>
-          <small>$ {{ impl }} + IVA implementación</small>
-        </footer>
-      </article>
-      {% endfor %}
-    </div>
-    <p class="note">(*) Precios válidos para los meses de Octubre, Noviembre y Diciembre 2026. Actualización bimensual.</p>
-  </div>
-</section>
-
-<section class="section theme-white">
-  <div class="container">
-    {{ m.section_head("ES EL MEJOR", "SOFTWARE DE GESTIÓN") }}
+    {{ m.section_head("MÓDULOS", "Qué podés gestionar con GERP") }}
     <div class="feature-row">
       {% for ic, title, text in [
         ("inventario", "Inventario<br>&amp; Compras", "Analizá productos, costos, trazabilidad, vencimientos y todo tu inventario. Podrás crear reglas de abastecimiento automáticas para que nunca te quedes sin stock."),
@@ -93,12 +90,50 @@
       </div>
       {% endfor %}
     </div>
+    <div class="text-block two-col" style="max-width:none">
+      <div>
+        <h3>CRM: clientes y oportunidades</h3>
+        <p>Seguí cada oportunidad comercial y cada lead desde el primer contacto hasta la venta, con el historial de cada cliente a mano (plan PLUS).</p>
+      </div>
+      <div>
+        <h3>MRP: producción</h3>
+        <p>Planificá la fabricación, controlá materias primas y hacé el seguimiento de cada producto en todo el proceso productivo (plan PLUS).</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section theme-white pt-0">
+<section class="section dev-banner">
+  <div class="container narrow center">
+    <h2 class="section-title">DESARROLLAMOS SOFTWARE A MEDIDA</h2>
+    <p class="lead">¿Tu negocio necesita algo que ningún sistema estándar resuelve? Contanos qué necesitás: lo analizamos, relevamos y creamos la solución con tecnología, sobre Odoo o con <a href="{{ url('/desarrollo-apps-sitios-web-cooperativos/') }}" style="color:inherit">desarrollo propio en Django</a>.</p>
+    <a class="btn btn-white" href="{{ wa('Hola, quiero consultar por un desarrollo a medida') }}" target="_blank" rel="noopener">{{ icon('ui-whatsapp') }} WhatsApp</a>
+  </div>
+</section>
+
+<section class="section theme-gray" id="planes">
   <div class="container">
-    {{ m.section_head("ODOO", "NUESTROS CLIENTES") }}
+    {{ m.section_head("ALTERNATIVAS", "PLANES Y PRECIOS DE GERP") }}
+    <div class="pricing">
+      {% for name, sub, price, num, feats, impl, cls in PLANS %}
+      <article class="price-card {{ cls }}">
+        <header><h3>{{ name }}</h3><p>{{ sub }}</p></header>
+        <div class="price"><strong><sup>$</sup>{{ price }}</strong><span>+ IVA por mes (*)</span></div>
+        {{ m.check_list(feats) }}
+        <footer>
+          <a class="btn btn-solid" href="{{ wa('Hola, quiero consultar por el plan GERP ' ~ name) }}" target="_blank" rel="noopener">¡Contactanos!</a>
+          <small>$ {{ impl }} + IVA implementación</small>
+        </footer>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="note">(*) Precios en pesos argentinos válidos para los meses de Octubre, Noviembre y Diciembre 2026. Actualización bimensual.</p>
+  </div>
+</section>
+
+<section class="section theme-white">
+  <div class="container">
+    {{ m.section_head("ODOO", "EMPRESAS QUE YA USAN NUESTRO SOFTWARE DE GESTIÓN") }}
   </div>
   {{ m.logo_marquee([
     "2024/03/INBIO-HIGHWAY.png", "2024/03/Mercado-de-Consumo-Popular-Organizado-Para-la-Vida-Digna-ME.CO_.PO_.png",
@@ -108,4 +143,7 @@
     ("2024/08/Clientes-GENEOS_Korronte.png", "https://www.instagram.com/korronteaceros/"), ("2024/08/Clientes-GENEOS_GEA.png", "https://gea-srl.com.ar/"),
   ]) }}
 </section>
+
+{{ m.faq(FAQS, "Preguntas frecuentes sobre GERP y Odoo") }}
+{{ m.related("/software-de-gestion-completo/") }}
 {% endblock %}

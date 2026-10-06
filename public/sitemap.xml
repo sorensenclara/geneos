@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://geneos.coop.ar/</loc></url>
-  <url><loc>https://geneos.coop.ar/servicios/</loc></url>
-  <url><loc>https://geneos.coop.ar/software-de-gestion-completo/</loc></url>
-  <url><loc>https://geneos.coop.ar/software-gestion-matafuegos-extintores/</loc></url>
-  <url><loc>https://geneos.coop.ar/staff-augmentation/</loc></url>
-  <url><loc>https://geneos.coop.ar/desarrollo-apps-sitios-web-cooperativos/</loc></url>
-  <url><loc>https://geneos.coop.ar/plataformas-e-learning-lms-moodle/</loc></url>
-  <url><loc>https://geneos.coop.ar/diseno-sitios-web-identidades/</loc></url>
-  <url><loc>https://geneos.coop.ar/quienes-somos/</loc></url>
-  <url><loc>https://geneos.coop.ar/recursos-graficos/</loc></url>
-  <url><loc>https://geneos.coop.ar/contacto-geneos/</loc></url>
+  <url><loc>https://geneos.coop.ar/</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority></url>
+  <url><loc>https://geneos.coop.ar/servicios/</loc><lastmod>2026-10-06</lastmod><priority>0.9</priority></url>
+  <url><loc>https://geneos.coop.ar/software-de-gestion-completo/</loc><lastmod>2026-10-06</lastmod><priority>0.9</priority></url>
+  <url><loc>https://geneos.coop.ar/software-gestion-matafuegos-extintores/</loc><lastmod>2026-10-06</lastmod><priority>0.9</priority></url>
+  <url><loc>https://geneos.coop.ar/staff-augmentation/</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://geneos.coop.ar/desarrollo-apps-sitios-web-cooperativos/</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://geneos.coop.ar/plataformas-e-learning-lms-moodle/</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://geneos.coop.ar/diseno-sitios-web-identidades/</loc><lastmod>2026-10-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://geneos.coop.ar/quienes-somos/</loc><lastmod>2026-10-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://geneos.coop.ar/recursos-graficos/</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority></url>
+  <url><loc>https://geneos.coop.ar/contacto-geneos/</loc><lastmod>2026-10-06</lastmod><priority>0.7</priority></url>
 </urlset>

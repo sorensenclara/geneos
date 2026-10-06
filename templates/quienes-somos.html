@@ -13,11 +13,20 @@
   ("fernando", "Fernando Recci", ["Desarrollador de Software", "DevOps"], ["Python", "Odoo", "DevOps"], "Fernando.jpg", "Fernando2.jpg", "Fernando3.jpg", "fernando.recci@geneos.com.ar", "http://linkedin.com/in/fernando-javier-recci-3a0696a5"),
   ("santiago", "Santiago Costa", ["Desarrollador de Software", "Desarrollador Web Backend"], ["Angular", "Node", "Odoo", "Python"], "Santiago.jpg", "Santiago2.jpg", "Santiago3.jpg", "santiago.costa@geneos.com.ar", "http://www.linkedin.com/in/santcosta"),
 ] %}
+{% block schema %}
+{% set people = [] %}
+{% for slug, name, roles, skills, front, back, pop, mail, li in TEAM %}
+{% set _ = people.append({"@type": "Person", "name": name, "jobTitle": roles|join(", "), "knowsAbout": skills, "sameAs": [li],
+  "image": abs_url("assets/img/2023/10/" ~ pop.rsplit(".", 1)[0] ~ ".webp"), "worksFor": {"@id": abs_url("#organizacion")}}) %}
+{% endfor %}
+{{ jsonld({"@context": "https://schema.org", "@type": "AboutPage", "url": abs_url(page.out), "name": title,
+  "mainEntity": {"@id": abs_url("#organizacion"), "@type": "Organization", "name": "GENEOS", "member": people}}) }}
+{% endblock %}
 {% block content %}
 <section class="section theme-black-green about-hero">
   <div class="container">
     {{ m.eyebrow("QUIÉNES SOMOS") }}
-    <h1 class="section-title center">DESARROLLADORES DE SOLUCIONES TECNOLÓGICAS</h1>
+    <h1 class="section-title center">GENEOS, cooperativa de software libre<br><small>desarrolladores de soluciones tecnológicas</small></h1>
     <div class="mv">
       <article>
         <h2>Misión</h2>
@@ -72,7 +81,16 @@
 </dialog>
 {% endfor %}
 
-{% set coop_title = "Desarrolladores de soluciones tecnológicas" %}
+<section class="section theme-white">
+  <div class="container text-block">
+    <h2>Una cooperativa de tecnología con sentido</h2>
+    <p><strong>GENEOS es una cooperativa de trabajo de Tandil, provincia de Buenos Aires.</strong> Desde hace más de 10 años reunimos a profesionales de tecnología, ciencias económicas, comunicación y diseño para desarrollar <strong>soluciones informáticas con software libre</strong>: sistemas de gestión, aplicaciones, sitios web y plataformas educativas.</p>
+    <p>Como cooperativa, cada persona del equipo es socia y participa de las decisiones. Eso se nota en cómo trabajamos: trato directo con quienes desarrollan, compromiso a largo plazo con cada cliente y transparencia en cada etapa del proyecto.</p>
+    <p>Trabajamos con empresas, cooperativas, universidades e instituciones de Argentina y Latinoamérica. Conocé <a href="{{ url('/servicios/') }}">todos nuestros servicios</a> o <a href="{{ url('/contacto-geneos/') }}">escribinos</a> para contarnos tu proyecto.</p>
+  </div>
+</section>
+
+{% set coop_title = "Parte del movimiento cooperativo" %}
 {% include "partials/coop.html" %}
 
 <section class="section theme-black">

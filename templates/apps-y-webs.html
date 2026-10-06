@@ -1,17 +1,28 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% set FAQS = [
+  ("¿Qué tecnología conviene para mi sitio web?", "<p>Depende del proyecto. Para sitios institucionales y de contenidos que tu equipo quiera actualizar solo, solemos usar <strong>WordPress</strong>. Para tiendas online integradas con stock y facturación, <strong>Odoo</strong>. Para plataformas con lógica propia, usuarios y procesos complejos, <strong>Django</strong> y Angular. Y si necesitás máxima velocidad con poco mantenimiento, un <strong>sitio estático</strong> como este.</p>"),
+  ("¿Desarrollan aplicaciones móviles para Android y iOS?", "<p>Sí. Con <strong>React Native</strong> desarrollamos aplicaciones móviles que funcionan en Android y iOS a partir del mismo código, lo que reduce tiempos y costos de desarrollo y mantenimiento.</p>"),
+  ("¿Mi sitio va a funcionar en celulares?", "<p>Sí. Todos nuestros sitios y aplicaciones son <strong>responsive</strong>: se adaptan a celulares, tablets y computadoras.</p>"),
+  ("¿Voy a poder actualizar el contenido yo mismo?", "<p>Sí. Elegimos herramientas que te den <strong>autonomía</strong>: te entregamos un panel para editar textos, imágenes y productos, y capacitamos a tu equipo para usarlo.</p>"),
+  ("¿También diseñan el sitio?", "<p>Sí. Nuestro equipo de <a href=\"" ~ url('/diseno-sitios-web-identidades/') ~ "\">diseño y comunicación</a> trabaja la experiencia de usuario (UX), la interfaz (UI) y la identidad visual de cada proyecto.</p>"),
+] %}
+{% block schema %}
+{{ m.faq_schema(FAQS) }}
+{{ m.service_schema("Desarrollo de apps y sitios web", "Desarrollo web y de aplicaciones móviles", "Desarrollo de sitios web, tiendas online, plataformas y aplicaciones móviles a medida con WordPress, Odoo, Django, Angular y React Native.") }}
+{% endblock %}
 {% block content %}
-{{ m.service_hero("blue", "apps", "Apps &amp; Webs", "Especialistas en el desarrollo de <strong>apps y sitios web cooperativos</strong>", "tecnologias") }}
+{{ m.service_hero("blue", "apps", "Desarrollo de apps<br>y sitios web", "Especialistas en el desarrollo de <strong>apps y sitios web cooperativos</strong>", "tecnologias") }}
 
 <section class="section theme-white" id="tecnologias">
   <div class="container">
-    {{ m.section_head("TU PROYECTO VIRTUAL", "TECNOLOGÍAS LIBRES") }}
-    <p class="prose">En Geneos creamos plataformas digitales con el <strong>desarrollo de apps y sitios web cooperativos</strong>, brindando soluciones digitales que combinan tecnología libre, el diseño centrado en las personas y una fuerte mirada comunitaria.</p>
+    {{ m.section_head("TU PROYECTO VIRTUAL", "TECNOLOGÍAS LIBRES PARA DESARROLLO WEB Y MÓVIL") }}
+    <p class="prose">En Geneos creamos plataformas digitales con el <strong>desarrollo de apps y sitios web a medida</strong>, brindando soluciones que combinan tecnología libre, el diseño centrado en las personas y una fuerte mirada comunitaria. Trabajamos con organizaciones de Argentina y Latinoamérica.</p>
     <div class="feature-row tech-features">
       {% for ic, title, text, href in [
         ("angular", "Angular", "El framework de desarrollo frontend de código abierto basado en TypeScript, usado para crear aplicaciones web dinámicas.", "https://angular.dev/"),
         ("django", "Django", "Facilita la organización del código, mejorando la mantenibilidad, escalabilidad, seguridad e interacción con la base de datos.", "https://www.djangoproject.com/"),
-        ("react", "React Native", "La popular biblioteca de JavaScript para crear interfaces de usuario, compatible con múltiples bibliotecas.", "https://reactnative.dev/"),
+        ("react", "React Native", "La popular biblioteca de JavaScript para crear aplicaciones móviles para Android e iOS con un mismo código.", "https://reactnative.dev/"),
       ] %}
       <div class="feature">
         <a class="feature-icon" href="{{ href }}" target="_blank" rel="noopener" aria-label="{{ title }}">{{ icon(ic) }}</a>
@@ -25,8 +36,20 @@
 
 <section class="section theme-blue">
   <div class="container split">
-    <h2 class="section-title">¿Qué tipo de desarrollo de apps y sitios web hacemos?</h2>
-    {{ m.check_list(["Geolocalizador y mapeo", "Gamificación y juegos", "Identificadores de QR", "Encuestas y sondeos", "Comercio electrónico"], "check-list big") }}
+    <div>
+      <h2 class="section-title">¿Qué tipo de desarrollo de apps y sitios web hacemos?</h2>
+      <p>Desde sitios institucionales hasta plataformas con usuarios, pagos y mapas: cada desarrollo se piensa a partir de las personas que lo van a usar.</p>
+    </div>
+    {{ m.check_list([
+      "Sitios web institucionales y de servicios",
+      "Tiendas online y comercio electrónico",
+      "Plataformas web con usuarios y paneles de gestión",
+      "Apps móviles para Android e iOS",
+      "Geolocalizador y mapeo",
+      "Gamificación y juegos",
+      "Identificadores de QR",
+      "Encuestas y sondeos",
+    ], "check-list big") }}
   </div>
 </section>
 
@@ -37,10 +60,22 @@
   </div>
 </section>
 
-<section class="section theme-white">
+{{ m.steps([
+  ("Relevamiento", "Entendemos tu proyecto, tu público y los objetivos del sitio o la app."),
+  ("Diseño UX/UI", "Diseñamos la experiencia y las pantallas antes de escribir código."),
+  ("Desarrollo", "Programamos con tecnologías libres, mostrando avances en cada etapa."),
+  ("Publicación", "Ponemos el sitio o la app en línea y te capacitamos para administrarlo."),
+  ("Soporte", "Te acompañamos con mantenimiento, mejoras y nuevas funcionalidades."),
+], "Cómo desarrollamos tu sitio o app", "PROCESO") }}
+
+<section class="section theme-gray-light">
   <div class="container">
     {{ m.section_head("NUESTROS", "DESARROLLOS WEB Y APPS") }}
   </div>
   {{ m.logo_marquee(["2024/03/Limousine-1.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/La-Poderosa.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png", "2024/03/Limousine-1.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/La-Poderosa.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png"]) }}
 </section>
+
+{{ m.faq(FAQS, "Preguntas frecuentes sobre desarrollo web y apps", "DUDAS", "theme-white") }}
+{{ m.cta("¿Querés desarrollar tu sitio o tu app?", "Contanos tu idea y te armamos una propuesta a medida.", "Hola, quiero consultar por el desarrollo de un sitio web o app") }}
+{{ m.related("/desarrollo-apps-sitios-web-cooperativos/") }}
 {% endblock %}

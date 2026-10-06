@@ -1,15 +1,30 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
-  {% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+  {% if page.noindex %}
+  <meta name="robots" content="noindex, follow">
+  {% else %}
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="alternate" hreflang="es" href="{{ canonical }}">
+  <link rel="alternate" hreflang="x-default" href="{{ canonical }}">
+  {% endif %}
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="GENEOS">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:image" content="{{ site_url }}/assets/img/og-geneos.webp">
+  {% if canonical %}<meta property="og:url" content="{{ canonical }}">{% endif %}
+  <meta property="og:image" content="{{ og_image }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CoopGENEOS">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ og_image }}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="{{ asset('img/favicon-32.png') }}" sizes="32x32">
   <link rel="icon" href="{{ asset('img/favicon-192.png') }}" sizes="192x192">
@@ -19,11 +34,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   {% block head %}{% endblock %}
+  {% set graph = [org_schema(), {
+      "@type": "WebSite", "@id": abs_url("#sitio"), "url": abs_url(), "name": "GENEOS",
+      "inLanguage": "es-AR", "publisher": {"@id": abs_url("#organizacion")}
+    }, {
+      "@type": "WebPage", "@id": abs_url(page.out) ~ "#pagina", "url": abs_url(page.out), "name": title,
+      "description": description, "inLanguage": "es-AR", "isPartOf": {"@id": abs_url("#sitio")},
+      "about": {"@id": abs_url("#organizacion")}, "primaryImageOfPage": og_image
+    }] %}
+  {% if crumbs|length > 1 %}
+  {% set _ = graph.append({"@type": "BreadcrumbList", "itemListElement": crumbs_schema(crumbs)}) %}
+  {% endif %}
+  {{ jsonld({"@context": "https://schema.org", "@graph": graph}) }}
+  {% block schema %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   {% include "partials/header.html" %}
   <main id="contenido">
+    {% if crumbs|length > 1 %}{% include "partials/breadcrumbs.html" %}{% endif %}
     {% block content %}{% endblock %}
   </main>
   {% include "partials/footer.html" %}

@@ -28,6 +28,19 @@ cd public && python -m http.server 8000   # vista previa en http://localhost:800
 
 Si se publica en una subcarpeta (p. ej. GitHub Pages de proyecto): `BASE_PATH=/geneos python build.py`.
 
+## SEO
+
+- Título, descripción, miga de pan e imagen para redes de cada página: lista `PAGES` en `build.py`
+  (títulos de hasta 60 caracteres y descripciones de hasta 160).
+- Cada página genera: canonical al dominio oficial (`CANONICAL_URL`, por defecto https://geneos.coop.ar),
+  Open Graph / Twitter Cards, breadcrumbs visibles y datos estructurados schema.org
+  (Organization + LocalBusiness, WebSite, WebPage, BreadcrumbList, y según la página Service,
+  SoftwareApplication con precios, FAQPage, AboutPage o ContactPage).
+- Las preguntas frecuentes de cada servicio se definen al principio de su plantilla (`FAQS`) y
+  alimentan tanto el acordeón visible como el schema FAQPage.
+- `sitemap.xml` se regenera con la fecha del build. Después de publicar en el dominio definitivo,
+  cargarlo en Google Search Console.
+
 ## Formulario de contacto
 
 Usa [FormSubmit](https://formsubmit.co) → reenvía los mensajes a `info@geneos.com.ar` sin backend.

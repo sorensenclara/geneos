@@ -3,11 +3,15 @@
 
 Uso:
     pip install jinja2
-    python build.py                 # sitio servido desde la raíz del dominio
-    BASE_PATH=/geneos python build.py   # p. ej. GitHub Pages de proyecto
+    python build.py                       # sitio servido desde la raíz del dominio
+    BASE_PATH=/geneos python build.py     # p. ej. GitHub Pages de proyecto
 
-Después: servir ./public con cualquier hosting estático.
+Variables de entorno:
+    BASE_PATH      subcarpeta donde se publica (vacío en dominio propio)
+    SITE_URL       URL pública donde se sirve este build (para redirecciones del formulario)
+    CANONICAL_URL  dominio oficial para canonical, sitemap y datos estructurados
 """
+import json
 import os
 import shutil
 from datetime import date
@@ -19,14 +23,24 @@ from markupsafe import Markup
 ROOT = Path(__file__).parent
 OUT = ROOT / "public"
 BASE_PATH = os.environ.get("BASE_PATH", "").rstrip("/")
-SITE_URL = os.environ.get("SITE_URL", "https://geneos.coop.ar").rstrip("/")
+CANONICAL_URL = os.environ.get("CANONICAL_URL", "https://geneos.coop.ar").rstrip("/")
+SITE_URL = (os.environ.get("SITE_URL") or CANONICAL_URL).rstrip("/")
+TODAY = date.today().isoformat()
 
 SITE = {
     "name": "GENEOS",
+    "legal_name": "Cooperativa de Trabajo GENEOS Ltda.",
+    "tagline": "Cooperativa de Software Libre",
     "whatsapp": "5492494521418",
     "whatsapp_label": "+549 2494 521418",
+    "phone": "+54 9 249 452-1418",
     "email": "info@geneos.com.ar",
     "address": "Alem 1015 - Tandil",
+    "street": "Alem 1015",
+    "city": "Tandil",
+    "province": "Buenos Aires",
+    "postal_code": "B7000",
+    "country": "AR",
     "region": "Buenos Aires - Argentina",
     "maps": "https://maps.app.goo.gl/SG3oBGYpz7ttdvbB8",
     # Endpoint del formulario de contacto. FormSubmit reenvía al mail sin backend
@@ -41,32 +55,57 @@ SITE = {
     ],
 }
 
-# (plantilla, ruta de salida, título, descripción)
+# Cada página: plantilla, ruta, título (<60 car.), descripción (<160 car.),
+# miga de pan (nombre corto), imagen para redes y prioridad en el sitemap.
 PAGES = [
-    ("index.html", "", "GENEOS | Soluciones Informáticas",
-     "Somos una cooperativa que desarrolla y acompaña a cada cliente en el diseño, desarrollo e implementación de soluciones informáticas."),
-    ("servicios.html", "servicios/", "Servicios | GENEOS",
-     "Soluciones informáticas basadas en software libre: software de gestión, staff augmentation, sitios web y apps, e-learning y diseño."),
-    ("software-de-gestion.html", "software-de-gestion-completo/", "Software de Gestión GERP | GENEOS",
-     "GERP: el sistema de gestión online, ágil e integral basado en Odoo Community, configurado y listo para usar."),
-    ("gema.html", "software-gestion-matafuegos-extintores/", "Software de Gestión Integral de Matafuegos o Extintores | GEMA",
-     "Software de Gestión Integral de Matafuegos o Extintores permite llevar el control online e integral de los servicios brindados a sus clientes."),
-    ("staff-augmentation.html", "staff-augmentation/", "Staff Augmentation | GENEOS",
-     "Potenciá a tu equipo con desarrolladores, DevOps, analistas funcionales, gestores de proyecto y diseñadores UX/UI de GENEOS."),
-    ("apps-y-webs.html", "desarrollo-apps-sitios-web-cooperativos/", "Desarrollo de Apps y Sitios Web Cooperativos | GENEOS",
-     "En Geneos nos especializamos en desarrollo de apps y sitios web acorde a las necesidades del cliente, con WordPress, Odoo, Django, etc."),
-    ("e-learning.html", "plataformas-e-learning-lms-moodle/", "Plataformas E-learning - LMS - Moodle | GENEOS",
-     "Creamos plataformas de aprendizaje o sistema de gestión de aprendizaje (LMS) diseñado para ayudar a los educadores."),
-    ("diseno.html", "diseno-sitios-web-identidades/", "Diseño de Sitios Web e Identidades | GENEOS",
-     "Diseño de sitios web e identidades visuales combinando funcionalidad y comunicación para potenciar tu proyecto digital."),
-    ("quienes-somos.html", "quienes-somos/", "Desarrolladores de Soluciones Tecnológicas | GENEOS",
-     "Conocé el equipo de Geneos, cooperativa de desarrolladores de soluciones tecnológicas, software de gestión, sitios webs o proyectos a medida."),
-    ("recursos-graficos.html", "recursos-graficos/", "Recursos Gráficos | GENEOS",
-     "Isologotipos, manual de marca y recursos gráficos de GENEOS y GERP para descargar."),
-    ("contacto.html", "contacto-geneos/", "Contacto | GENEOS",
-     "Contacto para descubrir soluciones digitales con tecnologías libres: Odoo, WordPress, Moodle y más. ¡Escribinos!"),
-    ("404.html", "404.html", "Página no encontrada | GENEOS", "La página que buscás no existe."),
+    dict(tpl="index.html", out="",
+         title="GENEOS | Cooperativa de software libre: ERP, apps y webs",
+         description="Cooperativa de software libre de Argentina. Desarrollamos software de gestión Odoo, apps, sitios web y campus Moodle para Argentina y Latinoamérica.",
+         crumb="Inicio", priority="1.0"),
+    dict(tpl="servicios.html", out="servicios/",
+         title="Servicios de desarrollo de software libre | GENEOS",
+         description="Software de gestión Odoo, staff augmentation, apps y sitios web, plataformas Moodle y diseño. Soluciones con software libre para Argentina y Latam.",
+         crumb="Servicios", priority="0.9"),
+    dict(tpl="software-de-gestion.html", out="software-de-gestion-completo/", parent="servicios/",
+         title="Software de gestión ERP para pymes basado en Odoo | GERP",
+         description="GERP: sistema de gestión online basado en Odoo Community para pymes. Inventario, compras, ventas, facturación y contabilidad, con implementación y soporte.",
+         crumb="Software de Gestión GERP", og="2026/01/Beneficios-GERP-1536x1029-1-1024x686.webp", priority="0.9"),
+    dict(tpl="gema.html", out="software-gestion-matafuegos-extintores/", parent="servicios/",
+         title="Software para talleres de matafuegos y extintores | GEMA",
+         description="GEMA es el sistema online para talleres de recarga de matafuegos: control de vencimientos, historial de servicios, obleas, presupuestos y avisos a clientes.",
+         crumb="Software de Matafuegos GEMA", og="2024/04/5-1024x637.webp", priority="0.9"),
+    dict(tpl="staff-augmentation.html", out="staff-augmentation/", parent="servicios/",
+         title="Staff augmentation: desarrolladores para tu equipo | GENEOS",
+         description="Sumá desarrolladores, DevOps, analistas, PM y diseñadores UX/UI de Argentina a tu equipo. Staff augmentation nearshore para empresas de Latinoamérica.",
+         crumb="Staff Augmentation", priority="0.8"),
+    dict(tpl="apps-y-webs.html", out="desarrollo-apps-sitios-web-cooperativos/", parent="servicios/",
+         title="Desarrollo de apps y sitios web a medida | GENEOS",
+         description="Desarrollo de sitios web, tiendas online y apps móviles con WordPress, Django, Angular y React Native. Tecnología libre y diseño centrado en las personas.",
+         crumb="Apps y Sitios Web", priority="0.8"),
+    dict(tpl="e-learning.html", out="plataformas-e-learning-lms-moodle/", parent="servicios/",
+         title="Plataformas e-learning y campus virtual Moodle | GENEOS",
+         description="Creamos campus virtuales en Moodle para universidades, institutos y empresas: diseño a medida, gamificación con H5P, capacitación y soporte. Argentina y Latam.",
+         crumb="E-learning Moodle", og="2023/11/notebook_moodle.webp", priority="0.8"),
+    dict(tpl="diseno.html", out="diseno-sitios-web-identidades/", parent="servicios/",
+         title="Diseño web, identidad visual y comunicación | GENEOS",
+         description="Diseño de sitios web UX/UI, identidades visuales y estrategia de comunicación digital para cooperativas, pymes e instituciones de Argentina y Latinoamérica.",
+         crumb="Diseño y Comunicación", priority="0.8"),
+    dict(tpl="quienes-somos.html", out="quienes-somos/",
+         title="Quiénes somos: cooperativa de software libre | GENEOS",
+         description="Somos GENEOS, cooperativa de trabajo de Tandil que desarrolla soluciones tecnológicas con software libre. Conocé al equipo, nuestra misión y visión.",
+         crumb="Quiénes somos", og="elementor/thumbs/5-rh26ect4j6zr6ywqu4myqmyj8w1qub7ot9nx5za9i8.webp", priority="0.7"),
+    dict(tpl="recursos-graficos.html", out="recursos-graficos/", parent="quienes-somos/",
+         title="Recursos gráficos y manual de marca | GENEOS",
+         description="Descargá los isologotipos de GENEOS y GERP en SVG y PNG y consultá el manual de marca con los lineamientos de uso de la identidad visual.",
+         crumb="Recursos Gráficos", priority="0.3"),
+    dict(tpl="contacto.html", out="contacto-geneos/",
+         title="Contacto | GENEOS, cooperativa de software libre",
+         description="Escribinos por WhatsApp, mail o formulario. Desarrollo de software, Odoo, WordPress, Moodle y diseño para Argentina y Latinoamérica. Alem 1015, Tandil.",
+         crumb="Contacto", priority="0.7"),
+    dict(tpl="404.html", out="404.html", title="Página no encontrada | GENEOS",
+         description="La página que buscás no existe.", crumb="Error 404", noindex=True),
 ]
+PAGE_BY_OUT = {p["out"]: p for p in PAGES}
 
 # URLs viejas (WordPress) -> nuevas. Se generan _redirects (Netlify/Cloudflare) y .htaccess (Apache).
 REDIRECTS = {
@@ -104,6 +143,11 @@ def img(path):
     return asset("img/" + p.as_posix())
 
 
+def abs_url(path=""):
+    """URL absoluta en el dominio oficial (canonical, schema, sitemap)."""
+    return f"{CANONICAL_URL}/{path.lstrip('/')}"
+
+
 _icon_cache = {}
 
 
@@ -119,6 +163,71 @@ def wa(text=""):
     return f"https://wa.me/{SITE['whatsapp']}" + (f"?text={quote(text)}" if text else "")
 
 
+def jsonld(data):
+    """Bloque <script type=application/ld+json> seguro."""
+    raw = json.dumps(data, ensure_ascii=False, indent=1).replace("</", "<\\/")
+    return Markup(f'<script type="application/ld+json">{raw}</script>')
+
+
+def breadcrumbs(page):
+    """Lista [(nombre, ruta)] desde Inicio hasta la página."""
+    chain, p = [], page
+    while p:
+        chain.insert(0, (p["crumb"], p["out"]))
+        p = PAGE_BY_OUT.get(p.get("parent")) if p.get("parent") is not None else None
+    if page["out"] != "":
+        chain.insert(0, ("Inicio", ""))
+    return chain
+
+
+def crumbs_schema(crumbs):
+    return [{"@type": "ListItem", "position": i + 1, "name": name, "item": abs_url(href)}
+            for i, (name, href) in enumerate(crumbs)]
+
+
+def faq_entities(items):
+    import re
+    return [{"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in items]
+
+
+SERVICE_PAGES = ["software-de-gestion-completo/", "software-gestion-matafuegos-extintores/", "staff-augmentation/",
+                 "desarrollo-apps-sitios-web-cooperativos/", "plataformas-e-learning-lms-moodle/",
+                 "diseno-sitios-web-identidades/"]
+
+
+def service_items():
+    return [{"@type": "ListItem", "position": i + 1, "name": PAGE_BY_OUT[o]["crumb"], "url": abs_url(o)}
+            for i, o in enumerate(SERVICE_PAGES)]
+
+
+def org_schema():
+    s = SITE
+    return {
+        "@type": ["Organization", "LocalBusiness"],
+        "@id": abs_url("#organizacion"),
+        "name": s["name"],
+        "legalName": s["legal_name"],
+        "alternateName": "GENEOS Cooperativa de Software Libre",
+        "url": abs_url(),
+        "logo": abs_url("assets/img/favicon-192.png"),
+        "image": abs_url("assets/img/og-geneos.webp"),
+        "description": "Cooperativa de trabajo de software libre que desarrolla software de gestión, aplicaciones, sitios web y plataformas e-learning.",
+        "email": s["email"],
+        "telephone": s["phone"],
+        "address": {"@type": "PostalAddress", "streetAddress": s["street"], "addressLocality": s["city"],
+                    "addressRegion": s["province"], "postalCode": s["postal_code"], "addressCountry": s["country"]},
+        "hasMap": s["maps"],
+        "areaServed": [{"@type": "Country", "name": "Argentina"}, {"@type": "Place", "name": "Latinoamérica"}],
+        "knowsAbout": ["Software libre", "Odoo", "ERP", "Django", "Python", "WordPress", "Moodle", "Angular",
+                       "React Native", "Desarrollo web", "Diseño UX/UI", "Staff augmentation"],
+        "memberOf": {"@type": "Organization", "name": "FACTTIC", "url": "https://facttic.org.ar/"},
+        "sameAs": [href for _, href, _ in s["social"]],
+        "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "telephone": s["phone"],
+                         "email": s["email"], "availableLanguage": ["es"], "areaServed": ["AR", "419"]},
+    }
+
+
 def build():
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -126,17 +235,24 @@ def build():
 
     env = Environment(loader=FileSystemLoader(ROOT / "templates"),
                       autoescape=select_autoescape(["html"]), trim_blocks=True, lstrip_blocks=True)
-    env.globals.update(site=SITE, url=url, asset=asset, img=img, icon=icon, wa=wa,
-                       year=date.today().year, site_url=SITE_URL)
+    env.globals.update(site=SITE, url=url, asset=asset, img=img, icon=icon, wa=wa, jsonld=jsonld,
+                       abs_url=abs_url, year=date.today().year, site_url=SITE_URL, org_schema=org_schema, crumbs_schema=crumbs_schema, faq_entities=faq_entities, service_items=service_items,
+                       pages=PAGE_BY_OUT)
 
-    for tpl, out, title, desc in PAGES:
+    for page in PAGES:
+        out = page["out"]
         target = OUT / out if out.endswith(".html") else OUT / out / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
-        html = env.get_template(tpl).render(title=title, description=desc,
-                                             path="/" + (out if not out.endswith(".html") else ""),
-                                             canonical=f"{SITE_URL}/{out}" if not out.endswith(".html") else None)
+        crumbs = breadcrumbs(page)
+        html = env.get_template(page["tpl"]).render(
+            page=page, title=page["title"], description=page["description"],
+            path="/" + (out if not out.endswith(".html") else ""),
+            canonical=None if page.get("noindex") else abs_url(out),
+            og_image=abs_url("assets/img/" + page.get("og", "og-geneos.webp")),
+            crumbs=crumbs,
+        )
         target.write_text(html)
-        print("✓", target.relative_to(ROOT))
+        print("✓", target.relative_to(ROOT), f"({len(page['title'])} / {len(page['description'])} car.)")
 
     # Redirecciones
     lines = [f"{old} {url(new)} 301" for old, new in REDIRECTS.items()]
@@ -149,10 +265,12 @@ def build():
     (OUT / ".htaccess").write_text("\n".join(ht) + "\n")
 
     # sitemap + robots
-    urls = "\n".join(f"  <url><loc>{SITE_URL}/{out}</loc></url>" for _, out, *_ in PAGES if not out.endswith(".html"))
+    urls = "\n".join(
+        f"  <url><loc>{abs_url(p['out'])}</loc><lastmod>{TODAY}</lastmod><priority>{p.get('priority', '0.5')}</priority></url>"
+        for p in PAGES if not p.get("noindex"))
     (OUT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
-    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {CANONICAL_URL}/sitemap.xml\n")
 
 
 if __name__ == "__main__":

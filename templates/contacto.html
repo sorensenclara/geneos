@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% block schema %}
+{{ jsonld({"@context": "https://schema.org", "@type": "ContactPage", "url": abs_url(page.out), "name": title, "about": {"@id": abs_url("#organizacion")}}) }}
+{% endblock %}
 {% block content %}
 <section class="page-hero">
   <div class="container">
     {{ icon('ui-envelope-open') }}
     <div>
       <h1>CONTACTO</h1>
-      <p>Descubrí soluciones digitales con tecnologías libres: Odoo, WordPress, Moodle y más. ¡Escribinos!</p>
+      <p>Hablemos de tu proyecto: software de gestión Odoo, sitios web, apps, Moodle y diseño. ¡Escribinos!</p>
     </div>
   </div>
 </section>
@@ -14,13 +17,14 @@
 <section class="section theme-blue">
   <div class="container split contact-split">
     <div>
-      <h2 class="section-title">Hablemos</h2>
+      <h2 class="section-title">Hablemos de tu proyecto</h2>
       <p>Somos un equipo especializado en el desarrollo de soluciones digitales con tecnologías libres como <strong>Odoo</strong>, <strong>WordPress</strong>, <strong>Moodle</strong>, <strong>Django</strong>, entre otras. Nos enfocamos en crear plataformas que sean accesibles, sostenibles y adaptadas a cada necesidad.</p>
       <ul class="contact-list">
         <li><a href="{{ wa() }}" target="_blank" rel="noopener">{{ icon('ui-whatsapp') }} {{ site.whatsapp_label }}</a></li>
         <li><a href="mailto:{{ site.email }}">{{ icon('ui-mail') }} {{ site.email }}</a></li>
         <li><a href="{{ site.maps }}" target="_blank" rel="noopener">{{ icon('ui-map') }} {{ site.address }}, {{ site.region }}</a></li>
       </ul>
+      <p style="margin-top:20px">Respondemos consultas de toda Argentina y Latinoamérica. Trabajamos de forma remota y, si estás en Tandil, también podemos reunirnos en persona.</p>
     </div>
     {{ m.contact_form("full") }}
   </div>

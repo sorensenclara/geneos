@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% set FAQS = [
+  ("¿Qué incluye el diseño de una identidad visual?", "<p>Diseñamos el isologotipo y definimos la paleta de colores, la tipografía y los elementos gráficos de tu marca. Lo reunimos en un <strong>manual de marca</strong> para que cualquier pieza mantenga la coherencia (podés ver el <a href=\"" ~ url('/recursos-graficos/') ~ "\">manual de marca de GENEOS</a> como ejemplo).</p>"),
+  ("¿Qué es el diseño UX/UI?", "<p>UX (experiencia de usuario) es pensar cómo las personas usan tu sitio o aplicación para que encuentren lo que buscan sin esfuerzo. UI (interfaz de usuario) es el diseño visual de cada pantalla. Trabajamos ambos antes de desarrollar.</p>"),
+  ("¿Pueden diseñar y también desarrollar el sitio?", "<p>Sí. El mismo equipo diseña y <a href=\"" ~ url('/desarrollo-apps-sitios-web-cooperativos/') ~ "\">desarrolla tu sitio web o tu app</a> con WordPress, Odoo, Django o Moodle, así el resultado final respeta el diseño al detalle.</p>"),
+  ("¿Hacen piezas para redes sociales y comunicación?", "<p>Sí. Ideamos la estrategia de comunicación y diseñamos las piezas para que tu marca tenga sinergia en todos los canales: web, redes, presentaciones e impresos.</p>"),
+] %}
+{% block schema %}
+{{ m.faq_schema(FAQS) }}
+{{ m.service_schema("Diseño web, identidad visual y comunicación", "Diseño gráfico y web", "Diseño de sitios web UX/UI, isologotipos, identidades visuales, manuales de marca y estrategia de comunicación digital.") }}
+{% endblock %}
 {% block content %}
-{{ m.service_hero("green", "diseno", "Diseño &amp;<br>Comunicación", "Diseño de Sitios Web e Identidades Visuales, la clave para <strong>destacarte</strong> y <strong>conectar</strong>.", "design") }}
+{{ m.service_hero("green", "diseno", "Diseño web &amp;<br>identidad visual", "Diseño de Sitios Web e Identidades Visuales, la clave para <strong>destacarte</strong> y <strong>conectar</strong>.", "design") }}
 
 <section class="section theme-white" id="design">
   <div class="container">
+    {{ m.section_head("DISEÑO Y COMUNICACIÓN", "Diseñamos marcas y sitios que conectan") }}
     <p class="prose">En <strong>Geneos</strong> nos especializamos en el <strong>diseño de sitios web e identidades visuales</strong> utilizando tecnologías libres como WordPress, Odoo y Moodle. Ya sea que necesites un sitio web funcional, una tienda online o una nueva identidad para tu marca, trabajamos para crear soluciones digitales únicas y sostenibles que representen lo mejor de tu proyecto.</p>
     <div class="flip-grid" style="margin-top:48px">
       {% for ic, title, text, link in [
@@ -19,6 +30,19 @@
         </div>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section theme-gray-light">
+  <div class="container text-block two-col" style="max-width:none">
+    <div>
+      <h2>Diseño web UX/UI</h2>
+      <p>Un buen sitio no solo se ve bien: se entiende rápido, funciona en el celular y lleva a las personas a hacer lo que necesitan, ya sea comprar, consultar o inscribirse. Diseñamos la <strong>experiencia y la interfaz</strong> de sitios institucionales, tiendas online, plataformas educativas y sistemas de gestión.</p>
+    </div>
+    <div>
+      <h2>Identidad visual y branding</h2>
+      <p>Creamos <strong>isologotipos, paletas, tipografías y manuales de marca</strong> para cooperativas, pymes, instituciones y emprendimientos. Diseñamos también la identidad de nuestros propios productos, como GERP y GEMA, y acompañamos su comunicación digital.</p>
     </div>
   </div>
 </section>
@@ -42,4 +66,8 @@
     ("2024/03/Colegio-de-Trabajadores-Sociales.png", "https://catspba.org.ar/"), ("2024/03/CINEA.png", "https://cinea.fch.unicen.edu.ar/"), "2024/03/CIEP.png",
   ]) }}
 </section>
+
+{{ m.faq(FAQS, "Preguntas frecuentes sobre diseño") }}
+{{ m.cta("¿Renovamos tu marca o tu sitio?", "Contanos sobre tu proyecto y te proponemos cómo comunicarlo mejor.", "Hola, quiero consultar por diseño web o identidad visual", "Escribinos por WhatsApp", "theme-green") }}
+{{ m.related("/diseno-sitios-web-identidades/") }}
 {% endblock %}
