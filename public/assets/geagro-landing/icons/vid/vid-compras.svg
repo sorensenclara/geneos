@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-44fc3e92-912f-45c1-b679-fe452177b44e" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 102.24 102.59">
+  <defs>
+    <linearGradient id="uuid-224ca8bd-efb7-400a-ab30-b16c9826b333" data-name="Degradado sin nombre 10" x1="15.99" y1="51.1" x2="86.31" y2="51.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#118237"/>
+      <stop offset="1" stop-color="#17c874"/>
+    </linearGradient>
+    <linearGradient id="uuid-2ddbdf11-6ffc-4bff-b34c-de677e7a013c" data-name="Degradado sin nombre 10" x1="18.45" y1="49.47" x2="86.31" y2="49.47" xlink:href="#uuid-224ca8bd-efb7-400a-ab30-b16c9826b333"/>
+    <linearGradient id="uuid-070427fe-b0f4-4b0f-9237-3b0391eb3ef4" data-name="Degradado sin nombre 11" x1="22.29" y1="51.1" x2="80" y2="51.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6b3f6e"/>
+      <stop offset="1" stop-color="#9a83c9"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <rect x=".05" width="102.19" height="102.19" rx="6.2" ry="6.2" fill="#f9f9f9"/>
+    <path d="M79.5,24.92l-26.28-1.17-10.51,1.75-21.75-2.09L0,35.39l.05,60.6c0,3.43,2.78,6.2,6.2,6.2l65.94.4,13.53-29.59-2.27-23.31-.16-16.01-3.8-8.76Z" fill="#1d1d1b" opacity=".05"/>
+    <path d="M31.94,67.05h12.81c1.74,0,3.15-1.41,3.15-3.15s-1.41-3.15-3.15-3.15h-12.81c-1.74,0-3.15,1.41-3.15,3.15h0c0,.85.33,1.64.92,2.23.59.59,1.39.92,2.22.92ZM30.34,63.9h0Z" fill="#9a83c9"/>
+    <path d="M76.75,22.34H25.54c-5.26,0-9.55,4.29-9.55,9.55v38.41c0,5.26,4.29,9.55,9.55,9.55h51.21c5.26,0,9.55-4.29,9.55-9.55V31.89c0-5.26-4.29-9.55-9.55-9.55ZM80,35.14v35.16c0,1.79-1.46,3.25-3.25,3.25H25.54c-1.79,0-3.25-1.46-3.25-3.25V31.89c0-1.79,1.46-3.25,3.25-3.25h51.21c1.79,0,3.25,1.46,3.25,3.25v3.25Z" fill="url(#uuid-224ca8bd-efb7-400a-ab30-b16c9826b333)"/>
+    <path d="M76.75,22.34H25.54c-2.81,0-5.34,1.24-7.09,3.19l5,3.9c.57-.48,1.29-.78,2.09-.79h51.21c1.79,0,3.25,1.46,3.25,3.25v38.41c0,.95-.42,1.8-1.08,2.4l4.99,3.89c1.48-1.68,2.39-3.88,2.39-6.29V31.89c0-5.26-4.29-9.55-9.55-9.55Z" fill="url(#uuid-2ddbdf11-6ffc-4bff-b34c-de677e7a013c)"/>
+    <g>
+      <rect x="22.29" y="47.94" width="57.71" height="6.3" fill="url(#uuid-070427fe-b0f4-4b0f-9237-3b0391eb3ef4)"/>
+      <rect x="22.29" y="35.14" width="57.71" height="6.3" fill="#9a83c9"/>
+    </g>
+  </g>
+  <path d="M96.04,97.72H6.25c-3.43,0-6.2-2.78-6.2-6.2v4.48c0,3.43,2.78,6.2,6.2,6.2h89.78c3.43,0,6.2-2.78,6.2-6.2v-4.48c0,3.43-2.78,6.2-6.2,6.2Z" fill="#282828" opacity=".15"/>
+</svg>

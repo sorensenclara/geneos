@@ -29,109 +29,12 @@
   "featureList": ["Campos, lotes y cuarteles", "Plan técnico", "Variables climáticas", "Alertas agronómicas", "Labores y órdenes de trabajo", "Insumos, compras e inventario", "Acopio propio y en terceros", "Transporte", "Rendimientos y costos"],
   "offers": offers}) }}
 {% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ asset('geagro-landing/css/geagro.css') }}">{% endblock %}
 {% block body_class %}page-geagro{% endblock %}
 {% block content %}
-<section class="geagro-hero">
-  <div class="container">
-    <img class="geagro-logo" src="{{ img('geagro/logo-geagro-white.svg') }}" alt="GEAGRO" width="320" height="68">
-    <h1>Software agropecuario para <strong>mejores decisiones</strong></h1>
-    <p>GEAGRO ordena la información de tu campo o tu viñedo y te indica <strong>qué hacer, cuándo hacerlo y con qué prioridad</strong>.</p>
-    <div class="btn-row">
-      <a class="btn btn-geagro" href="{{ wa('Hola, quiero solicitar una demo de GEAGRO') }}" target="_blank" rel="noopener">Solicitar demo</a>
-      <a class="btn btn-outline" href="#versiones">Conocer las versiones</a>
-    </div>
-  </div>
-  {{ m.scroll_down("como-funciona") }}
-</section>
-
-<section class="section theme-white" id="como-funciona">
-  <div class="container">
-    {{ m.section_head("CÓMO FUNCIONA", "Del dato técnico a la acción", "Un sistema de gestión agropecuaria simple y conectado, desde la planificación hasta los resultados.") }}
-    <ol class="steps geagro-steps">
-      {% for t, d in [("Registrá", "Datos productivos y climáticos."), ("Planificá", "Labores y estrategias."), ("Ejecutá", "Y gestioná las operaciones."), ("Analizá", "Rendimientos, costos y resultados.")] %}
-      <li><span class="step-n">{{ "%02d"|format(loop.index) }}</span><h3>{{ t }}</h3><p>{{ d }}</p></li>
-      {% endfor %}
-    </ol>
-  </div>
-</section>
-
-<section class="section theme-geagro" id="versiones">
-  <div class="container">
-    {{ m.section_head("VERSIONES", "Software agrícola y gestión de viñedos: una plataforma, dos versiones") }}
-    <div class="geagro-versions">
-      {% for key, name, photo, alt, text, feats, href in [
-        ("cereales", "GEAGRO CEREALES", "geagro-cereales.webp", "Campo de cultivos en una zona rural",
-         "Para productores y equipos técnicos que necesitan planificar, ejecutar y controlar cada <strong>campaña agrícola</strong>. Resuelve la gestión de campos, lotes y campañas, con insumos y labores en un solo sistema, desde la planificación hasta el análisis final, con <strong>trazabilidad del grano</strong> en silos propios y en acopiadores.",
-         ["Campos y lotes", "Plan técnico", "Variables climáticas", "Labores", "Insumos", "Compras e inventario", "Acopio", "Transporte", "Indicadores y alertas", "Rendimientos y costos"], "https://geagro.ar/cereales/"),
-        ("vid", "GEAGRO VID", "geagro-vid.webp", "Viñedo en un día soleado",
-         "Gestión de <strong>viñedos</strong> para productores y equipos técnicos que necesitan interpretar información <strong>climática, fenológica y sanitaria</strong>. Detecta riesgos, genera alertas agronómicas y prioriza acciones para actuar a tiempo en cada etapa del cultivo.",
-         ["Viñedos y cuarteles", "Plan técnico del viñedo", "Clima y variables productivas", "Labores", "Insumos", "Compras e inventario", "Indicadores y alertas", "Rendimientos y costos"], "https://geagro.ar/vid/"),
-      ] %}
-      <article class="geagro-card">
-        <img class="geagro-card-photo" src="{{ img('geagro/' ~ photo) }}" alt="{{ alt }}" loading="lazy" width="1200" height="800">
-        <div class="geagro-card-body">
-          <div class="geagro-card-title">
-            <img src="{{ img('geagro/Isologo-geagro-' ~ key ~ '.svg') }}" alt="" width="56" height="56" loading="lazy">
-            <h3>{{ name }}</h3>
-          </div>
-          <p>{{ text|safe }}</p>
-          <ul class="geagro-tags">{% for f in feats %}<li>{{ f }}</li>{% endfor %}</ul>
-          <div class="btn-row">
-            <a class="btn btn-geagro" href="{{ href }}" target="_blank" rel="noopener">Conocer {{ name }}</a>
-            <a class="btn btn-outline-dark" href="{{ wa('Hola, quiero solicitar una demo de ' ~ name) }}" target="_blank" rel="noopener">Solicitar demo →</a>
-          </div>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="section theme-white">
-  <div class="container text-block">
-    <h2>Un software de gestión agropecuaria pensado para productores reales</h2>
-    <p>No todos los productores trabajan de la misma manera. GEAGRO se adapta a las posibilidades de gestión de información de <strong>pequeños y medianos productores</strong>, para que sepan qué hacer, cuándo hacerlo y tengan información para tomar mejores decisiones.</p>
-    <p>Integra en un solo lugar <strong>lotes, clima, labores, insumos, acopio, costos y rendimientos</strong>. El sistema analiza la información y genera alertas, órdenes de trabajo e indicadores, para que el equipo técnico y el productor trabajen sobre los mismos datos durante toda la campaña.</p>
-    <ul>
-      <li><strong>Menos planillas y más control:</strong> toda la campaña en un solo sistema, desde la planificación hasta el análisis final.</li>
-      <li><strong>Decisiones a tiempo:</strong> alertas agronómicas a partir de las condiciones climáticas y el estado del cultivo.</li>
-      <li><strong>Costos claros:</strong> inversión estimada contra real y rendimiento por lote o cuartel.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="section theme-gray-light" id="planes">
-  <div class="container">
-    {{ m.section_head("PLANES", "Elegí la versión de GEAGRO que mejor se adapte a tu gestión", "Conocé nuestros planes y coordiná una demo para encontrar la opción adecuada para tu establecimiento.") }}
-    <div class="pricing geagro-pricing">
-      {% for name, price, num, impl in PLANS %}
-      <article class="price-card geagro-price{{ ' featured' if loop.last }}">
-        <header><h3>GEAGRO {{ name|upper }}</h3><p>Abono mensual</p></header>
-        <div class="price"><strong><sup>$</sup>{{ price }}</strong><span>+ IVA por mes</span></div>
-        <footer>
-          <small style="margin:0 0 16px">Implementación: $ {{ impl }} + IVA (pago único)</small>
-          <a class="btn btn-geagro" href="{{ wa('Hola, quiero solicitar una demo de GEAGRO ' ~ name) }}" target="_blank" rel="noopener">Solicitar demo →</a>
-        </footer>
-      </article>
-      {% endfor %}
-    </div>
-    <p class="note">Precios en pesos argentinos.</p>
-  </div>
-</section>
-
-<section class="section theme-white">
-  <div class="container media-text">
-    <img src="{{ img('geagro/geagro-geneos.webp') }}" alt="Campo cultivado al atardecer" loading="lazy" width="1200" height="800">
-    <div class="text-block">
-      {{ m.eyebrow("NOSOTROS") }}
-      <h2>GEAGRO es tecnología para el agro, creada por GENEOS</h2>
-      <p>Somos una cooperativa de software de Tandil formada por profesionales de Tecnología, Económicas, Comunicación y Diseño. Hace más de 10 años desarrollamos <strong>soluciones informáticas con software libre</strong>, acompañando cada proyecto desde el análisis hasta su implementación.</p>
-      <p>GEAGRO nace de esa experiencia: software para el agro, pensado para la gestión agropecuaria de pequeños y medianos productores. Conocé también nuestro <a href="{{ url('/software-de-gestion-completo/') }}">software de gestión GERP</a> para la administración de tu empresa.</p>
-    </div>
-  </div>
-</section>
-
-{{ m.faq(FAQS, "Preguntas frecuentes sobre GEAGRO", "SOFTWARE AGROPECUARIO") }}
-{{ m.cta("Ordená tu producción. Tomá decisiones con información real.", "Coordinamos una demo para conocer tu establecimiento y mostrarte la versión que mejor se ajusta. Más información en <a href=\"https://geagro.ar/\" style=\"color:inherit\">geagro.ar</a>.", "Hola, quiero solicitar una demo de GEAGRO", "Solicitar demo", "theme-geagro-dark") }}
+<div class="geagro-scope">
+{% include "partials/geagro-landing.html" %}
+</div>
 {{ m.related("/software-agropecuario-geagro/") }}
+<script src="{{ asset('geagro-landing/js/geagro.js') }}" defer></script>
 {% endblock %}

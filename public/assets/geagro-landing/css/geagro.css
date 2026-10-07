@@ -1,0 +1,536 @@
+/* Estilos de la landing de GEAGRO (geagro.ar), aislados bajo .geagro-scope y con clases ga-*.
+   Generado por tools/geagro_import.py: no editar a mano, re-importar. */
+/* =========================================================
+   GEAGRO · Landing (Nosotros, Versiones, CTA, FAQ, Brochure, Demo)
+   GENEOS Coop
+   ========================================================= */
+
+/* ---------- Tipografía local: Titillium Web (SIL OFL, ver assets/fonts/OFL-titillium-web.txt) ---------- */
+
+
+
+
+.geagro-scope {
+  --geagro-purple-900: #3f2642;
+  --geagro-purple-700: #6b3f6e;
+  --geagro-purple-500: #906693;
+  --geagro-purple-50:  #f5eef5;
+
+  --geagro-green-950: #062817;
+  --geagro-green-900: #0b3422;
+  --geagro-green-700: #113f2a;
+  --geagro-green-600: #118237;
+  --geagro-green-500: #1e7d3b;
+  --geagro-green-400: #22b24c;
+  --geagro-green-100: #e6f3e7;
+  --geagro-green-50:  #f2faf2;
+
+  --geagro-sun: #f2c300;
+  --geagro-sun-700: #b58f00;
+  --geagro-sun-50: #fdf8e1;
+
+  --text: #16221a;
+  --muted: #4f5f55;
+  --bg: #f7faf4;
+  --white: #ffffff;
+  --border: #dce8d7;
+  --footer: #000000;
+
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 10px 24px rgba(15, 23, 42, .06);
+  --shadow-md: 0 18px 50px rgba(15, 23, 42, .16);
+
+  --font: "Titillium Web", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ---------- base ---------- */
+.geagro-scope *, .geagro-scope *::before, .geagro-scope *::after { box-sizing: border-box; }
+.geagro-scope { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { .geagro-scope { scroll-behavior: auto; } .geagro-scope * { transition: none !important; } }
+.geagro-scope { margin: 0; font-family: var(--font); font-size: 17px; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
+.geagro-scope img, .geagro-scope svg { display: block; max-width: 100%; }
+.geagro-scope a { color: inherit; text-decoration: none; }
+.geagro-scope h1, .geagro-scope h2, .geagro-scope h3 { margin: 0; line-height: 1.12; text-wrap: balance; font-weight: 700; }
+.geagro-scope h1 { font-size: clamp(2.1rem, 4.4vw, 3.3rem); }
+.geagro-scope h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); color: var(--geagro-green-900); }
+.geagro-scope h3 { font-size: 1.4rem; }
+.geagro-scope p { margin: 0; }
+.geagro-scope :focus-visible { outline: 3px solid var(--geagro-sun); outline-offset: 3px; border-radius: 6px; }
+.geagro-scope .ga-container { width: min(1170px, calc(100% - 40px)); margin: 0 auto; }
+.geagro-scope .ga-section { padding-block: clamp(64px, 8vw, 104px); }
+.geagro-scope .ga-section-soft { background: var(--geagro-green-50); }
+.geagro-scope .ga-section-head { display: grid; gap: 12px; margin-bottom: 40px; max-width: 720px; }
+.geagro-scope .ga-eyebrow { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--geagro-green-500); }
+.geagro-scope .ga-eyebrow-light { color: var(--geagro-sun); }
+
+/* ---------- botones ---------- */
+.geagro-scope .ga-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; font: 700 .92rem var(--font); letter-spacing: .04em; text-transform: uppercase; padding: .95em 1.7em; border-radius: var(--radius-pill); border: 2px solid transparent; cursor: pointer; transition: transform .15s, background-color .15s, color .15s; }
+.geagro-scope .ga-btn:hover { transform: translateY(-2px); }
+.geagro-scope .ga-btn svg { width: 1.2em; height: 1.2em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.geagro-scope .ga-btn-sm { padding: .7em 1.3em; }
+.geagro-scope .ga-btn-primary { background: var(--geagro-green-500); color: #fff; }
+.geagro-scope .ga-btn-primary:hover { background: var(--geagro-green-600); }
+.geagro-scope .ga-btn-outline-light { border-color: #fff; color: #fff; }
+.geagro-scope .ga-btn-outline-light:hover { background: #fff; color: var(--geagro-green-900); }
+.geagro-scope .ga-btn-sun { background: var(--geagro-sun); color: var(--geagro-green-950); }
+.geagro-scope .ga-btn-campo { background: var(--geagro-green-500); color: #fff; }
+.geagro-scope .ga-btn-vid { background: var(--geagro-purple-700); color: #fff; }
+
+/* ---------- header ---------- */
+.geagro-scope .ga-site-header { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.96); backdrop-filter: blur(16px); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+.geagro-scope .ga-nav { min-height: 82px; display: flex; align-items: center; gap: 24px; }
+.geagro-scope .ga-brand img { width: 200px; height: auto; }
+.geagro-scope .ga-menu { margin-left: auto; display: flex; align-items: center; gap: 26px; font-weight: 700; font-size: .84rem; text-transform: uppercase; letter-spacing: .04em; }
+.geagro-scope .ga-menu > a, .geagro-scope .ga-dropdown-toggle { white-space: nowrap; }
+.geagro-scope .ga-menu > a:not(.ga-btn), .geagro-scope .ga-dropdown-toggle { color: #2f3a33; padding: 6px 0; border-bottom: 2px solid transparent; }
+.geagro-scope .ga-menu > a:not(.ga-btn):hover, .geagro-scope .ga-dropdown-toggle:hover { color: var(--geagro-green-500); border-bottom-color: var(--geagro-green-500); }
+.geagro-scope .ga-dropdown { position: relative; }
+.geagro-scope .ga-dropdown-toggle { font: inherit; text-transform: inherit; letter-spacing: inherit; background: none; border-top: 0; border-left: 0; border-right: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+.geagro-scope .ga-dropdown-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; transition: transform .2s; }
+.geagro-scope .ga-dropdown.ga-is-open .ga-dropdown-toggle svg { transform: rotate(180deg); }
+.geagro-scope .ga-dropdown-menu { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%); width: 320px; background: #fff; border-radius: var(--radius-sm); box-shadow: var(--shadow-md); padding: 10px; display: grid; gap: 4px; text-transform: none; letter-spacing: 0; }
+.geagro-scope .ga-dropdown-menu[hidden] { display: none; }
+.geagro-scope .ga-dd-item { display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: 12px; }
+.geagro-scope .ga-dd-item img { width: 40px; height: 40px; flex: none; }
+.geagro-scope .ga-dd-item strong { display: block; font-size: 1rem; line-height: 1.2; }
+.geagro-scope .ga-dd-item small { display: block; font-weight: 400; font-size: .86rem; color: var(--muted); line-height: 1.3; }
+.geagro-scope .ga-dd-campo:hover { background: var(--geagro-sun-50); } .geagro-scope .ga-dd-campo strong { color: var(--geagro-green-500); }
+.geagro-scope .ga-dd-vid:hover { background: var(--geagro-purple-50); } .geagro-scope .ga-dd-vid strong { color: var(--geagro-purple-700); }
+.geagro-scope .ga-menu-toggle { display: none; margin-left: auto; width: 44px; height: 44px; background: none; border: 0; cursor: pointer; padding: 10px; }
+.geagro-scope .ga-menu-toggle span { display: block; height: 2px; background: var(--geagro-green-900); margin: 5px 0; border-radius: 2px; }
+
+@media (max-width: 1140px) {
+.geagro-scope .ga-menu-toggle { display: block; }
+.geagro-scope .ga-menu { display: none; position: absolute; top: 82px; left: 0; right: 0; background: #fff; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px 20px 22px; box-shadow: 0 12px 24px rgba(0,0,0,.08); }
+.geagro-scope .ga-menu.ga-is-open { display: flex; }
+.geagro-scope .ga-menu > a:not(.ga-btn), .geagro-scope .ga-dropdown-toggle { padding: 12px 0; border-bottom: 1px solid var(--border); width: 100%; }
+.geagro-scope .ga-dropdown-menu { position: static; transform: none; width: auto; box-shadow: none; padding: 4px 0 8px; }
+.geagro-scope .ga-menu .ga-btn { margin-top: 12px; }
+}
+
+/* ---------- hero ---------- */
+.geagro-scope .ga-hero { position: relative; color: #fff; padding-block: clamp(64px, 9vw, 120px); background: linear-gradient(90deg, rgba(6,40,23,.92) 0%, rgba(6,40,23,.72) 45%, rgba(6,40,23,.25) 100%), url("../images/shared/hero.jpg") center / cover no-repeat;
+  background-image: linear-gradient(90deg, rgba(6,40,23,.92) 0%, rgba(6,40,23,.72) 45%, rgba(6,40,23,.25) 100%), image-set(url("../images/shared/hero-1920.avif") type("image/avif"), url("../images/shared/hero-1920.webp") type("image/webp"), url("../images/shared/hero.jpg") type("image/jpeg")); overflow: hidden; }
+.geagro-scope .ga-hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
+.geagro-scope .ga-hero-copy { display: grid; gap: 22px; min-width: 0; }
+.geagro-scope .ga-hero h1 { color: #fff; }
+.geagro-scope .ga-hl { color: var(--geagro-sun); }
+.geagro-scope .ga-hero-lead { font-size: 1.15rem; max-width: 52ch; color: rgba(255,255,255,.88); }
+.geagro-scope .ga-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* Wordmark de versión (el SVG de CAMPO todavía dice CEREALES) */
+.geagro-scope .ga-wm { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.25rem; letter-spacing: .01em; color: var(--geagro-sun-700); line-height: 1; }
+.geagro-scope .ga-wm em { font-style: normal; color: var(--geagro-green-500); margin-left: -8px; }
+.geagro-scope .ga-wm b { font-weight: 700; letter-spacing: .12em; font-size: .7em; }
+.geagro-scope .ga-wm-campo b { color: var(--geagro-green-500); }
+.geagro-scope .ga-wm-vid { color: var(--geagro-purple-700); } .geagro-scope .ga-wm-vid b { color: var(--geagro-purple-700); }
+.geagro-scope .ga-version-logo.ga-wm { font-size: 2.2rem; }
+.geagro-scope .ga-hero-media { position: relative; min-width: 0; padding-bottom: 16%; }
+.geagro-scope .ga-monitor img, .geagro-scope .ga-quote figcaption img { height: auto; }
+.geagro-scope .ga-modules img, .geagro-scope .ga-flow li img { height: auto; }
+.geagro-scope .ga-monitor { background: #111; border: 8px solid #1a1a1a; border-radius: 14px; box-shadow: 0 30px 70px rgba(0,0,0,.45); overflow: hidden; width: 88%; margin-left: auto; }
+.geagro-scope .ga-monitor-sm { position: absolute; left: 0; bottom: 0; width: 58%; border-width: 6px; }
+@media (max-width: 900px) { .geagro-scope .ga-hero-grid { grid-template-columns: 1fr; } .geagro-scope .ga-hero { background: linear-gradient(180deg, rgba(6,40,23,.9), rgba(6,40,23,.7)), url("../images/shared/hero.jpg") center / cover; background-image: linear-gradient(180deg, rgba(6,40,23,.9), rgba(6,40,23,.7)), image-set(url("../images/shared/hero-900.avif") type("image/avif"), url("../images/shared/hero-900.webp") type("image/webp"), url("../images/shared/hero.jpg") type("image/jpeg")); } }
+
+/* ---------- nosotros ---------- */
+
+.geagro-scope .ga-quote { margin: 0; background: var(--geagro-green-700); color: #fff; border-radius: 36px 36px 36px 8px; padding: 44px 36px 32px; position: relative; display: grid; gap: 24px; }
+.geagro-scope .ga-quote::before { content: "\201C"; position: absolute; top: -30px; left: 30px; font: 700 7rem/1 var(--font); color: var(--geagro-sun); }
+.geagro-scope .ga-quote blockquote { margin: 0; display: grid; gap: 10px; font-size: 1.18rem; line-height: 1.55; font-weight: 400; }
+.geagro-scope .ga-quote strong { font-weight: 700; }
+.geagro-scope .ga-quote figcaption { display: flex; align-items: center; gap: 14px; }
+.geagro-scope .ga-quote figcaption img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; }
+.geagro-scope .ga-quote figcaption b { display: block; font-size: 1.05rem; }
+.geagro-scope .ga-quote figcaption span { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: #cfe3d5; }
+
+/* ---------- versiones ---------- */
+.geagro-scope .ga-versions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.geagro-scope .ga-version-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; scroll-margin-top: 100px; }
+.geagro-scope .ga-version-campo .ga-version-cover { background-image: url("../images/cereales/campo-bg.jpg"); background-image: image-set(url("../images/cereales/campo-bg-900.avif") type("image/avif"), url("../images/cereales/campo-bg-900.webp") type("image/webp"), url("../images/cereales/campo-bg.jpg") type("image/jpeg")); }
+.geagro-scope .ga-version-vid .ga-version-cover { background-image: url("../images/vid/vid-bg.jpg"); background-image: image-set(url("../images/vid/vid-bg-900.avif") type("image/avif"), url("../images/vid/vid-bg-900.webp") type("image/webp"), url("../images/vid/vid-bg.jpg") type("image/jpeg")); }
+.geagro-scope .ga-version-cover { height: 190px; background-size: cover; background-position: center; position: relative; }
+.geagro-scope .ga-version-iso { position: absolute; left: 28px; bottom: -40px; width: 92px; height: 92px; background: #fff; border-radius: 50%; padding: 12px; box-shadow: var(--shadow-sm); }
+.geagro-scope .ga-version-body { padding: 56px 32px 32px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+.geagro-scope .ga-version-logo { align-self: flex-start; }
+.geagro-scope .ga-version-body > p { color: var(--muted); }
+.geagro-scope .ga-version-body > p strong { color: var(--text); }
+.geagro-scope .ga-modules { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+.geagro-scope .ga-modules li { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .95rem; line-height: 1.25; }
+.geagro-scope .ga-modules img { width: 40px; height: 40px; flex: none; }
+.geagro-scope .ga-version-body .ga-btn { margin-top: auto; align-self: flex-start; }
+.geagro-scope .ga-version-campo { border-top: 5px solid var(--geagro-sun); }
+.geagro-scope .ga-version-vid { border-top: 5px solid var(--geagro-purple-700); }
+@media (max-width: 900px) { .geagro-scope .ga-versions-grid { grid-template-columns: 1fr; } }
+@media (max-width: 460px) { .geagro-scope .ga-modules { grid-template-columns: 1fr; } .geagro-scope .ga-version-body { padding-inline: 22px; } }
+
+.geagro-scope .ga-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; counter-reset: paso; }
+.geagro-scope .ga-flow li { counter-increment: paso; position: relative; display: grid; gap: 10px; justify-items: start; }
+.geagro-scope .ga-flow li img { width: 64px; height: 64px; }
+.geagro-scope .ga-flow li span { font-weight: 600; line-height: 1.3; }
+.geagro-scope .ga-flow li span::before { content: counter(paso) ". "; color: var(--geagro-green-500); }
+.geagro-scope .ga-flow li:not(:last-child)::after { content: ""; position: absolute; top: 32px; left: 76px; right: -8px; border-top: 2px dashed #b9d3bd; }
+@media (max-width: 900px) { .geagro-scope .ga-flow { grid-template-columns: 1fr 1fr; } .geagro-scope .ga-flow li::after { display: none; } }
+
+/* ---------- CTA ---------- */
+.geagro-scope .ga-cta-band { background: var(--geagro-green-900); color: #fff; padding-block: clamp(56px, 7vw, 88px); position: relative; overflow: hidden; }
+.geagro-scope .ga-cta-band::after { content: ""; position: absolute; right: -70px; bottom: -70px; width: 260px; height: 260px; border-radius: 40px; background: var(--geagro-green-500); opacity: .35; transform: rotate(45deg); }
+.geagro-scope .ga-cta-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; position: relative; z-index: 1; }
+.geagro-scope .ga-cta-band h2 { color: #fff; }
+.geagro-scope .ga-cta-band p { color: #cfe3d5; margin-top: 12px; max-width: 54ch; }
+.geagro-scope .ga-cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-end; }
+@media (max-width: 860px) { .geagro-scope .ga-cta-grid { grid-template-columns: 1fr; } .geagro-scope .ga-cta-actions { justify-content: flex-start; } }
+
+/* ---------- FAQ ---------- */
+.geagro-scope .ga-faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; }
+.geagro-scope .ga-faq-head { display: grid; gap: 14px; align-content: start; }
+.geagro-scope .ga-faq-head > p:last-child { color: var(--muted); }
+.geagro-scope .ga-faq-list { display: grid; gap: 12px; min-width: 0; }
+.geagro-scope .ga-faq-list details { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0 22px; }
+.geagro-scope .ga-faq-list summary { list-style: none; cursor: pointer; padding: 18px 0; font-weight: 700; font-size: 1.06rem; display: flex; justify-content: space-between; gap: 16px; }
+.geagro-scope .ga-faq-list summary::-webkit-details-marker { display: none; }
+.geagro-scope .ga-faq-list summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--geagro-green-500); transition: transform .2s; }
+.geagro-scope .ga-faq-list details[open] summary::after { transform: rotate(45deg); }
+.geagro-scope .ga-faq-list details p { padding-bottom: 20px; color: var(--muted); }
+@media (max-width: 860px) { .geagro-scope .ga-faq { grid-template-columns: 1fr; gap: 28px; } }
+
+/* ---------- brochure + demo ---------- */
+.geagro-scope .ga-convert { display: grid; grid-template-columns: .85fr 1.15fr; gap: 28px; align-items: start; }
+.geagro-scope .ga-card { background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: clamp(24px, 3vw, 40px); display: grid; gap: 16px; min-width: 0; scroll-margin-top: 100px; }
+.geagro-scope .ga-card h2 { font-size: 1.9rem; }
+.geagro-scope .ga-card > p:not(.ga-eyebrow) { color: var(--muted); }
+.geagro-scope .ga-card .ga-btn { justify-self: start; }
+.geagro-scope .ga-brochure-file { display: flex; align-items: center; gap: 16px; background: var(--geagro-green-50); border-radius: var(--radius-sm); padding: 18px; }
+.geagro-scope .ga-brochure-file img { width: 56px; height: 56px; }
+.geagro-scope .ga-brochure-file b { display: block; font-size: 1.1rem; }
+.geagro-scope .ga-brochure-file span { color: var(--muted); font-size: .92rem; }
+.geagro-scope .ga-demo-form { display: grid; gap: 14px; }
+.geagro-scope .ga-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.geagro-scope .ga-demo-form label { display: grid; gap: 6px; font-weight: 600; font-size: .95rem; }
+.geagro-scope .ga-demo-form input, .geagro-scope .ga-demo-form textarea { font: 400 1rem var(--font); color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: .75em .9em; width: 100%; }
+.geagro-scope .ga-demo-form textarea { min-height: 100px; resize: vertical; }
+.geagro-scope .ga-demo-form input:focus, .geagro-scope .ga-demo-form textarea:focus { outline: 2px solid var(--geagro-green-500); outline-offset: 1px; }
+.geagro-scope .ga-radios { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.geagro-scope .ga-radios legend { font-weight: 600; font-size: .95rem; margin-bottom: 8px; padding: 0; }
+.geagro-scope .ga-radios label { display: flex; align-items: center; gap: 8px; border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 7px 16px; cursor: pointer; background: var(--bg); }
+.geagro-scope .ga-radios input { width: auto; accent-color: var(--geagro-green-500); }
+.geagro-scope .ga-form-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.geagro-scope .ga-form-status { font-size: .95rem; }
+.geagro-scope .ga-form-status.ga-ok { color: var(--geagro-green-500); }
+.geagro-scope .ga-form-status.ga-err { color: #b3261e; }
+@media (max-width: 860px) { .geagro-scope .ga-convert { grid-template-columns: 1fr; } }
+@media (max-width: 540px) { .geagro-scope .ga-row { grid-template-columns: 1fr; } }
+
+/* ---------- footer (formato geneos.coop.ar) ---------- */
+.geagro-scope .ga-site-footer { background: var(--footer); color: #fff; padding-block: 64px 36px; text-align: center; }
+.geagro-scope .ga-site-footer .ga-container { display: grid; justify-items: center; gap: 36px; }
+.geagro-scope .ga-footer-contact { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.geagro-scope .ga-footer-contact a { display: grid; justify-items: center; gap: 16px; font-weight: 700; font-size: 1.15rem; line-height: 1.3; }
+.geagro-scope .ga-footer-contact a:hover { color: var(--geagro-green-400); }
+.geagro-scope .ga-footer-contact svg { width: 44px; height: 44px; fill: currentColor; }
+.geagro-scope .ga-footer-contact svg.ga-stroke, .geagro-scope .ga-footer-social svg.ga-stroke { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+.geagro-scope .ga-footer-contact span { font-weight: 400; }
+.geagro-scope .ga-footer-contact span b { font-weight: 700; }
+.geagro-scope .ga-footer-social { display: flex; gap: 12px; margin-top: 16px; }
+.geagro-scope .ga-footer-social a { width: 44px; height: 44px; border: 2px solid #fff; border-radius: 50%; display: grid; place-items: center; transition: background-color .15s, color .15s; }
+.geagro-scope .ga-footer-social a:hover { background: #fff; color: #000; }
+.geagro-scope .ga-footer-social svg { width: 22px; height: 22px; fill: currentColor; }
+.geagro-scope .ga-footer-social .ga-dot { fill: currentColor; stroke: none; }
+.geagro-scope .ga-footer-credit { font-size: .78rem; font-weight: 600; letter-spacing: .02em; margin-top: -18px; }
+@media (max-width: 720px) { .geagro-scope .ga-footer-contact { grid-template-columns: 1fr; } }
+
+.geagro-scope .ga-floating-whatsapp { position: fixed; right: 22px; bottom: 22px; z-index: 50; width: 58px; height: 58px; border-radius: 50%; background: #25d366; color: #fff; display: grid; place-items: center; box-shadow: 0 10px 26px rgba(0,0,0,.25); transition: transform .15s; }
+.geagro-scope .ga-floating-whatsapp:hover { transform: scale(1.06); }
+.geagro-scope .ga-floating-whatsapp svg { width: 30px; height: 30px; fill: currentColor; }
+.geagro-scope .ga-wm-vid em { color: var(--geagro-green-500); }
+
+/* =========================================================
+   Páginas de versión: /campo/ y /vid/
+   ========================================================= */
+.geagro-scope .ga-hero-campo { background: linear-gradient(90deg, rgba(6,40,23,.94) 0%, rgba(6,40,23,.78) 50%, rgba(6,40,23,.35) 100%), url("../images/cereales/campo-bg.jpg") center / cover no-repeat;
+  background-image: linear-gradient(90deg, rgba(6,40,23,.94) 0%, rgba(6,40,23,.78) 50%, rgba(6,40,23,.35) 100%), image-set(url("../images/cereales/campo-bg-1600.avif") type("image/avif"), url("../images/cereales/campo-bg-1600.webp") type("image/webp"), url("../images/cereales/campo-bg.jpg") type("image/jpeg")); }
+.geagro-scope .ga-hero-vid { background: linear-gradient(90deg, rgba(40,20,42,.95) 0%, rgba(55,30,58,.8) 50%, rgba(40,20,42,.35) 100%), url("../images/vid/vid-bg.jpg") center / cover no-repeat;
+  background-image: linear-gradient(90deg, rgba(40,20,42,.95) 0%, rgba(55,30,58,.8) 50%, rgba(40,20,42,.35) 100%), image-set(url("../images/vid/vid-bg-1600.avif") type("image/avif"), url("../images/vid/vid-bg-1600.webp") type("image/webp"), url("../images/vid/vid-bg.jpg") type("image/jpeg")); }
+@media (max-width: 900px) {
+.geagro-scope .ga-hero-campo { background: linear-gradient(180deg, rgba(6,40,23,.92), rgba(6,40,23,.75)), url("../images/cereales/campo-bg.jpg") center / cover; background-image: linear-gradient(180deg, rgba(6,40,23,.92), rgba(6,40,23,.75)), image-set(url("../images/cereales/campo-bg-900.avif") type("image/avif"), url("../images/cereales/campo-bg-900.webp") type("image/webp"), url("../images/cereales/campo-bg.jpg") type("image/jpeg")); }
+.geagro-scope .ga-hero-vid { background: linear-gradient(180deg, rgba(40,20,42,.93), rgba(55,30,58,.78)), url("../images/vid/vid-bg.jpg") center / cover; background-image: linear-gradient(180deg, rgba(40,20,42,.93), rgba(55,30,58,.78)), image-set(url("../images/vid/vid-bg-900.avif") type("image/avif"), url("../images/vid/vid-bg-900.webp") type("image/webp"), url("../images/vid/vid-bg.jpg") type("image/jpeg")); }
+}
+.geagro-scope .ga-hero-media-single { padding-bottom: 0; }
+.geagro-scope .ga-hero-media-single .ga-monitor { width: 100%; }
+.geagro-scope .ga-hero-wm { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.6rem; line-height: 1; }
+.geagro-scope .ga-hero-wm img { width: 56px; height: 56px; background: #fff; border-radius: 50%; padding: 8px; }
+.geagro-scope .ga-hero-wm em { font-style: normal; color: var(--geagro-green-400); }
+.geagro-scope .ga-hero-wm b { letter-spacing: .14em; font-size: .7em; color: var(--geagro-sun); }
+.geagro-scope .ga-theme-vid .ga-hero-wm b { color: #e2c4e4; }
+.geagro-scope .ga-section-lead { color: var(--muted); font-size: 1.1rem; max-width: 64ch; }
+
+.geagro-scope .ga-features { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.geagro-scope .ga-features li { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; }
+.geagro-scope .ga-features img { width: 56px; height: auto; }
+.geagro-scope .ga-features h3 { font-size: 1.1rem; color: var(--geagro-green-900); margin-bottom: 6px; }
+.geagro-scope .ga-features p { color: var(--muted); font-size: .95rem; line-height: 1.5; }
+@media (max-width: 980px) { .geagro-scope .ga-features { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .geagro-scope .ga-features { grid-template-columns: 1fr; } }
+
+.geagro-scope .ga-split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.geagro-scope .ga-split-media { align-items: center; gap: 56px; }
+.geagro-scope .ga-split-media .ga-monitor { width: 100%; margin: 0; }
+@media (max-width: 900px) { .geagro-scope .ga-split, .geagro-scope .ga-split-media { grid-template-columns: 1fr; gap: 32px; } }
+.geagro-scope .ga-panel-card { background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: clamp(22px, 3vw, 34px); display: grid; gap: 18px; min-width: 0; }
+.geagro-scope .ga-panel-card h3 { display: flex; align-items: center; gap: 14px; font-size: 1.5rem; color: var(--geagro-green-900); }
+.geagro-scope .ga-panel-card h3 img { width: 52px; height: auto; }
+.geagro-scope .ga-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.geagro-scope .ga-checks li { position: relative; padding-left: 30px; display: grid; gap: 2px; }
+.geagro-scope .ga-checks li::before { content: ""; position: absolute; left: 0; top: .35em; width: 18px; height: 18px; border-radius: 50%; background: var(--geagro-green-500) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.geagro-scope .ga-checks b { color: var(--text); }
+.geagro-scope .ga-checks span { color: var(--muted); font-size: .95rem; }
+.geagro-scope .ga-stack { display: grid; gap: 18px; min-width: 0; }
+.geagro-scope .ga-stack-item h3 { color: var(--geagro-green-900); font-size: 1.2rem; margin-bottom: 4px; }
+.geagro-scope .ga-stack-item p { color: var(--muted); }
+.geagro-scope .ga-note { background: var(--geagro-purple-50); border-radius: var(--radius-sm); padding: 18px 20px; color: var(--text); }
+
+/* acentos VID */
+.geagro-scope .ga-theme-vid .ga-eyebrow { color: var(--geagro-purple-700); }
+.geagro-scope .ga-theme-vid .ga-checks li::before { background-color: var(--geagro-purple-700); }
+.geagro-scope .ga-theme-vid .ga-flow li span::before { color: var(--geagro-purple-700); }
+.geagro-scope .ga-theme-vid .ga-features h3, .geagro-scope .ga-theme-vid h2 { color: var(--geagro-purple-900); }
+.geagro-scope .ga-theme-vid .ga-cta-band { background: var(--geagro-purple-900); }
+.geagro-scope .ga-theme-vid .ga-cta-band::after { background: var(--geagro-purple-500); }
+.geagro-scope .ga-theme-vid .ga-cta-band h2 { color: #fff; }
+@media (max-width: 900px) { .geagro-scope .ga-flow[style] { grid-template-columns: 1fr 1fr !important; } }
+.geagro-scope .ga-version-actions { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.geagro-scope .ga-version-body .ga-version-actions .ga-btn { margin-top: 0; }
+.geagro-scope .ga-version-demo { font-weight: 700; color: var(--geagro-green-500); }
+.geagro-scope .ga-version-vid .ga-version-demo { color: var(--geagro-purple-700); }
+
+/* H1 del hero: siempre en 3 líneas (Software de gestión / agropecuaria para / mejores decisiones) */
+.geagro-scope .ga-hero-copy { container-type: inline-size; }
+.geagro-scope .ga-hero-title { font-size: min(3.3rem, 8.4cqi); }
+.geagro-scope .ga-hero-title > span { display: block; white-space: nowrap; width: fit-content; }
+
+/* Íconos de proceso (brochure) en páginas de versión */
+.geagro-scope .ga-page-version .ga-flow li img { width: 84px; height: 84px; object-fit: contain; }
+.geagro-scope .ga-page-version .ga-flow li:not(:last-child)::after { top: 42px; left: 96px; }
+.geagro-scope .ga-panel-card h3 img { width: 84px; height: 84px; object-fit: contain; }
+.geagro-scope .ga-panel-card h3 img.ga-wide { width: 124px; }
+.geagro-scope .ga-page-version .ga-flow { align-items: start; }
+.geagro-scope .ga-theme-vid .ga-flow li:not(:last-child)::after { border-top-color: #d6bfd8; }
+
+/* ---------- Cómo funciona (landing) ---------- */
+.geagro-scope .ga-how { background: #fff; }
+.geagro-scope .ga-how-grid { display: grid; grid-template-columns: minmax(300px, .95fr) 2.05fr; gap: 48px; align-items: start; }
+.geagro-scope .ga-how-head { display: grid; gap: 16px; align-content: start; }
+.geagro-scope .ga-how-head .ga-eyebrow { color: var(--muted); }
+.geagro-scope .ga-how-head h2 { font-size: clamp(2rem, 3vw, 2.6rem); }
+.geagro-scope .ga-how-dot { color: var(--geagro-sun); }
+.geagro-scope .ga-how-lead { color: var(--muted); font-size: 1.2rem; line-height: 1.45; max-width: 30ch; }
+.geagro-scope .ga-how-more { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; color: var(--geagro-green-500); margin-top: 8px; }
+.geagro-scope .ga-how-more span { transition: transform .15s; }
+.geagro-scope .ga-how-more:hover span { transform: translateX(4px); }
+.geagro-scope .ga-how-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.geagro-scope .ga-how-steps li { position: relative; display: grid; gap: 4px; align-content: start; min-width: 0; }
+.geagro-scope .ga-how-ico { width: 96px; height: 96px; border-radius: 50%; background: var(--geagro-green-50); display: grid; place-items: center; margin-bottom: 18px; color: var(--geagro-green-900); }
+.geagro-scope .ga-how-ico svg { width: 46px; height: 46px; fill: currentColor; }
+.geagro-scope .ga-how-num { font-weight: 700; font-size: 1.2rem; color: var(--geagro-green-500); letter-spacing: .02em; }
+.geagro-scope .ga-how-steps h3 { font-size: 1.35rem; color: var(--geagro-green-900); }
+.geagro-scope .ga-how-steps p { color: var(--muted); line-height: 1.4; }
+.geagro-scope .ga-how-steps li:not(:last-child)::after { content: "→"; position: absolute; top: 34px; left: calc(50% + 56px); font-size: 1.5rem; line-height: 1; color: var(--geagro-green-500); }
+@media (max-width: 1080px) { .geagro-scope .ga-how-grid { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 720px) {
+.geagro-scope .ga-how-steps { grid-template-columns: 1fr 1fr; row-gap: 36px; }
+.geagro-scope .ga-how-steps li::after { display: none; }
+}
+@media (max-width: 420px) { .geagro-scope .ga-how-steps { grid-template-columns: 1fr; } .geagro-scope .ga-how-steps li { grid-template-columns: 80px 1fr; column-gap: 16px; } .geagro-scope .ga-how-ico { width: 72px; height: 72px; grid-row: span 3; margin: 0; } .geagro-scope .ga-how-ico svg { width: 34px; height: 34px; } }
+
+/* ---------- Nosotros compacto ---------- */
+
+
+/* ---------- Brochure + cita al lado del formulario ---------- */
+.geagro-scope .ga-convert-side { display: grid; gap: 56px; min-width: 0; }
+.geagro-scope .ga-convert-side .ga-quote { margin-top: 10px; padding: 40px 30px 28px; }
+.geagro-scope .ga-convert-side .ga-quote blockquote { font-size: 1.05rem; }
+
+/* ---------- CTA con foto (landing) ---------- */
+.geagro-scope .ga-cta-photo { padding-block: clamp(64px, 8vw, 104px);
+  background: linear-gradient(90deg, rgba(6,40,23,.97) 0%, rgba(6,40,23,.9) 30%, rgba(6,40,23,.35) 58%, rgba(6,40,23,0) 78%), url("../images/shared/cta-productor.jpg") right 18% / cover no-repeat;
+  background-image: linear-gradient(90deg, rgba(6,40,23,.97) 0%, rgba(6,40,23,.9) 30%, rgba(6,40,23,.35) 58%, rgba(6,40,23,0) 78%), image-set(url("../images/shared/cta-productor.webp") type("image/webp"), url("../images/shared/cta-productor.jpg") type("image/jpeg")); background-position: 0 0, right 18%; }
+.geagro-scope .ga-cta-photo::after { display: none; }
+.geagro-scope .ga-cta-copy { position: relative; z-index: 1; display: grid; gap: 18px; max-width: 640px; }
+.geagro-scope .ga-cta-photo .ga-eyebrow { color: var(--geagro-sun); }
+@media (min-width: 861px) { .geagro-scope .ga-cta-photo h2 span { white-space: nowrap; } }
+.geagro-scope .ga-cta-photo h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.1; }
+.geagro-scope .ga-cta-photo h2 span { display: block; }
+.geagro-scope .ga-cta-photo p:not(.ga-eyebrow) { color: rgba(255,255,255,.88); font-size: 1.15rem; margin: 0; max-width: 44ch; }
+.geagro-scope .ga-cta-photo .ga-cta-actions { justify-content: flex-start; margin-top: 10px; }
+.geagro-scope .ga-btn-ghost-light { display: inline-flex; align-items: center; gap: 14px; padding: .95em 1.7em; border: 2px solid #fff; border-radius: var(--radius-pill); color: #fff; font-weight: 700; font-size: 1rem; transition: background-color .15s, color .15s; }
+.geagro-scope .ga-btn-ghost-light:hover { background: #fff; color: var(--geagro-green-900); }
+@media (max-width: 860px) {
+.geagro-scope .ga-cta-photo { background: linear-gradient(180deg, rgba(6,40,23,.93) 0%, rgba(6,40,23,.82) 60%, rgba(6,40,23,.6) 100%), url("../images/shared/cta-productor.jpg") 70% center / cover no-repeat; }
+}
+
+/* ---------- FAQ compacto (una abierta a la vez) ---------- */
+.geagro-scope .ga-faq { align-items: start; }
+.geagro-scope .ga-faq-head h2 { font-size: clamp(2rem, 3.4vw, 2.7rem); }
+.geagro-scope .ga-faq-head > p:not(.ga-eyebrow) { font-size: 1.15rem; line-height: 1.45; max-width: 30ch; color: var(--muted); }
+.geagro-scope .ga-faq-head .ga-eyebrow { color: var(--muted); }
+.geagro-scope .ga-faq-list { gap: 10px; }
+.geagro-scope .ga-faq-list details { border-radius: 12px; padding: 0 20px; box-shadow: 0 2px 10px rgba(15,23,42,.03); transition: border-color .15s; }
+.geagro-scope .ga-faq-list details[open] { border-color: #b9d3bd; }
+.geagro-scope .ga-faq-list summary { padding: 15px 0; font-weight: 400; font-size: 1.02rem; color: var(--text); align-items: center; }
+.geagro-scope .ga-faq-list details[open] summary { font-weight: 600; }
+.geagro-scope .ga-faq-list summary::after { font-weight: 400; flex: none; }
+.geagro-scope .ga-faq-list details p { padding-bottom: 18px; margin-top: -4px; }
+.geagro-scope .ga-faq-all { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; text-align: left; justify-self: start; }
+
+/* FAQ con fondo blanco para separarlo de Nosotros y de Brochure/Demo */
+.geagro-scope #faq { background: #fff; }
+
+/* ---------- Nosotros GENEOS (fondo bg-geneos + 3 datos) ---------- */
+.geagro-scope .ga-about-geneos { background: #f3f9f3 url("../images/backgrounds/bg-geneos.jpg") left bottom / cover no-repeat;
+  background-image: image-set(url("../images/backgrounds/bg-geneos.webp") type("image/webp"), url("../images/backgrounds/bg-geneos.jpg") type("image/jpeg")); }
+.geagro-scope .ga-about-g { display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: start; }
+.geagro-scope .ga-about-g-head { display: grid; gap: 14px; }
+.geagro-scope .ga-about-g-head h2 { font-size: clamp(2rem, 3.6vw, 3rem); line-height: 1.1; }
+.geagro-scope .ga-about-g-copy { display: grid; gap: 14px; color: var(--muted); font-size: 1.05rem; min-width: 0; }
+.geagro-scope .ga-about-g-copy strong { color: var(--text); }
+.geagro-scope .ga-about-stats { list-style: none; margin: 22px 0 8px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
+.geagro-scope .ga-about-stats li { display: grid; gap: 2px; align-content: start; padding: 0 28px; border-left: 1px solid #cfe0cf; }
+.geagro-scope .ga-about-stats li:first-child { padding-left: 0; border-left: 0; }
+.geagro-scope .ga-about-ico { width: 80px; height: 80px; border-radius: 50%; background: #e3f1e3; display: grid; place-items: center; margin-bottom: 14px; }
+.geagro-scope .ga-about-ico img { width: 42px; height: 42px; object-fit: contain; }
+.geagro-scope .ga-about-stats h3 { font-size: 1.2rem; color: var(--geagro-green-900); line-height: 1.2; }
+.geagro-scope .ga-about-stats p { font-size: 1rem; line-height: 1.4; color: var(--muted); }
+.geagro-scope .ga-about-close { margin-top: 12px; padding-top: 22px; position: relative; }
+.geagro-scope .ga-about-close::before { content: ""; position: absolute; top: 0; left: 0; width: 72px; height: 2px; background: #a9cfae; }
+@media (max-width: 960px) { .geagro-scope .ga-about-g { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 620px) {
+.geagro-scope .ga-about-stats { grid-template-columns: 1fr; gap: 22px; }
+.geagro-scope .ga-about-stats li { padding: 0; border-left: 0; grid-template-columns: 64px 1fr; column-gap: 16px; }
+.geagro-scope .ga-about-ico { width: 64px; height: 64px; margin: 0; grid-row: span 2; }
+.geagro-scope .ga-about-ico img { width: 34px; height: 34px; }
+}
+
+/* Smartphone: ocultar columna Brochure + cita (queda solo el formulario de demo) */
+@media (max-width: 720px) { .geagro-scope .ga-convert-side { display: none; } }
+
+/* ---------- Borde inferior curvo del hero (ondas tipo campo) ---------- */
+.geagro-scope .ga-hero { padding-bottom: calc(clamp(64px, 9vw, 120px) + clamp(36px, 5vw, 80px)); }
+.geagro-scope .ga-hero::before, .geagro-scope .ga-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; pointer-events: none; z-index: 1; background-repeat: no-repeat; background-size: 100% 100%; }
+/* onda de atrás, translúcida */
+.geagro-scope .ga-hero::before { height: clamp(48px, 6.5vw, 104px); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 120V54C240 8 520 18 760 58S1210 112 1440 44V120Z' fill='%23ffffff' fill-opacity='.28'/%3E%3C/svg%3E"); }
+/* onda de adelante, del color de la sección siguiente */
+.geagro-scope .ga-hero::after { height: clamp(40px, 5.2vw, 84px); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V62C300 14 620 20 900 56S1300 92 1440 38V100Z' fill='%23f7faf4'/%3E%3C/svg%3E"); }
+/* en la principal la sección siguiente (Cómo funciona) es blanca */
+.geagro-scope .ga-hero:not(.ga-hero-campo):not(.ga-hero-vid)::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V62C300 14 620 20 900 56S1300 92 1440 38V100Z' fill='%23f1f8f1'/%3E%3C/svg%3E"); }
+.geagro-scope .ga-hero > .ga-container { position: relative; z-index: 2; }
+
+/* ---------- Cómo funciona con ilustración de fondo ---------- */
+.geagro-scope .ga-how { background: #f1f8f1 url("../images/backgrounds/bg-como-funciona.webp") center bottom / cover no-repeat;
+  padding-bottom: clamp(140px, 16vw, 240px); }
+.geagro-scope .ga-how-ico { background: #fff; box-shadow: 0 8px 22px rgba(11,52,34,.08); }
+@media (max-width: 720px) { .geagro-scope .ga-how { background-size: auto 100%; background-position: 30% bottom; padding-bottom: 120px; } }
+
+/* Borde inferior curvo de "Cómo funciona" (misma onda que la portada, hacia Versiones) */
+.geagro-scope .ga-how { position: relative; overflow: hidden; }
+.geagro-scope .ga-how > .ga-container { position: relative; z-index: 2; }
+.geagro-scope .ga-how::before, .geagro-scope .ga-how::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; pointer-events: none; z-index: 1; background-repeat: no-repeat; background-size: 100% 100%; }
+.geagro-scope .ga-how::before { height: clamp(48px, 6.5vw, 104px); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0 120V54C240 8 520 18 760 58S1210 112 1440 44V120Z' fill='%23ffffff' fill-opacity='.35'/%3E%3C/svg%3E"); }
+.geagro-scope .ga-how::after { height: clamp(40px, 5.2vw, 84px); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V62C300 14 620 20 900 56S1300 92 1440 38V100Z' fill='%23f2faf2'/%3E%3C/svg%3E"); }
+
+/* "Qué incluye" en mobile: 2 columnas, solo ícono + título (sin párrafo) */
+@media (max-width: 620px) {
+.geagro-scope .ga-features { grid-template-columns: 1fr 1fr; gap: 12px; }
+.geagro-scope .ga-features li { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 10px; padding: 18px 12px; }
+.geagro-scope .ga-features img { width: 48px; }
+.geagro-scope .ga-features h3 { font-size: 1rem; line-height: 1.25; margin: 0; }
+.geagro-scope .ga-features p { display: none; }
+.geagro-scope .ga-features li { align-content: start; }
+.geagro-scope .ga-features li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+
+/* VID: sección Brochure + Demo con predominio violeta */
+.geagro-scope .ga-theme-vid .ga-section-soft:has(.ga-convert) { background: var(--geagro-purple-50); }
+.geagro-scope .ga-theme-vid .ga-convert .ga-btn-primary { background: var(--geagro-purple-700); }
+.geagro-scope .ga-theme-vid .ga-convert .ga-btn-primary:hover { background: var(--geagro-purple-900); }
+.geagro-scope .ga-theme-vid .ga-convert .ga-brochure-file { background: var(--geagro-purple-50); }
+.geagro-scope .ga-theme-vid .ga-convert .ga-demo-form input:focus, .geagro-scope .ga-theme-vid .ga-convert .ga-demo-form textarea:focus { outline-color: var(--geagro-purple-700); }
+.geagro-scope .ga-theme-vid .ga-convert .ga-radios input { accent-color: var(--geagro-purple-700); }
+.geagro-scope .ga-theme-vid .ga-convert .ga-radios label:has(input:checked) { border-color: var(--geagro-purple-500); background: #fff; }
+.geagro-scope .ga-theme-vid .ga-convert .ga-demo-form input, .geagro-scope .ga-theme-vid .ga-convert .ga-demo-form textarea, .geagro-scope .ga-theme-vid .ga-convert .ga-radios label { border-color: #e4d6e5; background: #fbf8fb; }
+.geagro-scope .ga-theme-vid .ga-convert .ga-form-status.ga-ok { color: var(--geagro-purple-700); }
+
+/* VID: todas las secciones suaves en violeta claro (en lugar de verde) */
+.geagro-scope .ga-theme-vid .ga-section-soft { background: var(--geagro-purple-50); }
+.geagro-scope .ga-theme-vid .ga-section-soft .ga-note { background: #fff; }
+
+/* VID: "Qué incluye" con fondo blanco (y la onda del hero en blanco para que empalme) */
+.geagro-scope .ga-theme-vid #incluye { background: #fff; }
+.geagro-scope .ga-hero-vid::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V62C300 14 620 20 900 56S1300 92 1440 38V100Z' fill='%23ffffff'/%3E%3C/svg%3E"); }
+
+/* VID: sección de flujo con fondo blanco */
+.geagro-scope .ga-theme-vid .ga-flow-section { background: #fff; }
+
+/* CAMPO: "Qué incluye" y "Producción y economía" con fondo blanco (onda del hero en blanco para empalmar) */
+.geagro-scope .ga-theme-campo #incluye, .geagro-scope .ga-theme-campo .ga-prod-eco { background: #fff; }
+.geagro-scope .ga-hero-campo::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V62C300 14 620 20 900 56S1300 92 1440 38V100Z' fill='%23ffffff'/%3E%3C/svg%3E"); }
+
+/* ---------- Componente CTA de versión (CAMPO / VID) ----------
+   Parámetros por página en el style inline de la <section>: background-image (fondo) y --cta-bg-color (color de respaldo).
+   La URL va en el HTML para que se resuelva relativa a la página. */
+.geagro-scope .ga-cta-band.ga-cta-version { background-color: var(--cta-bg-color, var(--geagro-green-900)); background-position: center; background-size: cover; background-repeat: no-repeat; }
+.geagro-scope .ga-cta-band.ga-cta-version::after { display: none; }
+.geagro-scope .ga-cta-version .ga-cta-actions { align-items: center; gap: 22px; }
+.geagro-scope .ga-cta-version .ga-btn-sun span { transition: transform .15s; }
+.geagro-scope .ga-cta-version .ga-btn-sun:hover span { transform: translateX(3px); }
+/* Botón secundario: liviano, no compite con "Solicitar demo" */
+.geagro-scope .ga-btn-cta-secondary { display: inline-flex; align-items: center; gap: 10px; padding: .85em 1.3em; border: 1px solid rgba(255,255,255,.4); border-radius: var(--radius-pill); color: rgba(255,255,255,.92); font: 600 .86rem var(--font); letter-spacing: .05em; text-transform: uppercase; background: transparent; transition: background-color .15s, border-color .15s; }
+.geagro-scope .ga-btn-cta-secondary svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.geagro-scope .ga-btn-cta-secondary:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.7); color: #fff; }
+
+/* Hero: "GEAGRO · by" + logo GENEOS */
+.geagro-scope .ga-hero-by { display: inline-flex; align-items: center; gap: 10px; }
+.geagro-scope .ga-hero-by img { height: 28px; width: auto; }
+
+/* Dropdown Versiones: la versión actual queda marcada */
+.geagro-scope .ga-dd-item.ga-is-current { background: var(--geagro-green-50); pointer-events: none; }
+.geagro-scope .ga-dd-vid.ga-is-current { background: var(--geagro-purple-50); }
+.geagro-scope .ga-dd-item.ga-is-current small { color: var(--text); }
+
+/* ---------- Accesibilidad: saltar al contenido ---------- */
+.geagro-scope .ga-skip-link { position: absolute; left: 12px; top: -60px; z-index: 100; background: #fff; color: var(--geagro-green-900); padding: 10px 16px; border-radius: 10px; font-weight: 700; box-shadow: var(--shadow-sm); transition: top .15s; }
+.geagro-scope .ga-skip-link:focus { top: 12px; }
+
+/* ---------- Footer: enlaces a las páginas ---------- */
+.geagro-scope .ga-footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 26px; margin-top: 28px; font-size: .9rem; }
+.geagro-scope .ga-footer-nav a { color: rgba(255,255,255,.75); }
+.geagro-scope .ga-footer-nav a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Planes (Lite / Plus) — solo nombre y precio, sin características ---------- */
+.geagro-scope .ga-plans { background: var(--white); }
+.geagro-scope .ga-plans-head { display: grid; gap: 14px; justify-items: center; text-align: center; max-width: 760px; margin: 0 auto 48px; }
+.geagro-scope .ga-plans-head::before { content: ""; width: 72px; height: 3px; border-radius: 2px; background: #a9cfae; margin-bottom: 6px; }
+.geagro-scope .ga-plans-head p { color: var(--muted); font-size: 1.15rem; line-height: 1.5; max-width: 60ch; }
+.geagro-scope .ga-plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 900px; margin: 0 auto; align-items: stretch; }
+.geagro-scope .ga-plan-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; display: flex; flex-direction: column; }
+.geagro-scope .ga-plan-head { padding: 26px 32px 24px; color: #fff; }
+.geagro-scope .ga-plan-lite .ga-plan-head { background: var(--geagro-green-400); }
+.geagro-scope .ga-plan-plus .ga-plan-head { background: var(--geagro-green-900); }
+.geagro-scope .ga-plan-brand { font-weight: 600; font-size: 1rem; letter-spacing: .08em; text-transform: uppercase; opacity: .95; }
+.geagro-scope .ga-plan-name { font-size: clamp(2.2rem, 4vw, 2.8rem); line-height: 1.05; color: #fff; }
+.geagro-scope .ga-plan-body { padding: 28px 32px 32px; display: flex; flex-direction: column; flex: 1; }
+.geagro-scope .ga-plan-label { font-size: .95rem; color: var(--muted); }
+.geagro-scope .ga-plan-price { font-weight: 700; font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1.05; color: var(--geagro-green-900); white-space: nowrap; margin-top: 4px; }
+.geagro-scope .ga-plan-tax { color: var(--muted); font-size: 1.05rem; margin-top: 4px; }
+.geagro-scope .ga-plan-sep { border: 0; border-top: 1px solid var(--border); margin: 26px 0 22px; }
+.geagro-scope .ga-plan-impl { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.geagro-scope .ga-plan-impl-amount { font-weight: 700; font-size: clamp(1.4rem, 3.2vw, 1.8rem); color: var(--geagro-green-900); white-space: nowrap; line-height: 1.15; }
+.geagro-scope .ga-plan-impl-tax { color: var(--muted); font-size: .95rem; }
+.geagro-scope .ga-plan-once { font-style: italic; font-size: .92rem; color: var(--muted); margin-top: 2px; }
+.geagro-scope .ga-plan-cta { margin-top: auto; align-self: stretch; }
+.geagro-scope .ga-plan-body .ga-plan-once { margin-bottom: 28px; }
+@media (max-width: 760px) {
+  .geagro-scope .ga-plans-grid { grid-template-columns: 1fr; max-width: 460px; gap: 24px; }
+  .geagro-scope .ga-plan-head, .geagro-scope .ga-plan-body { padding-inline: 24px; }
+}
