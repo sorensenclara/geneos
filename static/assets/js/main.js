@@ -68,6 +68,13 @@
     dlg.addEventListener("click", (e) => { if (e.target === dlg || e.target.closest(".member-close")) dlg.close(); });
   });
 
+  /* Video del hero: una sola reproducción; sin animación si el usuario la reduce */
+  const heroVideo = $(".hx-hero-video");
+  if (heroVideo) {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { heroVideo.removeAttribute("autoplay"); heroVideo.pause(); }
+    heroVideo.loop = false;
+  }
+
   /* Mensaje tras enviar el formulario */
   if (new URLSearchParams(location.search).has("enviado")) {
     $$(".form-status").forEach((p) => {

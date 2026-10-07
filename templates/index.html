@@ -4,6 +4,11 @@
 {% block content %}
 {# ===================== HERO ===================== #}
 <section class="hx-hero">
+  {# Fondo: video que se reproduce una sola vez y queda en el último cuadro; la imagen es póster y respaldo #}
+  <video class="hx-hero-video" autoplay muted playsinline preload="auto" poster="{{ img('hero/hero-geneos.webp') }}" aria-hidden="true" tabindex="-1">
+    <source src="{{ asset('img/hero/hero-geneos.webm') }}" type="video/webm">
+    <source src="{{ asset('img/hero/hero-geneos.mp4') }}" type="video/mp4">
+  </video>
   <div class="container hx-hero-grid">
     <div class="hx-hero-copy">
       <p class="hx-kicker">Cooperativa de software libre</p>
