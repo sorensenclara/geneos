@@ -545,3 +545,32 @@ ol.steps { padding: 0; margin: 0; }
 .topbar-products a:hover, .topbar-products a:focus-visible { opacity: 1; transform: translateY(-1px); }
 .topbar-products img { height: 20px; width: auto; filter: brightness(0) invert(1); }
 @media (max-width: 760px) { .topbar-inner { justify-content: center; } .topbar-products { gap: 18px; } .topbar-products img { height: 18px; } }
+
+/* ---------- Ondas entre secciones ----------
+   Cada sección (salvo la primera) dibuja una onda arriba, del color con el que empieza,
+   que se superpone al final de la sección anterior. --top = color de arranque de la sección. */
+main > section, .site-footer { position: relative; --top: transparent; }
+.theme-white { --top: #fff; }
+.theme-black, .page-hero, .gerp-section, .site-footer, .theme-black-green { --top: #000; }
+.theme-gray { --top: var(--gray); }
+.theme-gray-light { --top: var(--gray-light); }
+.theme-green-black { --top: var(--green-dark); }
+.theme-green-deep, .theme-green, .dev-banner { --top: var(--green); }
+.theme-purple { --top: var(--purple); }
+.theme-blue { --top: var(--blue); }
+.theme-orange { --top: var(--orange); }
+.theme-orange-rev { --top: #943909; }
+.theme-yellow { --top: var(--yellow); }
+.theme-blue-up { --top: #050c1b; }
+.theme-geagro { --top: #f4f8ee; }
+.theme-geagro-dark { --top: #148238; }
+main > section + section::before, main > section + .map::before, .site-footer::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 100%; z-index: 2;
+  height: clamp(28px, 4.5vw, 64px); background: var(--top); pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V60c120-40 260-55 420-30s320 45 580-20v90z'/%3E%3C/svg%3E") center bottom / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V60c120-40 260-55 420-30s320 45 580-20v90z'/%3E%3C/svg%3E") center bottom / 100% 100% no-repeat;
+}
+main > section:nth-of-type(even)::before { transform: scaleX(-1); }
+.map { --top: transparent; }
+/* La portada ya trae su propia onda */
+.home-hero + section::before { display: none; }
