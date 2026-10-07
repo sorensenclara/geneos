@@ -577,3 +577,7 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 
 /* GEAGRO dentro de GENEOS: logo de GEAGRO en el hero */
 .geagro-scope .ga-hero-logo { display: block; height: clamp(46px, 5vw, 66px); width: auto; margin: 0 0 26px; }
+
+.site-nav .sub { min-width: 300px; }
+.site-nav .sub a { white-space: nowrap; }
+@media (max-width: 920px) { .site-nav .sub a { white-space: normal; } }
