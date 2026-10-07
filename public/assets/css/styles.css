@@ -581,3 +581,90 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 .site-nav .sub { min-width: 300px; }
 .site-nav .sub a { white-space: nowrap; }
 @media (max-width: 920px) { .site-nav .sub a { white-space: normal; } }
+
+/* =========================================================
+   INICIO · rediseño (prefijo hx-)
+   ========================================================= */
+.hx-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 8px; color: var(--green); }
+.hx-eyebrow-light { color: var(--green-bright); }
+.hx-title { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 0 0 10px; }
+.hx-sub { margin: 0; color: #4b5563; }
+.hx-lead { font-size: clamp(17px, 1.5vw, 19px); opacity: .92; }
+.hx-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 36px; }
+.hx-head-note { max-width: 380px; font-size: 15px; }
+@media (max-width: 760px) { .hx-head { flex-direction: column; align-items: flex-start; } }
+.btn .icon { width: 18px; height: 18px; fill: none; }
+.btn-ghost { border: 1.5px solid var(--green); color: var(--green); padding: 10px 22px; font-size: 15px; }
+.btn-ghost:hover { background: var(--green); color: #fff; }
+
+/* Hero */
+.hx-hero { position: relative; color: #fff; padding: clamp(64px, 9vw, 120px) 0 clamp(96px, 11vw, 150px); background: #1a1030 url("../img/2024/11/Wallpaper-GENEOS.webp") center / cover no-repeat; }
+.hx-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,6,24,.88) 0%, rgba(10,6,24,.55) 55%, rgba(10,6,24,.2) 100%); }
+.hx-hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: end; }
+.hx-kicker { font-size: 13px; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; opacity: .85; margin-bottom: 14px; }
+.hx-hero h1 { font-size: clamp(36px, 5.2vw, 62px); line-height: 1.05; margin-bottom: 20px; max-width: 12ch; }
+.hx-hero .hx-lead { max-width: 520px; margin-bottom: 30px; }
+.hx-benefits { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: center; font-size: 14px; font-weight: 600; line-height: 1.3; }
+.hx-benefits li { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.hx-benefit-icon { width: 58px; height: 58px; display: grid; place-items: center; color: #fff; }
+.hx-benefit-icon .icon { width: 100%; height: 100%; }
+@media (max-width: 900px) { .hx-hero-grid { grid-template-columns: 1fr; } .hx-benefits { grid-template-columns: repeat(2, 1fr); row-gap: 24px; } }
+
+/* Productos */
+.hx-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.hx-product { position: relative; display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 26px rgba(15, 23, 42, .07); border-top: 4px solid var(--acc); transition: transform .2s, box-shadow .2s; }
+.hx-product:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(15, 23, 42, .12); }
+.hx-product-photo { aspect-ratio: 16 / 10; overflow: hidden; background: #e9edf1; }
+.hx-product-photo img { width: 100%; height: 100%; object-fit: cover; }
+.hx-badge { width: 60px; height: 60px; margin: -30px 0 0 20px; position: relative; border-radius: 50%; background: #fff; border: 3px solid var(--acc); display: grid; place-items: center; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+.hx-badge img { width: 38px; height: 38px; object-fit: contain; }
+.hx-badge-icon { color: var(--acc); }
+.hx-badge-icon .icon { width: 32px; height: 32px; }
+.hx-badge-icon .icon[fill="none"] { fill: none; }
+/* GEMA: se muestra el logo oficial; el contenedor deja ver la llama (no se edita el archivo) */
+.hx-badge-gema img { position: absolute; top: 50%; left: 50%; width: auto; height: 34px; max-width: none; object-fit: unset; transform: translate(-15px, -50%); clip-path: inset(0 76% 0 0); }
+.hx-about + .coop { padding-top: 0; }
+.hx-product h3 { font-size: 22px; margin: 14px 20px 6px; }
+.hx-product p { margin: 0 20px 16px; font-size: 15px; color: #4b5563; line-height: 1.5; }
+.hx-cta { margin: auto 20px 22px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--acc); text-decoration: none; }
+.hx-cta .icon { width: 17px; height: 17px; fill: none; transition: transform .2s; }
+.hx-cta:hover .icon { transform: translateX(4px); }
+@media (max-width: 1000px) { .hx-product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .hx-product-grid { grid-template-columns: 1fr; } }
+
+/* Servicios */
+.hx-service-grid { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.hx-service-grid a { height: 100%; display: flex; flex-direction: column; gap: 8px; padding: 26px 24px; border-radius: 16px; background: #fff; border: 1px solid #e5e7eb; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.hx-service-grid a:hover { border-color: var(--acc); box-shadow: 0 12px 30px rgba(15,23,42,.08); transform: translateY(-3px); }
+.hx-service-icon { width: 54px; height: 54px; color: var(--acc); margin-bottom: 6px; }
+.hx-service-icon .icon { width: 100%; height: 100%; }
+.hx-service-grid strong { font-size: 18px; color: #111; }
+.hx-service-text { font-size: 15px; color: #4b5563; }
+.hx-round { margin-top: auto; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--acc); color: #fff; }
+.hx-round .icon { width: 18px; height: 18px; fill: none; }
+@media (max-width: 1000px) { .hx-service-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .hx-service-grid { grid-template-columns: 1fr; } }
+
+/* Software libre */
+.hx-free-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.hx-free .hx-lead { margin-bottom: 26px; }
+.hx-free-list { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+.hx-free-list li { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 14px; }
+.hx-free-list strong { font-size: 18px; margin-top: 8px; }
+.hx-free-list span:last-child { opacity: .8; }
+.hx-ring { width: 84px; height: 84px; border-radius: 50%; border: 2px solid rgba(255,255,255,.85); display: grid; place-items: center; color: #fff; --glyph: var(--green); }
+.hx-ring .icon { width: 46px; height: 46px; }
+@media (max-width: 860px) { .hx-free-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .hx-free-list { grid-template-columns: 1fr; } }
+
+/* Nosotros + clientes */
+.hx-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; margin-bottom: clamp(48px, 7vw, 80px); }
+.hx-about-photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 16px; box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+.hx-about p:not(.hx-eyebrow) { color: #374151; }
+.hx-clients-head { margin-bottom: 20px; }
+.hx-clients-head .center { text-align: center; }
+@media (max-width: 860px) { .hx-about-grid { grid-template-columns: 1fr; } }
+
+/* Contacto */
+.hx-contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
+@media (max-width: 860px) { .hx-contact-grid { grid-template-columns: 1fr; } }
