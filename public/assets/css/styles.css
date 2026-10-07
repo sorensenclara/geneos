@@ -538,10 +538,10 @@ ol.steps { padding: 0; margin: 0; }
 .geagro-card .btn { padding: 11px 22px; font-size: 15px; }
 
 /* ---------- Barra superior de productos ---------- */
-.topbar { background: #f2f2f2; border-bottom: 1px solid #e2e2e2; }
+.topbar { background: #000; border-bottom: 1px solid #1c1c1c; }
 .topbar-inner { display: flex; align-items: center; justify-content: flex-end; min-height: 34px; }
 .topbar-products { list-style: none; display: flex; align-items: center; gap: 22px; }
-.topbar-products a { display: block; padding: 6px 0; opacity: .8; transition: opacity .2s, transform .2s; }
+.topbar-products a { display: block; padding: 6px 0; opacity: .75; transition: opacity .2s, transform .2s; }
 .topbar-products a:hover, .topbar-products a:focus-visible { opacity: 1; transform: translateY(-1px); }
-.topbar-products img { height: 20px; width: auto; }
+.topbar-products img { height: 20px; width: auto; filter: brightness(0) invert(1); }
 @media (max-width: 760px) { .topbar-inner { justify-content: center; } .topbar-products { gap: 18px; } .topbar-products img { height: 18px; } }
