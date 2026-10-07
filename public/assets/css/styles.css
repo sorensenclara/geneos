@@ -574,3 +574,6 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 .map { --top: transparent; }
 /* La portada ya trae su propia onda */
 .home-hero + section::before { display: none; }
+
+/* GEAGRO dentro de GENEOS: logo de GEAGRO en el hero */
+.geagro-scope .ga-hero-logo { display: block; height: clamp(46px, 5vw, 66px); width: auto; margin: 0 0 26px; }

@@ -90,6 +90,10 @@ main = main.replace('assets/docs/', 'https://geagro.ar/assets/docs/')
 main = re.sub(r'(["\s(])assets/', r'\1/assets/geagro-landing/', main)
 main = re.sub(r'href="(cereales|vid)/"', r'href="https://geagro.ar/\1/" target="_blank" rel="noopener"', main)
 main = re.sub(r'href="\./"', 'href="https://geagro.ar/" target="_blank" rel="noopener"', main)
+# Dentro del sitio de GENEOS el hero muestra el logo de GEAGRO (en geagro.ar dice "by GENEOS")
+main = re.sub(r'<p class="[^"]*ga-hero-by[^"]*">.*?</p>',
+              '<img class="ga-hero-logo" src="{{ img(\'geagro/logo-geagro-white.svg\') }}" alt="GEAGRO, software de gestión agropecuaria" width="300" height="64">',
+              main, count=1, flags=re.S)
 # rutas absolutas -> helper de BASE_PATH
 main = re.sub(r'"/assets/geagro-landing/([^"]+)"', lambda m: '"{{ asset(\'geagro-landing/' + m.group(1) + '\') }}"', main)
 open(os.path.join(DST, 'templates/partials/geagro-landing.html'), 'w').write(
