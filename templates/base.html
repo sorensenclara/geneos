@@ -20,18 +20,31 @@
   <meta property="og:description" content="{{ description }}">
   {% if canonical %}<meta property="og:url" content="{{ canonical }}">{% endif %}
   <meta property="og:image" content="{{ og_image }}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ page.crumb or 'GENEOS' }} · GENEOS, cooperativa de software libre">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@CoopGENEOS">
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
   <meta name="twitter:image" content="{{ og_image }}">
-  <meta name="theme-color" content="#000000">
+  <meta name="twitter:image:alt" content="{{ page.crumb or 'GENEOS' }} · GENEOS, cooperativa de software libre">
+  <meta name="theme-color" content="#072a14">
+  <meta name="author" content="Cooperativa de Trabajo GENEOS Ltda.">
+  <meta name="geo.region" content="AR-B">
+  <meta name="geo.placename" content="Tandil">
   <link rel="icon" href="{{ asset('img/favicon-32.png') }}" sizes="32x32">
   <link rel="icon" href="{{ asset('img/favicon-192.png') }}" sizes="192x192">
   <link rel="apple-touch-icon" href="{{ asset('img/favicon-180.png') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  {% set fonts = "https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" %}
+  {# Fuentes sin bloquear el renderizado (mejora LCP / Core Web Vitals) #}
+  <link rel="preload" as="style" href="{{ fonts }}">
+  <link rel="stylesheet" href="{{ fonts }}" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="{{ fonts }}"></noscript>
+  {% block preload %}{% endblock %}
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   {% block head %}{% endblock %}
   {% set graph = [org_schema(), {

@@ -29,6 +29,10 @@
   "featureList": ["Campos, lotes y cuarteles", "Plan técnico", "Variables climáticas", "Alertas agronómicas", "Labores y órdenes de trabajo", "Insumos, compras e inventario", "Acopio propio y en terceros", "Transporte", "Rendimientos y costos"],
   "offers": offers}) }}
 {% endblock %}
+{% block preload %}
+<link rel="preload" as="image" type="image/avif" href="{{ asset('geagro-landing/images/shared/hero-1920.avif') }}" media="(min-width: 901px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" href="{{ asset('geagro-landing/images/shared/hero-900.avif') }}" media="(max-width: 900px)" fetchpriority="high">
+{% endblock %}
 {% block head %}<link rel="stylesheet" href="{{ asset('geagro-landing/css/geagro.css') }}">{% endblock %}
 {% block body_class %}page-geagro{% endblock %}
 {% block content %}

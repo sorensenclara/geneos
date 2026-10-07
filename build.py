@@ -13,7 +13,9 @@ Variables de entorno:
 """
 import json
 import os
+import re
 import shutil
+import subprocess
 from datetime import date
 from pathlib import Path
 
@@ -26,6 +28,16 @@ BASE_PATH = os.environ.get("BASE_PATH", "").rstrip("/")
 CANONICAL_URL = os.environ.get("CANONICAL_URL", "https://geneos.coop.ar").rstrip("/")
 SITE_URL = (os.environ.get("SITE_URL") or CANONICAL_URL).rstrip("/")
 TODAY = date.today().isoformat()
+
+
+def lastmod(tpl):
+    """Fecha del último commit que tocó la plantilla (para <lastmod> del sitemap)."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", f"templates/{tpl}"],
+                             cwd=Path(__file__).resolve().parent, capture_output=True, text=True, timeout=10).stdout.strip()
+        return out or TODAY
+    except Exception:
+        return TODAY
 
 SITE = {
     "name": "GENEOS",
@@ -75,15 +87,15 @@ PAGES = [
     dict(tpl="software-de-gestion.html", out="software-de-gestion-completo/", parent="servicios/",
          title="Software de gestión ERP para pymes basado en Odoo | GERP",
          description="GERP: sistema de gestión online basado en Odoo Community para pymes. Inventario, compras, ventas, facturación y contabilidad, con implementación y soporte.",
-         crumb="Software de Gestión GERP", og="2026/01/Beneficios-GERP-1536x1029-1-1024x686.webp", priority="0.9"),
+         crumb="Software de Gestión GERP", og="og/gerp.jpg", priority="0.9"),
     dict(tpl="gema.html", out="software-gestion-matafuegos-extintores/", parent="servicios/",
          title="Software para talleres de matafuegos y extintores | GEMA",
          description="GEMA es el sistema online para talleres de recarga de matafuegos: control de vencimientos, historial de servicios, obleas, presupuestos y avisos a clientes.",
-         crumb="Software de Matafuegos GEMA", og="2024/04/5-1024x637.webp", priority="0.9"),
+         crumb="Software de Matafuegos GEMA", og="og/gema.jpg", priority="0.9"),
     dict(tpl="geagro.html", out="software-agropecuario-geagro/", parent="servicios/",
          title="Software agropecuario GEAGRO: gestión agrícola y viñedos",
          description="GEAGRO, software de gestión agropecuaria: campañas, lotes, clima, insumos y acopio con GEAGRO CEREALES, y gestión de viñedos con GEAGRO VID.",
-         crumb="Software Agropecuario GEAGRO", og="geagro/geagro-hero.webp", priority="0.9"),
+         crumb="Software Agropecuario GEAGRO", og="og/geagro.jpg", priority="0.9"),
     dict(tpl="staff-augmentation.html", out="staff-augmentation/", parent="servicios/",
          title="Staff augmentation: desarrolladores para tu equipo | GENEOS",
          description="Sumá desarrolladores, DevOps, analistas, PM y diseñadores UX/UI de Argentina a tu equipo. Staff augmentation nearshore para empresas de Latinoamérica.",
@@ -95,7 +107,7 @@ PAGES = [
     dict(tpl="e-learning.html", out="plataformas-e-learning-lms-moodle/", parent="servicios/",
          title="Plataformas e-learning y campus virtual Moodle | GENEOS",
          description="Creamos campus virtuales en Moodle para universidades, institutos y empresas: diseño a medida, gamificación con H5P, capacitación y soporte. Argentina y Latam.",
-         crumb="E-learning Moodle", og="2023/11/notebook_moodle.webp", priority="0.8"),
+         crumb="E-learning Moodle", priority="0.8"),
     dict(tpl="diseno.html", out="diseno-sitios-web-identidades/", parent="servicios/",
          title="Diseño web, identidad visual y comunicación | GENEOS",
          description="Diseño de sitios web UX/UI, identidades visuales y estrategia de comunicación digital para cooperativas, pymes e instituciones de Argentina y Latinoamérica.",
@@ -103,7 +115,7 @@ PAGES = [
     dict(tpl="quienes-somos.html", out="quienes-somos/",
          title="Quiénes somos: cooperativa de software libre | GENEOS",
          description="Somos GENEOS, cooperativa de trabajo de Tandil que desarrolla soluciones tecnológicas con software libre. Conocé al equipo, nuestra misión y visión.",
-         crumb="Quiénes somos", og="elementor/thumbs/5-rh26ect4j6zr6ywqu4myqmyj8w1qub7ot9nx5za9i8.webp", priority="0.7"),
+         crumb="Quiénes somos", og="og/quienes-somos.jpg", priority="0.7"),
     dict(tpl="recursos-graficos.html", out="recursos-graficos/", parent="quienes-somos/",
          title="Recursos gráficos y manual de marca | GENEOS",
          description="Descargá los isologotipos de GENEOS y GERP en SVG y PNG y consultá el manual de marca con los lineamientos de uso de la identidad visual.",
@@ -222,7 +234,7 @@ def org_schema():
         "alternateName": "GENEOS Cooperativa de Software Libre",
         "url": abs_url(),
         "logo": abs_url("assets/img/favicon-192.png"),
-        "image": abs_url("assets/img/og-geneos.webp"),
+        "image": abs_url("assets/img/og/geneos.jpg"),
         "description": "Cooperativa de trabajo de software libre que desarrolla software de gestión, aplicaciones, sitios web y plataformas e-learning.",
         "email": s["email"],
         "telephone": s["phone"],
@@ -236,6 +248,9 @@ def org_schema():
         "sameAs": [href for _, href, _ in s["social"]],
         "contactPoint": {"@type": "ContactPoint", "contactType": "customer service", "telephone": s["phone"],
                          "email": s["email"], "availableLanguage": ["es"], "areaServed": ["AR", "419"]},
+        "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Servicios y productos de GENEOS",
+                            "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": pg["crumb"], "url": abs_url(pg["out"])}}
+                                                for pg in PAGES if pg.get("parent") == "servicios/"]},
     }
 
 
@@ -246,6 +261,7 @@ def build():
 
     env = Environment(loader=FileSystemLoader(ROOT / "templates"),
                       autoescape=select_autoescape(["html"]), trim_blocks=True, lstrip_blocks=True)
+    env.filters["regex_replace"] = lambda v, pat, rep="": re.sub(pat, rep, v)
     env.globals.update(site=SITE, url=url, asset=asset, img=img, icon=icon, wa=wa, jsonld=jsonld,
                        abs_url=abs_url, year=date.today().year, site_url=SITE_URL, org_schema=org_schema, crumbs_schema=crumbs_schema, faq_entities=faq_entities, service_items=service_items,
                        pages=PAGE_BY_OUT)
@@ -259,7 +275,7 @@ def build():
             page=page, title=page["title"], description=page["description"],
             path="/" + (out if not out.endswith(".html") else ""),
             canonical=None if page.get("noindex") else abs_url(out),
-            og_image=abs_url("assets/img/" + page.get("og", "og-geneos.webp")),
+            og_image=abs_url("assets/img/" + page.get("og", "og/geneos.jpg")),
             crumbs=crumbs,
         )
         target.write_text(html)
@@ -277,10 +293,20 @@ def build():
 
     # sitemap + robots
     urls = "\n".join(
-        f"  <url><loc>{abs_url(p['out'])}</loc><lastmod>{TODAY}</lastmod><priority>{p.get('priority', '0.5')}</priority></url>"
+        f"  <url><loc>{abs_url(p['out'])}</loc><lastmod>{lastmod(p['tpl'])}</lastmod><priority>{p.get('priority', '0.5')}</priority></url>"
         for p in PAGES if not p.get("noindex"))
     (OUT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
+    # llms.txt: resumen del sitio para buscadores con IA (ChatGPT, Perplexity, Gemini…)
+    llms = ["# GENEOS", "",
+            "> Cooperativa de Trabajo GENEOS Ltda. (Tandil, Argentina): desarrollo de software libre para organizaciones de "
+            "Argentina y Latinoamérica. Productos propios GERP (ERP basado en Odoo), GEMA (gestión de talleres de matafuegos) "
+            "y GEAGRO (gestión agropecuaria), además de staff augmentation, apps, sitios web, campus Moodle y diseño.", "",
+            f"Contacto: {SITE['email']} · WhatsApp {SITE['phone']} · {SITE['street']}, {SITE['city']}, {SITE['province']}", "",
+            "## Páginas"]
+    llms += [f"- [{pg['title']}]({abs_url(pg['out'])}): {pg['description']}" for pg in PAGES if not pg.get("noindex")]
+    llms += ["", "## Productos", *[f"- [{n}]({h}): {d}" for n, d, h, _ in SITE["products"]]]
+    (OUT / "llms.txt").write_text("\n".join(llms) + "\n")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {CANONICAL_URL}/sitemap.xml\n")
 
 

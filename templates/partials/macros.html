@@ -60,7 +60,7 @@
     {% for item in logos %}
     {% set file = item[0] if item is not string else item %}
     {% set link = item[1] if item is not string else None %}
-    {% set alt = file.split('/')[-1].rsplit('.',1)[0].replace('-', ' ').replace('_', ' ') %}
+    {% set alt = "Logo de " ~ (file.split('/')[-1].rsplit('.',1)[0].replace('Clientes-GENEOS_', '').replace('Busqueda', 'Búsqueda').replace('-', ' ').replace('_', ' ')|regex_replace(' \\d+$', '')) %}
     <li>{% if link %}<a href="{{ link }}" target="_blank" rel="noopener">{% endif %}<img src="{{ img(file) }}" alt="{{ alt }}" loading="lazy" width="220" height="124">{% if link %}</a>{% endif %}</li>
     {% endfor %}
   </ul>

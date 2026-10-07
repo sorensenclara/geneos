@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
 {% block body_class %}page-home{% endblock %}
+{% block preload %}<link rel="preload" as="image" href="{{ img('hero/hero-geneos.webp') }}" fetchpriority="high">{% endblock %}
 {% block content %}
 {# ===================== HERO ===================== #}
 <section class="hx-hero">
@@ -11,8 +12,7 @@
   </video>
   <div class="container hx-hero-grid">
     <div class="hx-hero-copy">
-      <p class="hx-kicker">Cooperativa de software libre</p>
-      <h1>Soluciones que hacen crecer tu organización</h1>
+      <h1><span class="hx-kicker">Cooperativa de software libre</span> <span class="hx-h1-main">Soluciones que hacen crecer tu organización</span></h1>
       <p class="hx-lead">Desarrollamos productos propios y soluciones a medida para digitalizar, integrar y optimizar los procesos de tu organización.</p>
       <div class="btn-row">
         <a class="btn btn-solid" href="#soluciones">Conocé nuestras soluciones {{ icon('ui-arrow-right') }}</a>
