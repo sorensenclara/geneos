@@ -21,7 +21,7 @@
 {% macro service_cards(items=SERVICES) -%}
 <ul class="service-cards">
   {% for ic, title, sub, href in items %}
-  <li>
+  <li class="seg-{{ ic }}">
     <a href="{{ url(href) }}">
       <span class="ring">{{ icon(ic) }}</span>
       <strong>{{ title|safe }}</strong>

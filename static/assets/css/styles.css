@@ -154,7 +154,17 @@ button { font: inherit; cursor: pointer; }
 .service-cards a { display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; padding: 8px; border-radius: var(--radius); transition: transform .2s; }
 .service-cards a:hover { transform: translateY(-4px); }
 .ring { width: 96px; height: 96px; border-radius: 50%; border: 2px solid currentColor; display: grid; place-items: center; transition: background .2s, border-color .2s; }
-.service-cards a:hover .ring { background: rgba(255,255,255,.12); border-color: var(--green-bright); }
+/* Color de cada segmento al pasar el mouse (como en el sitio original) */
+.service-cards li { --seg: var(--green-bright); }
+.service-cards .seg-gestion { --seg: #d93daf; }
+.service-cards .seg-staff { --seg: #f1b936; }
+.service-cards .seg-apps { --seg: #1071ff; }
+.service-cards .seg-elearning { --seg: #e36f31; }
+.service-cards .seg-diseno { --seg: #17c854; }
+.service-cards a .ring, .service-cards a strong, .service-cards a small { transition: color .2s, border-color .2s, background .2s; }
+.service-cards a:hover .ring, .service-cards a:focus-visible .ring { border-color: var(--seg); color: var(--seg); background: color-mix(in srgb, var(--seg) 14%, transparent); }
+.service-cards a:hover strong, .service-cards a:focus-visible strong { color: var(--seg); }
+.service-cards a:hover small, .service-cards a:focus-visible small { color: var(--seg); opacity: 1; }
 .ring .icon { width: 56px; height: 56px; }
 .service-cards strong { font-size: 20px; line-height: 1.2; }
 .service-cards small { font-size: 14px; letter-spacing: .1em; opacity: .75; }
