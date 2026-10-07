@@ -538,7 +538,7 @@ ol.steps { padding: 0; margin: 0; }
 .geagro-card .btn { padding: 11px 22px; font-size: 15px; }
 
 /* ---------- Barra superior de productos ---------- */
-.topbar { background: #0d4521; border-bottom: 1px solid #0a361a; }
+.topbar { background: #072a14; border-bottom: 2px solid var(--green); }
 .topbar-inner { display: flex; align-items: center; justify-content: flex-end; min-height: 34px; }
 .topbar-products { list-style: none; display: flex; align-items: center; gap: 22px; }
 .topbar-products a { display: block; padding: 6px 0; opacity: .75; transition: opacity .2s, transform .2s; }
