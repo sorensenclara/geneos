@@ -624,6 +624,9 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 .hx-badge { width: 60px; height: 60px; margin: -30px 0 0 20px; position: relative; border-radius: 50%; background: #fff; border: 3px solid var(--acc); display: grid; place-items: center; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,.12); }
 .hx-badge img { width: 38px; height: 38px; object-fit: contain; }
 .hx-badge-icon { color: var(--acc); }
+/* Íconos propios de producto (GERP, GEAGRO, GEMA): ya traen su aro de color */
+.hx-badge-logo { border: 0; padding: 2px; }
+.hx-badge-logo img { width: 100%; height: 100%; }
 .hx-badge-icon .icon { width: 32px; height: 32px; }
 .hx-badge-icon .icon[fill="none"] { fill: none; }
 /* GEMA: se muestra el logo oficial; el contenedor deja ver la llama (no se edita el archivo) */
