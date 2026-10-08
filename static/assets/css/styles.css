@@ -538,7 +538,11 @@ ol.steps { padding: 0; margin: 0; }
 .geagro-card .btn { padding: 11px 22px; font-size: 15px; }
 
 /* ---------- Barra superior de productos ---------- */
-.topbar { background: #000; border-bottom: 2px solid var(--green); }
+.topbar { position: relative; background: #000; }
+/* Separador con el menú: dos líneas finas en degradé azul ↔ verde de GENEOS */
+.topbar::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; pointer-events: none;
+  background: linear-gradient(90deg, var(--blue), var(--green)) top / 100% 1px no-repeat,
+              linear-gradient(90deg, var(--green), var(--blue)) bottom / 100% 1px no-repeat; }
 .topbar-inner { display: flex; align-items: center; justify-content: flex-end; min-height: 34px; }
 .topbar-products { list-style: none; display: flex; align-items: center; gap: 22px; }
 .topbar-products a { display: block; padding: 6px 0; opacity: .75; transition: opacity .2s, transform .2s; }
