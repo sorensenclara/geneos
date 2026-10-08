@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{#
+  Recursos de marca. Todos los archivos son originales de GENEOS (ver static/assets/descargas):
+  los logotipos no se redibujan ni se modifican; los PNG de GEAGRO y GEMA se exportaron de sus SVG oficiales.
+#}
+{% set D = "descargas/" %}
+{% set PRODUCTS = [
+  {"slug": "gerp", "name": "GERP", "color": "#902e76", "tint": "#f8eef5",
+   "desc": "Software de gestión empresarial para comercios y empresas.",
+   "logo": "2025/02/Isologo-GERP-Full.svg", "logo_ratio": (296, 87), "icon": "GERP.svg",
+   "page": "/software-de-gestion-completo/",
+   "brochure": "brochure-gerp-software-de-gestion-empresarial.pdf", "cover": "recursos/portada-brochure-gerp.webp",
+   "svg": "gerp-logos-svg.zip", "png": "gerp-logos-png.zip",
+   "extra": ("Manual de marca GERP", "manual-de-marca-gerp.pdf")},
+  {"slug": "geagro", "name": "GEAGRO", "color": "#178943", "tint": "#eef7f0",
+   "desc": "Software de gestión agropecuaria para productores y equipos técnicos.",
+   "logo": "geagro/logo-geagro.svg", "logo_ratio": (414, 88), "icon": "GEAGRO.svg",
+   "page": "/software-agropecuario-geagro/",
+   "brochure": "brochure-geagro-software-de-gestion-agropecuaria.pdf", "cover": "recursos/portada-brochure-geagro.webp",
+   "svg": "geagro-logos-svg.zip", "png": "geagro-logos-png.zip", "extra": None},
+  {"slug": "gema", "name": "GEMA", "color": "#e36f31", "tint": "#fdf1ea",
+   "desc": "Software de gestión de matafuegos, clientes, órdenes de trabajo, recargas y vencimientos.",
+   "logo": "recursos/gema-logotipo.svg", "logo_ratio": (340, 95), "icon": "GEMA.svg",
+   "page": "/software-gestion-matafuegos-extintores/",
+   "brochure": None, "cover": None,
+   "svg": "gema-logos-svg.zip", "png": "gema-logos-png.zip", "extra": None},
+] %}
+{% block schema %}
+{% set files = [] %}
+{% for p in PRODUCTS if p.brochure %}
+{% set _ = files.append({"@type": "DigitalDocument", "name": "Brochure " ~ p.name, "encodingFormat": "application/pdf",
+  "url": abs_url("assets/" ~ D ~ p.brochure), "about": p.name, "publisher": {"@id": abs_url("#organizacion")}}) %}
+{% endfor %}
+{% set _ = files.append({"@type": "DigitalDocument", "name": "Manual de marca GENEOS", "encodingFormat": "application/pdf",
+  "url": abs_url("assets/" ~ D ~ "manual-de-marca-geneos-2025.pdf"), "publisher": {"@id": abs_url("#organizacion")}}) %}
+{{ jsonld({"@context": "https://schema.org", "@type": "CollectionPage", "url": abs_url(page.out), "name": title,
+  "description": description, "inLanguage": "es-AR", "about": {"@id": abs_url("#organizacion")},
+  "hasPart": files}) }}
+{% endblock %}
+{% block body_class %}page-recursos{% endblock %}
+
+{% macro product_card(p) -%}
+<article class="rc-card" style="--acc: {{ p.color }}; --tint: {{ p.tint }}" aria-labelledby="rc-{{ p.slug }}">
+  <header class="rc-card-head">
+    <h3 id="rc-{{ p.slug }}" class="rc-card-logo">
+      <img src="{{ img(p.logo) }}" alt="Logotipo oficial de {{ p.name }}" width="{{ p.logo_ratio[0] }}" height="{{ p.logo_ratio[1] }}" loading="lazy">
+    </h3>
+    <p>{{ p.desc }} <a href="{{ url(p.page) }}">Conocé {{ p.name }}</a></p>
+  </header>
+
+  <div class="rc-cover">
+    {% if p.brochure %}
+    <a href="{{ asset(D ~ p.brochure) }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+      <img src="{{ img(p.cover) }}" alt="Portada del brochure de {{ p.name }}" width="600" height="849" loading="lazy">
+    </a>
+    {% else %}
+    <div class="rc-cover-empty">
+      <img src="{{ asset(p.icon) }}" alt="" width="64" height="64" loading="lazy">
+      <p>Brochure de {{ p.name }} disponible próximamente.</p>
+      <a href="{{ url(p.page) }}">Ver la página de {{ p.name }}</a>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if p.brochure %}
+  <div class="rc-actions">
+    <a class="rc-btn rc-btn-ghost" href="{{ asset(D ~ p.brochure) }}" target="_blank" rel="noopener">{{ icon('bi-eye', 'icon bi') }} Ver brochure<span class="sr-only"> de {{ p.name }} (PDF, se abre en una pestaña nueva)</span></a>
+    <a class="rc-btn rc-btn-solid" href="{{ asset(D ~ p.brochure) }}" download="{{ p.brochure }}">{{ icon('bi-download', 'icon bi') }} Descargar PDF<span class="sr-only"> del brochure de {{ p.name }}</span></a>
+  </div>
+  {% endif %}
+
+  <div class="rc-logos">
+    <h4><img src="{{ asset(p.icon) }}" alt="" width="28" height="28"> Logotipos del producto</h4>
+    <div class="rc-actions">
+      <a class="rc-btn rc-btn-soft" href="{{ asset(D ~ p.svg) }}" download>{{ icon('bi-download', 'icon bi') }} SVG<span class="sr-only"> logotipos de {{ p.name }}</span></a>
+      <a class="rc-btn rc-btn-soft" href="{{ asset(D ~ p.png) }}" download>{{ icon('bi-download', 'icon bi') }} PNG<span class="sr-only"> logotipos de {{ p.name }}</span></a>
+    </div>
+    {% if p.extra %}<a class="rc-extra" href="{{ asset(D ~ p.extra[1]) }}" target="_blank" rel="noopener">{{ icon('bi-book', 'icon bi') }} {{ p.extra[0] }}</a>{% endif %}
+  </div>
+</article>
+{%- endmacro %}
+
+{% block content %}
+{# ===================== HERO ===================== #}
+<section class="section theme-black-green rc-hero">
+  <div class="container rc-hero-grid">
+    <div>
+      <p class="hx-eyebrow hx-eyebrow-light">Recursos</p>
+      <h1 class="rc-h1">Recursos de marca y productos</h1>
+      <p class="hx-lead">Descargá los logotipos oficiales, manuales de identidad y brochures comerciales de GENEOS y sus soluciones de software.</p>
+    </div>
+    <div class="rc-hero-aside">
+      <span class="rc-hero-icon">{{ icon('bi-file-earmark-arrow-down', 'icon bi') }}</span>
+      <ul class="rc-checks">
+        {% for t in ["Logotipos oficiales", "Manuales de marca", "Brochures comerciales", "Uso libre para difusión"] %}
+        <li>{{ icon('bi-check2', 'icon bi') }} {{ t }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{# ===================== IDENTIDAD GENEOS ===================== #}
+<section class="section theme-white rc-section" aria-labelledby="rc-geneos">
+  <div class="container">
+    <header class="rc-head">
+      <h2 id="rc-geneos">Identidad visual de GENEOS</h2>
+      <p>Logotipos oficiales y manual de marca para su correcta utilización.</p>
+    </header>
+    <div class="rc-brand">
+      <div class="rc-brand-main">
+        <img class="rc-brand-logo" src="{{ img('recursos/geneos-isologotipo.svg') }}" alt="Isologotipo oficial de GENEOS, cooperativa de software libre" width="480" height="186">
+        <div>
+          <h3>Logotipo GENEOS</h3>
+          <p>Disponible en sus versiones principales para usos digitales e impresos. Consultá el manual de marca para conocer los lineamientos de uso.</p>
+          <div class="rc-actions">
+            <a class="rc-btn rc-btn-solid" style="--acc: var(--green)" href="{{ asset(D ~ 'geneos-logos-svg.zip') }}" download>{{ icon('bi-download', 'icon bi') }} Descargar SVG<span class="sr-only"> logotipos de GENEOS</span></a>
+            <a class="rc-btn rc-btn-solid" style="--acc: var(--green)" href="{{ asset(D ~ 'geneos-logos-png.zip') }}" download>{{ icon('bi-download', 'icon bi') }} Descargar PNG<span class="sr-only"> logotipos de GENEOS</span></a>
+            <a class="rc-btn rc-btn-ghost" style="--acc: var(--black)" href="{{ asset(D ~ 'manual-de-marca-geneos-2025.pdf') }}" target="_blank" rel="noopener">{{ icon('bi-book', 'icon bi') }} Manual de marca<span class="sr-only"> de GENEOS (PDF, se abre en una pestaña nueva)</span></a>
+          </div>
+        </div>
+      </div>
+      <p class="rc-versions-label">Otras versiones</p>
+      <ul class="rc-versions">
+        <li><span class="rc-swatch"><img src="{{ img('recursos/geneos-isologotipo-negro.svg') }}" alt="Isologotipo de GENEOS en versión monocroma negra" width="240" height="93" loading="lazy"></span>Versión monocroma</li>
+        <li><span class="rc-swatch rc-swatch-dark"><img src="{{ img('recursos/geneos-isologotipo-blanco.svg') }}" alt="Isologotipo de GENEOS en versión blanca para fondos oscuros" width="240" height="93" loading="lazy"></span>Versión blanca (fondo oscuro)</li>
+        <li><span class="rc-swatch"><img src="{{ img('recursos/geneos-isotipo.svg') }}" alt="Isotipo de GENEOS" width="95" height="95" loading="lazy"></span>Isotipo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{# ===================== PRODUCTOS ===================== #}
+<section class="section theme-white rc-section rc-products" aria-labelledby="rc-productos">
+  <div class="container">
+    <header class="rc-head">
+      <h2 id="rc-productos">Brochures y logotipos de nuestros productos</h2>
+      <p>Material comercial e identidad visual de nuestras soluciones de software.</p>
+    </header>
+    <div class="rc-grid">
+      {% for p in PRODUCTS %}{{ product_card(p) }}{% endfor %}
+    </div>
+
+    {# ===================== CONDICIONES ===================== #}
+    <aside class="rc-terms" aria-labelledby="rc-uso">
+      <span class="rc-terms-icon">{{ icon('bi-info-circle', 'icon bi') }}</span>
+      <div>
+        <h2 id="rc-uso">Uso de los recursos</h2>
+        <p>Los logotipos, manuales de marca y brochures pueden descargarse y utilizarse libremente para fines de difusión, presentaciones, propuestas comerciales y comunicaciones relacionadas con GENEOS y sus productos. Para otros usos, <a href="{{ url('/contacto-geneos/') }}">consultanos</a>.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+{% endblock %}

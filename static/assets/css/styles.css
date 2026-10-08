@@ -731,3 +731,81 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 /* Contacto */
 .hx-contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
 @media (max-width: 860px) { .hx-contact-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Recursos de marca ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.rc-hero { padding: clamp(44px, 6vw, 72px) 0 clamp(56px, 7vw, 88px); }
+.rc-hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.rc-h1 { font-size: clamp(32px, 4vw, 48px); line-height: 1.08; margin: 0 0 14px; }
+.rc-hero .hx-lead { margin: 0; max-width: 560px; }
+.rc-hero-aside { display: flex; align-items: center; gap: 28px; justify-content: flex-end; }
+.rc-hero-icon { color: var(--green-bright); flex: none; }
+.rc-hero-icon .icon { width: 76px; height: 76px; }
+.rc-checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.rc-checks li { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+.rc-checks .icon { width: 18px; height: 18px; color: var(--green-bright); flex: none; }
+@media (max-width: 860px) { .rc-hero-grid { grid-template-columns: 1fr; } .rc-hero-aside { justify-content: flex-start; } .rc-hero-icon .icon { width: 56px; height: 56px; } }
+
+.rc-section { padding-top: clamp(44px, 6vw, 72px); padding-bottom: clamp(44px, 6vw, 72px); }
+.rc-products { padding-top: 0; }
+.rc-head { border-left: 4px solid var(--green); padding-left: 18px; margin-bottom: 24px; }
+.rc-head h2 { font-size: clamp(24px, 2.6vw, 30px); margin: 0 0 4px; }
+.rc-head p { margin: 0; color: #4b5563; }
+
+/* Botones de descarga (color por producto vía --acc) */
+.rc-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.rc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 9px 14px; border-radius: 999px; font-size: 14px; white-space: nowrap; color: var(--acc, var(--green)); font-weight: 700; text-decoration: none; border: 1.5px solid var(--acc); transition: background .2s, color .2s, box-shadow .2s; }
+.rc-btn .icon { width: 16px; height: 16px; flex: none; }
+.rc-btn-solid { background: var(--acc); color: #fff; }
+.rc-btn-solid:hover, .rc-btn-solid:focus-visible { box-shadow: 0 6px 16px color-mix(in srgb, var(--acc) 35%, transparent); filter: brightness(1.06); }
+.rc-btn-ghost { background: #fff; color: var(--acc); }
+.rc-btn-ghost:hover, .rc-btn-ghost:focus-visible { background: var(--acc); color: #fff; }
+.rc-btn-soft { border-color: transparent; background: color-mix(in srgb, var(--acc) 12%, #fff); color: var(--acc); flex: 1; }
+.rc-btn-soft:hover, .rc-btn-soft:focus-visible { background: var(--acc); color: #fff; }
+
+/* Identidad GENEOS */
+.rc-brand { background: var(--gray-light); border-radius: 16px; padding: clamp(22px, 3.5vw, 40px); }
+.rc-brand-main { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(20px, 4vw, 48px); align-items: center; }
+.rc-brand-main > * { min-width: 0; }
+.rc-brand-logo { width: 100%; max-width: 440px; height: auto; margin: 0 auto; }
+.rc-brand-main h3 { font-size: 21px; margin: 0 0 6px; }
+.rc-brand-main p { color: #4b5563; margin: 0 0 18px; }
+.rc-versions-label { margin: 28px 0 16px; text-align: center; font-size: 14px; font-weight: 600; color: #4b5563; display: flex; align-items: center; gap: 14px; }
+.rc-versions-label::before, .rc-versions-label::after { content: ""; flex: 1; height: 1px; background: #d9dde3; }
+.rc-versions { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; text-align: center; font-size: 14px; color: #4b5563; }
+.rc-swatch { display: grid; place-items: center; height: 92px; border-radius: 12px; background: #fff; margin-bottom: 8px; padding: 12px; }
+.rc-swatch img { max-height: 64px; width: auto; }
+.rc-versions li:last-child .rc-swatch img { max-height: 70px; }
+.rc-swatch-dark { background: #000; }
+@media (max-width: 760px) { .rc-brand-main { grid-template-columns: 1fr; } .rc-versions { grid-template-columns: 1fr 1fr; } .rc-versions li:last-child { grid-column: 1 / -1; } }
+
+/* Tarjetas de producto */
+.rc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.rc-card { --acc: var(--green); --tint: #f3f4f6; background: var(--tint); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+.rc-card-head p { margin: 0; color: #374151; font-size: 15px; line-height: 1.5; }
+.rc-card-head a { color: var(--acc); font-weight: 700; white-space: nowrap; }
+.rc-card-logo { margin: 0 0 14px; height: 64px; display: flex; align-items: center; }
+.rc-card-logo img { max-height: 64px; max-width: 100%; width: auto; height: auto; }
+.rc-cover { display: grid; place-items: center; }
+.rc-cover a { display: block; width: min(64%, 220px); transition: transform .25s; }
+.rc-cover a:hover { transform: translateY(-3px); }
+.rc-cover img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 14px 30px rgba(0,0,0,.16), 0 2px 6px rgba(0,0,0,.08); }
+.rc-cover-empty { width: min(64%, 220px); aspect-ratio: 600 / 849; border: 1.5px dashed color-mix(in srgb, var(--acc) 45%, transparent); border-radius: 8px; background: rgba(255,255,255,.6); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 16px; font-size: 14px; color: #4b5563; }
+.rc-cover-empty p { margin: 0; }
+.rc-cover-empty img { width: 64px; height: 64px; }
+.rc-cover-empty a { color: var(--acc); font-weight: 700; }
+.rc-card > .rc-actions .rc-btn { flex: 1; }
+.rc-logos { margin-top: auto; border-top: 1px solid color-mix(in srgb, var(--acc) 18%, transparent); padding-top: 16px; }
+.rc-logos h4 { display: flex; align-items: center; gap: 8px; font-size: 15px; margin: 0 0 12px; }
+.rc-logos h4 img { width: 28px; height: 28px; }
+.rc-extra { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 14px; font-weight: 600; color: var(--acc); }
+.rc-extra .icon { width: 15px; height: 15px; }
+@media (max-width: 980px) { .rc-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+
+/* Condiciones de uso */
+.rc-terms { margin-top: clamp(28px, 4vw, 44px); display: flex; gap: 18px; align-items: flex-start; background: #eef2f8; border-radius: 16px; padding: 22px 26px; }
+.rc-terms-icon { color: var(--blue); flex: none; }
+.rc-terms-icon .icon { width: 34px; height: 34px; }
+.rc-terms h2 { font-size: 19px; margin: 2px 0 6px; }
+.rc-terms p { margin: 0; color: #374151; font-size: 15px; }
+.rc-terms a { color: var(--blue); font-weight: 600; }

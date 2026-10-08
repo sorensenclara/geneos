@@ -116,10 +116,10 @@ PAGES = [
          title="Quiénes somos: cooperativa de software en Tandil | GENEOS",
          description="Cooperativa de software de Tandil que desarrolla sistemas de gestión y soluciones digitales a medida con software libre. Conocé al equipo de GENEOS.",
          crumb="Quiénes somos", og="og/quienes-somos.jpg", priority="0.7"),
-    dict(tpl="recursos-graficos.html", out="recursos-graficos/", parent="quienes-somos/",
-         title="Recursos gráficos y manual de marca | GENEOS",
-         description="Descargá los isologotipos de GENEOS y GERP en SVG y PNG y consultá el manual de marca con los lineamientos de uso de la identidad visual.",
-         crumb="Recursos Gráficos", priority="0.3"),
+    dict(tpl="recursos.html", out="recursos/",
+         title="Recursos de marca: logos y brochures | GENEOS",
+         description="Descargá los logotipos oficiales, manuales de identidad y brochures comerciales de GENEOS y de sus productos GERP, GEAGRO y GEMA.",
+         crumb="Recursos", priority="0.4"),
     dict(tpl="contacto.html", out="contacto-geneos/",
          title="Contacto | GENEOS, cooperativa de software libre",
          description="Escribinos por WhatsApp, mail o formulario. Desarrollo de software, Odoo, WordPress, Moodle y diseño para Argentina y Latinoamérica. Alem 1015, Tandil.",
@@ -143,6 +143,13 @@ REDIRECTS = {
     "/plataformas-e-learning/": "/plataformas-e-learning-lms-moodle/",
     "/disenamos-sitios-web-identidades/": "/diseno-sitios-web-identidades/",
     "/contact/": "/contacto-geneos/",
+    "/recursos-graficos/": "/recursos/",
+    "/index.php/recursos-graficos/": "/recursos/",
+    "/assets/descargas/Logos-GENEOS-Vector.zip": "/assets/descargas/geneos-logos-svg.zip",
+    "/assets/descargas/Logos-GENEOS-PNG.zip": "/assets/descargas/geneos-logos-png.zip",
+    "/assets/descargas/GERP-Vector.zip": "/assets/descargas/gerp-logos-svg.zip",
+    "/assets/descargas/GERP-PNG.zip": "/assets/descargas/gerp-logos-png.zip",
+    "/assets/descargas/Manual-de-MARCA-G-ERP.pdf": "/assets/descargas/manual-de-marca-gerp.pdf",
 }
 
 
@@ -290,6 +297,18 @@ def build():
         ht.append(f"RewriteRule ^{old.strip('/')}/?$ {url(new)} [R=301,L]")
     ht.append(f"RewriteRule ^index\\.php/(.*)$ {url('/')}$1 [R=301,L]")
     (OUT / ".htaccess").write_text("\n".join(ht) + "\n")
+    # Páginas puente para hosts estáticos sin redirecciones (GitHub Pages): meta refresh + canonical
+    for old, new in REDIRECTS.items():
+        if not old.endswith("/") or old.startswith("/index.php/"):
+            continue
+        stub = OUT / old.strip("/") / "index.html"
+        if stub.exists():
+            continue
+        stub.parent.mkdir(parents=True, exist_ok=True)
+        stub.write_text(f'<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><title>Redirigiendo…</title>'
+                        f'<meta name="robots" content="noindex"><link rel="canonical" href="{abs_url(new)}">'
+                        f'<meta http-equiv="refresh" content="0; url={url(new)}"></head>'
+                        f'<body><p><a href="{url(new)}">Esta página se mudó</a>.</p></body></html>')
 
     # sitemap + robots
     urls = "\n".join(

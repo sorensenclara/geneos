@@ -10,4 +10,11 @@
 /plataformas-e-learning/ /plataformas-e-learning-lms-moodle/ 301
 /disenamos-sitios-web-identidades/ /diseno-sitios-web-identidades/ 301
 /contact/ /contacto-geneos/ 301
+/recursos-graficos/ /recursos/ 301
+/index.php/recursos-graficos/ /recursos/ 301
+/assets/descargas/Logos-GENEOS-Vector.zip /assets/descargas/geneos-logos-svg.zip 301
+/assets/descargas/Logos-GENEOS-PNG.zip /assets/descargas/geneos-logos-png.zip 301
+/assets/descargas/GERP-Vector.zip /assets/descargas/gerp-logos-svg.zip 301
+/assets/descargas/GERP-PNG.zip /assets/descargas/gerp-logos-png.zip 301
+/assets/descargas/Manual-de-MARCA-G-ERP.pdf /assets/descargas/manual-de-marca-gerp.pdf 301
 /index.php/* /:splat 301
