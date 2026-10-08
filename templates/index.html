@@ -115,8 +115,9 @@
       <a class="btn btn-solid" href="{{ url('/servicios/') }}">Conocé más {{ icon('ui-arrow-right') }}</a>
     </div>
     <ul class="hx-free-list">
-      {% for ic, t, d in [("ventaja-flexible", "Adaptable", "El sistema evoluciona con tu organización."), ("rol-devops", "Integrable", "Puede conectarse con otras herramientas."), ("ventaja-costos", "Sin ataduras", "Mayor control sobre tus datos y tu solución.")] %}
-      <li><span class="hx-ring">{{ icon(ic) }}</span><strong>{{ t }}</strong><span>{{ d }}</span></li>
+      {# Íconos: Bootstrap Icons 1.13.1 (MIT), SVG oficiales en templates/icons/bi-*.svg #}
+      {% for ic, t, d in [("bi-arrows-angle-expand", "Adaptable", "El sistema evoluciona con tu organización."), ("bi-diagram-3", "Integrable", "Puede conectarse con otras herramientas."), ("bi-unlock", "Sin ataduras", "Mayor control sobre tus datos y tu solución.")] %}
+      <li><span class="hx-ring">{{ icon(ic, "icon bi") }}</span><strong>{{ t }}</strong><span>{{ d }}</span></li>
       {% endfor %}
     </ul>
   </div>
