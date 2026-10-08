@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
 {% block body_class %}page-home{% endblock %}
+{% block tambien %}{% endblock %}
 {% block preload %}<link rel="preload" as="image" href="{{ img('hero/hero-geneos.webp') }}" fetchpriority="high">{% endblock %}
 {% block content %}
 {# ===================== HERO ===================== #}
@@ -76,34 +77,7 @@
 </section>
 
 {# ===================== SERVICIOS ===================== #}
-<section class="section theme-white hx-services">
-  <div class="container">
-    <div class="hx-head">
-      <div>
-        <p class="hx-eyebrow">También hacemos</p>
-        <h2 class="hx-title">Servicios que potencian tu gestión</h2>
-      </div>
-      <p class="hx-sub hx-head-note">Te acompañamos en todo el ciclo de desarrollo, con un equipo multidisciplinario y experiencia en organizaciones de distintos sectores.</p>
-    </div>
-    <ul class="hx-service-grid">
-      {% for ic, name, text, href, acc in [
-        ("staff", "Staff Augmentation", "Sumá nuestro equipo a tus proyectos.", "/staff-augmentation/", "#f1b936"),
-        ("apps", "Sitios Web &amp; Apps", "Plataformas y aplicaciones para acercar tus servicios.", "/desarrollo-apps-sitios-web-cooperativos/", "#1071ff"),
-        ("elearning", "E-Learning", "Formación y capacitación en entornos virtuales con Moodle.", "/plataformas-e-learning-lms-moodle/", "#e36f31"),
-        ("diseno", "Diseño &amp; Comunicación", "Identidad visual, comunicación y material institucional.", "/diseno-sitios-web-identidades/", "#17c854"),
-      ] %}
-      <li style="--acc: {{ acc }}">
-        <a href="{{ url(href) }}">
-          <span class="hx-service-icon">{{ icon(ic) }}</span>
-          <strong>{{ name|safe }}</strong>
-          <span class="hx-service-text">{{ text }}</span>
-          <span class="hx-round">{{ icon('ui-arrow-right') }}</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
+{% include "partials/tambien-hacemos.html" %}
 
 {# ===================== SOFTWARE LIBRE ===================== #}
 <section class="section theme-green-deep hx-free">

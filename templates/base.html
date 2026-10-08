@@ -67,6 +67,7 @@
   <main id="contenido">
     {% if crumbs|length > 1 %}{% include "partials/breadcrumbs.html" %}{% endif %}
     {% block content %}{% endblock %}
+    {% block tambien %}{% include "partials/tambien-hacemos.html" %}{% endblock %}
   </main>
   {% include "partials/footer.html" %}
   <a class="wa-float" href="{{ wa() }}" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">{{ icon('ui-whatsapp') }}</a>

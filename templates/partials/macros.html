@@ -208,19 +208,6 @@
 {% if ic.startswith("img:") %}<img src="{{ img(ic[4:]) }}" alt="" width="54" height="54" loading="lazy">{% else %}{{ icon(ic) }}{% endif %}
 {%- endmacro %}
 
-{% macro related(current, title="Otros servicios de GENEOS") -%}
-<section class="section theme-black related">
-  <div class="container">
-    {{ section_head("TAMBIÉN HACEMOS", title) }}
-    <ul class="related-grid">
-      {% for href, ic, name, text in ALL_SERVICES if href != current %}
-      <li><a href="{{ url(href) }}"><span class="related-icon">{{ svc_icon(ic) }}</span><strong>{{ name }}</strong><span>{{ text }}</span></a></li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-{%- endmacro %}
-
 {% macro cta(title, text, wa_text="", button="Escribinos por WhatsApp", theme="theme-blue") -%}
 <section class="section {{ theme }} cta-band">
   <div class="container narrow center">
