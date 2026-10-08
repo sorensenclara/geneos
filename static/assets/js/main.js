@@ -60,12 +60,50 @@
   /* Flip boxes en pantallas táctiles */
   $$(".flip").forEach((f) => f.addEventListener("click", () => f.classList.toggle("flipped")));
 
-  /* Fichas del equipo */
-  $$("[data-member]").forEach((btn) => {
-    const dlg = document.getElementById(btn.dataset.member);
+  /* Carrusel de socios (Quiénes somos): flechas sobre un scroll nativo con snap */
+  $$(".qs-team").forEach((sec) => {
+    const track = $(".qs-track", sec);
+    const arrows = $$(".qs-arrow", sec);
+    if (!track) return;
+    const step = () => {
+      const slide = track.firstElementChild;
+      return slide ? slide.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0) : track.clientWidth;
+    };
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      arrows.forEach((b) => (b.disabled = +b.dataset.dir < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= max));
+    };
+    arrows.forEach((b) => b.addEventListener("click", () => track.scrollBy({ left: +b.dataset.dir * step() })));
+    track.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+    addEventListener("resize", update);
+    update();
+  });
+
+  /* Fichas del equipo: <dialog> nativo (Escape y foco atrapado por el navegador) */
+  let opener = null;
+  const openMember = (id) => {
+    const dlg = document.getElementById(id);
     if (!dlg) return;
-    btn.addEventListener("click", () => dlg.showModal());
-    dlg.addEventListener("click", (e) => { if (e.target === dlg || e.target.closest(".member-close")) dlg.close(); });
+    $$("dialog.member[open]").forEach((d) => d.close());
+    dlg.showModal();
+    $(".member-close", dlg)?.focus();
+  };
+  $$("[data-member]").forEach((btn) => btn.addEventListener("click", () => { opener = btn; openMember(btn.dataset.member); }));
+  $$("dialog.member").forEach((dlg) => {
+    dlg.addEventListener("click", (e) => {
+      if (e.target === dlg || e.target.closest(".member-close")) dlg.close();
+      const go = e.target.closest("[data-goto]");
+      if (go) {
+        opener = document.querySelector(`[data-member="${go.dataset.goto}"]`) || opener;
+        openMember(go.dataset.goto);
+      }
+    });
+    dlg.addEventListener("close", () => {
+      if (!$("dialog.member[open]") && opener) {
+        opener.closest(".qs-slide")?.scrollIntoView({ block: "nearest", inline: "nearest" });
+        opener.focus({ preventScroll: true });
+      }
+    });
   });
 
   /* Video del hero: una sola reproducción; sin animación si el usuario la reduce */

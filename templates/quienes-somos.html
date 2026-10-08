@@ -1,102 +1,186 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{#
+  Datos del equipo recuperados del sitio WordPress original (carrusel Premium Addons + popups de Elementor).
+  slug, nombre, cargo en la tarjeta (2 líneas), roles del popup, capacidades, foto B/N, foto alternativa (hover), foto del popup, email, LinkedIn.
+  El sitio original no tenía biografías: no se agregan textos que no existían.
+#}
 {% set TEAM = [
-  ("jose", "José Fantasía", ["Desarrollador"], ["Comercial", "Consultor", "Analista Funcional", "Gestor de Proyectos"], "Jose.jpg", "Jose2.jpg", "Jose3.jpg", "jose.fantasia@geneos.com.ar", "http://www.linkedin.com/in/josé-maria-fantasia-b9b00373"),
-  ("florencia", "Florencia Paglione", ["Desarrolladora de Software", "Desarrolladora Web Backend"], ["Python", "Django"], "Florencia.jpg", "Florencia2.jpg", "Florencia3.jpg", "florencia.paglione@geneos.com.ar", "http://www.linkedin.com/in/florencia-paglione-65045320a"),
-  ("diego", "Diego Nouchi", ["Contador Público"], ["Comercial", "Analista Funcional", "Gestor de Proyectos"], "Diego-2.jpg", "Diego2-2.jpg", "Diego-2.jpg", "diego.nouchi@geneos.com.ar", "http://www.linkedin.com/in/diegonouchi"),
-  ("martin", "Martín Di Lisio", ["Desarrollador de Software", "Gestor de Proyectos"], ["Analista Funcional", "Dirección de Proyectos", "Odoo"], "Martin-1.jpg", "Martin2.jpg", "Martin4.jpg", "martin.dilisio@geneos.com.ar", "http://www.linkedin.com/in/martin-di-lisio-300680136"),
-  ("mario", "Mario Ferreyra", ["Desarrollador de Software", "Administrativo"], ["Moodle", "Gestor de Proyectos", "Analista Funcional", "Especialista QA"], "mario-1.jpg", "mario2-1.jpg", "mario3-3.jpg", "mario.ferreyra@geneos.com.ar", "http://www.linkedin.com/in/mario-césar-ferreyra-3b7969a"),
-  ("pablo", "Pablo Velázquez", ["Desarrollador de Software", "Presidente"], ["Angular", "Node", "Vue", "PHP", "Moodle"], "Pablo-1.jpg", "Pablo2-1.jpg", "Pablo3-2.jpg", "pablo.velazquez@geneos.com.ar", "http://www.linkedin.com/in/pablo-emanuel-velazquez-97b95b76"),
-  ("clara", "Ma. Clara Sorensen", ["Diseñadora Gráfica", "Licenciada en Publicidad"], ["Diseño de marcas", "Diseño de sitios web", "Animaciones multimedia", "UX / UI"], "clara.jpg", "clara2-1.jpg", "clara3-1.jpg", "clara.sorensen@geneos.com.ar", "http://www.linkedin.com/in/sorensenclara"),
-  ("ibrian", "Ibrian Gómez", ["Desarrollador de Software", "Desarrollador Web Fullstack"], ["Angular", "Node", "Python", "Odoo", "Plataform"], "ibrian.jpg", "ibrian2.jpg", "ibrian3.jpg", "ibrian.gomez@geneos.com.ar", "http://www.linkedin.com/in/ibrian-gomez-ortiz-0b447986"),
-  ("marcos", "Marcos Reginato", ["Desarrollador de Software", "Desarrollador Web"], ["Backend", "Odoo", "Frontend"], "Marcos2A.jpg", "Marcos4.jpg", "Marcos2B.jpg", "marcos.reginato@geneos.com.ar", "http://www.linkedin.com/in/marcos-reginato"),
-  ("fernando", "Fernando Recci", ["Desarrollador de Software", "DevOps"], ["Python", "Odoo", "DevOps"], "Fernando.jpg", "Fernando2.jpg", "Fernando3.jpg", "fernando.recci@geneos.com.ar", "http://linkedin.com/in/fernando-javier-recci-3a0696a5"),
-  ("santiago", "Santiago Costa", ["Desarrollador de Software", "Desarrollador Web Backend"], ["Angular", "Node", "Odoo", "Python"], "Santiago.jpg", "Santiago2.jpg", "Santiago3.jpg", "santiago.costa@geneos.com.ar", "http://www.linkedin.com/in/santcosta"),
+  ("jose", "José Fantasía", ["Consultor de procesos", "Gestor de Proyectos y Analista Funcional"], ["Desarrollador"], ["Comercial", "Consultor", "Analista Funcional", "Gestor de Proyectos"], "Jose.jpg", "Jose2.jpg", "Jose3.jpg", "jose.fantasia@geneos.com.ar", "http://www.linkedin.com/in/josé-maria-fantasia-b9b00373"),
+  ("florencia", "Florencia Paglione", ["Desarrolladora de Software", "Desarrolladora Web Backend"], ["Desarrolladora de Software", "Desarrolladora Web Backend"], ["Python", "Django"], "Florencia.jpg", "Florencia2.jpg", "Florencia3.jpg", "florencia.paglione@geneos.com.ar", "http://www.linkedin.com/in/florencia-paglione-65045320a"),
+  ("diego", "Diego Nouchi", ["Contador Público", "Comercial y Analista Funcional"], ["Contador Público"], ["Comercial", "Analista Funcional", "Gestor de Proyectos"], "Diego-2.jpg", "Diego2-2.jpg", "Diego-2.jpg", "diego.nouchi@geneos.com.ar", "http://www.linkedin.com/in/diegonouchi"),
+  ("martin", "Martín Di Lisio", ["Desarrollador de Software", "Gestor de Proyectos y Analista Funcional"], ["Desarrollador de Software", "Gestor de Proyectos"], ["Analista Funcional", "Dirección de Proyectos", "Odoo"], "Martin-1.jpg", "Martin2.jpg", "Martin4.jpg", "martin.dilisio@geneos.com.ar", "http://www.linkedin.com/in/martin-di-lisio-300680136"),
+  ("mario", "Mario Ferreyra", ["Desarrollador de Software", "Administrativo / Especialista QA"], ["Desarrollador de Software", "Administrativo"], ["Moodle", "Gestor de Proyectos", "Analista Funcional", "Especialista QA"], "mario-1.jpg", "mario2-1.jpg", "mario3-3.jpg", "mario.ferreyra@geneos.com.ar", "http://www.linkedin.com/in/mario-césar-ferreyra-3b7969a"),
+  ("pablo", "Pablo Velázquez", ["Desarrollador de Software", "Presidente"], ["Desarrollador de Software", "Presidente"], ["Angular", "Node", "Vue", "PHP", "Moodle"], "Pablo-1.jpg", "Pablo2-1.jpg", "Pablo3-2.jpg", "pablo.velazquez@geneos.com.ar", "http://www.linkedin.com/in/pablo-emanuel-velazquez-97b95b76"),
+  ("clara", "Ma. Clara Sorensen", ["Lic. en Publicidad", "Lic. en Diseño Gráfico"], ["Diseñadora Gráfica", "Licenciada en Publicidad"], ["Diseño de marcas", "Diseño de sitios web", "Animaciones multimedia", "UX / UI"], "clara.jpg", "clara2-1.jpg", "clara3-1.jpg", "clara.sorensen@geneos.com.ar", "http://www.linkedin.com/in/sorensenclara"),
+  ("ibrian", "Ibrian Gómez", ["Desarrollador de Software", "Desarrollador web fullstack"], ["Desarrollador de Software", "Desarrollador Web Fullstack"], ["Angular", "Node", "Python", "Odoo Platform"], "ibrian.jpg", "ibrian2.jpg", "ibrian3.jpg", "ibrian.gomez@geneos.com.ar", "http://www.linkedin.com/in/ibrian-gomez-ortiz-0b447986"),
+  ("marcos", "Marcos Reginato", ["Desarrollador de Software", "Desarrollador web"], ["Desarrollador de Software", "Desarrollador Web"], ["Backend", "Odoo", "Frontend"], "Marcos2A.jpg", "Marcos4.jpg", "Marcos2B.jpg", "marcos.reginato@geneos.com.ar", "http://www.linkedin.com/in/marcos-reginato"),
+  ("fernando", "Fernando Recci", ["Desarrollador de Software", "DevOps"], ["Desarrollador de Software", "DevOps"], ["Python", "Odoo", "DevOps"], "Fernando.jpg", "Fernando2.jpg", "Fernando3.jpg", "fernando.recci@geneos.com.ar", "http://linkedin.com/in/fernando-javier-recci-3a0696a5"),
+  ("santiago", "Santiago Costa", ["Desarrollador de Software", "Web Back-end Developer"], ["Desarrollador de Software", "Desarrollador Web Backend"], ["Angular", "Node", "Odoo", "Python"], "Santiago.jpg", "Santiago2.jpg", "Santiago3.jpg", "santiago.costa@geneos.com.ar", "http://www.linkedin.com/in/santcosta"),
 ] %}
 {% block schema %}
 {% set people = [] %}
-{% for slug, name, roles, skills, front, back, pop, mail, li in TEAM %}
-{% set _ = people.append({"@type": "Person", "name": name, "jobTitle": roles|join(", "), "knowsAbout": skills, "sameAs": [li],
-  "image": abs_url("assets/img/2023/10/" ~ pop.rsplit(".", 1)[0] ~ ".webp"), "worksFor": {"@id": abs_url("#organizacion")}}) %}
+{% for slug, name, card, roles, skills, front, back, pop, mail, li in TEAM %}
+{% set _ = people.append({"@type": "Person", "@id": abs_url(page.out) ~ "#" ~ slug, "name": name, "jobTitle": card|join(" · "), "knowsAbout": skills, "sameAs": [li],
+  "image": abs_url("assets/img/2023/10/" ~ pop.rsplit(".", 1)[0] ~ ".webp"), "memberOf": {"@id": abs_url("#organizacion")}}) %}
 {% endfor %}
-{{ jsonld({"@context": "https://schema.org", "@type": "AboutPage", "url": abs_url(page.out), "name": title,
-  "mainEntity": {"@id": abs_url("#organizacion"), "@type": "Organization", "name": "GENEOS", "member": people}}) }}
+{{ jsonld({"@context": "https://schema.org", "@type": "AboutPage", "@id": abs_url(page.out) ~ "#pagina-nosotros", "url": abs_url(page.out), "name": title,
+  "description": description, "inLanguage": "es-AR",
+  "primaryImageOfPage": abs_url("assets/img/og/quienes-somos.jpg"),
+  "mainEntity": {"@type": "Organization", "@id": abs_url("#organizacion"), "name": "GENEOS",
+    "foundingLocation": {"@type": "Place", "name": "Tandil, Buenos Aires, Argentina"},
+    "numberOfEmployees": {"@type": "QuantitativeValue", "value": TEAM|length},
+    "member": people}}) }}
 {% endblock %}
+{% block body_class %}page-about{% endblock %}
 {% block content %}
-<section class="section theme-black-green about-hero">
+
+{# ===================== 1. HERO ===================== #}
+<section class="section theme-black-green qs-hero">
+  <div class="container qs-hero-grid">
+    <div>
+      <p class="hx-eyebrow hx-eyebrow-light">Quiénes somos</p>
+      <h1 class="qs-h1">GENEOS, cooperativa de software libre en Tandil</h1>
+      <p class="hx-lead">Somos una cooperativa de trabajo que desarrolla <strong>sistemas de gestión y soluciones digitales a medida</strong> con software libre. Desde Tandil acompañamos a empresas, cooperativas e instituciones de Argentina y Latinoamérica.</p>
+      <div class="btn-row">
+        <a class="btn btn-solid" href="#equipo">Conocé al equipo {{ icon('ui-arrow-right') }}</a>
+        <a class="btn btn-outline" href="{{ url('/contacto-geneos/') }}">Contanos tu proyecto</a>
+      </div>
+    </div>
+    <img class="qs-hero-photo" src="{{ img('elementor/thumbs/photo1698237434-qehlghvwxfpsb50lqbol1wcdxkjs7gkrv28ps6we5c.jpeg') }}" alt="Socios de GENEOS trabajando juntos en la sede de la cooperativa en Tandil" width="600" height="400" fetchpriority="high">
+  </div>
+</section>
+
+{# ===================== 2. EQUIPO ===================== #}
+<section class="section theme-blue-up qs-team" id="equipo" aria-labelledby="equipo-titulo">
   <div class="container">
-    {{ m.eyebrow("QUIÉNES SOMOS") }}
-    <h1 class="section-title center">GENEOS, cooperativa de software libre<br><small>desarrolladores de soluciones tecnológicas</small></h1>
-    <div class="mv">
-      <article>
-        <h2>Misión</h2>
-        <p>Somos una <strong>cooperativa</strong> que desarrolla software con <strong>tecnologías innovadoras y proyectos personalizados</strong>, buscando impulsar el éxito de nuestros clientes.</p>
-      </article>
-      <article>
-        <h2>Visión</h2>
-        <p>Ser reconocidos por la entrega de <strong>productos escalables y efectivos</strong>, y por <strong>crear un ecosistema colaborativo</strong> que fomente la transparencia y la inclusión.</p>
-      </article>
+    <div class="qs-head">
+      <div>
+        <p class="hx-eyebrow hx-eyebrow-light">La coope</p>
+        <h2 class="hx-title" id="equipo-titulo">Nuestro equipo</h2>
+        <p class="qs-sub">Profesionales comprometidos con una cultura colaborativa, dedicados a ser <strong>socios estratégicos de nuestros clientes</strong>. Cada integrante es socio de la cooperativa.</p>
+      </div>
+      <div class="qs-arrows">
+        <button class="qs-arrow" type="button" data-dir="-1" aria-controls="equipo-lista" aria-label="Ver socios anteriores">{{ icon('bi-chevron-left', 'icon bi') }}</button>
+        <button class="qs-arrow" type="button" data-dir="1" aria-controls="equipo-lista" aria-label="Ver más socios">{{ icon('bi-chevron-right', 'icon bi') }}</button>
+      </div>
+    </div>
+    <div class="qs-carousel" role="region" aria-roledescription="carrusel" aria-label="Socios de GENEOS">
+      <ul class="qs-track" id="equipo-lista">
+        {% for slug, name, card, roles, skills, front, back, pop, mail, li in TEAM %}
+        <li class="qs-slide" aria-roledescription="diapositiva" aria-label="{{ loop.index }} de {{ TEAM|length }}">
+          <button class="qs-card" type="button" data-member="m-{{ slug }}" aria-haspopup="dialog">
+            <span class="qs-photo">
+              <img src="{{ img('2023/10/' ~ front) }}" alt="Foto de {{ name }}" loading="lazy" decoding="async" width="640" height="642">
+              <img src="{{ img('2023/10/' ~ back) }}" alt="" loading="lazy" decoding="async" width="640" height="642">
+            </span>
+            <strong>{{ name }}</strong>
+            <span class="qs-role">{{ card[0] }}</span>
+            <span class="qs-role qs-role-2">{{ card[1] }}</span>
+            <span class="qs-more">Ver ficha {{ icon('ui-arrow-right') }}</span>
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="section theme-blue-up" id="equipo">
+{# Fichas completas: en el HTML para que se indexen; se abren como modal accesible #}
+{% for slug, name, card, roles, skills, front, back, pop, mail, li in TEAM %}
+<dialog class="member" id="m-{{ slug }}" aria-labelledby="m-{{ slug }}-nombre">
+  <button class="member-close" type="button" aria-label="Cerrar ficha de {{ name }}">{{ icon('bi-x-lg', 'icon bi') }}</button>
+  <div class="member-body">
+    <img src="{{ img('2023/10/' ~ pop) }}" alt="Retrato de {{ name }}" loading="lazy" decoding="async" width="640" height="642">
+    <div>
+      <h3 id="m-{{ slug }}-nombre">{{ name }}</h3>
+      <p class="roles">{{ card|join(' · ') }}</p>
+      {% if roles|join != card|join %}<p class="roles roles-2">{{ roles|join(' · ') }}</p>{% endif %}
+      <h4>Capacidades</h4>
+      <ul class="tags">{% for s in skills %}<li>{{ s }}</li>{% endfor %}</ul>
+      <div class="member-links">
+        <a href="mailto:{{ mail }}" aria-label="Escribir un email a {{ name }}">{{ icon('bi-envelope', 'icon bi') }}</a>
+        <a href="{{ li }}" target="_blank" rel="noopener" aria-label="Perfil de LinkedIn de {{ name }} (se abre en una pestaña nueva)">{{ icon('bi-linkedin', 'icon bi') }}</a>
+      </div>
+    </div>
+  </div>
+  <nav class="member-nav" aria-label="Otras fichas">
+    {% set prev = TEAM[loop.index0 - 1] %}{% set next = TEAM[(loop.index0 + 1) % TEAM|length] %}
+    <button type="button" data-goto="m-{{ prev[0] }}">{{ icon('bi-chevron-left', 'icon bi') }} {{ prev[1] }}</button>
+    <button type="button" data-goto="m-{{ next[0] }}">{{ next[1] }} {{ icon('bi-chevron-right', 'icon bi') }}</button>
+  </nav>
+</dialog>
+{% endfor %}
+
+{# ===================== 3. FORMA DE TRABAJAR ===================== #}
+<section class="section theme-white qs-values" aria-labelledby="forma-titulo">
   <div class="container">
-    {{ m.section_head("LA COOPE", "GRAN GRUPO") }}
-    <p class="prose" style="margin-bottom:40px">Profesionales talentosos y comprometidos con una cultura colaborativa, dedicados a ser <strong>socios estratégicos de nuestros clientes</strong>.</p>
-    <ul class="team">
-      {% for slug, name, roles, skills, front, back, pop, mail, li in TEAM %}
+    <div class="qs-head">
+      <div>
+        <p class="hx-eyebrow">Cómo trabajamos</p>
+        <h2 class="hx-title" id="forma-titulo">Nuestra forma de trabajar</h2>
+      </div>
+      <p class="qs-sub qs-head-note">Una cooperativa de software donde cada persona del equipo es socia y participa de las decisiones.</p>
+    </div>
+    <ul class="qs-values-grid">
       <li>
-        <button class="team-card" type="button" data-member="m-{{ slug }}">
-          <span class="team-photo">
-            <img src="{{ img('2023/10/' ~ front) }}" alt="{{ name }}" loading="lazy" width="400" height="400">
-            <img src="{{ img('2023/10/' ~ back) }}" alt="" loading="lazy" width="400" height="400">
-          </span>
-          <strong>{{ name }}</strong>
-          <small>{{ roles[0] }}</small>
-          <span class="more">VER MÁS</span>
-        </button>
+        <span class="qs-icon">{{ icon('bi-bullseye', 'icon bi') }}</span>
+        <h3>Misión</h3>
+        <p>Somos una cooperativa que desarrolla software con <strong>tecnologías innovadoras y proyectos personalizados</strong>, buscando impulsar el éxito de nuestros clientes.</p>
       </li>
-      {% endfor %}
+      <li>
+        <span class="qs-icon">{{ icon('bi-eye', 'icon bi') }}</span>
+        <h3>Visión</h3>
+        <p>Ser reconocidos por la entrega de <strong>productos escalables y efectivos</strong>, y por crear un ecosistema colaborativo que fomente la transparencia y la inclusión.</p>
+      </li>
+      <li>
+        <span class="qs-icon">{{ icon('bi-code-slash', 'icon bi') }}</span>
+        <h3>Software libre</h3>
+        <p>Desarrollamos <strong>soluciones informáticas con software libre</strong> como Odoo, Django, Moodle y WordPress: tecnologías abiertas, escalables y sin dependencias innecesarias.</p>
+      </li>
+      <li>
+        <span class="qs-icon">{{ icon('bi-people', 'icon bi') }}</span>
+        <h3>Colaboración</h3>
+        <p>Trato directo con quienes desarrollan, <strong>compromiso a largo plazo</strong> con cada cliente y transparencia en cada etapa del proyecto.</p>
+      </li>
     </ul>
   </div>
 </section>
 
-{% for slug, name, roles, skills, front, back, pop, mail, li in TEAM %}
-<dialog class="member" id="m-{{ slug }}" aria-label="{{ name }}">
-  <button class="member-close" type="button" aria-label="Cerrar">{{ icon('ui-x') }}</button>
-  <div class="member-body">
-    <img src="{{ img('2023/10/' ~ pop) }}" alt="{{ name }}" loading="lazy" width="180" height="180">
-    <div>
-      <h3>{{ name }}</h3>
-      <p class="roles">{{ roles|join(' · ') }}</p>
-      <h4>CAPACIDADES</h4>
-      <ul class="tags">{% for s in skills %}<li>{{ s }}</li>{% endfor %}</ul>
-      <div class="member-links">
-        <a href="mailto:{{ mail }}" aria-label="Email de {{ name }}">{{ icon('ui-mail') }}</a>
-        <a href="{{ li }}" target="_blank" rel="noopener" aria-label="LinkedIn de {{ name }}">{{ icon('ui-linkedin') }}</a>
+{# ===================== 4. TRAYECTORIA ===================== #}
+<section class="section theme-gray-light qs-track-record" aria-labelledby="trayectoria-titulo">
+  <div class="container">
+    <div class="qs-split">
+      <div>
+        <p class="hx-eyebrow">Trayectoria</p>
+        <h2 class="hx-title" id="trayectoria-titulo">Más de 10 años desarrollando software en Tandil</h2>
+        <p>Reunimos a profesionales de <strong>tecnología, ciencias económicas, comunicación y diseño</strong>. Desarrollamos sistemas de gestión, aplicaciones, sitios web y plataformas educativas para empresas, cooperativas, universidades e instituciones.</p>
+        <p>Creamos productos propios como <a href="{{ url('/software-de-gestion-completo/') }}">GERP</a>, nuestro sistema de gestión basado en Odoo; <a href="{{ url('/software-gestion-matafuegos-extintores/') }}">GEMA</a>, para talleres de matafuegos; y <a href="{{ url('/software-agropecuario-geagro/') }}">GEAGRO</a>, para la gestión agropecuaria. También sumamos <a href="{{ url('/staff-augmentation/') }}">desarrolladores a otros equipos</a> y creamos <a href="{{ url('/desarrollo-apps-sitios-web-cooperativos/') }}">apps y sitios web</a>, <a href="{{ url('/plataformas-e-learning-lms-moodle/') }}">campus virtuales Moodle</a> e <a href="{{ url('/diseno-sitios-web-identidades/') }}">identidades visuales</a>.</p>
       </div>
+      <ul class="qs-stats">
+        <li><span class="qs-icon">{{ icon('bi-calendar-check', 'icon bi') }}</span><strong>+10</strong><span>años de trayectoria</span></li>
+        <li><span class="qs-icon">{{ icon('bi-people', 'icon bi') }}</span><strong>{{ TEAM|length }}</strong><span>socios y socias</span></li>
+        <li><span class="qs-icon">{{ icon('bi-box-seam', 'icon bi') }}</span><strong>3</strong><span>productos propios</span></li>
+        <li><span class="qs-icon">{{ icon('bi-buildings', 'icon bi') }}</span><strong>+20</strong><span>organizaciones clientes</span></li>
+      </ul>
     </div>
+    <p class="hx-eyebrow center qs-clients-label">Organizaciones que confían en nosotros</p>
   </div>
-</dialog>
-{% endfor %}
-
-<section class="section theme-white">
-  <div class="container text-block">
-    <h2>Una cooperativa de tecnología con sentido</h2>
-    <p><strong>GENEOS es una cooperativa de trabajo de Tandil, provincia de Buenos Aires.</strong> Desde hace más de 10 años reunimos a profesionales de tecnología, ciencias económicas, comunicación y diseño para desarrollar <strong>soluciones informáticas con software libre</strong>: sistemas de gestión, aplicaciones, sitios web y plataformas educativas.</p>
-    <p>Como cooperativa, cada persona del equipo es socia y participa de las decisiones. Eso se nota en cómo trabajamos: trato directo con quienes desarrollan, compromiso a largo plazo con cada cliente y transparencia en cada etapa del proyecto.</p>
-    <p>Trabajamos con empresas, cooperativas, universidades e instituciones de Argentina y Latinoamérica. Conocé <a href="{{ url('/servicios/') }}">todos nuestros servicios</a> o <a href="{{ url('/contacto-geneos/') }}">escribinos</a> para contarnos tu proyecto.</p>
-  </div>
+  {{ m.logo_marquee([
+    "2024/03/Betterez-2.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png",
+    "2024/03/Celimundo.png", "2024/03/CENTEC-Tierra-del-Fuego.png", "2024/03/CHAPALEOFU.png", "2024/03/CIEP.png", "2024/03/CINEA.png",
+    "2024/03/Colegio-de-Trabajadores-Sociales.png", "2024/03/CONEPO.png", "2024/03/DIVERSA-COPA.png", "2024/03/Edunet-Cooperativa.png",
+    ("2024/08/Clientes-GENEOS_GEA.png", "https://gea-srl.com.ar/"), "2024/03/INBIO-HIGHWAY.png",
+    ("2024/08/Clientes-GENEOS_Korronte.png", "https://www.instagram.com/korronteaceros/"), "2024/03/La-Poderosa.png",
+    "2024/03/Limousine-1.png", "2024/03/Raffo-Laboratorio-Farmacovigilancia.png", "2024/03/Universidad-Nacional-Hurlingham.png",
+    "2024/03/Universidad-UNAJ.png", "2024/03/VIAL-AGRO.png", "2024/03/WM-Argentina.png",
+  ]) }}
 </section>
 
+{# ===================== 5. MOVIMIENTO COOPERATIVO ===================== #}
 {% set coop_title = "Parte del movimiento cooperativo" %}
 {% include "partials/coop.html" %}
 
-<section class="section theme-black">
-  <div class="container">
-    {{ m.section_head("NUESTRAS ÁREAS", "SOFTWARE CON SENTIDO") }}
-    {{ m.service_cards() }}
-  </div>
-</section>
+{# ===================== 6. CTA ===================== #}
+{{ m.cta("¿Tenés un proyecto en mente?", "Contanos qué necesitás: te ayudamos a encontrar la solución digital a medida para tu organización.", "Hola GENEOS, quiero contarles sobre un proyecto") }}
 {% endblock %}
