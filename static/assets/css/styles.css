@@ -274,8 +274,6 @@ button { font: inherit; cursor: pointer; }
 .card p { margin: 0; }
 .card img.card-img { width: 140px; height: 140px; object-fit: contain; }
 .card .btn { margin-top: auto; }
-.cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-@media (max-width: 860px) { .cards-3 { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
 
 /* ---------- Tablas de precios ---------- */
 .pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; align-items: stretch; }
@@ -455,17 +453,11 @@ dialog.member::backdrop { background: rgba(0,0,0,.72); }
 .check-list.orange .icon { color: var(--orange); }
 .check-list.big li { font-size: 19px; }
 .theme-white .check-list .icon, .theme-gray-light .check-list .icon:not(.orange .icon) { color: var(--green); }
-.gerp-title { font-size: clamp(28px, 3.8vw, 46px) !important; text-transform: none !important; font-weight: 300; }
-.gerp-title strong { font-weight: 700; }
-.gerp-logo { width: 260px; margin: 0 auto 28px; }
-.gerp-benefits { margin: 40px 0 56px; }
 .green-icon { color: var(--green); }
 .role-icon { color: var(--green); width: 110px; height: 110px; }
 .roles h3 { font-size: 20px; }
 .tech-features .feature-icon { color: var(--blue); }
 .tech-features h3 a:hover { color: var(--blue); }
-.dev-banner { color: #fff; background: linear-gradient(rgba(23,137,67,.86), rgba(23,137,67,.86)), url("../img/2023/11/background-gestion-01.webp") center / cover; }
-.dev-banner .btn .icon { width: 20px; height: 20px; fill: none; }
 .quote { margin: 0; }
 .quote p { font-size: clamp(20px, 2.4vw, 30px); font-weight: 300; }
 .quote cite { display: block; margin-top: 10px; font-style: italic; opacity: .85; }
@@ -577,7 +569,6 @@ dialog.member::backdrop { background: rgba(0,0,0,.72); }
 .geagro-pricing { max-width: 760px; margin: 0 auto; }
 .geagro-price header { background: #148238; }
 .geagro-price.featured header { background: #0b3f1b; }
-.page-geagro .accordion .answer a, .page-geagro .text-block a { color: #148238; }
 .related-icon img { width: 100%; height: 100%; }
 @media (max-width: 860px) { .geagro-versions { grid-template-columns: 1fr; } }
 ol.steps { padding: 0; margin: 0; }
@@ -629,7 +620,6 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 .home-hero + section::before { display: none; }
 
 /* GEAGRO dentro de GENEOS: logo de GEAGRO en el hero */
-.geagro-scope .ga-hero-logo { display: block; height: clamp(46px, 5vw, 66px); width: auto; margin: 0 0 26px; }
 
 .site-nav .sub { min-width: 300px; }
 .site-nav .sub a { white-space: nowrap; }

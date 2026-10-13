@@ -37,8 +37,10 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&amp;display=swap"></noscript>
+<link rel="preload" as="image" type="image/webp" href="/assets/img/gerp/gerp-hero-1920.webp" media="(min-width: 901px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="/assets/img/gerp/gerp-hero-900.webp" media="(max-width: 900px)" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <script type="application/ld+json">{
+<link rel="stylesheet" href="/assets/css/product.css">  <script type="application/ld+json">{
  "@context": "https://schema.org",
  "@graph": [
   {
@@ -292,6 +294,14 @@
  "description": "GERP: sistema de gestión online basado en Odoo Community para pymes. Inventario, compras, ventas, facturación y contabilidad, con implementación y soporte.",
  "url": "https://gerp.ar/",
  "image": "https://geneos.coop.ar/assets/img/2026/01/Beneficios-GERP-1536x1029-1-1024x686.webp",
+ "featureList": [
+  "Inventario y compras",
+  "Ventas y e-commerce",
+  "Facturación y contabilidad",
+  "CRM y oportunidades",
+  "Producción (MRP)",
+  "Reportes"
+ ],
  "publisher": {
   "@id": "https://geneos.coop.ar/#organizacion"
  },
@@ -366,7 +376,7 @@
  ]
 }</script>
 </head>
-<body class="">
+<body class="page-gerp page-product">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <div class="topbar">
   <div class="container topbar-inner">
@@ -421,192 +431,365 @@
     <li><a href="/servicios/">Servicios</a></li>
     <li><span aria-current="page">Software de Gestión GERP</span></li>
   </ol>
-</nav><section class="service-hero theme-purple">
-  <div class="container service-hero-inner">
-    <span class="service-hero-icon"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 1014.8 1078.7" xmlns="http://www.w3.org/2000/svg"><path d="M499.2,793.5c-37.8-6.2-75.7,2.7-106.8,25-31.3,22.4-51.8,55.5-58,93.2-6.2,38,2.6,76,24.8,107,22.4,31.3,55.4,51.9,92.9,58,7.7,1.4,15.7,2.1,23.7,2.1,30,0,58.7-9.4,83.2-27,31-22.2,51.6-55.3,58-93.4,6.4-37.7-2.4-75.7-24.8-106.9-22.4-31.3-55.4-51.9-93-58Z" style="fill: currentColor;        stroke-width: 0px;"/><path d="M331.1,1038.8c-27.5-38.5-38.4-85.6-30.8-132.6,7.5-46.1,32.3-86.5,70-114.2l-41.3-15.2c-113.7-41.8-190.1-151.5-190.1-272.8s45.6-182,122-236.5c23.9-13,48.6-23.6,73.6-31.2l43.5-13.4s-160.4-25.4-284.4,120.3C33.3,422.1,0,520.1,0,619.2s.4,14.2.8,20.5v2.8c1.2,24.1,3.5,71.2,22.8,127.8l-.7.3c.8,1.6,1.6,3.1,2.4,4.7,22.8,64.2,67.6,139.9,157.1,208.3,2.2,1.5,4.5,2.9,6.7,4.3l1.6.9c5.8,4.1,11,7.5,15.9,10.5,25,15.5,53.9,30.3,86.2,43.9l58.7,23s-.9-2.3-2.5-6.2c-6.4-6.6-12.5-13.5-18-21.2ZM253.4,967.2c-10.4-6.4-20.4-12.8-21.2-13.3-112.8-74.6-180.1-199.7-180.1-334.4s5-72,14.8-107.8c6.7-23.8,15.3-46.5,25.7-68.1-3.5,19.8-5.3,40.1-5.3,60.7,0,129.5,77.4,252,193.7,308.4-13.9,23.8-23.5,50.5-27.9,77.6-4.3,25.4-4.3,51.6.2,76.9Z" style="fill: currentColor;        stroke-width: 0px;"/><path d="M984.2,738.8c-26.1-20.6-47.8-37.6-70.9-54.7-7.6-5.6-9.6-10.4-7.8-18.9,10.9-53.3,11.2-108.6.7-164.4-1.4-7.4.2-11.5,6-15.8,14.3-10.6,28.5-21.4,42.7-32.2,9.9-7.5,19.9-15.1,29.8-22.6,29.6-22.2,37.9-53.8,22.2-84.6-17.7-34.5-37.4-69.2-58.8-103.1-18.5-29.4-49.9-38.5-84-24.4-10.2,4.2-20.4,8.4-30.6,12.5-17.9,7.3-35.7,14.6-53.4,22.1-7,3-11.3,2.4-16.7-2.4-42.1-37.1-90.3-65.3-143.2-83.6-7.5-2.6-10.4-6.2-11.2-14.1-3.4-30.9-7.4-61.6-11.2-90.2-5-37.7-26.7-58.7-62.6-60.7-39.3-2.2-77.8-2.5-114.3-.9-40.1,1.7-61.4,22.1-67.2,64.2l-2.5,18.5c-2.7,19.7-5.4,39.5-7.8,59.3,8.6-.6,16.2-.8,22.6-.8,16.7,0,28.6,1.2,34.3,1.9,1.1-8.3,2.2-16.5,3.3-24.8,2.2-16.3,4.5-32.6,6.5-48.9,1.2-9.8,4.7-13.2,13.7-13.2h.1c11.6,0,23.1,0,34.7,0,21.2-.1,43-.3,64.4.4q17.4.5,19.7,18.4l2.8,22.4c2.6,20.6,5.3,41.2,7.6,61.8,3.3,29.9,19.3,49.9,47.4,59.6,46.6,16,89.1,40.8,126.4,73.8,22,19.4,47.2,23.3,75.2,11.6,11.8-4.9,23.7-9.8,35.6-14.6,16.2-6.6,32.3-13.2,48.4-20,9-3.8,12.9-1,16.2,4.7,18,31.2,35.8,62.4,53.5,93.8,2.9,5.2,3.4,9.8-3.9,15.3-9,6.7-18,13.6-26.9,20.5-14,10.8-28.6,22-43.2,32.4-27.2,19.3-37.3,44.4-30.8,76.6,9.1,45.8,8.9,93.1-.8,140.6-6.4,31.4,3,55.8,28.8,74.6,11.9,8.7,23.5,17.8,35.1,27,11,8.7,22,17.4,33.3,25.7,8.9,6.5,10.1,11.8,4.8,20.8-17.3,29.4-34.6,58.7-51.6,88.2-4.9,8.4-9.6,9.7-19.4,5.4-28-12.4-56.3-24.1-85.3-35.9-25.7-10.5-49.3-6.9-70,11-11.1,9.6-22.6,18.4-34.4,26.5,1.1,15.7.6,31.6-2.1,47.6-1.3,8-3.3,15.7-5.5,23.4,26.5-14.4,51.4-31.4,74.6-51.2,7.1-6.1,12-6.9,20.3-3.2,28.2,12.4,56.4,24.1,82.5,34.8,35.1,14.5,64.1,6.2,83.7-24,21-32.2,40.9-66.3,59.1-101.1,16.6-31.6,9.5-61.8-19.8-84.9Z" style="fill: currentColor;        stroke-width: 0px;"/><circle cx="477.7" cy="571.3" r="180" style="fill: currentColor;        stroke-width: 0px;" transform="translate(-264 505.1) rotate(-45)"/></svg></span>
-    <div class="service-hero-text">
-      <h1 class="gerp-title">Software de gestión <strong>ERP</strong> online, ágil e integral para todo tu <strong>negocio</strong></h1>
-      <p>GERP es nuestro sistema de gestión empresarial basado en <strong>Odoo</strong>: una herramienta robusta con un enfoque práctico, configurado y <b>listo para usar.</b></p>
-      <div class="btn-row">
-        <a class="btn btn-white" href="https://wa.me/5492494521418?text=Hola%2C%20quiero%20hablar%20con%20un%20asesor%20sobre%20GERP" target="_blank" rel="noopener">CONTACTÁ UN ASESOR</a>
-        <a class="btn btn-outline" href="#planes">VER PLANES Y PRECIOS</a>
-      </div>
+</nav><div class="pp pp-theme-gerp">
+
+<section class="pp-hero pp-wave" style="--pp-hero-img: url('/assets/img/gerp/gerp-hero-1920.webp'); --pp-hero-img-sm: url('/assets/img/gerp/gerp-hero-900.webp'); --pp-hero-pos: right center; --pp-hero-fade: .05; --pp-wave-next: #f6eef6;">
+  <div class="pp-container pp-hero-grid">
+    <div class="pp-hero-copy">
+      <img class="pp-hero-logo" src="/assets/img/productos/gerp-logo-blanco.svg" alt="GERP, software de gestión empresarial" width="296" height="87">
+      <h1><span>Software de gestión ERP</span> <span>para todo <span class="pp-hl">tu negocio</span></span></h1>
+      <p class="pp-hero-lead">GERP es nuestro sistema de gestión empresarial basado en <strong>Odoo</strong>: integra todas las áreas de tu empresa en una sola plataforma online, configurada y <strong>lista para usar</strong>.</p>
+      <div class="pp-hero-actions"><a class="pp-btn pp-btn-primary " href="#demo">Solicitar demo <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</a><a class="pp-btn pp-btn-outline-light " href="#planes">Ver planes y precios <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</a></div>
+    </div>
+    <div class="pp-hero-media">
+      <img class="pp-shot" src="/assets/img/2026/01/Beneficios-GERP-1536x1029-1-1024x686.webp" alt="GERP en computadora, tablet y celular: inventario, ventas y reportes" width="1024" height="686" fetchpriority="high">
     </div>
   </div>
-  <a class="scroll-down" href="#gerp" aria-label="Seguir bajando"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4 4 4 4-4"/></svg>
+</section>
+
+<section class="pp-section pp-steps pp-wave" id="como-funciona" style="--pp-steps-pb: clamp(100px, 12vw, 170px); --pp-steps-pb-sm: 96px; --pp-wave-next: #fff; --pp-wave-back: .6;">
+  <div class="pp-container pp-steps-grid">
+    <div class="pp-steps-head">
+      <p class="pp-eyebrow pp-eyebrow-2">Cómo funciona</p>
+      <h2>De la información a la acción<span class="pp-dot">.</span></h2>
+      <p class="pp-steps-lead">Transformá los datos de tu empresa en decisiones concretas. GERP integra tus procesos y te acompaña en cada etapa de crecimiento.</p>
+<a href="#modulos" class="pp-more">Conocé los módulos <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</a>    </div>
+    <ol class="pp-steps-list">
+      <li>
+        <span class="pp-steps-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z"/>
+  <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+  <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+</svg>
+</span>
+        <span class="pp-steps-num">01</span>
+        <h3>Registrá</h3>
+        <p>Centralizá toda la información de tu negocio.</p>
+      </li>
+      <li>
+        <span class="pp-steps-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+</svg>
+</span>
+        <span class="pp-steps-num">02</span>
+        <h3>Organizá</h3>
+        <p>Estandarizá procesos y equipos de trabajo.</p>
+      </li>
+      <li>
+        <span class="pp-steps-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+</span>
+        <span class="pp-steps-num">03</span>
+        <h3>Gestioná</h3>
+        <p>Controlá tus operaciones en tiempo real.</p>
+      </li>
+      <li>
+        <span class="pp-steps-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1zm1 12h2V2h-2zm-3 0V7H7v7zm-5 0v-3H2v3z"/>
+</svg>
+</span>
+        <span class="pp-steps-num">04</span>
+        <h3>Analizá</h3>
+        <p>Convertí tus datos en mejores decisiones.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="pp-section pp-white" id="modulos">
+  <div class="pp-container">
+    <header class="pp-head">
+<p class="pp-eyebrow">Módulos</p>      <h2>Todo tu negocio en un solo software</h2>
+<p>Si buscás un <strong>ERP para pymes</strong> sencillo y efectivo, GERP es tu solución: dejá atrás las planillas de cálculo y gestioná cada área de tu empresa en una sola plataforma online.</p>    </header>
+    <ul class="pp-modules-grid">
+      <li>
+        <a class="pp-module" href="#planes" style="--pp-ico: #178943">
+          <span class="pp-module-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+</svg>
+</span>
+          <h3>Inventario y compras</h3>
+          <p>Analizá productos, costos, trazabilidad y vencimientos, con reglas de abastecimiento automáticas para no quedarte sin stock.</p>
+<span class="pp-arrow" aria-hidden="true"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</span>        </a>
+      </li>
+      <li>
+        <a class="pp-module" href="#planes" style="--pp-ico: #99146a">
+          <span class="pp-module-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+</svg>
+</span>
+          <h3>Ventas y e-commerce</h3>
+          <p>Gestioná tus ventas y tu tienda online con el control de stock de tus productos.</p>
+<span class="pp-arrow" aria-hidden="true"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</span>        </a>
+      </li>
+      <li>
+        <a class="pp-module" href="#planes" style="--pp-ico: #99146a">
+          <span class="pp-module-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1M3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+</svg>
+</span>
+          <h3>Facturación y contabilidad</h3>
+          <p>Registrá facturas, pagos y cobranzas, y generá informes financieros personalizados.</p>
+<span class="pp-arrow" aria-hidden="true"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</span>        </a>
+      </li>
+      <li>
+        <a class="pp-module" href="#planes" style="--pp-ico: #294b9b">
+          <span class="pp-module-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+</svg>
+</span>
+          <h3>CRM y oportunidades</h3>
+          <p>Seguí cada oportunidad comercial y cada lead, con el historial de cada cliente a mano (plan PLUS).</p>
+<span class="pp-arrow" aria-hidden="true"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</span>        </a>
+      </li>
+      <li>
+        <a class="pp-module" href="#planes" style="--pp-ico: #178943">
+          <span class="pp-module-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+  <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+</svg>
+</span>
+          <h3>Producción</h3>
+          <p>MRP: planificá la fabricación, controlá materias primas y seguí cada producto en el proceso productivo (plan PLUS).</p>
+<span class="pp-arrow" aria-hidden="true"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</span>        </a>
+      </li>
+      <li>
+        <a class="pp-module" href="#planes" style="--pp-ico: #99146a">
+          <span class="pp-module-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793zm1 0V7.5h6.482A7 7 0 0 0 8.5 1.018M14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8"/>
+</svg>
+</span>
+          <h3>Reportes</h3>
+          <p>Personalizá informes para dejar las planillas de cálculo y tomar decisiones con tu información.</p>
+<span class="pp-arrow" aria-hidden="true"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</span>        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="pp-section pp-white" id="planes" aria-labelledby="planes-title">
+  <div class="pp-container">
+    <header class="pp-head">
+<p class="pp-eyebrow">Planes</p>      <h2 id="planes-title">Elegí el plan de GERP que mejor se adapte a tu empresa</h2>
+<p>Te acompañamos en la implementación, la capacitación y el soporte de la plataforma.</p>    </header>
+    <div class="pp-plans-grid pp-plans-3">
+      <article class="pp-plan" style="--pp-plan-color: #294b9b">
+        <header class="pp-plan-head">
+          <h3 class="pp-plan-name">LITE</h3>
+<p class="pp-plan-sub">Plan base pequeños emprendimientos</p>        </header>
+        <div class="pp-plan-body">
+          <p class="pp-plan-label">Abono mensual</p>
+          <p class="pp-plan-price">$89.250</p>
+          <p class="pp-plan-tax">+ IVA por mes (*)</p>
+          <hr class="pp-plan-sep">
+          <p class="pp-plan-label">Implementación</p>
+          <p class="pp-plan-impl"><span class="pp-plan-impl-amount">$446.250</span> <span class="pp-plan-impl-tax">+ IVA</span></p>
+<hr class="pp-plan-sep">          <ul class="pp-plan-feats"><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Máximo 3 usuarios</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Inventario</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Compra y Venta</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Contabilidad y Facturación</span></li></ul>
+          <a class="pp-btn pp-btn-accent pp-plan-cta" href="#demo">Solicitar demo <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
 </a>
+        </div>
+      </article>
+      <article class="pp-plan is-featured" style="--pp-plan-color: #99146a">
+        <header class="pp-plan-head">
+          <h3 class="pp-plan-name">CORE</h3>
+<p class="pp-plan-sub">Circuito completo Compras y Ventas</p>        </header>
+        <div class="pp-plan-body">
+          <p class="pp-plan-label">Abono mensual</p>
+          <p class="pp-plan-price">$178.500</p>
+          <p class="pp-plan-tax">+ IVA por mes (*)</p>
+          <hr class="pp-plan-sep">
+          <p class="pp-plan-label">Implementación</p>
+          <p class="pp-plan-impl"><span class="pp-plan-impl-amount">$892.500</span> <span class="pp-plan-impl-tax">+ IVA</span></p>
+<hr class="pp-plan-sep">          <ul class="pp-plan-feats"><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Múltiples usuarios diferenciados</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Inventario</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Compra</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Venta</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Facturación</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Contabilidad</span></li></ul>
+          <a class="pp-btn pp-btn-accent pp-plan-cta" href="#demo">Solicitar demo <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</a>
+        </div>
+      </article>
+      <article class="pp-plan" style="--pp-plan-color: #5b1d5f">
+        <header class="pp-plan-head">
+          <h3 class="pp-plan-name">PLUS</h3>
+<p class="pp-plan-sub">Esencial con CRM y MRP</p>        </header>
+        <div class="pp-plan-body">
+          <p class="pp-plan-label">Abono mensual</p>
+          <p class="pp-plan-price">$446.250</p>
+          <p class="pp-plan-tax">+ IVA por mes (*)</p>
+          <hr class="pp-plan-sep">
+          <p class="pp-plan-label">Implementación</p>
+          <p class="pp-plan-impl"><span class="pp-plan-impl-amount">$1.785.000</span> <span class="pp-plan-impl-tax">+ IVA</span></p>
+<hr class="pp-plan-sep">          <ul class="pp-plan-feats"><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Múltiples usuarios diferenciados</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Inventario</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Compra</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Venta</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Facturación</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo Contabilidad</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo CRM</span></li><li><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+  <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+</svg>
+<span>Módulo MRP</span></li></ul>
+          <a class="pp-btn pp-btn-accent pp-plan-cta" href="#demo">Solicitar demo <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</a>
+        </div>
+      </article>
+    </div>
+<p class="pp-note">(*) Precios en pesos argentinos válidos para los meses de Octubre, Noviembre y Diciembre 2026. Actualización bimensual.</p>  </div>
 </section>
 
-<section class="section theme-white" id="gerp">
-  <div class="container">
-    <img class="gerp-logo" src="/assets/img/2025/02/Isologo-GERP-Full.svg" alt="GERP, software de gestión empresarial" width="280" height="90">
-    <header class="section-head">
-<p class="eyebrow"><span>ORGANIZACIÓN, EFICIENCIA Y CONTROL</span></p>  <h2 class="section-title">TODO TU NEGOCIO EN UN SOLO SOFTWARE</h2>
-</header>
-    <p class="prose">Si buscás un <strong>ERP para pymes</strong> que sea sencillo y efectivo, <strong>GERP</strong> es tu solución ideal. Dejá atrás las planillas de cálculo: gestioná inventario, compras, ventas, facturación y contabilidad en una sola plataforma online y elegí el plan que mejor se adapte a tu negocio.</p>
-    <div class="media-text gerp-benefits">
-      <img src="/assets/img/2026/01/Beneficios-GERP-1536x1029-1-1024x686.webp" alt="Pantallas de GERP en computadora y celular: inventario, ventas y reportes" loading="lazy" width="1024" height="686">
-      <ul class="check-list big">
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span><strong>TE ACOMPAÑAMOS SIEMPRE.</strong> Tanto en la implementación, capacitación y soporte de la plataforma.</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span><strong>CRECEMOS JUNTOS.</strong> Nuestro equipo se actualiza constantemente para atender tus requisitos, los del país y ofrecerte un servicio de excelencia.</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span><strong>SOFTWARE LIBRE.</strong> Basado en Odoo Community: sin licencias por usuario y con tus datos bajo tu control.</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span><strong>100% ONLINE.</strong> Accedé desde la computadora, la tablet o el celular, estés donde estés.</span></li>
-</ul>
-    </div>
-    <div class="cards-3">
-      <article class="card">
-        <img class="card-img" src="/assets/img/2024/11/G-ERP-Lite.svg" alt="Logo GERP LITE" loading="lazy" width="140" height="140">
-        <h3>GERP LITE</h3>
-        <p>Destinada a pequeños emprendimientos que necesitan gestionar Clientes, Proveedores, Inventario, Facturación, pudiendo tener una revisión periódica.</p>
-        <a class="btn btn-solid" href="https://gerp.ar/index.php/gerp-lite-odoo/" target="_blank" rel="noopener">Ver plan Lite</a>
-      </article>
-      <article class="card">
-        <img class="card-img" src="/assets/img/2024/11/G-ERP-Core.svg" alt="Logo GERP CORE" loading="lazy" width="140" height="140">
-        <h3>GERP CORE</h3>
-        <p>Ideal para medianas empresas que requieren incorporar circuitos de compras y ventas, aprovechando la personalización de informes y evitando planillas de cálculo.</p>
-        <a class="btn btn-solid" href="https://gerp.ar/index.php/gerp-core-odoo/" target="_blank" rel="noopener">Ver plan Core</a>
-      </article>
-      <article class="card">
-        <img class="card-img" src="/assets/img/2024/11/G-ERP-Plus.svg" alt="Logo GERP PLUS" loading="lazy" width="140" height="140">
-        <h3>GERP PLUS</h3>
-        <p>Indispensable para emprendimientos que necesitan CRM y MRP, gestión de producción, seguimiento de productos, oportunidades comerciales, leads.</p>
-        <a class="btn btn-solid" href="https://gerp.ar/index.php/gerp-plus-odoo/" target="_blank" rel="noopener">Ver plan Plus</a>
-      </article>
+<section class="pp-cta" style="--pp-cta-img: url('/assets/img/gerp/gerp-cta-1920.webp'); --pp-cta-img-sm: url('/assets/img/gerp/gerp-cta-900.webp'); --pp-cta-pos: right center;">
+  <div class="pp-container">
+    <div class="pp-cta-copy">
+      <p class="pp-eyebrow pp-eyebrow-light">Tu empresa más eficiente</p>
+      <h2><span>Ordená tu negocio.</span> <span>Tomá decisiones</span> <span>con información real.</span></h2>
+      <p>Integrá tus áreas, reducí tiempos y hacé crecer tu empresa con GERP.</p>
+      <div class="pp-cta-actions"><a class="pp-btn pp-btn-accent " href="#demo">Solicitar demo <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>
+</a><a class="pp-btn-ghost-light " href="/assets/descargas/brochure-gerp-software-de-gestion-empresarial.pdf" download="brochure-gerp-software-de-gestion-empresarial.pdf">Descargar brochure <svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+</svg>
+</a></div>
     </div>
   </div>
 </section>
 
-<section class="section theme-white pt-0">
-  <div class="container">
-    <header class="section-head">
-<p class="eyebrow"><span>MÓDULOS</span></p>  <h2 class="section-title">Qué podés gestionar con GERP</h2>
-</header>
-    <div class="feature-row">
-      <div class="feature">
-        <span class="feature-icon ring-icon green-icon"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 425.2 425.2" xmlns="http://www.w3.org/2000/svg"><g> <path d="M358.6,186.5h-13.5c-3.5-7.2-10.8-12-19-12.1H313v-38.9c0.1-3.4-1.7-6.6-4.6-8.3l-126.1-73c-2.9-1.7-6.6-1.7-9.5,0  L46.4,127c-2.9,1.7-4.7,4.8-4.7,8.2L41.6,281c0,3.4,1.8,6.5,4.7,8.2l126.2,73c2.9,1.7,6.5,1.7,9.6,0l59.3-34.1v19.4  c0,6.6,2.5,12.8,7.2,17.5c4.7,4.7,10.9,7.3,17.7,7.3l92.2,0.1c0.1,0,0.2,0,0.2,0c13.4,0,24.5-10.7,24.8-24.1l0.1-136.6  C383.6,197.8,372.4,186.5,358.6,186.5z M298.9,193.3h27.4c1.1,0,2,0.9,2,2.5c0,1.1-0.9,2-2,2h-27.4c-1.1,0-2-0.9-2-2.5  C296.8,194.2,297.7,193.3,298.9,193.3z M177.5,73.3l42.9,24.8L113.1,160l-42.9-24.8L177.5,73.3z M168.1,337.5l-107.5-62l0.1-123.9  l107.5,62L168.1,337.5z M177.4,197.2L132,171l107.3-61.9l45.4,26.2L177.4,197.2z M241.5,211.5v94.6L187,337.5l0.1-123.9L294,151.8  v23.1c-6.1,1.5-11.4,5.8-14.1,11.5h-13.5C252.6,186.5,241.4,197.7,241.5,211.5z M364.5,347.5c0,3.2-2.6,5.8-6,5.8l-92.3-0.1  c-3.2-0.1-5.8-2.5-5.8-5.8l0.1-136c0-1.6,0.6-3.1,1.7-4.2c1.1-1.1,2.6-1.8,4.2-1.8h13.7c3.5,7,11.3,11.6,18.8,11.5H326  c0.1,0,0.1,0,0.2,0c7.9,0,15.1-4.5,18.6-11.4h13.7c3.4,0,6.1,2.8,6.1,6.1L364.5,347.5z"/> <path d="M295.1,229.9l-10.4,10.4l-0.8-0.8c-3.7-3.7-9.7-3.7-13.4,0c-1.8,1.8-2.8,4.2-2.8,6.7s1,4.9,2.8,6.7l7.5,7.5  c1.8,1.8,4.3,2.8,6.7,2.8c2.4,0,4.9-0.9,6.7-2.8l17.1-17.1c1.8-1.8,2.8-4.2,2.8-6.7s-1-4.9-2.8-6.7  C304.8,226.2,298.8,226.2,295.1,229.9z"/> <path d="M293,316.9l-10.4,10.4l-0.8-0.8c-1.8-1.8-4.2-2.8-6.7-2.8s-4.9,1-6.7,2.8s-2.8,4.2-2.8,6.7s1,4.9,2.8,6.7l7.5,7.5  c1.8,1.8,4.2,2.8,6.7,2.8s4.9-1,6.7-2.8l17.1-17.1c3.7-3.7,3.7-9.7,0-13.4S296.7,313.2,293,316.9z"/> <path d="M353.1,234.2h-29.6c-5.2,0-9.5,4.3-9.5,9.5s4.3,9.5,9.5,9.5h29.6c5.2,0,9.5-4.3,9.5-9.5S358.4,234.2,353.1,234.2z"/> <path d="M353.1,277.3h-29.6c-5.2,0-9.5,4.3-9.5,9.5s4.2,9.5,9.5,9.5h29.6c5.2,0,9.5-4.2,9.5-9.5  C362.6,281.6,358.3,277.3,353.1,277.3z"/> <path d="M353.1,320.4h-29.6c-5.2,0-9.5,4.3-9.5,9.5s4.3,9.5,9.5,9.5h29.6c5.2,0,9.5-4.3,9.5-9.5  C362.6,324.6,358.3,320.4,353.1,320.4z"/></g></svg></span>
-        <h3>Inventario<br>&amp; Compras</h3>
-        <p>Analizá productos, costos, trazabilidad, vencimientos y todo tu inventario. Podrás crear reglas de abastecimiento automáticas para que nunca te quedes sin stock.</p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon ring-icon green-icon"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 425.2 425.2" xmlns="http://www.w3.org/2000/svg"><g> <path d="M153.5,101.2L153.5,101.2c0.1,0.1,0.2,0.1,0.3,0.1L153.5,101.2z"/> <path d="M153.3,101.2l0.2,0.1l0,0c-0.2-0.1-0.3-0.2-0.5-0.3L153.3,101.2z"/> <path d="M289.3,267.1l-123.7,0.1c-1.7,0-3.1-1.4-3.1-3.1v-3.7c1,0.1,2.1,0.1,3.1,0.1l0,0l130.1-0.2c20.6,0,37.3-16.8,37.3-37.4  l-0.1-55.3V165l-1.2-3.3c0-0.1-0.1-0.1-0.1-0.2l-1.7-3c0-0.1-0.1-0.1-0.1-0.2l-1.2-1.5c-0.3-0.3-0.6-0.7-1-1l-1.2-1.2l-6.3-3.2  L162.3,130v-13.8c0-0.3,0-0.8-0.1-1.5v-2l-0.9-2.2c-0.2-0.5-0.3-1-0.6-1.5l-0.5-1.4l-4.2-4.7l-2.8-1.8L116,85.4  c-4.2-1.8-8.8-1.8-13.1-0.1c-4.2,1.7-7.5,5-9.3,9.2c-3.6,8.7,0.5,18.7,9.1,22.4l25.3,10.6l0.2,136.5c0,14.3,8.2,26.9,20.3,33.1  c-0.5,2.3-0.7,4.6-0.7,7c0,20.4,16.6,37,37,36.9c20.4,0,37-16.6,36.9-37c0-0.9,0-1.9-0.1-2.8h30.8c-0.1,0.9-0.1,1.9-0.1,2.8  c0,20.4,16.6,37,37,36.9c20.4,0,37-16.6,36.9-37C326.3,283.6,309.7,267,289.3,267.1z M332.3,164C332.3,164.1,332.3,164.1,332.3,164  L332.3,164L332.3,164z M157.2,237.2L157.2,237.2l-7.9-4.6l-0.1-83.1l162.6,22.2l0.1,51.3c0,9-7.3,16.2-16.2,16.3l-130.1,0.1  C162.6,239.4,159.7,238.7,157.2,237.2z M184.8,320.1c-8.8,0-15.9-7.1-15.9-15.9c0-2.8,0.8-5.7,2.3-8.2l0,0l4.6-7.7h18l4.8,8  c1.4,2.3,2.1,5.1,2.1,7.9C200.7,312.9,193.6,320,184.8,320.1z M289.3,319.9c-8.8,0-15.9-7.1-15.9-15.9c0-2.8,0.7-5.6,2.1-8l4.7-7.9  h9c8.8,0,15.9,7.1,15.9,15.9C305.2,312.8,298.1,319.9,289.3,319.9z"/></g></svg></span>
-        <h3>Ventas<br>&amp; E-Commerce</h3>
-        <p>Gestioná tu proceso de ventas a través de la tienda online maximizando tus ingresos y manteniendo el control de stock de tus productos. Publicá productos en la tienda.</p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon ring-icon green-icon"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 425.2 425.2" xmlns="http://www.w3.org/2000/svg"><g> <path d="M205.1,190.8l158.8,0.6l0.3-72.2l-158.8-0.6L205.1,190.8z M219.8,133.1l129.9,0.5l-0.2,43.3l-129.9-0.5L219.8,133.1z"/> <rect height="43.3" transform="matrix(3.924736e-03 -1 1 3.924736e-03 -2.5534 683.2517)" width="43.3" x="320" y="321.3"/> <rect height="43.3" transform="matrix(3.926145e-03 -1 1 3.926145e-03 -59.9672 625.2524)" width="43.3" x="262.2" y="321.1"/> <rect height="43.3" transform="matrix(3.924736e-03 -1 1 3.924736e-03 -117.2006 567.275)" width="43.3" x="204.5" y="320.8"/> <rect height="43.3" transform="matrix(3.924736e-03 -1 1 3.924736e-03 55.3451 625.9177)" width="43.3" x="320.2" y="263.5"/> <rect height="43.3" transform="matrix(3.926145e-03 -1 1 3.926145e-03 -1.8891 567.9395)" width="43.3" x="262.5" y="263.3"/> <rect height="43.3" transform="matrix(3.924736e-03 -1 1 3.924736e-03 -59.2029 510.0413)" width="43.3" x="204.8" y="263.1"/> <rect height="43.3" transform="matrix(3.926145e-03 -1 1 3.926145e-03 113.3425 568.7034)" width="43.3" x="320.5" y="205.8"/> <rect height="43.3" transform="matrix(3.924736e-03 -1 1 3.924736e-03 56.01 510.6055)" width="43.3" x="262.7" y="205.5"/> <rect height="43.3" transform="matrix(3.926145e-03 -1 1 3.926145e-03 -1.3244 452.7067)" width="43.3" x="204.9" y="205.4"/> <path d="M371.5,90.4L371.5,90.4h-7.2l-14.4-0.1h-7.2l-142.1-0.5c-12-34.3-44.6-57.9-81.4-58.1c-47.8-0.2-86.8,38.5-87,86.3  s38.5,86.8,86.3,87c21.5,0.1,42-7.9,57.8-21.9l-0.4,94.3l-0.1,14.4l-0.3,79.4c0,11.9,9.6,21.7,21.6,21.7l173.2,0.7  c11.9,0,21.7-9.6,21.7-21.6l1-259.9C393.1,100.2,383.4,90.4,371.5,90.4z M111.2,190.1c-36.4-3.8-64.8-34.7-64.7-72.1  c0.1-37.4,28.8-68.1,65.2-71.6L111.2,190.1L111.2,190.1z M176.3,161.7L176.3,161.7c-12.2,16.2-30.6,26.4-50.6,28.4l0.2-64.5  l50.5,0.2L176.3,161.7z M377.6,371.9L377.6,371.9c0,4-3.3,7.2-7.2,7.2l-173.2-0.7c-4,0-7.2-3.3-7.2-7.2l1-259.9  c0-4,3.3-7.2,7.2-7.2l173.2,0.7c4,0,7.2,3.3,7.2,7.2L377.6,371.9z"/></g></svg></span>
-        <h3>Facturación<br>&amp; Contabilidad</h3>
-        <p>Registrá todas las transacciones financieras, facturas, pagos, cobranzas y generá informes financieros personalizados.</p>
-      </div>
+<section class="pp-section pp-about" id="nosotros" style=" --pp-about-color: #fff;">
+  <div class="pp-container pp-about-grid">
+    <div class="pp-about-head">
+      <p class="pp-eyebrow">Sobre GERP</p>
+      <h2>GERP es gestión empresarial, creada por GENEOS.</h2>
     </div>
-    <div class="text-block two-col" style="max-width:none">
-      <div>
-        <h3>CRM: clientes y oportunidades</h3>
-        <p>Seguí cada oportunidad comercial y cada lead desde el primer contacto hasta la venta, con el historial de cada cliente a mano (plan PLUS).</p>
-      </div>
-      <div>
-        <h3>MRP: producción</h3>
-        <p>Planificá la fabricación, controlá materias primas y hacé el seguimiento de cada producto en todo el proceso productivo (plan PLUS).</p>
-      </div>
-    </div>
+    <div class="pp-about-copy">
+<p>Somos una cooperativa de software de Tandil formada por <strong>profesionales de Tecnología, Económicas, Comunicación y Diseño.</strong></p><p>Hace más de 10 años desarrollamos <strong>soluciones informáticas con software libre</strong>, acompañando cada proyecto desde el análisis hasta su implementación.</p>      <ul class="pp-about-stats">
+        <li>
+          <span class="pp-about-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+</svg>
+</span>
+          <h3>10+ años</h3>
+          <p>desarrollando software</p>
+        </li>
+        <li>
+          <span class="pp-about-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+</svg>
+</span>
+          <h3>Equipo multidisciplinario</h3>
+          <p>tecnología + gestión + diseño</p>
+        </li>
+        <li>
+          <span class="pp-about-ico"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/>
+</svg>
+</span>
+          <h3>Software libre</h3>
+          <p>basado en Odoo Community, sin licencias por usuario</p>
+        </li>
+      </ul>
+<p class="pp-about-close">GERP nace de esa experiencia: un <strong>software de gestión empresarial</strong> basado en Odoo, configurado y listo para usar.</p>    </div>
   </div>
 </section>
 
-<section class="section dev-banner">
-  <div class="container narrow center">
-    <h2 class="section-title">DESARROLLAMOS SOFTWARE A MEDIDA</h2>
-    <p class="lead">¿Tu negocio necesita algo que ningún sistema estándar resuelve? Contanos qué necesitás: lo analizamos, relevamos y creamos la solución con tecnología, sobre Odoo o con <a href="/desarrollo-apps-sitios-web-cooperativos/" style="color:inherit">desarrollo propio en Django</a>.</p>
-    <a class="btn btn-white" href="https://wa.me/5492494521418?text=Hola%2C%20quiero%20consultar%20por%20un%20desarrollo%20a%20medida" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M9.5 9.5c0 2.8 2.2 5 5 5l1-1.2-1.6-1-1 .7a3.6 3.6 0 0 1-1.9-1.9l.7-1-1-1.6z"/></svg>
- WhatsApp</a>
-  </div>
-</section>
-
-<section class="section theme-gray" id="planes">
-  <div class="container">
-    <header class="section-head">
-<p class="eyebrow"><span>ALTERNATIVAS</span></p>  <h2 class="section-title">PLANES Y PRECIOS DE GERP</h2>
-</header>
-    <div class="pricing">
-      <article class="price-card ">
-        <header><h3>LITE</h3><p>Plan base pequeños emprendimientos</p></header>
-        <div class="price"><strong><sup>$</sup>89.250</strong><span>+ IVA por mes (*)</span></div>
-        <ul class="check-list">
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Máximo 3 usuarios</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Inventario</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Compra y Venta</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Contabilidad y Facturación</span></li>
-</ul>
-        <footer>
-          <a class="btn btn-solid" href="https://wa.me/5492494521418?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20GERP%20LITE" target="_blank" rel="noopener">¡Contactanos!</a>
-          <small>$ 446.250 + IVA implementación</small>
-        </footer>
-      </article>
-      <article class="price-card featured">
-        <header><h3>CORE</h3><p>Circuito completo Compras y Ventas</p></header>
-        <div class="price"><strong><sup>$</sup>178.500</strong><span>+ IVA por mes (*)</span></div>
-        <ul class="check-list">
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Múltiples usuarios diferenciados</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Inventario</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Compra</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Venta</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Facturación</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Contabilidad</span></li>
-</ul>
-        <footer>
-          <a class="btn btn-solid" href="https://wa.me/5492494521418?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20GERP%20CORE" target="_blank" rel="noopener">¡Contactanos!</a>
-          <small>$ 892.500 + IVA implementación</small>
-        </footer>
-      </article>
-      <article class="price-card ">
-        <header><h3>PLUS</h3><p>Esencial con CRM y MRP</p></header>
-        <div class="price"><strong><sup>$</sup>446.250</strong><span>+ IVA por mes (*)</span></div>
-        <ul class="check-list">
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Múltiples usuarios diferenciados</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Inventario</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Compra</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Venta</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Facturación</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo Contabilidad</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo CRM</span></li>
-  <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
-<span>Módulo MRP</span></li>
-</ul>
-        <footer>
-          <a class="btn btn-solid" href="https://wa.me/5492494521418?text=Hola%2C%20quiero%20consultar%20por%20el%20plan%20GERP%20PLUS" target="_blank" rel="noopener">¡Contactanos!</a>
-          <small>$ 1.785.000 + IVA implementación</small>
-        </footer>
-      </article>
-    </div>
-    <p class="note">(*) Precios en pesos argentinos válidos para los meses de Octubre, Noviembre y Diciembre 2026. Actualización bimensual.</p>
-  </div>
-</section>
-
-<section class="section theme-white">
-  <div class="container">
-    <header class="section-head">
-<p class="eyebrow"><span>ODOO</span></p>  <h2 class="section-title">EMPRESAS QUE YA USAN NUESTRO SOFTWARE DE GESTIÓN</h2>
-</header>
-  </div>
+<section class="pp-clients" aria-labelledby="clientes-title">
+  <div class="pp-container"><h2 id="clientes-title">Empresas que ya usan nuestro software de gestión</h2></div>
   <div class="marquee" aria-label="Clientes">
   <ul class="marquee-track">
     <li><img src="/assets/img/2024/03/INBIO-HIGHWAY.webp" alt="Logo de INBIO HIGHWAY" loading="lazy" width="220" height="124"></li>
@@ -623,21 +806,78 @@
 </div>
 </section>
 
-<section class="section theme-gray-light" id="preguntas">
-  <div class="container narrow">
-    <header class="section-head">
-<p class="eyebrow"><span>DUDAS</span></p>  <h2 class="section-title">Preguntas frecuentes sobre GERP y Odoo</h2>
-</header>
-    <div class="accordion">
-      <details open><summary><h3>¿Qué es un software de gestión ERP?</h3></summary><div class="answer"><p>Un ERP (<em>Enterprise Resource Planning</em>) es un sistema que reúne en un solo lugar las áreas de tu negocio: stock, compras, ventas, facturación, contabilidad, clientes y producción. En lugar de planillas sueltas, todos trabajan sobre la misma información actualizada.</p></div></details>
-      <details><summary><h3>¿Qué es GERP y qué relación tiene con Odoo?</h3></summary><div class="answer"><p>GERP es el software de gestión de GENEOS. Está construido sobre <strong>Odoo Community</strong>, la versión libre y de código abierto de uno de los ERP más usados del mundo, y lo entregamos <strong>configurado y listo para usar</strong>, con implementación, capacitación y soporte de nuestro equipo.</p></div></details>
-      <details><summary><h3>¿Necesito instalar algo en mi computadora?</h3></summary><div class="answer"><p>No. GERP es un sistema de gestión <strong>online</strong>: se usa desde el navegador en computadoras, tablets o celulares, con tu usuario y contraseña, desde donde estés.</p></div></details>
-      <details><summary><h3>¿Qué plan me conviene?</h3></summary><div class="answer"><p><strong>LITE</strong> es para emprendimientos que necesitan gestionar clientes, proveedores, inventario y facturación con hasta 3 usuarios. <strong>CORE</strong> suma el circuito completo de compras y ventas con múltiples usuarios. <strong>PLUS</strong> agrega CRM y MRP para gestionar oportunidades comerciales y producción. Si tenés dudas, <a href="https://wa.me/5492494521418?text=Hola%2C%20quiero%20que%20me%20asesoren%20sobre%20qu%C3%A9%20plan%20de%20GERP%20me%20conviene">escribinos y te asesoramos</a>.</p></div></details>
-      <details><summary><h3>¿Pueden adaptar el sistema a mi negocio?</h3></summary><div class="answer"><p>Sí. Además de los planes, <strong>desarrollamos módulos y funcionalidades a medida</strong> sobre Odoo: relevamos tus procesos, los analizamos y creamos la solución con tecnología.</p></div></details>
-      <details><summary><h3>¿Cómo es la implementación?</h3></summary><div class="answer"><p>Configuramos el sistema, cargamos tus datos iniciales, capacitamos a las personas que lo van a usar y te acompañamos con soporte. Nuestro equipo se actualiza constantemente para atender tus requisitos y los cambios del país.</p></div></details>
+<section class="pp-section pp-faq-section" id="faq">
+  <div class="pp-container pp-faq">
+    <div class="pp-faq-head">
+      <p class="pp-eyebrow pp-eyebrow-2">Preguntas frecuentes</p>
+      <h2>Lo que más nos preguntan<span class="pp-dot">.</span></h2>
+<p>Respondemos las dudas más comunes sobre GERP, su implementación y sus funcionalidades.</p>    </div>
+    <div class="pp-faq-list">
+      <details name="faq">
+        <summary>¿Qué es un software de gestión ERP?</summary>
+        <div class="pp-faq-answer"><p>Un ERP (<em>Enterprise Resource Planning</em>) es un sistema que reúne en un solo lugar las áreas de tu negocio: stock, compras, ventas, facturación, contabilidad, clientes y producción. En lugar de planillas sueltas, todos trabajan sobre la misma información actualizada.</p></div>
+      </details>
+      <details name="faq">
+        <summary>¿Qué es GERP y qué relación tiene con Odoo?</summary>
+        <div class="pp-faq-answer"><p>GERP es el software de gestión de GENEOS. Está construido sobre <strong>Odoo Community</strong>, la versión libre y de código abierto de uno de los ERP más usados del mundo, y lo entregamos <strong>configurado y listo para usar</strong>, con implementación, capacitación y soporte de nuestro equipo.</p></div>
+      </details>
+      <details name="faq">
+        <summary>¿Necesito instalar algo en mi computadora?</summary>
+        <div class="pp-faq-answer"><p>No. GERP es un sistema de gestión <strong>online</strong>: se usa desde el navegador en computadoras, tablets o celulares, con tu usuario y contraseña, desde donde estés.</p></div>
+      </details>
+      <details name="faq">
+        <summary>¿Qué plan me conviene?</summary>
+        <div class="pp-faq-answer"><p><strong>LITE</strong> es para emprendimientos que necesitan gestionar clientes, proveedores, inventario y facturación con hasta 3 usuarios. <strong>CORE</strong> suma el circuito completo de compras y ventas con múltiples usuarios. <strong>PLUS</strong> agrega CRM y MRP para gestionar oportunidades comerciales y producción. Si tenés dudas, <a href="https://wa.me/5492494521418?text=Hola%2C%20quiero%20que%20me%20asesoren%20sobre%20qu%C3%A9%20plan%20de%20GERP%20me%20conviene">escribinos y te asesoramos</a>.</p></div>
+      </details>
+      <details name="faq">
+        <summary>¿Pueden adaptar el sistema a mi negocio?</summary>
+        <div class="pp-faq-answer"><p>Sí. Además de los planes, <strong>desarrollamos módulos y funcionalidades a medida</strong> sobre Odoo: relevamos tus procesos, los analizamos y creamos la solución con tecnología.</p></div>
+      </details>
+      <details name="faq">
+        <summary>¿Cómo es la implementación?</summary>
+        <div class="pp-faq-answer"><p>Configuramos el sistema, cargamos tus datos iniciales, capacitamos a las personas que lo van a usar y te acompañamos con soporte. Nuestro equipo se actualiza constantemente para atender tus requisitos y los cambios del país.</p></div>
+      </details>
     </div>
   </div>
 </section>
+
+<section class="pp-section pp-soft">
+  <div class="pp-container pp-convert">
+    <div class="pp-convert-side">
+      <div class="pp-card" id="brochure">
+        <p class="pp-eyebrow">Material</p>
+        <h2>Llevate toda la información</h2>
+        <div class="pp-brochure-cover">
+          <p>Conocé en detalle las funcionalidades, los planes y los módulos de GERP (PDF · 19 páginas · 1,5 MB).</p>
+          <a class="pp-btn pp-btn-primary " href="/assets/descargas/brochure-gerp-software-de-gestion-empresarial.pdf" download="brochure-gerp-software-de-gestion-empresarial.pdf"><svg class="icon bi" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+</svg>
+ Descargar brochure</a>
+          <img src="/assets/img/gerp/gerp-brochure.webp" alt="Brochure de GERP, software de gestión empresarial" width="501" height="560" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+
+    <div class="pp-card" id="demo">
+      <p class="pp-eyebrow">Demo</p>
+      <h2>Solicitá tu demo de GERP</h2>
+      <p>Completá el formulario y te contactamos para mostrarte cómo GERP puede adaptarse a tu empresa.</p>
+      <form class="pp-form" action="#" novalidate data-product="GERP">
+        <div class="pp-row"><label for="f-nombre">Nombre y apellido<input id="f-nombre" name="nombre" required autocomplete="name" data-wa="Nombre"></label><label for="f-empresa">Empresa<input id="f-empresa" name="empresa" autocomplete="organization" data-wa="Empresa"></label></div>
+        <div class="pp-row"><label for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email" data-wa="Email"></label><label for="f-telefono">Teléfono / WhatsApp<input id="f-telefono" name="telefono" type="tel" autocomplete="tel" data-wa="Teléfono"></label></div>
+        <label for="f-msg">Mensaje<textarea id="f-msg" name="mensaje" placeholder="Contanos brevemente sobre tu empresa y tus necesidades…" data-wa="Mensaje"></textarea></label>
+        <div class="pp-form-actions">
+          <button type="submit" class="pp-btn pp-btn-primary">Solicitar demo</button>
+          <p class="pp-form-status" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</div>
+<script src="/assets/js/product.js" defer></script>
 <section class="section theme-white hx-services" aria-labelledby="tambien-hacemos">
   <div class="container">
     <div class="hx-head">
