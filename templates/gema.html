@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% import "partials/product.html" as pp with context %}
+{#
+  GEMA · contenido de la página. Mismos componentes que GERP y GEAGRO
+  (partials/product.html + assets/css/product.css, tema .pp-theme-gema).
+  Naranja #F36B21 y azul #1455A0 se alternan en los íconos.
+#}
+{% set O = "#f36b21" %}{% set B = "#1455a0" %}
+{% set DEMO_WA = wa('Hola, quiero solicitar una demo de GEMA') %}
+{% set PLAN = {"name": "Plan mensual", "sub": "Plataforma online personalizada", "price": "89.250", "num": 89250, "impl": "349.750",
+  "feats": ["Plataforma online personalizada", "Carga ILIMITADA de clientes", "Uso de todas las funciones"]} %}
 {% set FAQS = [
   ("¿Puedo gestionar mi taller de matafuegos desde mi casa?", "<p>Sí, podrás abrir el software desde DÓNDE y CUÁNDO quieras, siempre y cuando tengas conexión a Internet. No es necesario instalar nada en ninguna computadora, smartphone ni dispositivo digital: con sólo tener tu usuario y clave podrás ingresar fácilmente.</p>"),
   ("¿Si se me rompe la computadora donde estaba trabajando pierdo toda la info?", "<p>No, no perderás ni tendrás que pagar nada para volver a tener tus datos, ya que se guardan en el servidor/nube automáticamente y no en tu computadora; podrás acceder a ellos con otro dispositivo que cuente con Internet.</p>"),
@@ -7,101 +17,138 @@
   ("¿Puedo personalizar la aplicación en función de mi marca?", "<p>Sí, podrás pasarnos tu brandbook o manual de marca, con tu logotipo, colores y tipografías y ajustaremos la plataforma según tu identidad.</p>"),
   ("¿Puedo desuscribirme cuando desee?", "<p>Sí, una vez cumplido el plazo del plan contratado podrás dejar de usar el software si lo deseás, sin compromiso alguno.</p>"),
   ("¿Cuántos clientes y matafuegos puedo cargar?", "<p>La carga de clientes es <strong>ilimitada</strong> y tenés acceso a todas las funciones de la plataforma desde el primer día.</p>"),
-  ("¿Puedo probar GEMA antes de contratarlo?", "<p>Sí. <a href=\"" ~ wa('Hola, quiero solicitar una demo de GEMA') ~ "\">Pedinos una demo</a> y te mostramos cómo funciona con ejemplos reales de un taller.</p>"),
+  ("¿Puedo probar GEMA antes de contratarlo?", "<p>Sí. <a href=\"#demo\">Pedinos una demo</a> y te mostramos cómo funciona con ejemplos reales de un taller.</p>"),
 ] %}
+
 {% block schema %}
 {{ m.faq_schema(FAQS) }}
 {{ jsonld({"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "GEMA",
   "alternateName": "GEMA Plataforma de Gestión de Matafuegos", "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web", "description": description, "url": abs_url(page.out),
-  "image": abs_url("assets/img/2024/04/5-1024x637.webp"), "publisher": {"@id": abs_url("#organizacion")},
+  "applicationSubCategory": "Software para talleres de matafuegos", "operatingSystem": "Web", "description": description, "url": abs_url(page.out),
+  "image": abs_url("assets/img/gema/gema-hero-1920.webp"), "publisher": {"@id": abs_url("#organizacion")},
   "featureList": ["Control de vencimientos de matafuegos", "Historial de recargas y servicios", "Notificaciones por mail a clientes", "Órdenes de trabajo para facturación", "Obleas imprimibles", "Presupuestos automáticos", "Personalización con la marca del taller"],
-  "offers": {"@type": "Offer", "name": "Plan mensual GEMA", "price": 89250, "priceCurrency": "ARS",
-    "priceSpecification": {"@type": "UnitPriceSpecification", "price": 89250, "priceCurrency": "ARS", "unitText": "mes", "valueAddedTaxIncluded": false}}}) }}
+  "offers": {"@type": "Offer", "name": "Plan mensual GEMA", "price": PLAN.num, "priceCurrency": "ARS", "url": abs_url(page.out) ~ "#planes",
+    "priceSpecification": {"@type": "UnitPriceSpecification", "price": PLAN.num, "priceCurrency": "ARS", "unitText": "mes", "valueAddedTaxIncluded": false}}}) }}
 {% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ asset('css/product.css') }}">{% endblock %}
+{% block preload %}
+<link rel="preload" as="image" type="image/webp" href="{{ asset('img/gema/gema-hero-1920.webp') }}" media="(min-width: 901px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="{{ asset('img/gema/gema-hero-900.webp') }}" media="(max-width: 900px)" fetchpriority="high">
+{% endblock %}
+{% block body_class %}page-gema page-product{% endblock %}
+
 {% block content %}
-<section class="service-hero theme-orange-rev">
-  <div class="container split">
-    <div class="gema-hero-text">
-      <span class="gema-logo" role="img" aria-label="GEMA, plataforma de gestión de matafuegos">{{ icon('gema') }}</span>
-      <h1 class="gema-title">Software para la <strong>GESTIÓN</strong> de talleres de <strong>MATAFUEGOS</strong> y extintores</h1>
-      <a class="btn btn-white" href="{{ wa('Hola, quiero solicitar una demo de GEMA') }}" target="_blank" rel="noopener">Solicitá una demo</a>
-    </div>
-    <img src="{{ img('2024/04/5-1024x637.png') }}" alt="Matafuego junto a computadora, tablet y celular usando el software de gestión GEMA" width="1024" height="637" fetchpriority="high">
-  </div>
-  {{ m.scroll_down("atributos") }}
-</section>
+<div class="pp pp-theme-gema">
 
-<section class="section theme-white" id="atributos">
-  <div class="container">
-    {{ m.section_head("PLATAFORMA GEMA", "ATRIBUTOS") }}
-    <p class="prose">GEMA es la <strong>solución online e integral</strong> creada por la cooperativa GENEOS que permite a los talleres <strong>gestionar eficientemente los plazos de vencimiento y los servicios prestados a los extintores</strong> de sus clientes. Olvidate de las planillas y los cuadernos: tené el control de cada matafuego, cada recarga y cada vencimiento en un solo lugar.</p>
-    <div class="feature-row gema-features">
-      {% for file, title, text, alt in [
-        ("1.svg", "ACCESO REMOTO", "Accedé a la plataforma desde cualquier ubicación con conexión a Internet, facilitando la gestión remota.", "Diversos dispositivos accediendo a GEMA"),
-        ("2-1.svg", "AUTO REFRESH", "Actualización automática garantizando tener la última versión sin necesidad de intervención adicional.", "Ícono de actualización automática"),
-        ("3.svg", "SEGURO", "Medidas de seguridad robustas y copias de seguridad automáticas, resguardando la información confidencial.", "Escudo con wifi y protección"),
-      ] %}
-      <div class="feature">
-        <img src="{{ img('2024/04/' ~ file) }}" alt="{{ alt }}" loading="lazy" width="180" height="180" class="gema-feature-img">
-        <h3>{{ title }}</h3>
-        <p>{{ text }}</p>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+{# 1. Hero: la imagen de fondo ya muestra GEMA en computadora, tablet y celular #}
+{{ pp.hero({
+  "img": "img/gema/gema-hero-1920.webp", "img_sm": "img/gema/gema-hero-900.webp", "fade": "0", "pos": "right center", "wave_next": "#fcefe6",
+  "logo": "productos/gema-logo-blanco.svg", "logo_alt": "GEMA, plataforma de gestión de matafuegos", "logo_w": 300, "logo_h": 84,
+  "title": [["Software para talleres", false], ["de matafuegos y extintores", true]],
+  "lead": "GEMA es la <strong>plataforma online</strong> que te permite controlar los <strong>vencimientos</strong>, las recargas y los servicios de cada extintor de tus clientes, en un solo lugar.",
+  "actions": [{"label": "Solicitar demo", "href": "#demo", "style": "accent", "icon": "bi-arrow-right"},
+              {"label": "Ver planes", "href": "#planes", "style": "outline-light", "icon": "bi-arrow-right"}],
+}) }}
 
-<section class="section theme-gray-light">
-  <div class="container media-text">
-    <img src="{{ img('2024/10/6.svg') }}" alt="Funciones de GEMA: historial de servicios, vencimientos, obleas, precios, notificaciones y personalización" loading="lazy" width="560" height="560">
-    <div>
-      <h2 class="section-title">FUNCIONALIDADES DEL SOFTWARE PARA MATAFUEGOS</h2>
-      {{ m.check_list([
-        "Registra servicios realizados, por ej. el historial de recargas.",
-        "Informa los matafuegos próximos a vencerse.",
-        "Notifica los trabajos realizados al mail del cliente.",
-        "Informa las órdenes de trabajo para facturación.",
-        "Genera obleas imprimibles de matafuegos.",
-        "Presupuesta automáticamente con precios actuales.",
-        "Personaliza el software con la identidad marcaria.",
-      ], "check-list orange") }}
-      <p style="margin-top:24px"><a class="btn btn-solid btn-orange" href="{{ wa('Hola, quiero solicitar una demo de GEMA') }}" target="_blank" rel="noopener">Solicitá una demo</a></p>
-    </div>
-  </div>
-</section>
+{# 2. Cómo funciona #}
+{{ pp.steps({
+  "id": "como-funciona", "wave_next": "#fff", "wave_back": ".6",
+  "eyebrow": "Cómo funciona", "title": "Del registro al control de vencimientos", "dot": true,
+  "lead": "Olvidate de las planillas y los cuadernos: tené el control de cada matafuego, cada recarga y cada vencimiento en un solo lugar.",
+  "more": {"label": "Conocé los módulos", "href": "#modulos"},
+  "items": [
+    {"icon": "bi-file-earmark-text", "color": O, "title": "Registrá", "text": "los matafuegos de tus clientes y los servicios realizados."},
+    {"icon": "bi-gear", "color": B, "title": "Controlá", "text": "las recargas y los vencimientos de cada extintor."},
+    {"icon": "bi-bell", "color": O, "title": "Notificá", "text": "por mail a tus clientes los trabajos realizados."},
+    {"icon": "bi-bar-chart-line", "color": B, "title": "Gestioná", "text": "órdenes de trabajo, presupuestos y obleas."},
+  ],
+}) }}
 
-<section class="section theme-white">
-  <div class="container text-block">
-    <h2>¿Para quién es GEMA?</h2>
-    <p>GEMA está pensado para <strong>talleres de recarga y mantenimiento de matafuegos</strong> y empresas de seguridad contra incendios que atienden a comercios, industrias, consorcios e instituciones. Si tu taller lleva el control de vencimientos a mano, en planillas de cálculo o en papel, GEMA te ayuda a:</p>
-    <ul>
-      <li><strong>No perder ningún vencimiento:</strong> el sistema te avisa qué extintores están por vencer para que puedas contactar a tus clientes a tiempo.</li>
-      <li><strong>Tener el historial completo</strong> de cada matafuego: recargas y servicios realizados.</li>
-      <li><strong>Ahorrar tiempo administrativo:</strong> obleas, presupuestos y órdenes de trabajo se generan automáticamente.</li>
-      <li><strong>Dar una mejor atención:</strong> tus clientes reciben por mail el detalle de los trabajos realizados.</li>
-    </ul>
-    <p>Es un desarrollo propio de GENEOS, una cooperativa de software libre de Argentina. Si necesitás un sistema de gestión más amplio para tu empresa, conocé también <a href="{{ url('/software-de-gestion-completo/') }}">GERP, nuestro ERP basado en Odoo</a>.</p>
-  </div>
-</section>
+{# 3. Módulos #}
+{{ pp.modules({
+  "id": "modulos", "eyebrow": "Módulos", "title": "Todo tu taller de matafuegos en un solo software",
+  "lead": "GEMA es la <strong>solución online e integral</strong> creada por la cooperativa GENEOS para que los talleres gestionen eficientemente <strong>los plazos de vencimiento y los servicios prestados a los extintores</strong> de sus clientes.",
+  "items": [
+    {"icon": "bi-person", "color": O, "title": "Clientes", "text": "Carga ilimitada de clientes, con sus matafuegos y el historial de servicios de cada uno."},
+    {"icon": "bi-fire", "color": B, "title": "Matafuegos", "text": "Registrá los servicios realizados a cada extintor, por ejemplo, el historial de recargas."},
+    {"icon": "bi-clipboard-check", "color": O, "title": "Órdenes de trabajo", "text": "Órdenes de trabajo para facturación, presupuestos automáticos con precios actuales y obleas imprimibles."},
+    {"icon": "bi-calendar-event", "color": B, "title": "Vencimientos", "text": "GEMA te informa los matafuegos próximos a vencerse para que contactes a tus clientes a tiempo."},
+    {"icon": "bi-bell", "color": O, "title": "Notificaciones", "text": "Notificá al mail del cliente los trabajos realizados en sus equipos."},
+    {"icon": "bi-pie-chart", "color": B, "title": "Reportes", "text": "Informes de vencimientos próximos y de órdenes de trabajo para facturar sin planillas."},
+  ],
+}) }}
 
-<section class="section theme-gray-light" id="planes">
-  <div class="container">
-    {{ m.section_head("NUESTROS", "PLANES DE GEMA") }}
-    <div class="pricing single">
-      <article class="price-card theme-orange-head">
-        <header><h3>PLAN MENSUAL</h3><p>$ 349.750 + IVA implementación por única vez</p></header>
-        <div class="price"><strong><sup>$</sup>89.250</strong><span>+ IVA por mes (*)</span></div>
-        {{ m.check_list(["Plataforma online personalizada", "Carga ILIMITADA de clientes", "Uso de todas las funciones"], "check-list orange") }}
-        <footer>
-          <a class="btn btn-solid btn-orange" href="{{ wa('Hola, quiero consultar por el plan mensual de GEMA') }}" target="_blank" rel="noopener">¡Contactanos!</a>
-          <small>(*) Precios en pesos argentinos válidos para Octubre, Noviembre y Diciembre. Actualización bimestral.</small>
-        </footer>
-      </article>
-    </div>
-  </div>
-</section>
+{# 4. Beneficios #}
+{{ pp.modules({
+  "id": "beneficios", "soft": true, "eyebrow": "Beneficios", "title": "Una plataforma online, segura y siempre actualizada",
+  "items": [
+    {"icon": "bi-globe", "color": O, "title": "Acceso remoto", "text": "Accedé a la plataforma desde cualquier ubicación con conexión a Internet, facilitando la gestión remota."},
+    {"icon": "bi-cloud-arrow-up", "color": B, "title": "Actualización automática", "text": "Siempre tenés la última versión, sin necesidad de intervención adicional."},
+    {"icon": "bi-shield-check", "color": O, "title": "Seguridad", "text": "Medidas de seguridad robustas y copias de seguridad automáticas que resguardan tu información confidencial."},
+  ],
+}) }}
 
-{{ m.faq(FAQS, "Preguntas frecuentes sobre GEMA", "SOFTWARE PARA MATAFUEGOS", "theme-white") }}
-{{ m.cta("Probá GEMA en tu taller", "Pedinos una demo y te mostramos cómo controlar todos los vencimientos de tus clientes desde un solo lugar.", "Hola, quiero solicitar una demo de GEMA", "Solicitar demo", "theme-orange-rev") }}
+{# 5. Planes #}
+{{ pp.plans({"id": "planes", "eyebrow": "Planes", "title": "Planes de GEMA",
+  "lead": "Un abono mensual con todas las funciones de la plataforma, actualizaciones y soporte técnico.",
+  "note": "(*) Precios en pesos argentinos válidos para Octubre, Noviembre y Diciembre. Actualización bimestral.",
+  "items": [{"name": PLAN.name, "sub": PLAN.sub, "price": PLAN.price, "tax": "+ IVA por mes (*)", "feats": PLAN.feats,
+             "impl": PLAN.impl, "impl_note": "Por única vez", "color": O,
+             "button": {"label": "Solicitar demo", "href": "#demo", "style": "accent", "icon": "bi-arrow-right"}}]}) }}
+
+{# 6. Banner con foto. Todavía no hay brochure de GEMA: el segundo botón lleva a WhatsApp #}
+{{ pp.cta({
+  "img": "img/gema/gema-cta-1920.webp", "img_sm": "img/gema/gema-cta-900.webp", "pos": "right center",
+  "eyebrow": "Tu taller más ordenado",
+  "title": ["Controlá cada matafuego.", "No pierdas ningún", "vencimiento."],
+  "text": "Recargas, servicios, obleas y avisos a tus clientes en una sola plataforma online.",
+  "actions": [{"label": "Solicitar demo", "href": "#demo", "style": "accent", "icon": "bi-arrow-right"},
+              {"label": "Consultanos por WhatsApp", "href": DEMO_WA, "style": "ghost-light", "icon": "bi-whatsapp", "external": true}],
+}) }}
+
+{# 7. Para quién es GEMA #}
+{{ pp.modules({
+  "id": "para-quien", "eyebrow": "Para quién es", "title": "¿Para quién es GEMA?",
+  "lead": "Si tu taller lleva el control de vencimientos a mano, en planillas de cálculo o en papel, GEMA te ayuda a no perder ningún vencimiento, tener el historial completo de cada matafuego y ahorrar tiempo administrativo.",
+  "note": "¿Necesitás un sistema de gestión más amplio para tu empresa? Conocé también <a href=\"" ~ url('/software-de-gestion-completo/') ~ "\">GERP, nuestro ERP basado en Odoo</a>.",
+  "items": [
+    {"icon": "bi-wrench-adjustable", "color": O, "title": "Talleres de recarga", "text": "Talleres de recarga y mantenimiento de matafuegos que necesitan controlar vencimientos y servicios."},
+    {"icon": "bi-buildings", "color": B, "title": "Empresas de servicios", "text": "Empresas de seguridad contra incendios que atienden a comercios, industrias, consorcios e instituciones."},
+    {"icon": "bi-shop", "color": O, "title": "Distribuidores", "text": "Distribuidores de matafuegos que quieren seguir los equipos de sus clientes y avisarles a tiempo."},
+  ],
+}) }}
+
+{# 8. GENEOS #}
+{{ pp.about({
+  "id": "nosotros", "color": "#fff",
+  "eyebrow": "Sobre GEMA", "title": "GEMA es un desarrollo propio de GENEOS.",
+  "paragraphs": ["Somos una cooperativa de software de Tandil formada por <strong>profesionales de Tecnología, Económicas, Comunicación y Diseño.</strong>",
+                 "Hace más de 10 años desarrollamos <strong>soluciones informáticas con software libre</strong>, acompañando cada proyecto desde el análisis hasta su implementación."],
+  "stats": [{"icon": "bi-calendar-event", "title": "10+ años", "text": "desarrollando software"},
+            {"icon": "bi-people", "title": "Equipo multidisciplinario", "text": "tecnología + gestión + diseño"},
+            {"icon": "bi-code-slash", "title": "Software libre", "text": "soluciones que pueden evolucionar"}],
+  "close": "GEMA nace de esa experiencia: un <strong>software para talleres de matafuegos</strong>, pensado para controlar vencimientos y servicios sin planillas.",
+}) }}
+
+{# 9. Preguntas frecuentes #}
+{{ pp.faq({"title": "Lo que más nos preguntan", "lead": "Respondemos las dudas más comunes sobre GEMA, el software de gestión de extintores.", "items": FAQS}) }}
+
+{# 10. Material + demo (sin brochure por ahora) #}
+{{ pp.convert({
+  "product": "GEMA",
+  "brochure": {"eyebrow": "Material", "pending": true,
+               "text": "El brochure de GEMA va a estar disponible muy pronto. Mientras tanto, escribinos y te contamos cómo funciona la plataforma en un taller real.",
+               "action": {"label": "Escribinos por WhatsApp", "href": DEMO_WA, "external": true, "icon_before": "bi-whatsapp"}},
+  "form": {
+    "text": "Completá tus datos y te contactamos para mostrarte cómo controlar todos los vencimientos de tus clientes desde un solo lugar.",
+    "rows": [
+      [{"name": "nombre", "label": "Nombre y apellido", "required": true, "autocomplete": "name", "wa": "Nombre"},
+       {"name": "empresa", "label": "Taller o empresa", "autocomplete": "organization", "wa": "Taller"}],
+      [{"name": "email", "label": "Email", "type": "email", "required": true, "autocomplete": "email"},
+       {"name": "telefono", "label": "Teléfono / WhatsApp", "type": "tel", "autocomplete": "tel", "wa": "Teléfono"}]],
+    "message": {"label": "Contanos sobre tu taller", "placeholder": "Cantidad de clientes y matafuegos, cómo controlás hoy los vencimientos…"}},
+}) }}
+
+</div>
+<script src="{{ asset('js/product.js') }}" defer></script>
 {% endblock %}

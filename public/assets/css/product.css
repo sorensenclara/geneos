@@ -29,14 +29,16 @@
   --pp-eyebrow-2: #99146a; --pp-steps-ico: #99146a;
 }
 .pp-theme-gema {
-  --pp-deep-rgb: 20, 30, 60;
-  --pp-heading: #16213e; --pp-text: #1d2230; --pp-muted: #545b6b; --pp-bg: #fbf8f5; --pp-border: #eee1d6;
-  --pp-accent: #e36f31; --pp-highlight: #f39a4c;
-  --pp-soft: #fdf3ec; --pp-soft-2: #fcefe6; --pp-icon-bg: #fbe6d8; --pp-line: #f0bf9f; --pp-line-2: #f1c9ae; --pp-line-3: #f2dccd;
-  --pp-btn: #178943; --pp-btn-hover: #0f7438; --pp-btn-text: #fff;
-  --pp-btn2: #e36f31; --pp-btn2-text: #fff;
-  --pp-quote-bg: #1f2b4d; --pp-on-dark-muted: #d6dcea;
-  --pp-eyebrow-2: #e36f31; --pp-steps-ico: #e36f31;
+  --pp-deep-rgb: 150, 50, 6;
+  --pp-heading: #0f2f5c; --pp-text: #1d2230; --pp-muted: #545b6b; --pp-bg: #fbf8f5; --pp-border: #eee1d6;
+  --pp-accent: #f36b21; --pp-highlight: #ffd2b5;
+  --pp-soft: #fdf3ec; --pp-soft-2: #fcefe6; --pp-icon-bg: #fde7d9; --pp-line: #f6b48c; --pp-line-2: #f4c3a3; --pp-line-3: #f2dccd;
+  --pp-btn: #f36b21; --pp-btn-hover: #d9560f; --pp-btn-text: #fff;
+  --pp-btn2: #1455a0; --pp-btn2-text: #fff;
+  --pp-quote-bg: #1455a0; --pp-on-dark-muted: #d6e2f3;
+  --pp-eyebrow-2: #f36b21; --pp-steps-ico: #f36b21;
+  --pp-ico-size: 32px; --pp-steps-ico-size: 32px;
+  --pp-hero-mid: .86; --pp-hero-mid-at: 48%; --pp-hero-fade-at: 72%;
 }
 
 /* ---------- Base ---------- */
@@ -64,6 +66,7 @@
 .pp-head::before { content: ""; width: 72px; height: 3px; border-radius: 2px; background: var(--pp-line); margin-bottom: 6px; }
 .pp-head p:not(.pp-eyebrow) { color: var(--pp-muted); font-size: 1.15rem; line-height: 1.5; max-width: 60ch; }
 .pp-note { color: var(--pp-muted); font-size: .9rem; text-align: center; margin-top: 28px !important; }
+.pp-note a { color: var(--pp-accent); font-weight: 600; }
 
 /* ---------- Botones ---------- */
 .pp-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; font: 700 .92rem var(--font); letter-spacing: .04em; text-transform: uppercase; padding: .95em 1.7em; border-radius: var(--pill); border: 2px solid transparent; cursor: pointer; transition: transform .15s, background-color .15s, color .15s; }
@@ -94,7 +97,7 @@
 
 /* ---------- Hero ---------- */
 .pp-hero { position: relative; color: #fff; padding-block: clamp(64px, 9vw, 120px) calc(clamp(64px, 9vw, 120px) + clamp(36px, 5vw, 80px));
-  background: linear-gradient(90deg, rgba(var(--pp-deep-rgb), .92) 0%, rgba(var(--pp-deep-rgb), .72) 45%, rgba(var(--pp-deep-rgb), var(--pp-hero-fade, .25)) 100%), var(--pp-hero-img) var(--pp-hero-pos, center) / cover no-repeat; }
+  background: linear-gradient(90deg, rgba(var(--pp-deep-rgb), .92) 0%, rgba(var(--pp-deep-rgb), var(--pp-hero-mid, .72)) var(--pp-hero-mid-at, 45%), rgba(var(--pp-deep-rgb), var(--pp-hero-fade, .25)) var(--pp-hero-fade-at, 100%)), var(--pp-hero-img) var(--pp-hero-pos, center) / cover no-repeat; }
 .pp-hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center; }
 .pp-hero-copy { display: grid; gap: 22px; min-width: 0; container-type: inline-size; }
 .pp-hero-logo { height: clamp(46px, 5vw, 66px); width: auto; margin-bottom: 26px; }
@@ -105,6 +108,9 @@
 .pp-hero-lead strong { color: #fff; }
 .pp-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 .pp-hero-media { position: relative; min-width: 0; }
+.pp-hero-solo { grid-template-columns: minmax(0, 600px); }
+@media (max-width: 900px) { .pp-hero-solo { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .pp-hero h1 { font-size: clamp(1.8rem, 8.4cqi, 2.4rem); } .pp-hero h1 > span { white-space: normal; } }
 .pp-hero-media.has-sm { padding-bottom: 16%; }
 .pp-monitor { background: #111; border: 8px solid #1a1a1a; border-radius: 14px; box-shadow: 0 30px 70px rgba(0,0,0,.45); overflow: hidden; width: 88%; margin-left: auto; }
 .pp-monitor img { height: auto; }
@@ -125,7 +131,7 @@
 .pp-steps-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
 .pp-steps-list li { position: relative; display: grid; gap: 4px; align-content: start; min-width: 0; }
 .pp-steps-ico { width: 96px; height: 96px; border-radius: 50%; background: #fff; box-shadow: 0 8px 22px rgba(15,23,42,.08); display: grid; place-items: center; margin-bottom: 18px; color: var(--pp-steps-ico, var(--pp-heading)); }
-.pp-steps-ico .icon { width: 46px; height: 46px; }
+.pp-steps-ico .icon { width: var(--pp-steps-ico-size, 46px); height: var(--pp-steps-ico-size, 46px); }
 .pp-steps-num { font-weight: 700; font-size: 1.2rem; color: var(--pp-accent); letter-spacing: .02em; }
 .pp-steps-list h3 { font-size: 1.35rem; color: var(--pp-heading); }
 .pp-steps-list p { color: var(--pp-muted); line-height: 1.4; }
@@ -149,7 +155,7 @@
 .pp-module { flex: 1; position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 6px 18px; align-content: start; background: #fff; border: 1px solid var(--pp-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); padding: 26px 26px 26px 24px; color: inherit; transition: transform .2s, box-shadow .2s, border-color .2s; }
 a.pp-module:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--pp-ico, var(--pp-accent)); }
 .pp-module-ico { grid-row: span 2; color: var(--pp-ico, var(--pp-accent)); }
-.pp-module-ico .icon { width: 48px; height: 48px; }
+.pp-module-ico .icon { width: var(--pp-ico-size, 48px); height: var(--pp-ico-size, 48px); }
 .pp-module h3 { font-size: 1.2rem; color: var(--pp-heading); padding-right: 44px; }
 .pp-module p { color: var(--pp-muted); font-size: .97rem; line-height: 1.5; }
 .pp-arrow { position: absolute; top: 22px; right: 22px; width: 34px; height: 34px; border-radius: 50%; background: var(--pp-ico, var(--pp-accent)); color: #fff; display: grid; place-items: center; transition: transform .2s; }
@@ -183,6 +189,7 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 /* ---------- Planes y precios (2 o 3 planes) ---------- */
 .pp-plans-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 900px; margin: 0 auto; align-items: stretch; }
 .pp-plans-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
+.pp-plans-1 { grid-template-columns: minmax(0, 1fr); max-width: 460px; }
 .pp-plan { background: #fff; border: 1px solid var(--pp-border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
 /* subgrid: los encabezados de los planes quedan de la misma altura aunque el subtítulo ocupe más líneas */
 .pp-plan.is-featured { box-shadow: var(--shadow-md); }

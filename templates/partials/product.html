@@ -30,13 +30,14 @@
         media: {monitor: {src, webp, alt, w, h}, monitor_sm: {…}} | {shot: {src, alt, w, h}}} #}
 {% macro hero(h) -%}
 <section class="pp-hero pp-wave" style="--pp-hero-img: url('{{ asset(h.img) }}'); {% if h.img_sm %}--pp-hero-img-sm: url('{{ asset(h.img_sm) }}');{% endif %} {% if h.pos %}--pp-hero-pos: {{ h.pos }};{% endif %} {% if h.fade %}--pp-hero-fade: {{ h.fade }};{% endif %} --pp-wave-next: {{ h.wave_next or '#fff' }};{% if h.wave_back %} --pp-wave-back: {{ h.wave_back }};{% endif %}">
-  <div class="pp-container pp-hero-grid">
+  <div class="pp-container pp-hero-grid{% if not h.media %} pp-hero-solo{% endif %}">
     <div class="pp-hero-copy">
       <img class="pp-hero-logo" src="{{ img(h.logo) }}" alt="{{ h.logo_alt }}" width="{{ h.logo_w }}" height="{{ h.logo_h }}">
       <h1>{% for line, hl in h.title %}<span{% if hl %} class="pp-hl"{% endif %}>{{ line|safe }}</span>{% if not loop.last %} {% endif %}{% endfor %}</h1>
       <p class="pp-hero-lead">{{ h.lead|safe }}</p>
       <div class="pp-hero-actions">{% for b in h.actions %}{{ btn(b) }}{% endfor %}</div>
     </div>
+    {% if h.media %}
     <div class="pp-hero-media{% if h.media.monitor_sm %} has-sm{% endif %}">
       {% if h.media.shot %}
       <img class="pp-shot" src="{{ img(h.media.shot.src) }}" alt="{{ h.media.shot.alt }}" width="{{ h.media.shot.w }}" height="{{ h.media.shot.h }}" fetchpriority="high">
@@ -46,6 +47,7 @@
       <div class="{{ cls }}"><picture>{% if s.webp %}<source srcset="{{ asset(s.webp) }}" type="image/webp">{% endif %}<img src="{{ asset(s.src) }}" alt="{{ s.alt }}" width="{{ s.w }}" height="{{ s.h }}"{% if prio %} fetchpriority="high"{% else %} decoding="async"{% endif %}></picture></div>
       {% endfor %}
     </div>
+    {% endif %}
   </div>
 </section>
 {%- endmacro %}
@@ -64,7 +66,7 @@
     </div>
     <ol class="pp-steps-list">
       {% for it in s["items"] %}
-      <li>
+      <li{% if it.color %} style="--pp-steps-ico: {{ it.color }}"{% endif %}>
         <span class="pp-steps-ico">{{ glyph(it.icon) }}</span>
         <span class="pp-steps-num">{{ "%02d"|format(loop.index) }}</span>
         <h3>{{ it.title }}</h3>
@@ -100,6 +102,7 @@
       </li>
       {% endfor %}
     </ul>
+    {% if m.note %}<p class="pp-note">{{ m.note|safe }}</p>{% endif %}
   </div>
 </section>
 {%- endmacro %}
@@ -273,6 +276,9 @@
           {{ btn({"label": d.brochure.button or "Descargar brochure", "href": asset(d.brochure.href), "download": d.brochure.file, "icon_before": "bi-download"}) }}
           <img src="{{ img(d.brochure.cover) }}" alt="{{ d.brochure.cover_alt }}" width="{{ d.brochure.cover_w }}" height="{{ d.brochure.cover_h }}" loading="lazy" decoding="async">
         </div>
+        {% elif d.brochure.pending %}
+        <p>{{ d.brochure.text|safe }}</p>
+        {{ btn(d.brochure.action) }}
         {% else %}
         <div class="pp-brochure-file">
           <img src="{{ asset(d.brochure.icon) }}" alt="" loading="lazy" decoding="async" width="56" height="56">
