@@ -93,8 +93,9 @@ PAGES = [
          description="GEMA, el software de gestión para talleres de matafuegos de GENEOS: clientes, extintores, órdenes de trabajo, vencimientos y avisos en una plataforma online.",
          crumb="Software de Matafuegos GEMA", og="og/gema.jpg", priority="0.9"),
     dict(tpl="geagro.html", out="software-agropecuario-geagro/", parent="servicios/",
-         title="GEAGRO | Software de gestión agropecuaria – GENEOS",
-         description="GEAGRO, el software de gestión agropecuaria de GENEOS: organizá la información del campo o del viñedo, planificá labores y decidí con datos. Cereales y Vid.",
+         # La palabra clave "software de gestión agropecuaria" queda para geagro.ar; acá se presenta el producto como desarrollo de GENEOS
+         title="GEAGRO: software agropecuario de la cooperativa GENEOS",
+         description="GEAGRO es el software agropecuario que desarrolla la cooperativa GENEOS en Tandil, con versiones para cereales y viñedos. Planes y demo en geagro.ar.",
          crumb="Software Agropecuario GEAGRO", og="og/geagro.jpg", priority="0.9"),
     dict(tpl="staff-augmentation.html", out="staff-augmentation/", parent="servicios/",
          title="Staff Augmentation en Argentina | Talento IT – GENEOS",
