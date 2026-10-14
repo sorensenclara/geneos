@@ -133,10 +133,12 @@
         <div class="pp-version-body">
           <h3 class="pp-wm">{{ it.wordmark|safe }}</h3>
           <p>{{ it.text|safe }}</p>
+          {% if it.feats %}
           <ul class="pp-version-feats">
             {% for ic, label in it.feats %}<li><img src="{{ asset(ic) }}" alt="" loading="lazy" decoding="async" width="64" height="64">{{ label }}</li>{% endfor %}
           </ul>
-          <div class="pp-version-actions">{{ btn(it.button) }}<a href="#demo" class="pp-version-demo" data-version="{{ it.version }}">Solicitar demo →</a></div>
+          {% endif %}
+          <div class="pp-version-actions">{{ btn(it.button) }}{% if it.version %}<a href="#demo" class="pp-version-demo" data-version="{{ it.version }}">Solicitar demo →</a>{% endif %}</div>
         </div>
       </article>
       {% endfor %}
@@ -272,7 +274,8 @@
 
 {% macro convert(d) -%}
 <section class="pp-section pp-soft">
-  <div class="pp-container pp-convert">
+  <div class="pp-container pp-convert{% if not d.brochure %} pp-convert-solo{% endif %}">
+    {% if d.brochure %}
     <div class="pp-convert-side{% if d.quote %} is-optional-mobile{% endif %}">
       <div class="pp-card" id="brochure">
         <p class="pp-eyebrow">{{ d.brochure.eyebrow or "Brochure" }}</p>
@@ -306,6 +309,7 @@
       {% endif %}
     </div>
 
+    {% endif %}
     <div class="pp-card" id="demo">
       <p class="pp-eyebrow">Demo</p>
       <h2>{{ d.form.title or "Solicitá tu demo de " ~ d.product }}</h2>

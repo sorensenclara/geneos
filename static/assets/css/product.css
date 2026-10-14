@@ -410,3 +410,12 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 .pp-band h2 { color: #fff; }
 .pp-band p:not(.pp-eyebrow) { color: rgba(255,255,255,.9); font-size: 1.15rem; }
 .pp-band .pp-cta-actions { justify-content: center; }
+
+/* Variantes de grilla y formulario solo (páginas institucionales de producto) */
+.pp-modules-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; margin: 0 auto; }
+.pp-modules-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.pp-modules-4 .pp-module { grid-template-columns: 1fr; padding: 24px 22px; }
+.pp-modules-4 .pp-module-ico { grid-row: auto; margin-bottom: 8px; }
+@media (max-width: 1000px) { .pp-modules-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .pp-modules-2, .pp-modules-4 { grid-template-columns: 1fr; } .pp-modules-4 .pp-module { grid-template-columns: 48px 1fr; } .pp-modules-4 .pp-module-ico { grid-row: span 2; } }
+.pp-convert-solo { grid-template-columns: minmax(0, 760px); justify-content: center; }
