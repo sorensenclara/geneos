@@ -419,3 +419,6 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 @media (max-width: 1000px) { .pp-modules-4 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .pp-modules-2, .pp-modules-4 { grid-template-columns: 1fr; } .pp-modules-4 .pp-module { grid-template-columns: 48px 1fr; } .pp-modules-4 .pp-module-ico { grid-row: span 2; } }
 .pp-convert-solo { grid-template-columns: minmax(0, 760px); justify-content: center; }
+
+/* Botón al final de «Qué es …» (lleva a la web del producto) */
+.pp-intro-cta { margin-top: 24px; }

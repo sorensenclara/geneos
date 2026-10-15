@@ -347,6 +347,7 @@
     <div>
       <h2>{{ i.title }}</h2>
       <p>{{ i.text|safe }}</p>
+      {% if i.button %}<p class="pp-intro-cta">{{ btn(i.button) }}</p>{% endif %}
     </div>
     <ul class="pp-intro-list">
       {% for ic, t in i["items"] %}<li><span class="pp-intro-ico">{{ icon(ic, 'icon bi') }}</span>{{ t }}</li>{% endfor %}

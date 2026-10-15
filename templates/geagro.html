@@ -32,7 +32,8 @@
   "logo": "geagro/logo-geagro-white.svg", "logo_alt": "GEAGRO, software de gestión agropecuaria", "logo_w": 300, "logo_h": 64,
   "title": [["Software de gestión", false], ["agropecuaria", true]],
   "lead": "GEAGRO reúne en un solo sistema la información de tu campo o tu viñedo para planificar mejor cada campaña.",
-  "actions": [{"label": "Conocer GEAGRO", "href": "#que-es", "icon": "bi-arrow-down"}],
+  "actions": [{"label": "Conocer GEAGRO", "href": "#que-es", "icon": "bi-arrow-down"},
+              {"label": "Visitar sitio de GEAGRO", "href": COMMERCIAL, "style": "outline-light", "icon": "bi-box-arrow-up-right", "external": true}],
   "media": {
     "monitor": {"src": L ~ "images/cereales/panel-campo.jpg", "webp": L ~ "images/cereales/panel-campo.webp", "alt": "Panel de GEAGRO CEREALES", "w": 615, "h": 410},
     "monitor_sm": {"src": L ~ "images/vid/panel-vid.jpg", "webp": L ~ "images/vid/panel-vid.webp", "alt": "Panel de GEAGRO VID", "w": 864, "h": 699}},
@@ -40,6 +41,7 @@
 
 {{ pp.intro({
   "id": "que-es", "title": "Qué es GEAGRO",
+  "button": {"label": "Conocer más sobre GEAGRO", "href": COMMERCIAL, "icon": "bi-box-arrow-up-right", "external": true},
   "text": "GEAGRO es el <strong>software de gestión agropecuaria</strong> desarrollado por GENEOS. Ayuda a productores y equipos técnicos a <strong>organizar la información</strong> que hoy está dispersa en cuadernos y planillas, <strong>planificar las actividades</strong> de cada campaña y <strong>tomar decisiones</strong> con datos productivos, climáticos y económicos.",
   "items": [["bi-clipboard-data", "Información productiva y climática"], ["bi-calendar3", "Planificación de labores"], ["bi-check2-circle", "Seguimiento de lo ejecutado"], ["bi-bar-chart-line", "Costos y rendimientos"]],
 }) }}
