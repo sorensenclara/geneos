@@ -59,12 +59,8 @@ SITE = {
     # (la primera vez manda un mail de activación). Se puede cambiar por Formspree,
     # un endpoint propio en Django, etc.
     "form_action": "https://formsubmit.co/info@geneos.com.ar",
-    # Productos propios: se muestran en la barra superior y abren en pestaña nueva
-    "products": [
-        ("GERP", "Software de gestión", "https://gerp.ar/", "productos/gerp.svg"),
-        ("GEAGRO", "Gestión agropecuaria", "https://geagro.ar/", "productos/geagro.svg"),
-        ("GEMA", "Gestión de matafuegos", "https://gema.geneos.com.ar/", "productos/gema.svg"),
-    ],
+    # Productos propios: barra superior (pestaña nueva). Se configuran en data/productos.json
+    "products": [],
     "social": [
         ("Facebook", "https://www.facebook.com/coopgeneos/", "facebook"),
         ("Instagram", "https://www.instagram.com/coopgeneos/", "instagram"),
@@ -72,6 +68,12 @@ SITE = {
         ("LinkedIn", "https://ar.linkedin.com/company/geneos-coop", "linkedin"),
     ],
 }
+
+# Webs independientes de los productos (barra superior y botones de las páginas de producto)
+PRODUCTOS = {k: v for k, v in json.loads((ROOT / "data" / "productos.json").read_text()).items() if not k.startswith("_")}
+for _p in PRODUCTOS.values():
+    _p["sitio"] = _p["url"] if _p.get("url_confirmada") and _p.get("url") else ""  # vacío: no se muestran los botones
+SITE["products"] = [(p["nombre"], p["descripcion"], p["url"], p["logo"]) for p in PRODUCTOS.values() if p.get("url")]
 
 # Cada página: plantilla, ruta, título (<60 car.), descripción (<160 car.),
 # miga de pan (nombre corto), imagen para redes y prioridad en el sitemap.
@@ -270,7 +272,7 @@ def build():
     env = Environment(loader=FileSystemLoader(ROOT / "templates"),
                       autoescape=select_autoescape(["html"]), trim_blocks=True, lstrip_blocks=True)
     env.filters["regex_replace"] = lambda v, pat, rep="": re.sub(pat, rep, v)
-    env.globals.update(site=SITE, url=url, asset=asset, img=img, icon=icon, wa=wa, jsonld=jsonld,
+    env.globals.update(PRODUCTOS=PRODUCTOS, site=SITE, url=url, asset=asset, img=img, icon=icon, wa=wa, jsonld=jsonld,
                        abs_url=abs_url, year=date.today().year, site_url=SITE_URL, org_schema=org_schema, crumbs_schema=crumbs_schema, faq_entities=faq_entities, service_items=service_items,
                        pages=PAGE_BY_OUT)
 

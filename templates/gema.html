@@ -6,6 +6,9 @@
   La landing comercial completa (planes, precios, preguntas frecuentes) vive en el proyecto independiente
   gema-web (dominio a definir). Mientras no exista, esta página conserva el formulario de demo.
 #}
+{# Web del producto: data/productos.json. Mientras el dominio no esté confirmado no se muestran los botones #}
+{% set COMMERCIAL = PRODUCTOS.gema.sitio %}
+{# Hero: dos botones como máximo. Con la web confirmada, «Visitar sitio de GEMA» reemplaza a «Conocer GEMA» #}
 {% set O = "#f36b21" %}{% set B = "#1455a0" %}
 
 {% block schema %}
@@ -31,11 +34,12 @@
   "title": [["Software de gestión", false], ["para talleres de matafuegos", true]],
   "lead": "GEMA ordena los clientes, los extintores y los trabajos de tu taller, y te avisa a tiempo qué equipos vencen.",
   "actions": [{"label": "Solicitar demostración", "href": "#demo", "style": "accent", "icon": "bi-arrow-right"},
-              {"label": "Conocer GEMA", "href": "#que-es", "style": "outline-light", "icon": "bi-arrow-down"}],
+              {"label": "Visitar sitio de GEMA", "href": COMMERCIAL, "style": "outline-light", "icon": "bi-box-arrow-up-right", "external": true} if COMMERCIAL else {"label": "Conocer GEMA", "href": "#que-es", "style": "outline-light", "icon": "bi-arrow-down"}],
 }) }}
 
 {{ pp.intro({
   "id": "que-es", "title": "Qué es GEMA",
+  "button": {"label": "Conocer más sobre GEMA", "href": COMMERCIAL, "icon": "bi-box-arrow-up-right", "external": true} if COMMERCIAL else None,
   "text": "GEMA es la <strong>plataforma online</strong> que desarrollamos en GENEOS para los <strong>talleres de recarga y mantenimiento de matafuegos</strong>. Reemplaza el cuaderno y las planillas por un registro único de cada extintor, con su historial de servicios y su próxima fecha de vencimiento.",
   "items": [["bi-globe", "Se usa desde cualquier dispositivo"], ["bi-calendar-event", "Control de vencimientos"], ["bi-bell", "Avisos a tus clientes"], ["bi-shield-check", "Datos resguardados en la nube"]],
 }) }}

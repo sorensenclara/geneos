@@ -6,13 +6,14 @@
   La landing comercial completa (planes, precios, preguntas frecuentes y demo) vive en el proyecto
   independiente gerp-web (futuro gerp.ar). Este contenido es propio: no copiar párrafos de la comercial.
 #}
-{% set COMMERCIAL = "https://gerp.ar/" %}
+{# Web del producto: data/productos.json (vacío si todavía no está confirmada) #}
+{% set COMMERCIAL = PRODUCTOS.gerp.sitio %}
 {% set G = "#178943" %}{% set V = "#99146a" %}{% set A = "#294b9b" %}
 
 {% block schema %}
 {{ jsonld({"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "GERP", "alternateName": "GERP Software de Gestión Empresarial",
   "applicationCategory": "BusinessApplication", "applicationSubCategory": "ERP", "operatingSystem": "Web",
-  "description": description, "url": abs_url(page.out), "sameAs": [COMMERCIAL],
+  "description": description, "url": abs_url(page.out), "sameAs": [COMMERCIAL] if COMMERCIAL else [],
   "image": abs_url("assets/img/og/gerp.jpg"),
   "featureList": ["Ventas y e-commerce", "Compras e inventario", "Facturación y contabilidad", "CRM", "Producción", "Reportes"],
   "publisher": {"@id": abs_url("#organizacion")}}) }}
@@ -32,14 +33,13 @@
   "logo": "productos/gerp-logo-blanco.svg", "logo_alt": "GERP, software de gestión empresarial", "logo_w": 296, "logo_h": 87,
   "title": [["Software de gestión", false], ["empresarial para pymes", true]],
   "lead": "Con GERP centralizás la información de tu empresa y gestionás ventas, compras, stock y administración desde <strong>un solo lugar</strong>.",
-  "actions": [{"label": "Conocer GERP", "href": "#que-es", "icon": "bi-arrow-down"},
-              {"label": "Visitar sitio de GERP", "href": COMMERCIAL, "style": "outline-light", "icon": "bi-box-arrow-up-right", "external": true}],
+  "actions": [{"label": "Conocer GERP", "href": "#que-es", "icon": "bi-arrow-down"}] + ([{"label": "Visitar sitio de GERP", "href": COMMERCIAL, "style": "outline-light", "icon": "bi-box-arrow-up-right", "external": true}] if COMMERCIAL else []),
   "media": {"shot": {"src": "2026/01/Beneficios-GERP-1536x1029-1-1024x686.png", "alt": "GERP en computadora, tablet y celular", "w": 1024, "h": 686}},
 }) }}
 
 {{ pp.intro({
   "id": "que-es", "title": "Qué es GERP",
-  "button": {"label": "Conocer más sobre GERP", "href": COMMERCIAL, "icon": "bi-box-arrow-up-right", "external": true},
+  "button": {"label": "Conocer más sobre GERP", "href": COMMERCIAL, "icon": "bi-box-arrow-up-right", "external": true} if COMMERCIAL else None,
   "text": "GERP es el <strong>sistema de gestión empresarial</strong> que desarrollamos en GENEOS para que las pymes dejen atrás las planillas sueltas. Conecta las áreas de la empresa sobre una misma base de datos, de modo que cada venta, compra o movimiento de stock se refleja en la administración sin cargar la información dos veces.",
   "items": [["bi-diagram-3", "Todas las áreas integradas"], ["bi-cloud-arrow-up", "Plataforma 100 % online"], ["bi-code-slash", "Basado en Odoo Community"], ["bi-headset", "Implementación y soporte de GENEOS"]],
 }) }}
@@ -82,7 +82,7 @@
   "eyebrow": "GERP",
   "title": ["Conocé todo lo que GERP", "puede hacer por tu empresa."],
   "text": "Planes, módulos en detalle y solicitud de demo en el sitio de GERP.",
-  "actions": [{"label": "Explorar GERP", "href": COMMERCIAL, "style": "accent", "icon": "bi-box-arrow-up-right", "external": true}],
+  "actions": [{"label": "Explorar GERP", "href": COMMERCIAL, "style": "accent", "icon": "bi-box-arrow-up-right", "external": true}] if COMMERCIAL else [],
 }) }}
 
 </div>

@@ -12,10 +12,11 @@
 {%- set cls = "pp-btn-ghost-light" if b.style == "ghost-light" else "pp-btn pp-btn-" ~ (b.style or "primary") -%}
 <a class="{{ cls }} {{ extra_class }}" href="{{ b.href }}"
    {%- if b.download %} download{% if b.download is string %}="{{ b.download }}"{% endif %}{% endif %}
-   {%- if b.external %} target="_blank" rel="noopener"{% endif %}
+   {%- if b.external %} target="_blank" rel="noopener noreferrer"{% endif %}
    {%- if b.version %} data-version="{{ b.version }}"{% endif %}>
   {%- if b.icon_before %}{{ icon(b.icon_before, 'icon bi') }} {% endif %}{{ b.label|safe }}
   {%- if b.icon %} {{ icon(b.icon, 'icon bi') }}{% endif %}{% if b.arrow %} <span aria-hidden="true">{{ b.arrow }}</span>{% endif -%}
+  {%- if b.external %}<span class="sr-only"> (se abre en una pestaña nueva)</span>{% endif -%}
 </a>
 {%- endmacro %}
 
