@@ -106,7 +106,7 @@ PAGES = [
     dict(tpl="apps-y-webs.html", out="desarrollo-apps-sitios-web-cooperativos/", parent="servicios/",
          title="Desarrollo de aplicaciones y sitios web a medida | GENEOS",
          description="Sitios web a medida y autoadministrables con Wagtail, y aplicaciones web con usuarios, formularios y mapas. Desarrollo con software libre en Argentina.",
-         crumb="Desarrollo de aplicaciones y sitios web", priority="0.8"),
+         crumb="Apps y sitios web", priority="0.8"),
     dict(tpl="e-learning.html", out="plataformas-e-learning-lms-moodle/", parent="servicios/",
          title="Plataformas e-learning y campus virtual Moodle | GENEOS",
          description="Creamos campus virtuales en Moodle para universidades, institutos y empresas: diseño a medida, gamificación con H5P, capacitación y soporte. Argentina y Latam.",

@@ -426,22 +426,30 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 /* Botón al final de «Qué es …» (lleva a la web del producto) */
 .pp-intro-cta { margin-top: 24px; }
 
-/* ---------- Hero centrado con ícono (servicios: Staff Augmentation, Apps y sitios web) ---------- */
-/* Ícono arriba del título y todo el bloque centrado (Staff Augmentation en amarillo, Apps y sitios web en azul) */
-.pp-hero-center .pp-hero-grid { grid-template-columns: minmax(0, 980px); justify-content: center; justify-items: center; text-align: center; gap: 18px; }
-.pp-hero-center .pp-hero-icon { width: clamp(76px, 8vw, 104px); }
-.pp-hero-center .pp-hero-copy { width: 100%; max-width: 760px; justify-items: center; gap: 16px; }
+/* ---------- Hero de servicios con ícono (Staff Augmentation, Apps y sitios web) ---------- */
+/* Dos columnas: ícono grande a la izquierda y texto alineado a la izquierda; el conjunto, centrado en el hero.
+   En celular pasa a una columna centrada con el ícono arriba. Solo cambian los colores de cada tema. */
+.pp-hero-center .pp-hero-grid { grid-template-columns: auto minmax(0, 660px); justify-content: center; align-items: center; gap: clamp(28px, 4vw, 56px); }
+.pp-hero-center .pp-hero-icon { width: clamp(120px, 14vw, 180px); }
+.pp-hero-center .pp-hero-copy { gap: 16px; justify-items: start; }
 .pp-hero-center .pp-hero-eyebrow { margin: 0; }
-.pp-hero-center h1 { font-size: clamp(2rem, 4.2vw, 3.1rem); text-wrap: balance; }
-.pp-hero-center .pp-hero-lead, .pp-hero-center .pp-hero-sub { margin-inline: auto; text-wrap: balance; }
-.pp-hero-center .pp-hero-actions { justify-content: center; margin-top: 6px; }
+.pp-hero-center h1 { font-size: clamp(2rem, 3.6vw, 2.9rem); text-wrap: balance; }
+.pp-hero-center .pp-hero-sub, .pp-hero-center .pp-hero-lead { text-wrap: pretty; }
+.pp-hero-center .pp-hero-actions { margin-top: 6px; }
 .pp-hero-center h1 > span { display: inline; white-space: normal; }
-.pp-hero-chips { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 18px 0 0 !important; padding: 0; list-style: none; font-weight: 600; font-size: .95rem; }
+.pp-hero-chips { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 6px 0 0 !important; padding: 0; list-style: none; font-weight: 600; font-size: .95rem; }
 .pp-hero-chips li { display: inline-flex; align-items: center; gap: 8px; }
 .pp-hero-chips .icon { width: 1.1em; height: 1.1em; }
+@media (max-width: 900px) { .pp-hero-center .pp-hero-icon { width: clamp(96px, 14vw, 120px); } }
+@media (max-width: 700px) {
+  .pp-hero-center .pp-hero-grid { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: 20px; }
+  .pp-hero-center .pp-hero-icon { width: 96px; }
+  .pp-hero-center .pp-hero-copy { width: 100%; justify-items: center; }
+  .pp-hero-center .pp-hero-actions { justify-content: center; }
+  .pp-hero-chips { flex-direction: column; align-items: center; }
+}
 .pp-btn-outline-dark { border-color: currentColor; color: inherit; background: transparent; }
 .pp-btn-outline-dark:hover { background: rgba(0,0,0,.08); }
-@media (max-width: 700px) { .pp-hero-center .pp-hero-grid { grid-template-columns: minmax(0, 1fr); } .pp-hero-chips { flex-direction: column; align-items: center; } }
 .pp-module-ico { color: var(--pp-ico, var(--pp-accent)); }
 .pp-theme-staff .pp-hero-icon { color: #1d1a12; }
 
@@ -488,6 +496,13 @@ a.pp-module:hover .pp-module-more .icon { transform: translateX(4px); }
 .pp-browser-bar { display: flex; gap: 6px; padding: 10px 12px; background: #1d211e; }
 .pp-browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a403b; }
 .pp-showcase-media figcaption { font-size: .82rem; color: #b9c3bc; padding: 8px 12px; background: #1d211e; }
+/* Showcase apilado: texto centrado arriba y la imagen a todo el ancho (composición de capturas) */
+.pp-showcase-grid.is-stack { grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 4vw, 44px); }
+.is-stack .pp-showcase-copy { justify-items: center; text-align: center; max-width: 760px; margin-inline: auto; }
+.is-stack .pp-showcase-checks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; }
+.pp-showcase-media.is-comp { border: 0; border-radius: 0; box-shadow: none; background: none; overflow: visible; width: 100%; max-width: 1180px; margin-inline: auto; }
+.pp-showcase-media.is-comp figcaption { background: none; color: var(--pp-muted); text-align: center; font-size: .9rem; padding: 6px 0 0; }
+@media (max-width: 600px) { .is-stack .pp-showcase-checks { flex-direction: column; align-items: flex-start; width: fit-content; margin-inline: auto; } }
 @media (max-width: 900px) { .pp-showcase-grid { grid-template-columns: 1fr; } .pp-showcase-grid.is-reverse .pp-showcase-copy { order: 0; } }
 @media (max-width: 560px) { .pp-showcase-feats { grid-template-columns: 1fr; } .pp-showcase-feats.is-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .pp-showcase-feats.is-grid li { padding: 14px; grid-template-columns: 1fr; row-gap: 6px; } .pp-showcase-feats.is-grid span { grid-row: auto; } }
 

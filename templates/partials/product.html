@@ -40,8 +40,8 @@
       {% if h.sub %}<p class="pp-hero-sub">{{ h.sub|safe }}</p>{% endif %}
       {% if h.lead %}<p class="pp-hero-lead">{{ h.lead|safe }}</p>{% endif %}
       <div class="pp-hero-actions">{% for b in h.actions %}{{ btn(b) }}{% endfor %}</div>
+  {% if h.chips %}<ul class="pp-hero-chips">{% for c in h.chips %}<li>{{ icon('bi-check-circle', 'icon bi') }}{{ c }}</li>{% endfor %}</ul>{% endif %}
     </div>
-    {% if h.chips %}<ul class="pp-hero-chips">{% for c in h.chips %}<li>{{ icon('bi-check-circle', 'icon bi') }}{{ c }}</li>{% endfor %}</ul>{% endif %}
     {% if h.media %}
     <div class="pp-hero-media{% if h.media.monitor_sm %} has-sm{% endif %}">
       {% if h.media.shot %}
@@ -424,7 +424,7 @@
         shot: {src, alt, w, h, frame: "browser"}, reverse} — sin imagen, la lista de íconos ocupa la columna de la derecha #}
 {% macro showcase(s) -%}
 <section class="pp-section {{ 'pp-soft' if s.soft else 'pp-white' }} pp-showcase"{% if s.id %} id="{{ s.id }}"{% endif %}>
-  <div class="pp-container pp-showcase-grid{% if s.reverse %} is-reverse{% endif %}">
+  <div class="pp-container pp-showcase-grid{% if s.reverse %} is-reverse{% endif %}{% if s.stack %} is-stack{% endif %}">
     <div class="pp-showcase-copy">
       <p class="pp-eyebrow">{{ s.eyebrow }}</p>
       <h2>{{ s.title }}</h2>
@@ -436,7 +436,7 @@
     {% if s.shot %}
     <figure class="pp-showcase-media{% if s.shot.frame %} is-{{ s.shot.frame }}{% endif %}">
       {% if s.shot.frame == "browser" %}<span class="pp-browser-bar" aria-hidden="true"><i></i><i></i><i></i></span>{% endif %}
-      <img src="{{ img(s.shot.src) }}" alt="{{ s.shot.alt }}" width="{{ s.shot.w }}" height="{{ s.shot.h }}" loading="lazy" decoding="async">
+      <picture>{% if s.shot.sm %}<source media="(max-width: 600px)" srcset="{{ img(s.shot.sm.src) }}" width="{{ s.shot.sm.w }}" height="{{ s.shot.sm.h }}">{% endif %}<img src="{{ img(s.shot.src) }}" alt="{{ s.shot.alt }}" width="{{ s.shot.w }}" height="{{ s.shot.h }}" loading="lazy" decoding="async"></picture>
       {% if s.shot.caption %}<figcaption>{{ s.shot.caption }}</figcaption>{% endif %}
     </figure>
     {% elif s.features %}
