@@ -3,9 +3,8 @@
 {% import "partials/product.html" as pp with context %}
 {#
   Staff Augmentation · contenido de la página. Usa los mismos componentes que GERP, GEAGRO y GEMA
-  (partials/product.html + assets/css/product.css, tema .pp-theme-staff: amarillo, con verde y violeta).
+  (partials/product.html + assets/css/product.css, tema .pp-theme-staff: el amarillo es el único color de identidad).
 #}
-{% set G = "#178943" %}{% set V = "#902e76" %}{% set N = "#e36f31" %}{% set A = "#294b9b" %}
 {% set CONTACT = url('/contacto-geneos/') ~ "#formulario" %}
 {% set FAQS = [
   ("¿Qué es el staff augmentation?", "<p>Es un modelo en el que sumás profesionales de tecnología externos a tu equipo por el tiempo que los necesites. Trabajan con tus herramientas, tus procesos y tu equipo, como parte de él, sin que tengas que hacer una contratación permanente ni ampliar tu estructura.</p>"),
@@ -26,76 +25,69 @@
 {% block content %}
 <div class="pp pp-theme-staff">
 
-{# Hero: fondo amarillo y el ícono original del servicio #}
+{# Hero centrado: amarillo, ícono del servicio y lo esencial #}
 {{ pp.hero({
-  "icon": "staff-hero", "wave_next": "#fff", "wave_back": ".35",
-  "eyebrow": "Staff Augmentation · Talento IT",
-  "title": [["Staff Augmentation", false], ["en Argentina", false]],
-  "sub": "Desarrolladores para tu equipo",
-  "lead": "<strong>Potenciá tu equipo</strong>, garantizando el éxito juntos.",
-  "actions": [{"label": "Solicitar profesionales", "href": CONTACT, "style": "accent", "icon": "bi-arrow-right"}],
-}) }}
-
-{{ pp.intro({
-  "id": "talento", "title": "Sumá talento IT de Argentina a tu equipo",
-  "text": "Integramos <strong>profesionales de tecnología</strong> con experiencia para ampliar tu equipo y acelerar tus proyectos. Nos adaptamos a tus procesos, herramientas y objetivos, con una modalidad flexible y eficiente.",
-  "items": [["bi-check-circle", "Perfiles especializados"], ["bi-people", "Integración a tu equipo"], ["bi-headset", "Acompañamiento continuo"], ["bi-arrow-left-right", "Modalidad flexible"]],
+  "icon": "staff-hero", "center": true, "wave_next": "#fff", "wave_back": ".35",
+  "eyebrow": "Talento IT · Argentina",
+  "title": [["Staff Augmentation en Argentina", false]],
+  "sub": "Profesionales de tecnología que se integran a tu equipo",
+  "lead": "Sumá desarrolladores, DevOps, análisis funcional, gestión de proyectos o diseño UX/UI por el tiempo que lo necesites.",
+  "actions": [{"label": "Solicitar profesionales", "href": CONTACT, "style": "accent", "icon": "bi-arrow-right"},
+              {"label": "Ver perfiles", "href": "#perfiles", "style": "outline-dark"}],
+  "chips": ["Socios de la cooperativa", "Trabajo remoto desde Argentina", "Horarios compatibles con Latinoamérica"],
 }) }}
 
 {{ pp.modules({
-  "id": "roles", "soft": true, "cols": 5, "eyebrow": "Roles disponibles", "title": "Profesionales para potenciar tu equipo",
-  "lead": "Socios y socias de la cooperativa con experiencia en proyectos de distintas industrias y tecnologías.",
+  "id": "perfiles", "cols": 5, "eyebrow": "Perfiles", "title": "Profesionales para potenciar tu equipo",
   "items": [
-    {"icon": "bi-code-slash", "color": G, "title": "Desarrolladores de software", "text": "Backend, frontend y fullstack."},
-    {"icon": "bi-gear-wide-connected", "color": V, "title": "DevOps", "text": "Infraestructura, despliegues y automatización."},
-    {"icon": "bi-search", "color": N, "title": "Análisis funcional", "text": "Relevamiento de procesos y requerimientos."},
-    {"icon": "bi-clipboard-check", "color": A, "title": "Gestión de proyectos", "text": "Planificación, seguimiento y coordinación."},
-    {"icon": "bi-window-stack", "color": G, "title": "Diseño UX/UI", "text": "Investigación, diseño de interfaces y experiencias digitales."},
-  ],
-}) }}
-
-{{ pp.tech({"id": "tecnologias", "eyebrow": "Trabajamos con", "title": "Plataformas, frameworks y lenguajes", "items": m.TECH}) }}
-
-{{ pp.cases({
-  "id": "casos", "eyebrow": "Casos de éxito", "title": "Proyectos que impulsamos con nuestro equipo",
-  "items": [
-    {"logo": "2024/03/Limousine-e1710421259980.png", "logo_alt": "Logo de Limousine", "logo_w": 440, "logo_h": 95,
-     "title": "Augmented Services · México",
-     "text": "Integramos tecnologías para mejorar la calidad, la funcionalidad y la experiencia de los servicios que ofrece Limousine en México, con el desarrollo de una plataforma online."},
-    {"logo": "2024/03/Betterez-1-e1710421281233.png", "logo_alt": "Logo de Betterez", "logo_w": 440, "logo_h": 95,
-     "title": "DevOps & Developers",
-     "text": "Contribuimos con la plataforma de gestión de reservas Betterez, integrando tecnologías que ayudan a los operadores de viajes terrestres, turísticos y de venta de boletos.",
-     "link": {"label": "Conocé Betterez", "href": "https://www.betterez.com/"}},
+    {"icon": "bi-code-slash", "title": "Desarrollo de software", "text": "Backend, frontend y fullstack."},
+    {"icon": "bi-gear-wide-connected", "title": "DevOps", "text": "Infraestructura, despliegues y automatización."},
+    {"icon": "bi-search", "title": "Análisis funcional", "text": "Procesos y requerimientos."},
+    {"icon": "bi-clipboard-check", "title": "Gestión de proyectos", "text": "Planificación y seguimiento."},
+    {"icon": "bi-window-stack", "title": "Diseño UX/UI", "text": "Interfaces y experiencias digitales."},
   ],
 }) }}
 
 {{ pp.about({
-  "id": "beneficios", "color": "#f6f7f8",
-  "eyebrow": "Beneficios", "title": "Un equipo extendido, los mismos objetivos",
-  "paragraphs": ["Nos integramos a tu equipo para que puedas desarrollar y escalar tus proyectos con mayor <strong>flexibilidad y eficiencia</strong>."],
-  "stats": [{"icon": "bi-people", "title": "Profesionales capacitados", "text": "Talento calificado en distintos roles y tecnologías, individual o en equipo."},
-            {"icon": "bi-lightning-charge", "title": "Flexibilidad", "text": "Sumá talento por el tiempo que lo necesites."},
-            {"icon": "bi-puzzle", "title": "Integración", "text": "Se adaptan a tus herramientas y procesos de trabajo."},
-            {"icon": "bi-coin", "title": "Optimización de costos", "text": "Sin los costos de contratar a tiempo completo ni ampliar tu estructura."}],
+  "id": "por-que", "color": "#fdf8ec",
+  "eyebrow": "Por qué GENEOS", "title": "Tu equipo, más grande. Tus reglas.",
+  "paragraphs": ["A diferencia de una consultora, <strong>vos mantenés el control</strong> del producto y las prioridades: los profesionales trabajan con tus herramientas y tus procesos."],
+  "stats": [{"icon": "bi-lightning-charge", "title": "Flexibilidad", "text": "Un perfil puntual o un equipo, por el tiempo que haga falta."},
+            {"icon": "bi-puzzle", "title": "Integración", "text": "Se suman a tu forma de trabajo."},
+            {"icon": "bi-coin", "title": "Costos previsibles", "text": "Sin ampliar tu estructura."}],
 }) }}
 
 {{ pp.steps({
-  "id": "como-funciona", "bg": "#fff", "eyebrow": "Cómo funciona", "title": "Sumá profesionales a tu equipo en 4 pasos", "dot": true,
-  "lead": "Un proceso simple para que el talento que necesitás se integre rápido a tu proyecto.",
-  "more": {"label": "Solicitar profesionales", "href": CONTACT},
+  "id": "como-funciona", "bg": "#fff", "eyebrow": "Cómo funciona", "title": "Sumá talento en 4 pasos", "dot": true,
+  "lead": "Un proceso simple para que el talento que necesitás se integre rápido.",
   "items": [
-    {"title": "Contanos", "text": "qué perfil y experiencia necesitás."},
-    {"title": "Proponemos", "text": "profesionales que se ajustan a tu proyecto."},
-    {"title": "Integramos", "text": "los perfiles a tus herramientas y procesos."},
+    {"title": "Contanos", "text": "qué perfil necesitás."},
+    {"title": "Proponemos", "text": "profesionales para tu proyecto."},
+    {"title": "Integramos", "text": "los perfiles a tu equipo."},
     {"title": "Acompañamos", "text": "con seguimiento continuo."},
   ],
 }) }}
 
-{{ pp.faq({"title": "Lo que más nos preguntan", "lead": "Respondemos las dudas más comunes sobre el servicio de staff augmentation.", "items": FAQS}) }}
+{{ pp.tech({"id": "tecnologias", "eyebrow": "Tecnologías", "title": "Frameworks y plataformas con los que trabajamos", "items": m.TECH}) }}
+
+{{ pp.cases({
+  "id": "casos", "eyebrow": "Casos", "title": "Equipos que acompañamos",
+  "items": [
+    {"logo": "2024/03/Limousine-e1710421259980.png", "logo_alt": "Logo de Limousine", "logo_w": 440, "logo_h": 95,
+     "title": "Limousine · México",
+     "text": "Desarrollo de una plataforma online para mejorar la calidad y la experiencia de sus servicios."},
+    {"logo": "2024/03/Betterez-1-e1710421281233.png", "logo_alt": "Logo de Betterez", "logo_w": 440, "logo_h": 95,
+     "title": "Betterez · DevOps y desarrollo",
+     "text": "Contribuimos con su plataforma de reservas para operadores de transporte terrestre y turismo.",
+     "link": {"label": "Conocé Betterez", "href": "https://www.betterez.com/"}},
+  ],
+}) }}
+
+{{ pp.faq({"title": "Lo que más nos preguntan", "lead": "Las dudas más comunes sobre staff augmentation.", "items": FAQS}) }}
 
 {{ pp.band({
-  "eyebrow": "Sumá talento a tu equipo", "title": "Hablemos de tu proyecto",
-  "text": "Contanos qué perfiles necesitás y te ayudamos a encontrar el talento tecnológico adecuado. También podés <a href=\"" ~ url('/quienes-somos/') ~ "#equipo\" style=\"color:inherit\">conocer a nuestro equipo</a>.",
+  "icon": "staff-hero", "eyebrow": "Sumá talento a tu equipo", "title": "¿Qué perfiles necesitás?",
+  "text": "Contanos tu proyecto y te proponemos el equipo adecuado.",
   "actions": [{"label": "Solicitar profesionales", "href": CONTACT, "style": "accent", "icon": "bi-arrow-right"}],
 }) }}
 

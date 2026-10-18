@@ -42,18 +42,19 @@
 }
 
 .pp-theme-staff {
+  /* Amarillo como único color de identidad (marca: segmento Staff Augmentation). Texto de acento en ámbar oscuro para contraste AA. */
   --pp-deep-rgb: 120, 80, 0;
   --pp-heading: #1b1b1b; --pp-text: #23252b; --pp-muted: #555b66; --pp-bg: #fff; --pp-border: #eceef1;
-  --pp-accent: #178943; --pp-highlight: #fff;
-  --pp-soft: #f6f7f8; --pp-soft-2: #f6f7f8; --pp-icon-bg: #e7f4ec; --pp-line: #9fd2b2; --pp-line-2: #b9dcc6; --pp-line-3: #e3e6ea;
-  --pp-btn: #178943; --pp-btn-hover: #0f7438; --pp-btn-text: #fff;
-  --pp-btn2: #fff; --pp-btn2-text: #1b1b1b;
-  --pp-quote-bg: #902e76; --pp-on-dark-muted: #f3dcec;
-  --pp-eyebrow-2: #178943; --pp-steps-ico: #178943;
+  --pp-accent: #8a5a00; --pp-highlight: #f1b936;
+  --pp-soft: #fdf8ec; --pp-soft-2: #fdf8ec; --pp-icon-bg: #fdf0cc; --pp-line: #f1c75b; --pp-line-2: #f5d98f; --pp-line-3: #f0e4c4;
+  --pp-btn: #1d1a12; --pp-btn-hover: #3a3320; --pp-btn-text: #fff;
+  --pp-btn2: #1d1a12; --pp-btn2-text: #fff;
+  --pp-quote-bg: #1d1a12; --pp-on-dark-muted: #e9e2cf;
+  --pp-eyebrow-2: #8a5a00; --pp-steps-ico: #c98a00; --pp-ico: #c98a00;
   --pp-ico-size: 32px; --pp-steps-ico-size: 32px;
   --pp-hero-bg: linear-gradient(160deg, #f6c445 0%, #f1b936 45%, #e3a514 100%); --pp-hero-text: #1d1a12;
-  --pp-tech-bg: linear-gradient(160deg, #7d1f63 0%, #902e76 50%, #5b1d5f 100%);
-  --pp-band-bg: linear-gradient(160deg, #1e9a4d 0%, #178943 45%, #0b6b33 100%);
+  --pp-tech-bg: linear-gradient(160deg, #26231a 0%, #1d1a12 60%, #15130d 100%); --pp-tech-eyebrow: #f1b936;
+  --pp-band-bg: linear-gradient(160deg, #f6c445 0%, #f1b936 45%, #e3a514 100%); --pp-band-text: #1d1a12; --pp-band-eyebrow: #5a3d00;
 }
 
 /* ---------- Base ---------- */
@@ -384,7 +385,7 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 /* Tecnologías sobre banda de color, tarjetas semitransparentes */
 .pp-tech { background: var(--pp-tech-bg); color: #fff; padding-bottom: calc(clamp(64px, 8vw, 104px) + clamp(30px, 4vw, 56px)); }
 .pp-head-light h2 { color: #fff; }
-.pp-head-light .pp-eyebrow { color: rgba(255,255,255,.85); }
+.pp-head-light .pp-eyebrow { color: var(--pp-tech-eyebrow, rgba(255,255,255,.85)); }
 .pp-head-light::before { background: rgba(255,255,255,.5); }
 .pp-tech-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
 .pp-tech-grid a { display: grid; justify-items: center; gap: 10px; padding: 22px 12px 16px; border-radius: var(--radius-sm); background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); color: #fff; font-weight: 600; font-size: .95rem; transition: background .2s, transform .2s; }
@@ -405,10 +406,12 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 @media (max-width: 520px) { .pp-case { grid-template-columns: 1fr; } .pp-case > img { width: 140px; } }
 
 /* Banda de cierre */
-.pp-band { background: var(--pp-band-bg); color: #fff; text-align: center; padding-block: clamp(64px, 8vw, 104px); }
+.pp-band { background: var(--pp-band-bg); color: var(--pp-band-text, #fff); text-align: center; padding-block: clamp(64px, 8vw, 104px); }
 .pp-band .pp-container { display: grid; gap: 16px; justify-items: center; max-width: 760px; }
-.pp-band h2 { color: #fff; }
-.pp-band p:not(.pp-eyebrow) { color: rgba(255,255,255,.9); font-size: 1.15rem; }
+.pp-band h2 { color: inherit; }
+.pp-band p:not(.pp-eyebrow) { color: inherit; opacity: .9; font-size: 1.15rem; }
+.pp-band .pp-eyebrow-light { color: var(--pp-band-eyebrow, var(--pp-highlight)); }
+.pp-band-ico { width: 76px; color: inherit; } .pp-band-ico .icon { width: 100%; height: auto; }
 .pp-band .pp-cta-actions { justify-content: center; }
 
 /* Variantes de grilla y formulario solo (páginas institucionales de producto) */
@@ -422,3 +425,68 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 
 /* Botón al final de «Qué es …» (lleva a la web del producto) */
 .pp-intro-cta { margin-top: 24px; }
+
+/* ---------- Hero centrado con ícono (servicios: Staff Augmentation, Apps y sitios web) ---------- */
+.pp-hero-center .pp-hero-grid { grid-template-columns: auto minmax(0, 640px); justify-content: center; align-items: center; }
+.pp-hero-center .pp-hero-icon { width: clamp(96px, 11vw, 150px); }
+.pp-hero-center h1 > span { display: inline; white-space: normal; }
+.pp-hero-chips { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 18px 0 0 !important; padding: 0; list-style: none; font-weight: 600; font-size: .95rem; }
+.pp-hero-chips li { display: inline-flex; align-items: center; gap: 8px; }
+.pp-hero-chips .icon { width: 1.1em; height: 1.1em; }
+.pp-btn-outline-dark { border-color: currentColor; color: inherit; background: transparent; }
+.pp-btn-outline-dark:hover { background: rgba(0,0,0,.08); }
+@media (max-width: 700px) { .pp-hero-center .pp-hero-grid { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; } .pp-hero-center .pp-hero-copy { width: 100%; justify-items: center; } .pp-hero-center .pp-hero-actions { justify-content: center; } .pp-hero-chips { flex-direction: column; align-items: center; } }
+.pp-module-ico { color: var(--pp-ico, var(--pp-accent)); }
+.pp-theme-staff .pp-hero-icon { color: #1d1a12; }
+
+/* ---------- Tema Apps y sitios web (y Proyectos): azul como color de identidad ---------- */
+.pp-theme-apps {
+  --pp-deep-rgb: 8, 34, 102;
+  --pp-heading: #0d1b3e; --pp-text: #1f2533; --pp-muted: #556075; --pp-bg: #fff; --pp-border: #e3e9f4;
+  --pp-accent: #1458d6; --pp-highlight: #8fb8ff;
+  --pp-soft: #f3f7fe; --pp-soft-2: #f3f7fe; --pp-icon-bg: #e6efff; --pp-line: #8fb3f3; --pp-line-2: #b5ccf6; --pp-line-3: #dbe5f7;
+  --pp-btn: #1458d6; --pp-btn-hover: #0e47b3; --pp-btn-text: #fff;
+  --pp-btn2: #fff; --pp-btn2-text: #0d2c74;
+  --pp-eyebrow-2: #1458d6; --pp-steps-ico: #1458d6; --pp-ico: #1458d6;
+  --pp-ico-size: 32px; --pp-steps-ico-size: 32px;
+  --pp-hero-bg: linear-gradient(160deg, #0b3fae 0%, #0a46c4 50%, #072d86 100%); --pp-hero-text: #fff;
+  --pp-tech-bg: linear-gradient(160deg, #0b3fae 0%, #072d86 100%);
+  --pp-band-bg: linear-gradient(160deg, #0b3fae 0%, #0a46c4 50%, #072d86 100%);
+}
+
+/* ---------- Módulos: tarjeta destacada y enlace con texto ---------- */
+.pp-module.is-destacado { background: var(--pp-soft); border-color: var(--pp-line-2); }
+.pp-module-more { grid-column: 2; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--pp-accent); margin-top: 8px; }
+.pp-module-more .icon { width: 1em; height: 1em; transition: transform .15s; }
+a.pp-module:hover .pp-module-more .icon { transform: translateX(4px); }
+
+/* ---------- Vidriera (texto + imagen o íconos) ---------- */
+.pp-showcase-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.pp-showcase-grid.is-reverse .pp-showcase-copy { order: 2; }
+.pp-showcase-copy { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.pp-showcase-copy h2 { margin: 0; }
+.pp-showcase-text { color: var(--pp-muted); font-size: 1.12rem; margin: 0; max-width: 46ch; }
+.pp-showcase-checks { margin: 4px 0 6px !important; padding: 0; list-style: none; display: grid; gap: 10px; }
+.pp-showcase-checks li { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+.pp-showcase-checks .icon { width: 1.2em; height: 1.2em; color: var(--pp-accent); flex: none; }
+.pp-showcase-feats { margin: 4px 0 6px !important; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 16px; }
+.pp-showcase-feats li { display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; align-items: start; }
+.pp-showcase-feats span { grid-row: span 2; color: var(--pp-accent); }
+.pp-showcase-feats span .icon, .pp-showcase-feats span img { width: 30px; height: 30px; }
+.pp-showcase-feats b { color: var(--pp-heading); line-height: 1.2; }
+.pp-showcase-feats small { color: var(--pp-muted); font-size: .92rem; line-height: 1.3; }
+.pp-showcase-feats.is-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pp-showcase-feats.is-grid li { padding: 18px; border-radius: 14px; background: #fff; border: 1px solid var(--pp-border); box-shadow: 0 8px 24px rgba(13,27,62,.05); }
+.pp-showcase-media { margin: 0; min-width: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px rgba(13,27,62,.18); border: 1px solid var(--pp-border); background: #0f1210; }
+.pp-showcase-media img { width: 100%; height: auto; }
+.pp-browser-bar { display: flex; gap: 6px; padding: 10px 12px; background: #1d211e; }
+.pp-browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a403b; }
+.pp-showcase-media figcaption { font-size: .82rem; color: #b9c3bc; padding: 8px 12px; background: #1d211e; }
+@media (max-width: 900px) { .pp-showcase-grid { grid-template-columns: 1fr; } .pp-showcase-grid.is-reverse .pp-showcase-copy { order: 0; } }
+@media (max-width: 560px) { .pp-showcase-feats { grid-template-columns: 1fr; } .pp-showcase-feats.is-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .pp-showcase-feats.is-grid li { padding: 14px; grid-template-columns: 1fr; row-gap: 6px; } .pp-showcase-feats.is-grid span { grid-row: auto; } }
+
+/* ---------- Logos de tecnologías ---------- */
+.pp-logos { margin: 0 !important; padding: 0; list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.pp-logos li { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 14px; border: 1px solid var(--pp-border); background: #fff; font-weight: 700; color: var(--pp-heading); }
+.pp-logos .icon { width: 28px; height: 28px; color: var(--logo); }
+.pp svg.icon[stroke] { fill: none; }
