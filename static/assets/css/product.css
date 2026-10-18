@@ -427,15 +427,21 @@ a.pp-module:hover .pp-arrow { transform: translateX(3px); }
 .pp-intro-cta { margin-top: 24px; }
 
 /* ---------- Hero centrado con ícono (servicios: Staff Augmentation, Apps y sitios web) ---------- */
-.pp-hero-center .pp-hero-grid { grid-template-columns: auto minmax(0, 640px); justify-content: center; align-items: center; }
-.pp-hero-center .pp-hero-icon { width: clamp(96px, 11vw, 150px); }
+/* Ícono arriba del título y todo el bloque centrado (Staff Augmentation en amarillo, Apps y sitios web en azul) */
+.pp-hero-center .pp-hero-grid { grid-template-columns: minmax(0, 980px); justify-content: center; justify-items: center; text-align: center; gap: 18px; }
+.pp-hero-center .pp-hero-icon { width: clamp(76px, 8vw, 104px); }
+.pp-hero-center .pp-hero-copy { width: 100%; max-width: 760px; justify-items: center; gap: 16px; }
+.pp-hero-center .pp-hero-eyebrow { margin: 0; }
+.pp-hero-center h1 { font-size: clamp(2rem, 4.2vw, 3.1rem); text-wrap: balance; }
+.pp-hero-center .pp-hero-lead, .pp-hero-center .pp-hero-sub { margin-inline: auto; text-wrap: balance; }
+.pp-hero-center .pp-hero-actions { justify-content: center; margin-top: 6px; }
 .pp-hero-center h1 > span { display: inline; white-space: normal; }
 .pp-hero-chips { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 18px 0 0 !important; padding: 0; list-style: none; font-weight: 600; font-size: .95rem; }
 .pp-hero-chips li { display: inline-flex; align-items: center; gap: 8px; }
 .pp-hero-chips .icon { width: 1.1em; height: 1.1em; }
 .pp-btn-outline-dark { border-color: currentColor; color: inherit; background: transparent; }
 .pp-btn-outline-dark:hover { background: rgba(0,0,0,.08); }
-@media (max-width: 700px) { .pp-hero-center .pp-hero-grid { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; } .pp-hero-center .pp-hero-copy { width: 100%; justify-items: center; } .pp-hero-center .pp-hero-actions { justify-content: center; } .pp-hero-chips { flex-direction: column; align-items: center; } }
+@media (max-width: 700px) { .pp-hero-center .pp-hero-grid { grid-template-columns: minmax(0, 1fr); } .pp-hero-chips { flex-direction: column; align-items: center; } }
 .pp-module-ico { color: var(--pp-ico, var(--pp-accent)); }
 .pp-theme-staff .pp-hero-icon { color: #1d1a12; }
 
@@ -486,7 +492,7 @@ a.pp-module:hover .pp-module-more .icon { transform: translateX(4px); }
 @media (max-width: 560px) { .pp-showcase-feats { grid-template-columns: 1fr; } .pp-showcase-feats.is-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .pp-showcase-feats.is-grid li { padding: 14px; grid-template-columns: 1fr; row-gap: 6px; } .pp-showcase-feats.is-grid span { grid-row: auto; } }
 
 /* ---------- Logos de tecnologías ---------- */
-.pp-logos { margin: 0 !important; padding: 0; list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
-.pp-logos li { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 14px; border: 1px solid var(--pp-border); background: #fff; font-weight: 700; color: var(--pp-heading); }
-.pp-logos .icon { width: 28px; height: 28px; color: var(--logo); }
+.pp-logos { margin: 0 !important; padding: 0; list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.pp-logos li { display: inline-flex; align-items: center; gap: 9px; padding: 11px 16px; border-radius: 14px; border: 1px solid var(--pp-border); background: #fff; font-weight: 700; color: var(--pp-heading); }
+.pp-logos .icon { width: 26px; height: 26px; color: var(--logo); }
 .pp svg.icon[stroke] { fill: none; }

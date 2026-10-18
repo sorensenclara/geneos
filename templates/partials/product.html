@@ -449,10 +449,10 @@
 {# ---------- Logos de tecnologías sobre fondo claro ----------
    l = {id, eyebrow, title, lead, items: [[ícono, nombre, color]]} #}
 {% macro logos(l) -%}
-<section class="pp-section pp-white pp-logos-section"{% if l.id %} id="{{ l.id }}"{% endif %}>
+<section class="pp-section {{ 'pp-soft' if l.soft else 'pp-white' }} pp-logos-section"{% if l.id %} id="{{ l.id }}"{% endif %}>
   <div class="pp-container">
     <header class="pp-head"><p class="pp-eyebrow">{{ l.eyebrow }}</p><h2>{{ l.title }}</h2>{% if l.lead %}<p>{{ l.lead }}</p>{% endif %}</header>
-    <ul class="pp-logos">{% for ic, name, color in l["items"] %}<li style="--logo: {{ color }}">{{ icon(ic, 'icon') }}<span>{{ name }}</span></li>{% endfor %}</ul>
+    <ul class="pp-logos"{% if l.ancho %} style="max-width: {{ l.ancho }}; margin-inline: auto !important;"{% endif %}>{% for ic, name, color in l["items"] %}<li style="--logo: {{ color }}">{{ icon(ic, 'icon') }}<span>{{ name }}</span></li>{% endfor %}</ul>
   </div>
 </section>
 {%- endmacro %}
