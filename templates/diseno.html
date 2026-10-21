@@ -1,72 +1,90 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% import "partials/product.html" as pp with context %}
+{#
+  Diseño web e identidad visual · contenido de la página. Tema .pp-theme-diseno: el verde es el único color de identidad.
+  Trabajos e imágenes de identidad: data/trabajos.json y data/identidad.json (GENEOS Web Admin). Sin datos aprobados, no se muestran.
+#}
+{% set CONTACT = url('/contacto-geneos/') ~ "#formulario" %}
+{% set HAY_TRABAJOS = trabajos_de("diseno")|length > 0 %}
 {% set FAQS = [
-  ("¿Qué incluye el diseño de una identidad visual?", "<p>Diseñamos el isologotipo y definimos la paleta de colores, la tipografía y los elementos gráficos de tu marca. Lo reunimos en un <strong>manual de marca</strong> para que cualquier pieza mantenga la coherencia (podés ver el <a href=\"" ~ url('/recursos/') ~ "\">manual de marca de GENEOS</a> como ejemplo).</p>"),
-  ("¿Qué es el diseño UX/UI?", "<p>UX (experiencia de usuario) es pensar cómo las personas usan tu sitio o aplicación para que encuentren lo que buscan sin esfuerzo. UI (interfaz de usuario) es el diseño visual de cada pantalla. Trabajamos ambos antes de desarrollar.</p>"),
-  ("¿Pueden diseñar y también desarrollar el sitio?", "<p>Sí. El mismo equipo diseña y <a href=\"" ~ url('/desarrollo-apps-sitios-web-cooperativos/') ~ "\">desarrolla tu sitio web o tu app</a> con Django, Wagtail, Odoo o Moodle, así el resultado final respeta el diseño al detalle.</p>"),
-  ("¿Hacen piezas para redes sociales y comunicación?", "<p>Sí. Ideamos la estrategia de comunicación y diseñamos las piezas para que tu marca tenga sinergia en todos los canales: web, redes, presentaciones e impresos.</p>"),
+  ("¿Qué incluye el diseño de una identidad visual?", "<p>Diseñamos el isologotipo y definimos la paleta de colores, la tipografía y los elementos gráficos de tu marca. Lo reunimos en un <strong>manual de marca</strong> para que cada pieza mantenga la coherencia.</p>"),
+  ("¿Qué es el diseño UX/UI?", "<p>UX es pensar cómo las personas usan tu sitio para que encuentren lo que buscan sin esfuerzo. UI es el diseño visual de cada pantalla. Trabajamos ambos antes de desarrollar.</p>"),
+  ("¿Pueden diseñar y también desarrollar el sitio?", "<p>Sí. El mismo equipo diseña y <a href=\"" ~ url('/desarrollo-apps-sitios-web-cooperativos/') ~ "\">desarrolla tu sitio</a> con Django y Wagtail, así el resultado respeta el diseño al detalle.</p>"),
+  ("¿Hacen piezas para redes sociales y comunicación?", "<p>Sí. Diseñamos piezas para que tu marca sea coherente en todos los canales: web, redes, presentaciones e impresos.</p>"),
 ] %}
 {% block schema %}
 {{ m.faq_schema(FAQS) }}
-{{ m.service_schema("Diseño web, identidad visual y comunicación", "Diseño gráfico y web", "Diseño de sitios web UX/UI, isologotipos, identidades visuales, manuales de marca y estrategia de comunicación digital.") }}
+{{ m.service_schema("Diseño web, identidad visual y comunicación", "Diseño gráfico y web", "Diseño de sitios web UX/UI, isologotipos, identidades visuales, manuales de marca y piezas de comunicación.") }}
 {% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ asset('css/product.css') }}">{% endblock %}
+{% block body_class %}page-diseno page-product{% endblock %}
+
 {% block content %}
-{{ m.service_hero("green", "diseno", "Diseño web &amp;<br>identidad visual", "Diseño de Sitios Web e Identidades Visuales, la clave para <strong>destacarte</strong> y <strong>conectar</strong>.", "design") }}
+<div class="pp pp-theme-diseno">
 
-<section class="section theme-white" id="design">
-  <div class="container">
-    {{ m.section_head("DISEÑO Y COMUNICACIÓN", "Diseñamos marcas y sitios que conectan") }}
-    <p class="prose">En <strong>Geneos</strong> nos especializamos en el <strong>diseño de sitios web e identidades visuales</strong> utilizando tecnologías libres como Django, Wagtail, Odoo y Moodle. Ya sea que necesites un sitio web funcional, una tienda online o una nueva identidad para tu marca, trabajamos para crear soluciones digitales únicas y sostenibles que representen lo mejor de tu proyecto.</p>
-    <div class="flip-grid" style="margin-top:48px">
-      {% for ic, title, text, link in [
-        ("flip-web", "DESARROLLAMOS<br>SITIOS WEB", "Diseñamos la interfaz del usuario, UX y UI, e implementamos un sitio web con base en código abierto, seguro, responsive y personalizable.", ("#autoadministrables", "DJANGO Y WAGTAIL")),
-        ("flip-identidad", "DISEÑAMOS<br>IDENTIDADES", "Diseñamos isologotipos e identidades visuales, definiendo la paleta de colores, tipografía y elementos gráficos coherentes con tu negocio, para atraer y construir relaciones duraderas con clientes.", None),
-        ("flip-comunicacion", "CREAMOS<br>LA COMUNICACIÓN", "Tener sinergia de marca en todas las piezas de comunicación es crucial para construir una imagen sólida, e ideamos toda la estrategia de comunicación para lograrlo.", None),
-      ] %}
-      <div class="flip" tabindex="0">
-        <div class="flip-inner">
-          <div class="flip-face flip-front">{{ icon(ic) }}<h3>{{ title|safe }}</h3><small>VER MÁS &gt;&gt;&gt;</small></div>
-          <div class="flip-face flip-back"><p>{{ text }}</p>{% if link %}<a class="btn btn-white" href="{{ link[0] }}">{{ link[1] }}</a>{% endif %}</div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+{% set acciones = [{"label": "Solicitar presupuesto", "href": CONTACT, "style": "accent", "icon": "bi-arrow-right"}] %}
+{% if HAY_TRABAJOS %}{% set acciones = acciones + [{"label": "Ver nuestros trabajos", "href": "#trabajos", "style": "outline-light"}] %}{% endif %}
+{{ pp.hero({
+  "icon": "diseno", "center": true, "stack": true, "compact": true, "wave_next": "#fff", "wave_back": ".3",
+  "eyebrow": "Diseño y comunicación",
+  "title": [["Diseño web &amp; identidad visual", false]],
+  "lead": "Sitios web y marcas que potencian tu proyecto y te conectan con tu audiencia.",
+  "actions": acciones,
+}) }}
 
-<section class="section theme-gray-light">
-  <div class="container text-block two-col" style="max-width:none">
-    <div>
-      <h2>Diseño web UX/UI</h2>
-      <p>Un buen sitio no solo se ve bien: se entiende rápido, funciona en el celular y lleva a las personas a hacer lo que necesitan, ya sea comprar, consultar o inscribirse. Diseñamos la <strong>experiencia y la interfaz</strong> de sitios institucionales, tiendas online, plataformas educativas y sistemas de gestión.</p>
-    </div>
-    <div>
-      <h2>Identidad visual y branding</h2>
-      <p>Creamos <strong>isologotipos, paletas, tipografías y manuales de marca</strong> para cooperativas, pymes, instituciones y emprendimientos. Diseñamos también la identidad de nuestros propios productos, como GERP y GEMA, y acompañamos su comunicación digital.</p>
-    </div>
-  </div>
-</section>
+{{ pp.pillars({
+  "id": "enfoque", "title": "Diseñamos marcas y sitios que conectan",
+  "lead": "Combinamos diseño, tecnología y estrategia para que tu proyecto se vea y se entienda como querés: desde la identidad visual hasta el sitio web autoadministrable.",
+  "items": [["bi-lightbulb", "Estrategia", "Analizamos tus objetivos y tu audiencia."],
+            ["bi-pencil", "Diseño", "Creamos identidades visuales únicas y funcionales."],
+            ["bi-display", "Desarrollo", "Sitios web autoadministrables con Django y Wagtail."],
+            ["bi-graph-up-arrow", "Resultados", "Soluciones pensadas para crecer."]],
+}) }}
 
-<section class="section theme-black" id="autoadministrables">
-  <div class="container">
-    {{ m.section_head("TU SITIO AUTOADMINISTRABLE CON", "DJANGO Y WAGTAIL") }}
-    {{ m.autoadmin_block("CONTACTANOS") }}
-  </div>
-</section>
+{{ pp.trabajos({"servicio": "diseno", "title": "Algunos de nuestros trabajos", "lead": "Sitios web e identidades que ayudan a comunicar y potenciar proyectos."}) }}
 
-<section class="section theme-white">
-  <div class="container">
-    {{ m.section_head("DISEÑO", "CLIENTES") }}
-  </div>
-  {{ m.logo_marquee([
+{{ pp.duo({
+  "id": "servicios-diseno",
+  "left": {"id": "diseno-web", "title": "Diseño web y experiencia de usuario",
+           "text": "Diseñamos la arquitectura de contenidos, la interfaz y la experiencia de cada sitio para que las personas encuentren lo que buscan y den el siguiente paso.",
+           "items": [["bi-display", "Sitios a medida", "Diseño propio, pensado para tu organización."],
+                     ["bi-pencil", "Autoadministrables", "Pantallas simples para editar tus contenidos."],
+                     ["bi-phone", "Responsive", "Se ven bien en computadoras, tablets y celulares."],
+                     ["bi-universal-access", "Accesibles", "Legibles, con buen contraste y navegación clara."]]},
+  "right": {"id": "identidad", "title": "Identidad visual y branding",
+            "text": "Creamos marcas coherentes que comunican el valor de tu proyecto y se aplican en todos los canales.",
+            "items": [["bi-vector-pen", "Logotipos", "Marcas únicas y memorables."],
+                      ["bi-palette", "Paletas de color", "Sistemas coherentes y versátiles."],
+                      ["bi-fonts", "Tipografías", "Estilos que comunican tu identidad."],
+                      ["bi-image", "Piezas gráficas", "Para web, redes y comunicación."]],
+            "images": IDENTIDAD},
+}) }}
+
+{{ pp.dark_points({
+  "id": "autoadministrables", "eyebrow": "Tu sitio autoadministrable con", "title": "Django y Wagtail",
+  "items": [["bi-file-earmark-text", "Lo gestionás vos", "Tu equipo actualiza páginas, noticias e imágenes desde un panel simple."],
+            ["bi-code-slash", "Diseño a medida", "Cada sitio se diseña para tu organización y se adapta a cualquier pantalla."],
+            ["bi-shield-check", "Software libre", "Tecnologías de código abierto, sin costos de licencias."]],
+  "more": {"label": "Conocé cómo funciona", "href": url('/desarrollo-apps-sitios-web-cooperativos/') ~ "#autoadministrables"},
+}) }}
+
+{{ pp.clients("Clientes", [
     "2024/03/CONEPO.png", "2024/03/Red-de-Repositorios-Documentales.png", "2024/03/CARACOLAR-Plataforma-de-Cuidados.png",
     "2024/03/Red-de-Espacios-Culturales-Mar-Chiquita.png", "2024/03/Buyeo-Plataforma-Busqueda-Autos.png", "2024/03/CHAPALEOFU.png",
     "2024/03/DIVERSA-COPA.png", "2024/03/Universidad-UNAJ.png", "2024/03/Universidad-Nacional-Hurlingham.png",
-    ("2024/03/Union-Agruicola-de-Avellaneda.png", "https://www.uaa.com.ar/"), ("2024/03/Edunet-Cooperativa.png", "https://edunet.coop/"),
-    ("2024/03/Colegio-de-Trabajadores-Sociales.png", "https://catspba.org.ar/"), ("2024/03/CINEA.png", "https://cinea.fch.unicen.edu.ar/"), "2024/03/CIEP.png",
-  ]) }}
-</section>
+    "2024/03/Union-Agruicola-de-Avellaneda.png", "2024/03/Edunet-Cooperativa.png", "2024/03/Colegio-de-Trabajadores-Sociales.png",
+    "2024/03/CINEA.png", "2024/03/CIEP.png"]) }}
 
-{{ m.faq(FAQS, "Preguntas frecuentes sobre diseño") }}
-{{ m.cta("¿Renovamos tu marca o tu sitio?", "Contanos sobre tu proyecto y te proponemos cómo comunicarlo mejor.", "Hola, quiero consultar por diseño web o identidad visual", "Escribinos por WhatsApp", "theme-green") }}
+{{ pp.faq({"eyebrow": "Dudas", "title": "Preguntas frecuentes sobre diseño", "centered": true, "items": FAQS}) }}
+
+{{ pp.band({
+  "eyebrow": "Hablemos de tu proyecto", "title": "¿Renovamos tu marca o tu sitio?",
+  "text": "Contanos qué necesitás y te ayudamos a dar el próximo paso.",
+  "actions": [{"label": "Escribinos por WhatsApp", "href": wa("Hola, quiero consultar por diseño web o identidad visual"), "style": "accent", "icon_before": "bi-whatsapp", "external": true},
+              {"label": "Formulario de contacto", "href": CONTACT, "style": "outline-light"}],
+}) }}
+
+</div>
+<script src="{{ asset('js/product.js') }}" defer></script>
 {% endblock %}

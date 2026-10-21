@@ -75,6 +75,18 @@ for _p in PRODUCTOS.values():
     _p["sitio"] = _p["url"] if _p.get("url_confirmada") and _p.get("url") else ""  # vacío: no se muestran los botones
 SITE["products"] = [(p["nombre"], p["descripcion"], p["url"], p["logo"]) for p in PRODUCTOS.values() if p.get("url")]
 
+# Trabajos e imágenes de identidad: los genera GENEOS Web Admin (data/trabajos.json y data/identidad.json).
+# Solo se publican los activos y aprobados, ordenados; trabajos_de("diseno") filtra por servicio.
+_TRAB = json.loads((ROOT / "data" / "trabajos.json").read_text())
+TRABAJOS = sorted([t for t in _TRAB.get("trabajos", []) if t.get("activo") and t.get("aprobado")], key=lambda t: t.get("orden", 0))
+PORTFOLIO_URL = _TRAB.get("portfolio_url") or ""
+IDENTIDAD = sorted([i for i in json.loads((ROOT / "data" / "identidad.json").read_text()).get("imagenes", []) if i.get("activo") and i.get("aprobado")], key=lambda i: i.get("orden", 0))
+
+
+def trabajos_de(servicio):
+    return [t for t in TRABAJOS if servicio in t.get("servicios", [])]
+
+
 # Cada página: plantilla, ruta, título (<60 car.), descripción (<160 car.),
 # miga de pan (nombre corto), imagen para redes y prioridad en el sitemap.
 PAGES = [
@@ -272,7 +284,7 @@ def build():
     env = Environment(loader=FileSystemLoader(ROOT / "templates"),
                       autoescape=select_autoescape(["html"]), trim_blocks=True, lstrip_blocks=True)
     env.filters["regex_replace"] = lambda v, pat, rep="": re.sub(pat, rep, v)
-    env.globals.update(PRODUCTOS=PRODUCTOS, site=SITE, url=url, asset=asset, img=img, icon=icon, wa=wa, jsonld=jsonld,
+    env.globals.update(PRODUCTOS=PRODUCTOS, trabajos_de=trabajos_de, PORTFOLIO_URL=PORTFOLIO_URL, IDENTIDAD=IDENTIDAD, site=SITE, url=url, asset=asset, img=img, icon=icon, wa=wa, jsonld=jsonld,
                        abs_url=abs_url, year=date.today().year, site_url=SITE_URL, org_schema=org_schema, crumbs_schema=crumbs_schema, faq_entities=faq_entities, service_items=service_items,
                        pages=PAGE_BY_OUT)
 

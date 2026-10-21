@@ -30,7 +30,7 @@
         img, img_sm, pos, fade, wave_next, wave_back,
         media: {monitor: {src, webp, alt, w, h}, monitor_sm: {…}} | {shot: {src, alt, w, h}}} #}
 {% macro hero(h) -%}
-<section class="pp-hero pp-wave{% if not h.img %} pp-hero-plain{% endif %}{% if h.center %} pp-hero-center{% endif %}{% if h.compact %} pp-hero-compact{% endif %}" style="{% if h.img %}--pp-hero-img: url('{{ asset(h.img) }}');{% endif %} {% if h.img_sm %}--pp-hero-img-sm: url('{{ asset(h.img_sm) }}');{% endif %} {% if h.pos %}--pp-hero-pos: {{ h.pos }};{% endif %} {% if h.fade %}--pp-hero-fade: {{ h.fade }};{% endif %} --pp-wave-next: {{ h.wave_next or '#fff' }};{% if h.wave_back %} --pp-wave-back: {{ h.wave_back }};{% endif %}">
+<section class="pp-hero pp-wave{% if not h.img %} pp-hero-plain{% endif %}{% if h.center %} pp-hero-center{% endif %}{% if h.compact %} pp-hero-compact{% endif %}{% if h.stack %} pp-hero-stack{% endif %}" style="{% if h.img %}--pp-hero-img: url('{{ asset(h.img) }}');{% endif %} {% if h.img_sm %}--pp-hero-img-sm: url('{{ asset(h.img_sm) }}');{% endif %} {% if h.pos %}--pp-hero-pos: {{ h.pos }};{% endif %} {% if h.fade %}--pp-hero-fade: {{ h.fade }};{% endif %} --pp-wave-next: {{ h.wave_next or '#fff' }};{% if h.wave_back %} --pp-wave-back: {{ h.wave_back }};{% endif %}">
   <div class="pp-container pp-hero-grid{% if h.icon %} pp-hero-with-icon{% elif not h.media %} pp-hero-solo{% endif %}">
     {% if h.icon %}<span class="pp-hero-icon">{{ icon(h.icon) }}</span>{% endif %}
     <div class="pp-hero-copy">
@@ -482,6 +482,81 @@
     <ol class="pp-stepcards-list">
       {% for it in s["items"] %}<li><span class="pp-stepcards-n" aria-hidden="true">{{ loop.index }}</span><h3>{{ it.title }}</h3><p>{{ it.text }}</p></li>{% endfor %}
     </ol>
+  </div>
+</section>
+{%- endmacro %}
+
+
+{# ---------- Pilares: encabezado centrado y conceptos con ícono en círculo suave (Diseño) ---------- #}
+{% macro pillars(p) -%}
+<section class="pp-section pp-compact pp-white pp-pillars"{% if p.id %} id="{{ p.id }}"{% endif %}>
+  <div class="pp-container">
+    <header class="pp-head"><h2>{{ p.title }}</h2>{% if p.lead %}<p>{{ p.lead|safe }}</p>{% endif %}</header>
+    <ul class="pp-pillars-list">{% for ic, t, d in p["items"] %}<li><span class="pp-soft-ico">{{ glyph(ic) }}</span><h3>{{ t }}</h3><p>{{ d }}</p></li>{% endfor %}</ul>
+  </div>
+</section>
+{%- endmacro %}
+
+{# ---------- Trabajos (carrusel). Datos: data/trabajos.json, generado por GENEOS Web Admin. Sin trabajos no se muestra nada ---------- #}
+{% macro trabajos(t) -%}
+{% set items = trabajos_de(t.servicio) %}
+{% if items %}
+<section class="pp-section pp-compact pp-soft pp-works" id="{{ t.id or 'trabajos' }}">
+  <div class="pp-container">
+    <div class="pp-works-head">
+      <header class="pp-head"><h2>{{ t.title }}</h2>{% if t.lead %}<p>{{ t.lead }}</p>{% endif %}</header>
+      {% if PORTFOLIO_URL %}<a class="pp-more" href="{{ PORTFOLIO_URL }}">Ver todo el portfolio {{ icon('bi-arrow-right', 'icon bi') }}</a>{% endif %}
+    </div>
+    <div class="pp-works-rail" data-rail>
+      <button class="pp-works-nav is-prev" type="button" aria-label="Trabajos anteriores" data-rail-prev>{{ icon('bi-chevron-left', 'icon bi') }}</button>
+      <ul class="pp-works-track" data-rail-track>
+        {% for w in items %}
+        <li class="pp-work">
+          {% set tag = "a" if w.enlace else "div" %}
+          <{{ tag }} class="pp-work-card"{% if w.enlace %} href="{{ w.enlace }}"{% if w.enlace.startswith('http') %} target="_blank" rel="noopener"{% endif %}{% endif %}>
+            <img src="{{ img(w.imagen) }}" alt="{{ w.imagen_alt or w.nombre }}" width="640" height="360" loading="lazy" decoding="async">
+            <span class="pp-work-txt"><b>{{ w.nombre }}</b>{% if w.descripcion %}<small>{{ w.descripcion }}</small>{% endif %}</span>
+          </{{ tag }}>
+        </li>
+        {% endfor %}
+      </ul>
+      <button class="pp-works-nav is-next" type="button" aria-label="Trabajos siguientes" data-rail-next>{{ icon('bi-chevron-right', 'icon bi') }}</button>
+    </div>
+  </div>
+</section>
+{% endif %}
+{%- endmacro %}
+
+{# ---------- Dos bloques lado a lado: diseño web (tarjetas) e identidad (lista + imagen administrable) ---------- #}
+{% macro duo(d) -%}
+<section class="pp-section pp-compact pp-white pp-duo"{% if d.id %} id="{{ d.id }}"{% endif %}>
+  <div class="pp-container pp-duo-grid">
+    <div class="pp-duo-col" id="{{ d.left.id }}">
+      <span class="pp-rule" aria-hidden="true"></span>
+      <h2>{{ d.left.title }}</h2>
+      <p class="pp-duo-lead">{{ d.left.text }}</p>
+      <ul class="pp-mini-cards">{% for ic, t, x in d.left["items"] %}<li><span class="pp-soft-ico">{{ glyph(ic) }}</span><span><b>{{ t }}</b><small>{{ x }}</small></span></li>{% endfor %}</ul>
+    </div>
+    <div class="pp-duo-col" id="{{ d.right.id }}">
+      <span class="pp-rule" aria-hidden="true"></span>
+      <h2>{{ d.right.title }}</h2>
+      <p class="pp-duo-lead">{{ d.right.text }}</p>
+      <div class="pp-brand{% if d.right.images %} has-img{% endif %}">
+        <ul class="pp-brand-list">{% for ic, t, x in d.right["items"] %}<li><span class="pp-soft-ico is-sm">{{ glyph(ic) }}</span><span><b>{{ t }}</b><small>{{ x }}</small></span></li>{% endfor %}</ul>
+        {% if d.right.images %}{% set im = d.right.images[0] %}<figure class="pp-brand-img"><img src="{{ img(im.imagen) }}" alt="{{ im.imagen_alt }}" width="480" height="480" loading="lazy" decoding="async"></figure>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{# ---------- Banda oscura compacta con tres puntos ---------- #}
+{% macro dark_points(d) -%}
+<section class="pp-dark-points"{% if d.id %} id="{{ d.id }}"{% endif %}>
+  <div class="pp-container">
+    <header class="pp-dark-head"><p class="pp-eyebrow">{{ d.eyebrow }}</p><h2>{{ d.title }}</h2></header>
+    <ul class="pp-dark-list">{% for ic, t, x in d["items"] %}<li><span class="pp-dark-ico">{{ glyph(ic) }}</span><h3>{{ t }}</h3><p>{{ x }}</p></li>{% endfor %}</ul>
+    {% if d.more %}<p class="pp-dark-more"><a href="{{ d.more.href }}">{{ d.more.label }} {{ icon('bi-arrow-right', 'icon bi') }}</a></p>{% endif %}
   </div>
 </section>
 {%- endmacro %}

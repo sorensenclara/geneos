@@ -640,3 +640,94 @@ a.pp-module:hover .pp-module-more .icon { transform: translateX(4px); }
 /* Logos de instituciones en tarjetas (E-learning) */
 .pp-theme-elearning .pp-clients .marquee li { background: #fff; border: 1px solid var(--pp-border); border-radius: 12px; padding: 10px 18px; width: 180px; }
 .pp-theme-elearning .pp-clients h2 { font-size: clamp(1.1rem, 2vw, 1.4rem) !important; letter-spacing: .04em; }
+
+/* ---------- Tema Diseño y comunicación: verde como único color de identidad ---------- */
+.pp-theme-diseno {
+  --pp-deep-rgb: 8, 80, 36;
+  --pp-heading: #10241a; --pp-text: #1f2a24; --pp-muted: #56635b; --pp-bg: #fff; --pp-border: #e3efe7;
+  --pp-accent: #0f7a3a; --pp-highlight: #a7f0c4;
+  --pp-soft: #f4f8f5; --pp-soft-2: #f4f8f5; --pp-icon-bg: #e4f6ea; --pp-line: #1aa152; --pp-line-2: #9fd9b4; --pp-line-3: #d5eedd;
+  --pp-btn: #0f7a3a; --pp-btn-hover: #0b5f2d; --pp-btn-text: #fff;
+  --pp-btn2: #fff; --pp-btn2-text: #0b5a2b;
+  --pp-eyebrow-2: #0f7a3a; --pp-steps-ico: #16a34a; --pp-ico: #16a34a;
+  --pp-ico-size: 28px; --pp-steps-ico-size: 28px;
+  --pp-hero-bg: linear-gradient(160deg, #0b6b33 0%, #0f8a40 45%, #22b45c 100%); --pp-hero-text: #fff;
+  --pp-band-bg: linear-gradient(160deg, #0b6b33 0%, #0f8a40 50%, #1ea653 100%);
+}
+/* Hero apilado: ícono arriba y todo centrado */
+.pp-hero-stack .pp-hero-grid { grid-template-columns: minmax(0, 820px); justify-content: center; justify-items: center; text-align: center; gap: 16px; }
+.pp-hero-stack .pp-hero-icon { width: clamp(96px, 10vw, 128px); }
+.pp-hero-stack .pp-hero-copy { width: 100%; justify-items: center; gap: 14px; container-type: normal; }
+.pp-hero-stack h1 { font-size: clamp(2rem, 4.4vw, 3.2rem); text-wrap: balance; }
+.pp-hero-stack .pp-hero-lead { margin-inline: auto; max-width: 44ch; text-wrap: balance; color: inherit; opacity: .92; font-size: clamp(1.05rem, 1.6vw, 1.25rem); }
+.pp-hero-stack .pp-hero-actions { justify-content: center; margin-top: 6px; }
+.pp-hero-stack h1 > span { display: inline; white-space: normal; }
+/* Ícono lineal en círculo suave */
+.pp-soft-ico { width: 60px; height: 60px; border-radius: 50%; background: var(--pp-icon-bg); color: var(--pp-ico); display: inline-grid; place-items: center; flex: none; }
+.pp-soft-ico .icon { width: 26px; height: 26px; }
+.pp-soft-ico.is-sm { width: 44px; height: 44px; }
+.pp-soft-ico.is-sm .icon { width: 20px; height: 20px; }
+/* Pilares */
+.pp-pillars-list { margin: 0 !important; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pp-pillars-list li { text-align: center; padding: 4px 22px; display: grid; justify-items: center; gap: 6px; }
+.pp-pillars-list li + li { border-left: 1px solid var(--pp-border); }
+.pp-pillars-list h3 { font-size: 1.08rem; margin: 6px 0 0; color: var(--pp-heading); }
+.pp-pillars-list p { color: var(--pp-muted); font-size: .95rem; line-height: 1.45; margin: 0; max-width: 24ch; }
+@media (max-width: 860px) { .pp-pillars-list { grid-template-columns: 1fr 1fr; row-gap: 26px; } .pp-pillars-list li:nth-child(3) { border-left: 0; } }
+@media (max-width: 420px) { .pp-pillars-list li { padding: 4px 10px; } .pp-soft-ico { width: 52px; height: 52px; } }
+/* Trabajos */
+.pp-works-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.pp-works-head .pp-head { margin: 0; justify-items: start; text-align: left; }
+.pp-works-head .pp-head::before { display: none; }
+.pp-works-rail { position: relative; }
+.pp-works-track { margin: 0 !important; padding: 4px 2px 10px; list-style: none; display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 40px) / 3); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.pp-works-track::-webkit-scrollbar { display: none; }
+.pp-work { scroll-snap-align: start; }
+.pp-work-card { display: grid; background: #fff; border: 1px solid var(--pp-border); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 26px rgba(15,23,42,.07); color: inherit; text-decoration: none; height: 100%; }
+.pp-work-card img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.pp-work-txt { display: grid; gap: 2px; padding: 14px 16px 16px; }
+.pp-work-txt b { color: var(--pp-heading); }
+.pp-work-txt small { color: var(--pp-muted); font-size: .9rem; }
+.pp-works-nav { position: absolute; top: 40%; z-index: 2; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--pp-border); background: #fff; box-shadow: 0 6px 18px rgba(15,23,42,.12); display: grid; place-items: center; cursor: pointer; color: var(--pp-heading); }
+.pp-works-nav .icon { width: 16px; height: 16px; }
+.pp-works-nav.is-prev { left: -20px; } .pp-works-nav.is-next { right: -20px; }
+@media (max-width: 760px) { .pp-works-track { grid-auto-columns: 82%; } .pp-works-nav { display: none; } }
+/* Dúo: diseño web + identidad */
+.pp-duo-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; }
+.pp-duo-col { display: grid; gap: 12px; align-content: start; padding: 0 clamp(20px, 3vw, 44px); min-width: 0; }
+.pp-duo-col:first-child { padding-left: 0; }
+.pp-duo-col + .pp-duo-col { border-left: 1px solid var(--pp-border); padding-right: 0; }
+.pp-duo-col h2 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 1.9rem); }
+.pp-duo-lead { color: var(--pp-muted); margin: 0; font-size: 1rem; }
+.pp-mini-cards { margin: 8px 0 0 !important; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pp-mini-cards li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: center; padding: 14px; border: 1px solid var(--pp-border); border-radius: 14px; background: #fff; }
+.pp-mini-cards .pp-soft-ico { width: 48px; height: 48px; }
+.pp-mini-cards .pp-soft-ico .icon { width: 22px; height: 22px; }
+.pp-mini-cards b, .pp-brand-list b { display: block; color: var(--pp-heading); font-size: .98rem; }
+.pp-mini-cards small, .pp-brand-list small { display: block; color: var(--pp-muted); font-size: .88rem; line-height: 1.35; margin-top: 2px; }
+.pp-brand { display: grid; gap: 18px; margin-top: 8px; }
+.pp-brand.has-img { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.pp-brand-list { margin: 0 !important; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; }
+.pp-brand.has-img .pp-brand-list { grid-template-columns: 1fr; }
+.pp-brand-list li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; }
+.pp-brand-img { margin: 0; border-radius: 16px; overflow: hidden; }
+.pp-brand-img img { width: 100%; height: auto; display: block; }
+@media (max-width: 960px) { .pp-duo-grid { grid-template-columns: 1fr; gap: 40px; } .pp-duo-col { padding: 0 !important; } .pp-duo-col + .pp-duo-col { border-left: 0; } }
+@media (max-width: 480px) { .pp-mini-cards { grid-template-columns: 1fr; } .pp-brand-list { grid-template-columns: 1fr; } .pp-brand.has-img { grid-template-columns: 1fr; } }
+/* Banda oscura compacta */
+.pp-dark-points { background: #0d0f0e; color: #fff; padding-block: clamp(44px, 5vw, 64px); }
+.pp-dark-head { text-align: center; display: grid; gap: 6px; margin-bottom: 30px; }
+.pp-dark-head .pp-eyebrow { color: #9fe3b9; }
+.pp-dark-head h2 { color: #fff; margin: 0; font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.pp-dark-list { margin: 0 !important; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; text-align: center; }
+.pp-dark-list li { display: grid; justify-items: center; gap: 8px; }
+.pp-dark-ico { color: #34c46d; } .pp-dark-ico .icon { width: 36px; height: 36px; }
+.pp-dark-list h3 { color: #fff; font-size: 1.05rem; margin: 0; }
+.pp-dark-list p { color: rgba(255,255,255,.75); font-size: .93rem; line-height: 1.45; margin: 0; max-width: 34ch; }
+.pp-dark-more { text-align: center; margin: 34px 0 0; }
+.pp-dark-more a { color: #9fe3b9; font-weight: 700; display: inline-flex; gap: 8px; align-items: center; text-decoration: none; }
+.pp-dark-more .icon { width: 1em; height: 1em; }
+@media (max-width: 760px) { .pp-dark-list { grid-template-columns: 1fr; gap: 22px; } }
+/* Clientes en grilla (Diseño) */
+.pp-theme-diseno .pp-clients h2 { font-size: clamp(1.1rem, 2vw, 1.3rem) !important; }
+.pp-theme-diseno .pp-clients { padding-block: clamp(36px, 4vw, 56px); }

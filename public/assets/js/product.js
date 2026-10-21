@@ -34,3 +34,11 @@
     }));
   });
 })();
+
+/* Carrusel de trabajos: flechas que desplazan una tarjeta */
+document.querySelectorAll('[data-rail]').forEach((rail) => {
+  const track = rail.querySelector('[data-rail-track]');
+  const step = () => (track.firstElementChild ? track.firstElementChild.getBoundingClientRect().width + 20 : track.clientWidth);
+  rail.querySelector('[data-rail-prev]')?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+  rail.querySelector('[data-rail-next]')?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+});
