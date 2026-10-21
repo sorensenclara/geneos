@@ -40,32 +40,33 @@
 }) }}
 
 {{ pp.modules({
-  "id": "soluciones", "cols": 3, "eyebrow": "Nuestras soluciones", "title": "Tres formas de impulsar tu proyecto",
+  "id": "soluciones", "cols": 3, "even": true, "eyebrow": "Nuestras soluciones", "title": "Tres formas de impulsar tu proyecto",
   "lead": "Nos adaptamos a lo que tu organización necesita hoy y a cómo va a crecer.",
   "items": [
-    {"icon": "dev-web", "title": "Sitios web a medida", "text": "Institucionales y comerciales, con diseño propio, adaptados al celular y optimizados para buscadores.", "href": CONTACT, "more": "Consultar"},
-    {"icon": "bi-file-earmark-text", "title": "Sitios web autoadministrables", "text": "Tu equipo actualiza noticias, páginas e imágenes desde un panel simple.", "href": "#autoadministrables", "more": "Conocer más", "highlight": true},
-    {"icon": "bi-box", "title": "Aplicaciones y plataformas", "text": "Sistemas a medida con usuarios, formularios, mapas, reportes e integraciones.", "href": "#aplicaciones", "more": "Conocer más"},
+    {"icon": "dev-web", "title": "Sitios web a medida", "text": "Webs institucionales y comerciales, con diseño propio, adaptadas a celulares y optimizadas para buscadores.", "href": CONTACT, "more": "Conocer más"},
+    {"icon": "bi-file-earmark-text", "title": "Sitios web autoadministrables", "text": "Webs con un panel de gestión para actualizar páginas, noticias e imágenes de forma simple y autónoma.", "href": "#autoadministrables", "more": "Conocer más", "highlight": true},
+    {"icon": "bi-box", "title": "Aplicaciones y plataformas", "text": "Sistemas personalizados con usuarios, formularios, mapas, reportes e integraciones para tu organización.", "href": "#aplicaciones", "more": "Conocer más"},
   ],
 }) }}
 
 {{ pp.showcase({
-  "id": "autoadministrables", "soft": true, "eyebrow": "Contenidos sin límites", "title": "Una web que podés gestionar",
-  "text": "Usamos <strong>Wagtail</strong>, un administrador de contenidos libre sobre Django: flexible, seguro y simple de usar.",
-  "checks": ["Editar textos e imágenes", "Crear noticias y artículos", "Gestionar páginas y menús", "Revisar y aprobar antes de publicar"],
-  "stack": true,
-  "shot": {"src": "apps/geneos-web-admin-gestion.webp", "w": 2620, "h": 1928, "frame": "comp",
+  "id": "autoadministrables", "soft": true, "compact": true, "eyebrow": "Gestión autónoma", "title": "Una web que podés gestionar",
+  "text": "Utilizamos <strong>Wagtail</strong>, un sistema flexible y potente que te permite administrar tu sitio de forma simple y segura, con un diseño totalmente personalizado.",
+  "checks": ["Editar textos e imágenes|sin conocimientos técnicos", "Crear noticias y artículos", "Gestionar páginas y menús", "Controlar permisos y publicaciones"],
+  "checks_grid": true,
+  "shot": {"src": "apps/geneos-web-admin-gestion.webp", "w": 1480, "h": 1156, "frame": "comp",
            "sm": {"src": "apps/geneos-web-admin-gestion-movil.webp", "w": 980, "h": 1750},
            "alt": "GENEOS Web Admin: detrás, el listado de páginas de servicios; adelante, el editor de la página Apps y sitios web con el título, el texto y los botones del encabezado",
-           "caption": "GENEOS Web Admin, el administrador de nuestra propia web: el listado de páginas y el editor"},
+           "caption": "GENEOS Web Admin, el administrador de nuestra propia web"},
 }) }}
 
 {{ pp.showcase({
-  "id": "aplicaciones", "eyebrow": "Soluciones a medida", "title": "Aplicaciones que resuelven procesos reales",
-  "text": "Desarrollamos sistemas y plataformas para digitalizar y ordenar la gestión de tu organización.",
-  "features": [["bi-people", "Usuarios", "y permisos"], ["bi-clipboard2-plus", "Formularios", "y solicitudes"], ["ui-map", "Mapas", "y geolocalización"],
-               ["bi-window-stack", "Paneles", "de control"], ["bi-bar-chart-line", "Reportes", "y métricas"], ["bi-diagram-3", "Integraciones", "con otros sistemas"]],
-  "more": {"label": "Contanos tu proyecto", "href": CONTACT},
+  "id": "aplicaciones", "compact": true, "eyebrow": "Soluciones a medida", "title": "Aplicaciones que resuelven procesos reales",
+  "text": "Desarrollamos sistemas y plataformas para digitalizar y optimizar la gestión de tu organización.",
+  "features": [["bi-people", "Usuarios", "y permisos"], ["bi-clipboard2-plus", "Formularios", "y solicitudes"], ["bi-window-stack", "Paneles", "de control"],
+               ["ui-map", "Mapas", "y geolocalización"], ["bi-bar-chart-line", "Reportes", "y métricas"], ["bi-diagram-3", "Integraciones", "con otros sistemas"]],
+  "features_plain": true,
+  "more": {"label": "Contanos tu proyecto", "href": CONTACT, "style": "outline-accent", "icon": "bi-arrow-right"},
 }) }}
 
 {{ pp.modules({
@@ -80,7 +81,7 @@
 }) }}
 
 {{ pp.logos({
-  "id": "tecnologias", "eyebrow": "Tecnologías libres", "title": "Tecnologías que utilizamos",
+  "id": "tecnologias", "compact": true, "eyebrow": "Tecnologías libres", "title": "Tecnologías que utilizamos",
   "lead": "Herramientas modernas y confiables, elegidas según cada proyecto.",
   "items": [["tec-python", "Python", "#3776AB"], ["tec-django", "Django", "#092E20"], ["tec-wagtail", "Wagtail", "#43B1B0"],
             ["tec-postgresql", "PostgreSQL", "#4169E1"], ["tec-react", "React", "#149ECA"], ["tec-vuedotjs", "Vue.js", "#42B883"], ["tec-docker", "Docker", "#2496ED"]],

@@ -98,16 +98,18 @@
       <h2>{{ m.title }}</h2>
       {% if m.lead %}<p>{{ m.lead|safe }}</p>{% endif %}
     </header>
-    <ul class="pp-modules-grid{% if m.cols %} pp-modules-{{ m.cols }}{% endif %}">
+    <ul class="pp-modules-grid{% if m.cols %} pp-modules-{{ m.cols }}{% endif %}{% if m.even %} is-even{% endif %}">
       {% for it in m["items"] %}
       <li>
         {% set href = it.href or m.href %}{% set tag = "a" if href else "div" %}
         <{{ tag }} class="pp-module{% if it.highlight %} is-destacado{% endif %}"{% if href %} href="{{ href }}"{% endif %}{% if it.color %} style="--pp-ico: {{ it.color }}"{% endif %}>
           <span class="pp-module-ico">{{ glyph(it.icon) }}</span>
+          {% if m.even %}<div class="pp-module-body">{% endif %}
           <h3>{{ it.title|safe }}</h3>
           <p>{{ it.text }}</p>
           {% if it.more %}<span class="pp-module-more">{{ it.more }} {{ icon('bi-arrow-right', 'icon bi') }}</span>
           {% elif href %}<span class="pp-arrow" aria-hidden="true">{{ icon('bi-arrow-right', 'icon bi') }}</span>{% endif %}
+          {% if m.even %}</div>{% endif %}
         </{{ tag }}>
       </li>
       {% endfor %}
@@ -423,15 +425,15 @@
    s = {id, soft, eyebrow, title, text, checks: [texto], features: [[icono, título, detalle]], more: {label, href},
         shot: {src, alt, w, h, frame: "browser"}, reverse} — sin imagen, la lista de íconos ocupa la columna de la derecha #}
 {% macro showcase(s) -%}
-<section class="pp-section {{ 'pp-soft' if s.soft else 'pp-white' }} pp-showcase"{% if s.id %} id="{{ s.id }}"{% endif %}>
+<section class="pp-section {{ 'pp-soft' if s.soft else 'pp-white' }} pp-showcase{% if s.compact %} pp-compact{% endif %}"{% if s.id %} id="{{ s.id }}"{% endif %}>
   <div class="pp-container pp-showcase-grid{% if s.reverse %} is-reverse{% endif %}{% if s.stack %} is-stack{% endif %}">
     <div class="pp-showcase-copy">
       <p class="pp-eyebrow">{{ s.eyebrow }}</p>
       <h2>{{ s.title }}</h2>
       {% if s.text %}<p class="pp-showcase-text">{{ s.text|safe }}</p>{% endif %}
-      {% if s.checks %}<ul class="pp-showcase-checks">{% for c in s.checks %}<li>{{ icon('bi-check-circle', 'icon bi') }}{{ c }}</li>{% endfor %}</ul>{% endif %}
+      {% if s.checks %}<ul class="pp-showcase-checks{% if s.checks_grid %} is-grid{% endif %}">{% for c in s.checks %}{% set t = c.split("|") %}<li>{{ icon('bi-check-circle', 'icon bi') }}<span>{{ t[0] }}{% if t|length > 1 %}<small>{{ t[1] }}</small>{% endif %}</span></li>{% endfor %}</ul>{% endif %}
       {% if s.features and s.shot %}<ul class="pp-showcase-feats">{% for ic, t, d in s.features %}<li><span>{{ glyph(ic) }}</span><b>{{ t }}</b><small>{{ d }}</small></li>{% endfor %}</ul>{% endif %}
-      {% if s.more %}<a class="pp-more" href="{{ s.more.href }}">{{ s.more.label }} {{ icon('bi-arrow-right', 'icon bi') }}</a>{% endif %}
+      {% if s.more and s.more.style %}<div class="pp-showcase-actions">{{ btn(s.more) }}</div>{% elif s.more %}<a class="pp-more" href="{{ s.more.href }}">{{ s.more.label }} {{ icon('bi-arrow-right', 'icon bi') }}</a>{% endif %}
     </div>
     {% if s.shot %}
     <figure class="pp-showcase-media{% if s.shot.frame %} is-{{ s.shot.frame }}{% endif %}">
@@ -440,7 +442,7 @@
       {% if s.shot.caption %}<figcaption>{{ s.shot.caption }}</figcaption>{% endif %}
     </figure>
     {% elif s.features %}
-    <ul class="pp-showcase-feats is-grid">{% for ic, t, d in s.features %}<li><span>{{ glyph(ic) }}</span><b>{{ t }}</b><small>{{ d }}</small></li>{% endfor %}</ul>
+    <ul class="pp-showcase-feats {{ 'is-plain' if s.features_plain else 'is-grid' }}">{% for ic, t, d in s.features %}<li><span>{{ glyph(ic) }}</span><b>{{ t }}</b><small>{{ d }}</small></li>{% endfor %}</ul>
     {% endif %}
   </div>
 </section>
@@ -449,7 +451,7 @@
 {# ---------- Logos de tecnologías sobre fondo claro ----------
    l = {id, eyebrow, title, lead, items: [[ícono, nombre, color]]} #}
 {% macro logos(l) -%}
-<section class="pp-section {{ 'pp-soft' if l.soft else 'pp-white' }} pp-logos-section"{% if l.id %} id="{{ l.id }}"{% endif %}>
+<section class="pp-section {{ 'pp-soft' if l.soft else 'pp-white' }} pp-logos-section{% if l.compact %} pp-compact{% endif %}"{% if l.id %} id="{{ l.id }}"{% endif %}>
   <div class="pp-container">
     <header class="pp-head"><p class="pp-eyebrow">{{ l.eyebrow }}</p><h2>{{ l.title }}</h2>{% if l.lead %}<p>{{ l.lead }}</p>{% endif %}</header>
     <ul class="pp-logos"{% if l.ancho %} style="max-width: {{ l.ancho }}; margin-inline: auto !important;"{% endif %}>{% for ic, name, color in l["items"] %}<li style="--logo: {{ color }}">{{ icon(ic, 'icon') }}<span>{{ name }}</span></li>{% endfor %}</ul>
