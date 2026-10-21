@@ -102,8 +102,9 @@
       {% for it in m["items"] %}
       <li>
         {% set href = it.href or m.href %}{% set tag = "a" if href else "div" %}
-        <{{ tag }} class="pp-module{% if it.highlight %} is-destacado{% endif %}"{% if href %} href="{{ href }}"{% endif %}{% if it.color %} style="--pp-ico: {{ it.color }}"{% endif %}>
-          <span class="pp-module-ico">{{ glyph(it.icon) }}</span>
+        <{{ tag }} class="pp-module{% if it.highlight %} is-destacado{% endif %}{% if it.ilu %} has-ilu{% endif %}"{% if href %} href="{{ href }}"{% endif %}{% if it.color %} style="--pp-ico: {{ it.color }}"{% endif %}>
+          {% if it.ilu %}<span class="pp-module-ilu"><img src="{{ img(it.ilu) }}" alt="" width="240" height="150" loading="lazy" decoding="async"></span>
+          {% else %}<span class="pp-module-ico">{{ glyph(it.icon) }}</span>{% endif %}
           {% if m.even %}<div class="pp-module-body">{% endif %}
           <h3>{{ it.title|safe }}</h3>
           <p>{{ it.text }}</p>
