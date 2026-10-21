@@ -13,7 +13,7 @@
 {% set SERVICES = [
   ("gestion", "Software de Gestión", "ODOO", "/software-de-gestion-completo/"),
   ("staff", "Staff Augmentation", "DESARROLLADORES", "/staff-augmentation/"),
-  ("apps", "Sitios Web<br>&amp; Apps", "WORDPRESS", "/desarrollo-apps-sitios-web-cooperativos/"),
+  ("apps", "Apps y<br>sitios web", "DJANGO · WAGTAIL", "/desarrollo-apps-sitios-web-cooperativos/"),
   ("elearning", "E-Learning Platforms", "MOODLE", "/plataformas-e-learning-lms-moodle/"),
   ("diseno", "Diseño &amp; Comunicación", "DIGITAL", "/diseno-sitios-web-identidades/"),
 ] %}
@@ -116,26 +116,25 @@
 </form>
 {%- endmacro %}
 
-{% macro wordpress_block(cta_label="Contactanos") -%}
+{% macro autoadmin_block(cta_label="Contactanos") -%}
 <div class="feature-row">
   <div class="feature">
-    <span class="feature-icon circle-icon">{{ icon('wp-lider') }}</span>
-    <h3>Líder mundial</h3>
-    <p>Se trata del CMS más usado en Internet y cuenta con una gran comunidad dando soporte al gestor de contenidos.</p>
+    <span class="feature-icon circle-icon">{{ icon('bi-file-earmark-text') }}</span>
+    <h3>Lo gestionás vos</h3>
+    <p>Tu equipo actualiza páginas, noticias e imágenes desde un panel simple, sin conocimientos técnicos.</p>
   </div>
   <div class="feature">
-    <span class="feature-icon circle-icon">{{ icon('wp-facil') }}</span>
-    <h3>Fácil de emplear</h3>
-    <p>Útil para la gestión en contenidos, con una mejora constante y miles de plugins para agilizar el trabajo.</p>
-    <img class="feature-img" src="{{ img('2023/11/Mesa-de-trabajo-7.svg') }}" alt="WordPress en un monitor" loading="lazy" width="300" height="220">
+    <span class="feature-icon circle-icon">{{ icon('bi-code-slash') }}</span>
+    <h3>Diseño a medida</h3>
+    <p>Cada sitio se diseña para tu organización y se adapta a computadoras, tablets y celulares.</p>
   </div>
   <div class="feature">
-    <span class="feature-icon circle-icon">{{ icon('wp-usado') }}</span>
-    <h3><a href="https://trends.builtwith.com/es/websitelist/WordPress" target="_blank" rel="noopener">El más usado</a></h3>
-    <p>Representa el 42% de todas las webs a nivel mundial, 1 de cada 4 sitios web están diseñados en esta plataforma.</p>
+    <span class="feature-icon circle-icon">{{ icon('ventaja-costos') }}</span>
+    <h3>Software libre</h3>
+    <p>Django y Wagtail son tecnologías de código abierto: sin costos de licencias y sin depender de un único proveedor.</p>
   </div>
 </div>
-<p class="center"><a class="btn btn-outline" href="{{ url('/contacto-geneos/') }}">{{ cta_label }}</a></p>
+<p class="center"><a class="btn btn-outline" href="{{ url('/desarrollo-apps-sitios-web-cooperativos/') }}#autoadministrables">CONOCER MÁS</a> <a class="btn btn-outline" href="{{ url('/contacto-geneos/') }}">{{ cta_label }}</a></p>
 {%- endmacro %}
 
 {% macro service_hero(theme, ic, title, text, target) -%}

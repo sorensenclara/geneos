@@ -3,7 +3,7 @@
 {% set FAQS = [
   ("¿Qué incluye el diseño de una identidad visual?", "<p>Diseñamos el isologotipo y definimos la paleta de colores, la tipografía y los elementos gráficos de tu marca. Lo reunimos en un <strong>manual de marca</strong> para que cualquier pieza mantenga la coherencia (podés ver el <a href=\"" ~ url('/recursos/') ~ "\">manual de marca de GENEOS</a> como ejemplo).</p>"),
   ("¿Qué es el diseño UX/UI?", "<p>UX (experiencia de usuario) es pensar cómo las personas usan tu sitio o aplicación para que encuentren lo que buscan sin esfuerzo. UI (interfaz de usuario) es el diseño visual de cada pantalla. Trabajamos ambos antes de desarrollar.</p>"),
-  ("¿Pueden diseñar y también desarrollar el sitio?", "<p>Sí. El mismo equipo diseña y <a href=\"" ~ url('/desarrollo-apps-sitios-web-cooperativos/') ~ "\">desarrolla tu sitio web o tu app</a> con WordPress, Odoo, Django o Moodle, así el resultado final respeta el diseño al detalle.</p>"),
+  ("¿Pueden diseñar y también desarrollar el sitio?", "<p>Sí. El mismo equipo diseña y <a href=\"" ~ url('/desarrollo-apps-sitios-web-cooperativos/') ~ "\">desarrolla tu sitio web o tu app</a> con Django, Wagtail, Odoo o Moodle, así el resultado final respeta el diseño al detalle.</p>"),
   ("¿Hacen piezas para redes sociales y comunicación?", "<p>Sí. Ideamos la estrategia de comunicación y diseñamos las piezas para que tu marca tenga sinergia en todos los canales: web, redes, presentaciones e impresos.</p>"),
 ] %}
 {% block schema %}
@@ -16,10 +16,10 @@
 <section class="section theme-white" id="design">
   <div class="container">
     {{ m.section_head("DISEÑO Y COMUNICACIÓN", "Diseñamos marcas y sitios que conectan") }}
-    <p class="prose">En <strong>Geneos</strong> nos especializamos en el <strong>diseño de sitios web e identidades visuales</strong> utilizando tecnologías libres como WordPress, Odoo y Moodle. Ya sea que necesites un sitio web funcional, una tienda online o una nueva identidad para tu marca, trabajamos para crear soluciones digitales únicas y sostenibles que representen lo mejor de tu proyecto.</p>
+    <p class="prose">En <strong>Geneos</strong> nos especializamos en el <strong>diseño de sitios web e identidades visuales</strong> utilizando tecnologías libres como Django, Wagtail, Odoo y Moodle. Ya sea que necesites un sitio web funcional, una tienda online o una nueva identidad para tu marca, trabajamos para crear soluciones digitales únicas y sostenibles que representen lo mejor de tu proyecto.</p>
     <div class="flip-grid" style="margin-top:48px">
       {% for ic, title, text, link in [
-        ("flip-web", "DESARROLLAMOS<br>SITIOS WEB", "Diseñamos la interfaz del usuario, UX y UI, e implementamos un sitio web con base en código abierto, seguro, responsive y personalizable.", ("#wordpress", "WORDPRESS")),
+        ("flip-web", "DESARROLLAMOS<br>SITIOS WEB", "Diseñamos la interfaz del usuario, UX y UI, e implementamos un sitio web con base en código abierto, seguro, responsive y personalizable.", ("#autoadministrables", "DJANGO Y WAGTAIL")),
         ("flip-identidad", "DISEÑAMOS<br>IDENTIDADES", "Diseñamos isologotipos e identidades visuales, definiendo la paleta de colores, tipografía y elementos gráficos coherentes con tu negocio, para atraer y construir relaciones duraderas con clientes.", None),
         ("flip-comunicacion", "CREAMOS<br>LA COMUNICACIÓN", "Tener sinergia de marca en todas las piezas de comunicación es crucial para construir una imagen sólida, e ideamos toda la estrategia de comunicación para lograrlo.", None),
       ] %}
@@ -47,10 +47,10 @@
   </div>
 </section>
 
-<section class="section theme-black" id="wordpress">
+<section class="section theme-black" id="autoadministrables">
   <div class="container">
-    {{ m.section_head("TU SITIO CON", "WORDPRESS") }}
-    {{ m.wordpress_block("CONTACTANOS") }}
+    {{ m.section_head("TU SITIO AUTOADMINISTRABLE CON", "DJANGO Y WAGTAIL") }}
+    {{ m.autoadmin_block("CONTACTANOS") }}
   </div>
 </section>
 
