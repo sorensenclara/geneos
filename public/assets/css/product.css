@@ -549,3 +549,8 @@ a.pp-module:hover .pp-module-more .icon { transform: translateX(4px); }
 .pp-module-ilu { display: block; border-radius: 12px; background: #f6f9ff; overflow: hidden; }
 .pp-module.is-destacado .pp-module-ilu { background: #fff; }
 .pp-module-ilu img { display: block; width: 100%; height: auto; aspect-ratio: 240 / 150; max-height: 200px; object-fit: contain; }
+/* Hero compacto (solo etiqueta, H1 y botones): menos alto y el bloque se ajusta a su contenido para quedar centrado */
+.pp-hero-plain.pp-hero-compact { padding-block: clamp(40px, 5.5vw, 72px) calc(clamp(40px, 5.5vw, 72px) + clamp(30px, 4vw, 60px)); }
+.pp-hero-compact .pp-hero-grid { grid-template-columns: auto minmax(0, max-content); }
+.pp-hero-compact .pp-hero-copy { container-type: normal; max-width: 640px; }
+@media (max-width: 700px) { .pp-hero-compact .pp-hero-grid { grid-template-columns: minmax(0, 1fr); } }

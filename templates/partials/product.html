@@ -30,7 +30,7 @@
         img, img_sm, pos, fade, wave_next, wave_back,
         media: {monitor: {src, webp, alt, w, h}, monitor_sm: {…}} | {shot: {src, alt, w, h}}} #}
 {% macro hero(h) -%}
-<section class="pp-hero pp-wave{% if not h.img %} pp-hero-plain{% endif %}{% if h.center %} pp-hero-center{% endif %}" style="{% if h.img %}--pp-hero-img: url('{{ asset(h.img) }}');{% endif %} {% if h.img_sm %}--pp-hero-img-sm: url('{{ asset(h.img_sm) }}');{% endif %} {% if h.pos %}--pp-hero-pos: {{ h.pos }};{% endif %} {% if h.fade %}--pp-hero-fade: {{ h.fade }};{% endif %} --pp-wave-next: {{ h.wave_next or '#fff' }};{% if h.wave_back %} --pp-wave-back: {{ h.wave_back }};{% endif %}">
+<section class="pp-hero pp-wave{% if not h.img %} pp-hero-plain{% endif %}{% if h.center %} pp-hero-center{% endif %}{% if h.compact %} pp-hero-compact{% endif %}" style="{% if h.img %}--pp-hero-img: url('{{ asset(h.img) }}');{% endif %} {% if h.img_sm %}--pp-hero-img-sm: url('{{ asset(h.img_sm) }}');{% endif %} {% if h.pos %}--pp-hero-pos: {{ h.pos }};{% endif %} {% if h.fade %}--pp-hero-fade: {{ h.fade }};{% endif %} --pp-wave-next: {{ h.wave_next or '#fff' }};{% if h.wave_back %} --pp-wave-back: {{ h.wave_back }};{% endif %}">
   <div class="pp-container pp-hero-grid{% if h.icon %} pp-hero-with-icon{% elif not h.media %} pp-hero-solo{% endif %}">
     {% if h.icon %}<span class="pp-hero-icon">{{ icon(h.icon) }}</span>{% endif %}
     <div class="pp-hero-copy">
@@ -103,15 +103,12 @@
       <li>
         {% set href = it.href or m.href %}{% set tag = "a" if href else "div" %}
         <{{ tag }} class="pp-module{% if it.highlight %} is-destacado{% endif %}{% if it.ilu %} has-ilu{% endif %}"{% if href %} href="{{ href }}"{% endif %}{% if it.color %} style="--pp-ico: {{ it.color }}"{% endif %}>
-          {% if it.ilu %}<span class="pp-module-ilu"><img src="{{ img(it.ilu) }}" alt="" width="240" height="150" loading="lazy" decoding="async"></span>
-          {% else %}<span class="pp-module-ico">{{ glyph(it.icon) }}</span>{% endif %}
-          {% if m.even %}<div class="pp-module-body">{% endif %}
+          <span class="{{ 'pp-module-ilu' if it.ilu else 'pp-module-ico' }}">{{ ('<img src="' ~ img(it.ilu) ~ '" alt="" width="240" height="150" loading="lazy" decoding="async">')|safe if it.ilu else glyph(it.icon) }}</span>{{ '<div class="pp-module-body">'|safe if m.even else '' }}
           <h3>{{ it.title|safe }}</h3>
           <p>{{ it.text }}</p>
           {% if it.more %}<span class="pp-module-more">{{ it.more }} {{ icon('bi-arrow-right', 'icon bi') }}</span>
           {% elif href %}<span class="pp-arrow" aria-hidden="true">{{ icon('bi-arrow-right', 'icon bi') }}</span>{% endif %}
-          {% if m.even %}</div>{% endif %}
-        </{{ tag }}>
+        {{ '</div>'|safe if m.even else '' }}</{{ tag }}>
       </li>
       {% endfor %}
     </ul>
