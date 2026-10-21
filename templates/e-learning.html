@@ -33,55 +33,57 @@
 }) }}
 
 {{ pp.showcase({
-  "id": "campus", "compact": true, "eyebrow": "Campus virtual", "title": "Tu campus virtual, listo para enseñar",
-  "text": "Implementamos campus virtuales con <strong>Moodle</strong> para que tu organización dicte cursos, capacite a su equipo y acompañe a sus estudiantes en línea.",
-  "checks": ["Formación a medida|para instituciones educativas, empresas y organizaciones", "Puesta en marcha y acompañamiento|en todo el proceso de implementación", "Escalable y sostenible|crece junto con tu propuesta educativa"],
-  "more": {"label": "Solicitar presupuesto", "href": CONTACT, "style": "outline-accent", "icon": "bi-arrow-right"},
-  "shot": {"src": "2023/11/notebook_moodle.png", "alt": "Notebook con un campus virtual Moodle", "w": 800, "h": 560, "frame": "comp"},
-  "shot_max": "460px",
+  "id": "campus", "compact": true, "title": "Tu campus virtual, listo para enseñar",
+  "text": "Implementamos plataformas e-learning con <strong>Moodle</strong>, adaptadas a las necesidades de tu institución: una herramienta completa, flexible y segura para gestionar cursos, contenidos, usuarios y evaluaciones.",
+  "points": [["bi-people", "Formación a medida", "Para instituciones educativas, empresas y organizaciones."],
+             ["bi-gear", "Configuración y acompañamiento", "Te asesoramos en todo el proceso de implementación."],
+             ["bi-bar-chart-line", "Escalable y sostenible", "Crece junto con tus necesidades."]],
+  "shot": {"src": "elearning/campus-notebook.svg", "alt": "Ilustración de un campus virtual en una notebook", "w": 520, "h": 330, "frame": "comp"},
+  "shot_max": "620px",
 }) }}
 
-{{ pp.modules({
-  "id": "beneficios", "soft": true, "cols": 5, "mobile2": true, "eyebrow": "Beneficios de Moodle", "title": "Una plataforma adaptada a tu institución",
+{{ pp.split_cards({
+  "id": "beneficios", "soft": true, "title": "Una plataforma adaptada a tu institución",
+  "lead": "Aprovechá todo el potencial de Moodle con una implementación pensada para tu realidad.",
+  "img": {"src": "2023/11/notebook_moodle.png", "alt": "Ilustración de una notebook con libros y el logo de Moodle", "w": 800, "h": 560},
   "items": [
-    {"icon": "bi-gear", "title": "Personalizable", "text": "Se adapta a tu identidad y a tus cursos."},
+    {"icon": "bi-gear", "title": "Personalizable", "text": "Adaptamos la plataforma a tu identidad institucional."},
     {"icon": "bi-code-slash", "title": "Código abierto", "text": "Software libre, sin costos de licencias."},
-    {"icon": "bi-globe", "title": "Multilingüe", "text": "Disponible en muchos idiomas."},
-    {"icon": "bi-window-stack", "title": "Responsive", "text": "Se usa desde computadoras, tablets y celulares."},
-    {"icon": "bi-shield-check", "title": "Seguro", "text": "Roles, permisos y copias de respaldo."},
+    {"icon": "bi-globe", "title": "Multilingüe", "text": "Ideal para contextos educativos diversos."},
+    {"icon": "bi-window-stack", "title": "Responsive", "text": "Accesible desde cualquier dispositivo."},
+    {"icon": "bi-shield-check", "title": "Seguro", "text": "Gestión de roles, permisos y respaldos."},
   ],
 }) }}
 
 {{ pp.modules({
-  "id": "por-que", "cols": 3, "even": true, "eyebrow": "Por qué elegir", "title": "Moodle con GENEOS",
+  "id": "por-que", "soft": true, "compact": true, "cols": 3, "circles": true, "eyebrow": "Por qué elegir", "title": "Moodle con GENEOS",
   "items": [
-    {"icon": "moodle-gamificacion", "title": "Gamificación", "text": "Sumamos contenidos interactivos con H5P: videos con preguntas, cuestionarios y juegos."},
-    {"icon": "moodle-diseno", "title": "Diseño", "text": "Personalizamos el campus y los cursos con la identidad visual de tu organización."},
-    {"icon": "moodle-capacitacion", "title": "Capacitación", "text": "Formamos a docentes y administradores para que aprovechen cada módulo."},
+    {"icon": "moodle-gamificacion", "title": "Gamificación", "text": "Integramos herramientas y recursos para generar experiencias de aprendizaje más motivadoras y participativas."},
+    {"icon": "moodle-diseno", "title": "Diseño", "text": "Personalizamos la plataforma con una identidad visual acorde a tu organización."},
+    {"icon": "moodle-capacitacion", "title": "Capacitación", "text": "Brindamos formación y soporte para docentes y administradores, para una adopción exitosa."},
   ],
 }) }}
 
-{{ pp.steps({
-  "id": "como-lo-hacemos", "eyebrow": "Paso a paso", "title": "Cómo creamos tu plataforma e‑learning", "cols": 5,
-  "lead": "Te acompañamos desde el relevamiento hasta que tu equipo usa el campus de forma autónoma.",
+{{ pp.step_cards({
+  "id": "como-lo-hacemos", "title": "Cómo creamos tu plataforma e‑learning",
   "items": [
-    {"title": "Relevamiento", "text": "Conocemos tu propuesta educativa y a quiénes va dirigida."},
-    {"title": "Puesta en marcha", "text": "Instalamos y configuramos Moodle con los módulos que necesitás."},
-    {"title": "Diseño", "text": "Personalizamos el campus y los cursos con tu identidad."},
-    {"title": "Contenidos", "text": "Sumamos actividades interactivas y gamificación con H5P."},
-    {"title": "Capacitación y soporte", "text": "Formamos a tu equipo y te acompañamos después."},
+    {"title": "Relevamiento", "text": "Conocemos tus objetivos y tu audiencia."},
+    {"title": "Puesta en marcha", "text": "Instalación, configuración y estructura inicial."},
+    {"title": "Diseño", "text": "Personalizamos la plataforma y los cursos."},
+    {"title": "Contenidos", "text": "Sumamos materiales, actividades y evaluaciones."},
+    {"title": "Capacitación y soporte", "text": "Te acompañamos para que puedas gestionarla de forma autónoma."},
   ],
 }) }}
 
 {{ pp.clients("Instituciones que confían en nosotros", ["2024/03/Universidad-UNAJ.png", "2024/03/Universidad-Nacional-Hurlingham.png", "2024/03/Union-Agruicola-de-Avellaneda.png", "2024/03/Edunet-Cooperativa.png", "2024/03/Colegio-de-Trabajadores-Sociales.png", "2024/03/CINEA.png", "2024/03/CIEP.png"]) }}
 
-{{ pp.faq({"title": "Preguntas frecuentes", "lead": "Las dudas más comunes sobre Moodle y los campus virtuales.", "items": FAQS}) }}
+{{ pp.faq({"eyebrow": "Dudas", "title": "Preguntas frecuentes sobre Moodle y e‑learning", "centered": true, "items": FAQS}) }}
 
 {{ pp.band({
-  "icon": "elearning", "eyebrow": "Hablemos de tu proyecto", "title": "¿Querés tu propio campus virtual?",
+  "eyebrow": "Hablemos de tu proyecto", "title": "¿Querés tu propio campus virtual?",
   "text": "Contanos qué querés enseñar y te ayudamos a armar la plataforma.",
-  "actions": [{"label": "Solicitar presupuesto", "href": CONTACT, "style": "accent", "icon": "bi-arrow-right"},
-              {"label": "Escribinos por WhatsApp", "href": wa("Hola, quiero consultar por una plataforma e-learning Moodle"), "style": "outline-light", "icon_before": "bi-whatsapp", "external": true}],
+  "actions": [{"label": "Escribinos por WhatsApp", "href": wa("Hola, quiero consultar por una plataforma e-learning Moodle"), "style": "accent", "icon_before": "bi-whatsapp", "external": true},
+              {"label": "Formulario de contacto", "href": CONTACT, "style": "outline-light"}],
 }) }}
 
 </div>

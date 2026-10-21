@@ -91,14 +91,14 @@
    m = {id, eyebrow, title, lead, href (enlace de las tarjetas, opcional), soft,
         items: [{icon, title, text, color}]} #}
 {% macro modules(m) -%}
-<section class="pp-section {{ 'pp-soft' if m.soft else 'pp-white' }}"{% if m.id %} id="{{ m.id }}"{% endif %}>
+<section class="pp-section {{ 'pp-soft' if m.soft else 'pp-white' }}{{ ' pp-compact' if m.compact else '' }}"{% if m.id %} id="{{ m.id }}"{% endif %}>
   <div class="pp-container">
     <header class="pp-head">
       {% if m.eyebrow %}<p class="pp-eyebrow">{{ m.eyebrow }}</p>{% endif %}
       <h2>{{ m.title }}</h2>
       {% if m.lead %}<p>{{ m.lead|safe }}</p>{% endif %}
     </header>
-    <ul class="pp-modules-grid{% if m.cols %} pp-modules-{{ m.cols }}{% endif %}{% if m.even %} is-even{% endif %}{% if m.mobile2 %} is-m2{% endif %}">
+    <ul class="pp-modules-grid{% if m.cols %} pp-modules-{{ m.cols }}{% endif %}{% if m.even %} is-even{% endif %}{% if m.mobile2 %} is-m2{% endif %}{% if m.circles %} is-circles{% endif %}">
       {% for it in m["items"] %}
       <li>
         {% set href = it.href or m.href %}{% set tag = "a" if href else "div" %}
@@ -247,11 +247,11 @@
 {# ---------- Preguntas frecuentes ----------
    f = {eyebrow, title, lead, items: [[pregunta, respuesta html]]} #}
 {% macro faq(f) -%}
-<section class="pp-section pp-faq-section" id="faq">
-  <div class="pp-container pp-faq">
+<section class="pp-section pp-faq-section{% if f.centered %} pp-compact{% endif %}" id="faq">
+  <div class="pp-container pp-faq{% if f.centered %} is-centered{% endif %}">
     <div class="pp-faq-head">
       <p class="pp-eyebrow pp-eyebrow-2">{{ f.eyebrow or "Preguntas frecuentes" }}</p>
-      <h2>{{ f.title }}<span class="pp-dot">.</span></h2>
+      <h2>{{ f.title }}{% if not f.centered %}<span class="pp-dot">.</span>{% endif %}</h2>
       {% if f.lead %}<p>{{ f.lead|safe }}</p>{% endif %}
     </div>
     <div class="pp-faq-list">
@@ -426,9 +426,10 @@
 <section class="pp-section {{ 'pp-soft' if s.soft else 'pp-white' }} pp-showcase{% if s.compact %} pp-compact{% endif %}"{% if s.id %} id="{{ s.id }}"{% endif %}>
   <div class="pp-container pp-showcase-grid{% if s.reverse %} is-reverse{% endif %}{% if s.stack %} is-stack{% endif %}">
     <div class="pp-showcase-copy">
-      <p class="pp-eyebrow">{{ s.eyebrow }}</p>
+      {{ ('<p class="pp-eyebrow">' ~ s.eyebrow ~ '</p>')|safe if s.eyebrow else '<span class="pp-rule" aria-hidden="true"></span>'|safe }}
       <h2>{{ s.title }}</h2>
       {% if s.text %}<p class="pp-showcase-text">{{ s.text|safe }}</p>{% endif %}
+      {% if s.points %}<ul class="pp-points">{% for ic, t, d in s.points %}<li><span class="pp-points-ico">{{ glyph(ic) }}</span><span><b>{{ t }}</b><small>{{ d }}</small></span></li>{% endfor %}</ul>{% endif %}
       {% if s.checks %}<ul class="pp-showcase-checks{% if s.checks_grid %} is-grid{% endif %}">{% for c in s.checks %}{% set t = c.split("|") %}<li>{{ icon('bi-check-circle', 'icon bi') }}<span>{{ t[0] }}{% if t|length > 1 %}<small>{{ t[1] }}</small>{% endif %}</span></li>{% endfor %}</ul>{% endif %}
       {% if s.features and s.shot %}<ul class="pp-showcase-feats">{% for ic, t, d in s.features %}<li><span>{{ glyph(ic) }}</span><b>{{ t }}</b><small>{{ d }}</small></li>{% endfor %}</ul>{% endif %}
       {% if s.more and s.more.style %}<div class="pp-showcase-actions">{{ btn(s.more) }}</div>{% elif s.more %}<a class="pp-more" href="{{ s.more.href }}">{{ s.more.label }} {{ icon('bi-arrow-right', 'icon bi') }}</a>{% endif %}
@@ -453,6 +454,34 @@
   <div class="pp-container">
     <header class="pp-head"><p class="pp-eyebrow">{{ l.eyebrow }}</p><h2>{{ l.title }}</h2>{% if l.lead %}<p>{{ l.lead }}</p>{% endif %}</header>
     <ul class="pp-logos"{% if l.ancho %} style="max-width: {{ l.ancho }}; margin-inline: auto !important;"{% endif %}>{% for ic, name, color in l["items"] %}<li style="--logo: {{ color }}">{{ icon(ic, 'icon') }}<span>{{ name }}</span></li>{% endfor %}</ul>
+  </div>
+</section>
+{%- endmacro %}
+
+
+{# ---------- Imagen + encabezado + tarjetas (E-learning: «Una plataforma adaptada…») ---------- #}
+{% macro split_cards(c) -%}
+<section class="pp-section pp-compact {{ 'pp-soft' if c.soft else 'pp-white' }} pp-split"{% if c.id %} id="{{ c.id }}"{% endif %}>
+  <div class="pp-container pp-split-grid">
+    <figure class="pp-split-media"><img src="{{ img(c.img.src) }}" alt="{{ c.img.alt }}" width="{{ c.img.w }}" height="{{ c.img.h }}" loading="lazy" decoding="async"></figure>
+    <div class="pp-split-body">
+      <span class="pp-rule" aria-hidden="true"></span>
+      <h2>{{ c.title }}</h2>
+      {% if c.lead %}<p class="pp-split-lead">{{ c.lead }}</p>{% endif %}
+      <ul class="pp-split-cards">{% for it in c["items"] %}<li><span class="pp-split-ico">{{ glyph(it.icon) }}</span><h3>{{ it.title }}</h3><p>{{ it.text }}</p></li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>
+{%- endmacro %}
+
+{# ---------- Pasos en tarjetas numeradas (E-learning) ---------- #}
+{% macro step_cards(s) -%}
+<section class="pp-section pp-compact pp-white pp-stepcards"{% if s.id %} id="{{ s.id }}"{% endif %}>
+  <div class="pp-container">
+    <h2 class="pp-stepcards-title">{{ s.title }}</h2>
+    <ol class="pp-stepcards-list">
+      {% for it in s["items"] %}<li><span class="pp-stepcards-n" aria-hidden="true">{{ loop.index }}</span><h3>{{ it.title }}</h3><p>{{ it.text }}</p></li>{% endfor %}
+    </ol>
   </div>
 </section>
 {%- endmacro %}

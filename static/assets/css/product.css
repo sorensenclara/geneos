@@ -583,3 +583,60 @@ a.pp-module:hover .pp-module-more .icon { transform: translateX(4px); }
 }
 .pp-showcase-media.is-comp[style] { margin-inline: auto; }
 @media (max-width: 900px) { .pp-showcase-media.is-comp[style] { max-width: 300px !important; } }
+
+/* ---------- E-learning: componentes propios (opcionales) ---------- */
+.pp-rule { display: block; width: 44px; height: 3px; border-radius: 2px; background: var(--pp-accent); }
+/* Puntos con ícono en círculo suave */
+.pp-points { margin: 6px 0 0 !important; padding: 0; list-style: none; display: grid; gap: 18px; }
+.pp-points li { display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: center; }
+.pp-points-ico { width: 52px; height: 52px; border-radius: 50%; background: var(--pp-icon-bg); color: var(--pp-ico); display: grid; place-items: center; }
+.pp-points-ico .icon { width: 24px; height: 24px; }
+.pp-points b { display: block; color: var(--pp-heading); font-size: 1.02rem; }
+.pp-points small { color: var(--pp-muted); font-size: .92rem; line-height: 1.4; }
+/* Imagen + tarjetas */
+.pp-split-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.pp-split-media { margin: 0; }
+.pp-split-media img { width: 100%; height: auto; max-width: 420px; margin-inline: auto; display: block; }
+.pp-split-body { display: grid; gap: 12px; min-width: 0; }
+.pp-split-body h2 { margin: 0; font-size: clamp(1.7rem, 2.8vw, 2.2rem); }
+.pp-split-lead { color: var(--pp-muted); margin: 0; }
+.pp-split-cards { margin: 10px 0 0 !important; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.pp-split-cards li { background: #fff; border: 1px solid var(--pp-border); border-radius: 14px; padding: 18px; box-shadow: 0 8px 22px rgba(15,23,42,.05); }
+.pp-split-ico { color: var(--pp-ico); display: block; margin-bottom: 10px; }
+.pp-split-ico .icon { width: 30px; height: 30px; }
+.pp-split-cards h3 { font-size: 1rem; margin: 0 0 4px; color: var(--pp-heading); }
+.pp-split-cards p { font-size: .9rem; color: var(--pp-muted); line-height: 1.4; margin: 0; }
+@media (max-width: 900px) { .pp-split-grid { grid-template-columns: 1fr; } .pp-split-media { display: none; } }
+@media (max-width: 560px) { .pp-split-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .pp-split-cards li { padding: 12px 8px; text-align: center; } .pp-split-ico .icon { width: 24px; height: 24px; margin-inline: auto; } .pp-split-cards h3 { font-size: .82rem; } .pp-split-cards p { font-size: .74rem; } }
+/* Tarjetas sin caja con ícono en círculo naranja */
+.pp-modules-grid.is-circles .pp-module { background: none; border: 0; box-shadow: none; display: grid; grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 8px 12px; gap: 10px; }
+.pp-modules-grid.is-circles .pp-module-ico { width: 72px; height: 72px; color: var(--pp-ico); grid-row: auto; }
+.pp-modules-grid.is-circles .pp-module-ico .icon { width: 72px; height: 72px; }
+#por-que.pp-soft { background: #ffefe3; }
+.pp-modules-grid.is-circles .pp-module h3 { padding-right: 0; }
+.pp-modules-grid.is-circles .pp-module p { max-width: 32ch; }
+@media (max-width: 620px) { .pp-modules-grid.is-circles .pp-module { grid-template-columns: 52px 1fr; justify-items: start; text-align: left; align-items: start; column-gap: 14px; row-gap: 2px; padding: 4px 0; } .pp-modules-grid.is-circles .pp-module-ico { width: 52px; height: 52px; grid-row: span 2; } .pp-modules-grid.is-circles .pp-module-ico .icon { width: 52px; height: 52px; } }
+/* Pasos en tarjetas numeradas */
+.pp-stepcards-title { text-align: center; font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin: 0 0 36px !important; }
+.pp-stepcards-list { margin: 0 !important; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; }
+.pp-stepcards-list li { position: relative; background: #fff; border: 1px solid var(--pp-border); border-radius: 14px; padding: 30px 16px 18px; box-shadow: 0 8px 22px rgba(15,23,42,.05); }
+.pp-stepcards-list li + li::before { content: ""; position: absolute; left: -22px; top: 50%; width: 22px; border-top: 2px dashed var(--pp-line-2); }
+.pp-stepcards-n { position: absolute; top: -16px; left: 16px; width: 32px; height: 32px; border-radius: 50%; background: var(--pp-ico); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: .95rem; }
+.pp-stepcards-list h3 { font-size: 1rem; margin: 0 0 4px; color: var(--pp-heading); }
+.pp-stepcards-list p { font-size: .9rem; color: var(--pp-muted); line-height: 1.4; margin: 0; }
+@media (max-width: 900px) {
+  .pp-stepcards-title { text-align: left; }
+  .pp-stepcards-list { grid-template-columns: 1fr; gap: 14px; }
+  .pp-stepcards-list li { border: 0; box-shadow: none; background: none; padding: 0 0 0 46px; }
+  .pp-stepcards-list li + li::before { display: none; }
+  .pp-stepcards-n { top: 0; left: 0; }
+}
+/* Preguntas frecuentes centradas en dos columnas */
+.pp-faq.is-centered { grid-template-columns: 1fr; gap: 28px; }
+.pp-faq.is-centered .pp-faq-head { justify-items: center; text-align: center; }
+.pp-faq.is-centered .pp-faq-head h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.pp-faq.is-centered .pp-faq-list { grid-template-columns: 1fr 1fr; align-items: start; gap: 10px 18px; }
+@media (max-width: 760px) { .pp-faq.is-centered .pp-faq-list { grid-template-columns: 1fr; } .pp-faq.is-centered .pp-faq-head { justify-items: start; text-align: left; } }
+/* Logos de instituciones en tarjetas (E-learning) */
+.pp-theme-elearning .pp-clients .marquee li { background: #fff; border: 1px solid var(--pp-border); border-radius: 12px; padding: 10px 18px; width: 180px; }
+.pp-theme-elearning .pp-clients h2 { font-size: clamp(1.1rem, 2vw, 1.4rem) !important; letter-spacing: .04em; }
