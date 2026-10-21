@@ -1,99 +1,89 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
+{% import "partials/product.html" as pp with context %}
+{#
+  Plataformas e-learning · contenido de la página. Usa los componentes de las páginas de servicios
+  (partials/product.html + assets/css/product.css, tema .pp-theme-elearning: el naranja es el único color de identidad).
+#}
+{% set CONTACT = url('/contacto-geneos/') ~ "#formulario" %}
 {% set FAQS = [
-  ("¿Qué es Moodle?", "<p>Moodle es la plataforma de aprendizaje en línea (LMS) de código abierto más usada del mundo. Permite crear aulas virtuales con cursos, materiales, foros, tareas, cuestionarios, calificaciones y certificados, y gestionar estudiantes y docentes desde un mismo lugar.</p>"),
-  ("¿Para qué tipo de organizaciones es un campus virtual?", "<p>Para universidades, institutos, colegios, colegios profesionales, cooperativas y empresas que quieren dictar cursos o capacitar a su personal de forma online. Ya trabajamos con universidades nacionales, cooperativas y colegios profesionales de Argentina.</p>"),
-  ("¿Pueden personalizar el campus con nuestra identidad?", "<p>Sí. Diseñamos la plataforma y los cursos en base a la identidad de tu organización: logo, colores, tipografías y piezas gráficas, logrando sinergia marcaria en cada parte del entorno.</p>"),
-  ("¿Qué es H5P y para qué sirve?", "<p>H5P es un complemento que permite integrar contenidos interactivos en Moodle: videos con preguntas, presentaciones, cuestionarios, juegos y más. Lo usamos para sumar <strong>gamificación</strong> y lograr el aprendizaje a partir del entretenimiento.</p>"),
-  ("¿Capacitan a docentes y administradores?", "<p>Sí. Brindamos capacitación a todas las personas involucradas en la administración y el uso de la plataforma, para que entiendan el funcionamiento de cada módulo y puedan aprovecharla al máximo.</p>"),
+  ("¿Qué es Moodle?", "<p>Moodle es una plataforma de aprendizaje en línea (LMS) de código abierto. Permite crear aulas virtuales con cursos, materiales, foros, tareas, cuestionarios, calificaciones y certificados, y gestionar estudiantes y docentes desde un mismo lugar.</p>"),
+  ("¿Para qué organizaciones es un campus virtual?", "<p>Para universidades, institutos, colegios, colegios profesionales, cooperativas y empresas que quieren dictar cursos o capacitar a su personal en línea.</p>"),
+  ("¿Pueden personalizar el campus con nuestra identidad?", "<p>Sí. Diseñamos la plataforma y los cursos con el logo, los colores y las tipografías de tu organización.</p>"),
+  ("¿Qué es H5P y para qué sirve?", "<p>H5P es un complemento que suma contenidos interactivos a Moodle: videos con preguntas, presentaciones, cuestionarios y juegos. Lo usamos para incorporar <strong>gamificación</strong> a los cursos.</p>"),
+  ("¿Capacitan a docentes y administradores?", "<p>Sí. Capacitamos a quienes administran y usan la plataforma para que conozcan cada módulo y puedan aprovecharla al máximo.</p>"),
 ] %}
+
 {% block schema %}
 {{ m.faq_schema(FAQS) }}
 {{ m.service_schema("Plataformas e-learning y campus virtual Moodle", "Implementación de LMS Moodle", "Creación, diseño y personalización de campus virtuales en Moodle con gamificación H5P, capacitación y soporte.") }}
 {% endblock %}
-{% block body_class %}page-e-learning{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ asset('css/product.css') }}">{% endblock %}
+{% block body_class %}page-e-learning page-product{% endblock %}
+
 {% block content %}
-<section class="service-hero theme-orange">
-  <div class="container service-hero-inner">
-    <span class="service-hero-icon">{{ icon('elearning') }}</span>
-    <div class="service-hero-text">
-      <h1>Plataformas E-Learning<br><small>campus virtual con Moodle</small></h1>
-      <blockquote class="quote">
-        <p>Enseñar en la era de Internet… significa que <strong>debemos enseñar las habilidades de mañana desde hoy.</strong></p>
-        <cite>Jennifer Fleming</cite>
-      </blockquote>
-    </div>
-  </div>
-  {{ m.scroll_down("moodle") }}
-</section>
+<div class="pp pp-theme-elearning">
 
-<section class="section theme-white">
-  <div class="container text-block">
-    <h2>Tu campus virtual, listo para enseñar</h2>
-    <p>Creamos <strong>plataformas e-learning en Moodle</strong>, el sistema de gestión de aprendizaje (LMS) libre más usado del mundo, para que universidades, institutos, organizaciones y empresas puedan dictar cursos, capacitar a sus equipos y acompañar a sus estudiantes en línea.</p>
-    <p>Nos ocupamos de todo: la puesta en marcha del campus, el diseño a medida con la identidad de tu organización, los contenidos interactivos y la capacitación de quienes lo van a usar. Trabajamos con instituciones de Argentina y Latinoamérica.</p>
-  </div>
-</section>
+{{ pp.hero({
+  "icon": "elearning", "center": true, "compact": true, "wave_next": "#fff", "wave_back": ".3",
+  "eyebrow": "Plataformas e-learning",
+  "title": [["Plataformas e‑learning con Moodle", false]],
+  "actions": [{"label": "Solicitar presupuesto", "href": CONTACT, "style": "accent", "icon": "bi-arrow-right"},
+              {"label": "Conocer la solución", "href": "#campus", "style": "outline-light"}],
+}) }}
 
-<section class="section theme-gray-light" id="moodle">
-  <div class="container media-text">
-    <img src="{{ img('2023/11/notebook_moodle.png') }}" alt="Notebook mostrando un campus virtual Moodle" loading="lazy" width="800" height="560">
-    <div>
-      <h2 class="section-title">La MEJOR HERRAMIENTA<br>para la EDUCACIÓN VIRTUAL</h2>
-      <div class="accordion">
-        {% for q, a in [
-          ("PERSONALIZABLE", "Personalizamos los cursos y la plataforma de acuerdo con las necesidades e imagen de marca de la organización."),
-          ("CÓDIGO ABIERTO", "Cualquier persona que desee modificar el código o mejorarlo puede hacerlo. Esto fomenta la flexibilidad y la adaptabilidad según las necesidades del cliente."),
-          ("MULTILINGÜE", "Se encuentra traducido a más de 70 idiomas, por lo que facilita su uso en entornos internacionales y multiculturales."),
-          ("RESPONSIVE", "Es accesible desde diversos dispositivos, lo que permite a los usuarios acceder al contenido desde cualquier lugar con conexión a Internet."),
-          ("SEGURA", "Cuenta con medidas de seguridad robustas para proteger la información del usuario y garantizar la integridad de los datos."),
-        ] %}
-        <details{% if loop.first %} open{% endif %}><summary>{{ q }}</summary><p>{{ a }}</p></details>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</section>
+{{ pp.showcase({
+  "id": "campus", "compact": true, "eyebrow": "Campus virtual", "title": "Tu campus virtual, listo para enseñar",
+  "text": "Implementamos campus virtuales con <strong>Moodle</strong> para que tu organización dicte cursos, capacite a su equipo y acompañe a sus estudiantes en línea.",
+  "checks": ["Formación a medida|para instituciones educativas, empresas y organizaciones", "Puesta en marcha y acompañamiento|en todo el proceso de implementación", "Escalable y sostenible|crece junto con tu propuesta educativa"],
+  "more": {"label": "Solicitar presupuesto", "href": CONTACT, "style": "outline-accent", "icon": "bi-arrow-right"},
+  "shot": {"src": "2023/11/notebook_moodle.png", "alt": "Notebook con un campus virtual Moodle", "w": 800, "h": 560, "frame": "comp"},
+  "shot_max": "460px",
+}) }}
 
-<section class="section theme-black">
-  <div class="container">
-    {{ m.section_head("POR QUÉ ELEGIR", "MOODLE CON GENEOS") }}
-    <div class="feature-row">
-      <div class="feature">
-        <span class="feature-icon circle-icon">{{ icon('moodle-gamificacion') }}</span>
-        <h3>Gamificación</h3>
-        <p>Con el complemento H5P integramos contenidos interactivos como videos, cuestionarios, juegos y más, logrando el aprendizaje a partir del entretenimiento.</p>
-      </div>
-      <div class="feature">
-        <span class="feature-icon circle-icon">{{ icon('moodle-diseno') }}</span>
-        <h3>Diseño</h3>
-        <p>Diseñamos la plataforma y los cursos en base a la identidad de la organización que lo solicita, logrando sinergia marcaria en cada pieza del entorno.</p>
-        <img class="feature-img" src="{{ img('2023/10/Icon_moodle.svg') }}" alt="Logo de Moodle en un monitor" loading="lazy" width="220" height="160">
-      </div>
-      <div class="feature">
-        <span class="feature-icon circle-icon">{{ icon('moodle-capacitacion') }}</span>
-        <h3>Capacitación</h3>
-        <p>Brindamos este servicio a todas las personas involucradas tanto en la administración como en el uso de la plataforma, para que puedan entender el correcto funcionamiento de los módulos que la integran.</p>
-      </div>
-    </div>
-  </div>
-</section>
+{{ pp.modules({
+  "id": "beneficios", "soft": true, "cols": 5, "mobile2": true, "eyebrow": "Beneficios de Moodle", "title": "Una plataforma adaptada a tu institución",
+  "items": [
+    {"icon": "bi-gear", "title": "Personalizable", "text": "Se adapta a tu identidad y a tus cursos."},
+    {"icon": "bi-code-slash", "title": "Código abierto", "text": "Software libre, sin costos de licencias."},
+    {"icon": "bi-globe", "title": "Multilingüe", "text": "Disponible en muchos idiomas."},
+    {"icon": "bi-window-stack", "title": "Responsive", "text": "Se usa desde computadoras, tablets y celulares."},
+    {"icon": "bi-shield-check", "title": "Seguro", "text": "Roles, permisos y copias de respaldo."},
+  ],
+}) }}
 
-{{ m.steps([
-  ("Relevamiento", "Conocemos tu propuesta educativa, tus cursos y a quiénes van dirigidos."),
-  ("Puesta en marcha", "Instalamos y configuramos Moodle con los módulos que necesitás."),
-  ("Diseño", "Personalizamos el campus y los cursos con tu identidad visual."),
-  ("Contenidos", "Sumamos actividades interactivas y gamificación con H5P."),
-  ("Capacitación y soporte", "Formamos a docentes y administradores y te acompañamos después."),
-], "Cómo creamos tu plataforma e-learning", "PASO A PASO") }}
+{{ pp.modules({
+  "id": "por-que", "cols": 3, "even": true, "eyebrow": "Por qué elegir", "title": "Moodle con GENEOS",
+  "items": [
+    {"icon": "moodle-gamificacion", "title": "Gamificación", "text": "Sumamos contenidos interactivos con H5P: videos con preguntas, cuestionarios y juegos."},
+    {"icon": "moodle-diseno", "title": "Diseño", "text": "Personalizamos el campus y los cursos con la identidad visual de tu organización."},
+    {"icon": "moodle-capacitacion", "title": "Capacitación", "text": "Formamos a docentes y administradores para que aprovechen cada módulo."},
+  ],
+}) }}
 
-<section class="section theme-gray-light">
-  <div class="container">
-    {{ m.section_head("MOODLE", "INSTITUCIONES QUE CONFÍAN EN NOSOTROS") }}
-  </div>
-  {{ m.logo_marquee(["2024/03/Universidad-UNAJ.png", "2024/03/Universidad-Nacional-Hurlingham.png", "2024/03/Union-Agruicola-de-Avellaneda.png", "2024/03/Edunet-Cooperativa.png", "2024/03/Colegio-de-Trabajadores-Sociales.png", "2024/03/CINEA.png", "2024/03/CIEP.png"]) }}
-</section>
+{{ pp.steps({
+  "id": "como-lo-hacemos", "eyebrow": "Paso a paso", "title": "Cómo creamos tu plataforma e‑learning", "cols": 5,
+  "lead": "Te acompañamos desde el relevamiento hasta que tu equipo usa el campus de forma autónoma.",
+  "items": [
+    {"title": "Relevamiento", "text": "Conocemos tu propuesta educativa y a quiénes va dirigida."},
+    {"title": "Puesta en marcha", "text": "Instalamos y configuramos Moodle con los módulos que necesitás."},
+    {"title": "Diseño", "text": "Personalizamos el campus y los cursos con tu identidad."},
+    {"title": "Contenidos", "text": "Sumamos actividades interactivas y gamificación con H5P."},
+    {"title": "Capacitación y soporte", "text": "Formamos a tu equipo y te acompañamos después."},
+  ],
+}) }}
 
-{{ m.faq(FAQS, "Preguntas frecuentes sobre Moodle y e-learning", "DUDAS", "theme-white") }}
-{{ m.cta("¿Querés tu propio campus virtual?", "Contanos qué querés enseñar y te ayudamos a armar la plataforma.", "Hola, quiero consultar por una plataforma e-learning Moodle", "Escribinos por WhatsApp", "theme-orange") }}
+{{ pp.clients("Instituciones que confían en nosotros", ["2024/03/Universidad-UNAJ.png", "2024/03/Universidad-Nacional-Hurlingham.png", "2024/03/Union-Agruicola-de-Avellaneda.png", "2024/03/Edunet-Cooperativa.png", "2024/03/Colegio-de-Trabajadores-Sociales.png", "2024/03/CINEA.png", "2024/03/CIEP.png"]) }}
+
+{{ pp.faq({"title": "Preguntas frecuentes", "lead": "Las dudas más comunes sobre Moodle y los campus virtuales.", "items": FAQS}) }}
+
+{{ pp.band({
+  "icon": "elearning", "eyebrow": "Hablemos de tu proyecto", "title": "¿Querés tu propio campus virtual?",
+  "text": "Contanos qué querés enseñar y te ayudamos a armar la plataforma.",
+  "actions": [{"label": "Solicitar presupuesto", "href": CONTACT, "style": "accent", "icon": "bi-arrow-right"},
+              {"label": "Escribinos por WhatsApp", "href": wa("Hola, quiero consultar por una plataforma e-learning Moodle"), "style": "outline-light", "icon_before": "bi-whatsapp", "external": true}],
+}) }}
+
+</div>
+<script src="{{ asset('js/product.js') }}" defer></script>
 {% endblock %}

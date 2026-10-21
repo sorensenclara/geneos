@@ -69,7 +69,7 @@
       <p class="pp-steps-lead">{{ s.lead|safe }}</p>
       {% if s.more %}<a href="{{ s.more.href }}" class="pp-more">{{ s.more.label }} {{ icon('bi-arrow-right', 'icon bi') }}</a>{% endif %}
     </div>
-    <ol class="pp-steps-list">
+    <ol class="pp-steps-list{% if s.cols %} pp-steps-{{ s.cols }}{% endif %}">
       {% for it in s["items"] %}
       <li{% if it.color %} style="--pp-steps-ico: {{ it.color }}"{% endif %}>
         {% if it.icon %}
@@ -98,7 +98,7 @@
       <h2>{{ m.title }}</h2>
       {% if m.lead %}<p>{{ m.lead|safe }}</p>{% endif %}
     </header>
-    <ul class="pp-modules-grid{% if m.cols %} pp-modules-{{ m.cols }}{% endif %}{% if m.even %} is-even{% endif %}">
+    <ul class="pp-modules-grid{% if m.cols %} pp-modules-{{ m.cols }}{% endif %}{% if m.even %} is-even{% endif %}{% if m.mobile2 %} is-m2{% endif %}">
       {% for it in m["items"] %}
       <li>
         {% set href = it.href or m.href %}{% set tag = "a" if href else "div" %}
@@ -434,7 +434,7 @@
       {% if s.more and s.more.style %}<div class="pp-showcase-actions">{{ btn(s.more) }}</div>{% elif s.more %}<a class="pp-more" href="{{ s.more.href }}">{{ s.more.label }} {{ icon('bi-arrow-right', 'icon bi') }}</a>{% endif %}
     </div>
     {% if s.shot %}
-    <figure class="pp-showcase-media{% if s.shot.frame %} is-{{ s.shot.frame }}{% endif %}">
+    <figure class="pp-showcase-media{% if s.shot.frame %} is-{{ s.shot.frame }}{% endif %}"{% if s.shot_max %} style="max-width: {{ s.shot_max }}"{% endif %}>
       {% if s.shot.frame == "browser" %}<span class="pp-browser-bar" aria-hidden="true"><i></i><i></i><i></i></span>{% endif %}
       <picture>{% if s.shot.sm %}<source media="(max-width: 600px)" srcset="{{ img(s.shot.sm.src) }}" width="{{ s.shot.sm.w }}" height="{{ s.shot.sm.h }}">{% endif %}<img src="{{ img(s.shot.src) }}" alt="{{ s.shot.alt }}" width="{{ s.shot.w }}" height="{{ s.shot.h }}" loading="lazy" decoding="async"></picture>
       {% if s.shot.caption %}<figcaption>{{ s.shot.caption }}</figcaption>{% endif %}

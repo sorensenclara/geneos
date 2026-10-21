@@ -554,3 +554,32 @@ a.pp-module:hover .pp-module-more .icon { transform: translateX(4px); }
 .pp-hero-compact .pp-hero-grid { grid-template-columns: auto minmax(0, max-content); }
 .pp-hero-compact .pp-hero-copy { container-type: normal; max-width: 640px; }
 @media (max-width: 700px) { .pp-hero-compact .pp-hero-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Tema E-learning (Moodle): naranja como único color de identidad. Acento de texto en naranja oscuro para contraste AA ---------- */
+.pp-theme-elearning {
+  --pp-deep-rgb: 130, 48, 6;
+  --pp-heading: #1d1a17; --pp-text: #24221f; --pp-muted: #5c5650; --pp-bg: #fff; --pp-border: #f0e4da;
+  --pp-accent: #c2410c; --pp-highlight: #ffd2b5;
+  --pp-soft: #fff6ef; --pp-soft-2: #fff6ef; --pp-icon-bg: #ffe8d8; --pp-line: #f6b48c; --pp-line-2: #f6c9aa; --pp-line-3: #f4dfcf;
+  --pp-btn: #c2410c; --pp-btn-hover: #a3360a; --pp-btn-text: #fff;
+  --pp-btn2: #fff; --pp-btn2-text: #8a2f07;
+  --pp-eyebrow-2: #c2410c; --pp-steps-ico: #e8601a; --pp-ico: #e8601a;
+  --pp-ico-size: 32px; --pp-steps-ico-size: 32px;
+  --pp-hero-bg: linear-gradient(160deg, #f07a2e 0%, #e8601a 50%, #cf4f0e 100%); --pp-hero-text: #fff;
+  --pp-band-bg: linear-gradient(160deg, #f07a2e 0%, #e8601a 50%, #cf4f0e 100%);
+}
+/* Pasos en 5 columnas (E-learning) */
+.pp-steps-list.pp-steps-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 1100px) { .pp-steps-list.pp-steps-5 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .pp-steps-list.pp-steps-5 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .pp-steps-list.pp-steps-5 { grid-template-columns: 1fr; } }
+/* Tarjetas compactas en 2 columnas en celular (opcional) */
+@media (max-width: 620px) {
+  .pp-modules-grid.is-m2 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pp-modules-grid.is-m2 .pp-module { grid-template-columns: 1fr; padding: 16px; gap: 6px; }
+  .pp-modules-grid.is-m2 .pp-module-ico { grid-row: auto; }
+  .pp-modules-grid.is-m2 .pp-module h3 { font-size: 1rem; padding-right: 0; }
+  .pp-modules-grid.is-m2 .pp-module p { font-size: .88rem; }
+}
+.pp-showcase-media.is-comp[style] { margin-inline: auto; }
+@media (max-width: 900px) { .pp-showcase-media.is-comp[style] { max-width: 300px !important; } }
