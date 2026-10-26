@@ -3,6 +3,25 @@
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
+  /* Apariencia clara u oscura: la elección del visitante se guarda en el navegador */
+  const raiz = document.documentElement;
+  const temaBtn = $(".tema-toggle");
+  const rotular = () => {
+    if (!temaBtn) return;
+    const claro = raiz.getAttribute("data-tema") === "claro";
+    const texto = claro ? "Activar modo oscuro" : "Activar modo claro";
+    temaBtn.setAttribute("aria-label", texto);
+    temaBtn.title = texto;
+  };
+  rotular();
+  temaBtn?.addEventListener("click", () => {
+    const nuevo = raiz.getAttribute("data-tema") === "claro" ? "oscuro" : "claro";
+    raiz.setAttribute("data-tema", nuevo);
+    try { localStorage.setItem("geneos-tema", nuevo); } catch (e) { /* sin almacenamiento: vale solo para esta página */ }
+    rotular();
+  });
+  requestAnimationFrame(() => requestAnimationFrame(() => raiz.classList.add("tema-listo")));
+
   /* Menú móvil */
   const toggle = $(".nav-toggle");
   const nav = $("#menu");
