@@ -812,23 +812,44 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 /* Logo según la apariencia */
 .brand-logo-claro { display: none; }
 [data-tema="claro"] .brand-logo-claro { display: block; }
+/* El SVG a color trae margen interno (≈5,7 % por lado): se agranda y se compensa para que el logo visible mida lo mismo que el blanco (140 px) */
+.brand .brand-logo-claro { width: 158px; max-width: none; margin: -9px; }
 [data-tema="claro"] .brand-logo-oscuro { display: none; }
 
-/* Selector sol/luna: en claro se ve la luna (pasar a oscuro) y en oscuro el sol */
-.header-inner { gap: 8px; }
-.brand { margin-right: auto; }
-.tema-toggle { flex: none; display: inline-grid; place-items: center; width: 40px; height: 40px; margin-left: 6px; padding: 0; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.22); background: transparent; color: #fff; cursor: pointer; transition: background-color .2s, border-color .2s, color .2s; }
-.tema-toggle:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.4); }
-.tema-toggle:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 2px; }
-.tema-toggle .icon { width: 19px; height: 19px; }
+/* Selector sol/luna: solapa fija en el borde derecho de la pantalla (fuera del encabezado).
+   En claro muestra la luna (pasar a oscuro) y en oscuro el sol. */
+.tema-toggle { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 60; display: grid; place-items: center;
+  width: 44px; height: 48px; padding: 0 0 0 4px; border: 1px solid rgba(255,255,255,.18); border-right: 0; border-radius: 12px 0 0 12px;
+  background: #0d0d0d; color: #fff; cursor: pointer; box-shadow: -4px 6px 18px rgba(0,0,0,.22); transition: width .2s ease, background-color .3s, color .3s, border-color .3s; }
+.tema-toggle:hover { width: 52px; }
+.tema-toggle:focus-visible { outline: 2px solid var(--green-bright); outline-offset: 2px; width: 52px; }
+.tema-toggle .icon { width: 20px; height: 20px; }
 .tema-ico-luna { display: none; }
-[data-tema="claro"] .tema-toggle { color: #14201a; border-color: #d5ded9; }
-[data-tema="claro"] .tema-toggle:hover { background: #f2f8f4; border-color: #b9c8bf; }
+[data-tema="claro"] .tema-toggle { background: #fff; color: #14201a; border-color: #d5ded9; box-shadow: -4px 6px 18px rgba(16,36,26,.14); }
 [data-tema="claro"] .tema-toggle:focus-visible { outline-color: var(--green); }
 [data-tema="claro"] .tema-ico-sol { display: none; }
 [data-tema="claro"] .tema-ico-luna { display: block; }
-@media (max-width: 920px) { .tema-toggle { order: 2; margin-left: 0; } .nav-toggle { order: 3; } }
+body.nav-open .tema-toggle { display: none; }
+@media (max-width: 600px) { .tema-toggle { width: 32px; height: 38px; border-radius: 10px 0 0 10px; padding-left: 3px; } .tema-toggle .icon { width: 16px; height: 16px; } }
+@media print { .tema-toggle { display: none; } }
+
+/* ---------- Pie de página en modo claro: misma estructura, fondo gris muy claro y textos oscuros ---------- */
+.footer-about .footer-logo-claro { width: 158px; max-width: none; margin: -9px -9px 5px; }
+@media (max-width: 560px) { .footer-about .footer-logo-claro { width: 135px; margin: -8px -8px 2px; } }
+[data-tema="claro"] .site-footer { background: #f3f6f4; color: #1f2b25; --top: #f3f6f4; border-top: 0; }
+[data-tema="claro"] .footer-cols { border-bottom-color: #dfe6e2; }
+[data-tema="claro"] .footer-title { color: var(--green); }
+[data-tema="claro"] .footer-about p { opacity: 1; color: #46524c; }
+[data-tema="claro"] .footer-about-link { color: var(--green); }
+[data-tema="claro"] .footer-links a { opacity: 1; color: #2c3833; }
+[data-tema="claro"] .footer-links a:hover, [data-tema="claro"] .footer-item:hover { color: var(--green); }
+[data-tema="claro"] .footer-item small { opacity: 1; color: #5b6660; }
+[data-tema="claro"] .footer-icon { border-color: var(--green); color: var(--green); }
+[data-tema="claro"] .social a { background: #e3ebe6; color: #1f2b25; }
+[data-tema="claro"] .social a:hover { background: var(--green); color: #fff; }
+[data-tema="claro"] .credit { opacity: 1; color: #5b6660; }
+.tema-listo .site-footer, .tema-listo .site-footer::before, .tema-listo .footer-title, .tema-listo .footer-links a, .tema-listo .footer-icon, .tema-listo .social a {
+  transition: background-color .4s ease, color .25s ease, border-color .4s ease; }
 
 /* Cambio de apariencia fluido (solo después de cargar, para que no anime al abrir la página) */
 .tema-listo .topbar, .tema-listo .site-header, .tema-listo .site-nav, .tema-listo .site-nav a, .tema-listo .sub-toggle,

@@ -11,7 +11,6 @@
     const claro = raiz.getAttribute("data-tema") === "claro";
     const texto = claro ? "Activar modo oscuro" : "Activar modo claro";
     temaBtn.setAttribute("aria-label", texto);
-    temaBtn.title = texto;
   };
   rotular();
   temaBtn?.addEventListener("click", () => {
