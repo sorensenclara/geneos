@@ -783,3 +783,29 @@ main > section:nth-of-type(even)::before { transform: scaleX(-1); }
 .rc-terms h2 { font-size: 19px; margin: 2px 0 6px; }
 .rc-terms p { margin: 0; color: #374151; font-size: 15px; }
 .rc-terms a { color: var(--blue); font-weight: 600; }
+
+/* ---------- Encabezado claro (data/sitio.json → "encabezado": "claro"). Misma estructura y medidas que el oscuro ---------- */
+.topbar.head-claro { background: #fff; }
+.topbar.head-claro .topbar-products a { opacity: .7; }
+.topbar.head-claro .topbar-products a:hover, .topbar.head-claro .topbar-products a:focus-visible { opacity: 1; }
+.topbar.head-claro .topbar-products img { filter: brightness(0); opacity: .75; }
+.site-header.head-claro { background: #fff; color: #14201a; box-shadow: 0 1px 0 #e6ebe8, 0 6px 18px rgba(16, 32, 24, .06); }
+.site-header.head-claro .brand img { width: 140px; height: auto; }
+.site-header.head-claro .site-nav a { color: #14201a; }
+.site-header.head-claro .site-nav a:hover, .site-header.head-claro .site-nav .is-active > a { color: var(--green); }
+.site-header.head-claro .site-nav a:focus-visible, .site-header.head-claro .sub-toggle:focus-visible, .site-header.head-claro .nav-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
+.site-header.head-claro .sub-toggle { color: #14201a; }
+.site-header.head-claro .site-nav .sub { background: #fff; border-top-color: var(--green); box-shadow: 0 14px 34px rgba(16, 32, 24, .14); border-left: 1px solid #e6ebe8; border-right: 1px solid #e6ebe8; border-bottom: 1px solid #e6ebe8; }
+.site-header.head-claro .site-nav .sub a { color: #26332c; }
+.site-header.head-claro .site-nav .sub a:hover, .site-header.head-claro .site-nav .sub a[aria-current] { color: var(--green); background: #f2f8f4; }
+.site-header.head-claro .nav-toggle { color: #14201a; }
+@media (max-width: 920px) {
+  .site-header.head-claro .site-nav { background: #fff; border-top: 1px solid #e6ebe8; }
+  .site-header.head-claro .site-nav > ul > li { border-bottom-color: #e6ebe8; }
+  .site-header.head-claro .site-nav .sub { background: transparent; border: 0; box-shadow: none; }
+  .site-header.head-claro .site-nav .sub a:hover { background: transparent; }
+}
+/* Migas de pan con encabezado claro: gris muy suave en lugar de negro */
+.encabezado-claro .breadcrumbs { background: #f4f6f5; color: #5b6660; border-bottom: 1px solid #e6ebe8; }
+.encabezado-claro .breadcrumbs a:hover { color: var(--green); }
+.encabezado-claro .breadcrumbs [aria-current] { color: #14201a; }

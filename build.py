@@ -83,6 +83,16 @@ PORTFOLIO_URL = _TRAB.get("portfolio_url") or ""
 IDENTIDAD = sorted([i for i in json.loads((ROOT / "data" / "identidad.json").read_text()).get("imagenes", []) if i.get("activo") and i.get("aprobado")], key=lambda i: i.get("orden", 0))
 
 
+SITIO = {k: v for k, v in json.loads((ROOT / "data" / "sitio.json").read_text()).items() if not k.startswith("_")}
+ENCABEZADOS = ("claro", "oscuro")
+
+
+def encabezado_de(page):
+    """Apariencia del encabezado: la de la página si la define (claro/oscuro); si no, la global (heredar)."""
+    valor = page.get("encabezado") or SITIO.get("encabezado") or "claro"
+    return valor if valor in ENCABEZADOS else "claro"
+
+
 def trabajos_de(servicio):
     return [t for t in TRABAJOS if servicio in t.get("servicios", [])]
 
@@ -294,7 +304,7 @@ def build():
         target.parent.mkdir(parents=True, exist_ok=True)
         crumbs = breadcrumbs(page)
         html = env.get_template(page["tpl"]).render(
-            page=page, title=page["title"], description=page["description"],
+            page=page, title=page["title"], description=page["description"], encabezado=encabezado_de(page),
             path="/" + (out if not out.endswith(".html") else ""),
             canonical=None if page.get("noindex") else abs_url(out),
             og_image=abs_url("assets/img/" + page.get("og", "og/geneos.jpg")),

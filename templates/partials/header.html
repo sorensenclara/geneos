@@ -12,7 +12,7 @@
   ("Recursos", "/recursos/", []),
   ("Contacto", "/contacto-geneos/", []),
 ] %}
-<div class="topbar">
+<div class="topbar head-{{ encabezado }}">
   <div class="container topbar-inner">
     <ul class="topbar-products">
       {% for name, desc, href, logo in site.products %}
@@ -21,10 +21,10 @@
     </ul>
   </div>
 </div>
-<header class="site-header">
+<header class="site-header head-{{ encabezado }}">
   <div class="container header-inner">
     <a class="brand" href="{{ url('/') }}">
-      <img src="{{ img('2023/10/Logo-Geneos-white.png') }}" alt="GENEOS · Cooperativa de Software Libre" width="156" height="50">
+      {% if encabezado == "claro" %}<img src="{{ img('recursos/geneos-isologotipo.svg') }}" alt="GENEOS · Cooperativa de Software Libre" width="156" height="60">{% else %}<img src="{{ img('2023/10/Logo-Geneos-white.png') }}" alt="GENEOS · Cooperativa de Software Libre" width="156" height="50">{% endif %}
     </a>
     <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
       {{ icon('ui-menu') }}
