@@ -2,7 +2,7 @@ name: Publicar en GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [modo-claro-oscuro]
   workflow_dispatch:
 
 permissions:
