@@ -2,8 +2,9 @@
 <html lang="es-AR" data-tema="{{ encabezado }}" data-tema-predeterminado="{{ encabezado }}">
 <head>
   <meta charset="utf-8">
-  {# Apariencia: la elegida por el visitante (guardada en el navegador) tiene prioridad sobre la predeterminada del sitio. Va primero para evitar parpadeos. #}
-  <script>(function(){try{var t=localStorage.getItem("geneos-tema");if(t==="claro"||t==="oscuro")document.documentElement.setAttribute("data-tema",t);}catch(e){}})();</script>
+  {# Apariencia, en este orden: 1) la que eligió el visitante con el botón (guardada en el navegador);
+     2) oscuro si su sistema está en modo oscuro; 3) la predeterminada del sitio (claro). Va primero para evitar parpadeos. #}
+  <script>(function(){var r=document.documentElement,t=null;try{t=localStorage.getItem("geneos-tema");}catch(e){}if(t!=="claro"&&t!=="oscuro"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"oscuro":(r.getAttribute("data-tema-predeterminado")||"claro");}r.setAttribute("data-tema",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">

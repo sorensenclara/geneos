@@ -2,7 +2,7 @@
 <html lang="es-AR" data-tema="claro" data-tema-predeterminado="claro">
 <head>
   <meta charset="utf-8">
-  <script>(function(){try{var t=localStorage.getItem("geneos-tema");if(t==="claro"||t==="oscuro")document.documentElement.setAttribute("data-tema",t);}catch(e){}})();</script>
+  <script>(function(){var r=document.documentElement,t=null;try{t=localStorage.getItem("geneos-tema");}catch(e){}if(t!=="claro"&&t!=="oscuro"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"oscuro":(r.getAttribute("data-tema-predeterminado")||"claro");}r.setAttribute("data-tema",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GERP | Software de gestión empresarial – GENEOS</title>
   <meta name="description" content="GERP, el software de gestión empresarial para pymes de GENEOS: integra ventas, compras, stock, facturación y contabilidad en una sola plataforma online.">

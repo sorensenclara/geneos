@@ -2,7 +2,7 @@
 <html lang="es-AR" data-tema="claro" data-tema-predeterminado="claro">
 <head>
   <meta charset="utf-8">
-  <script>(function(){try{var t=localStorage.getItem("geneos-tema");if(t==="claro"||t==="oscuro")document.documentElement.setAttribute("data-tema",t);}catch(e){}})();</script>
+  <script>(function(){var r=document.documentElement,t=null;try{t=localStorage.getItem("geneos-tema");}catch(e){}if(t!=="claro"&&t!=="oscuro"){t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"oscuro":(r.getAttribute("data-tema-predeterminado")||"claro");}r.setAttribute("data-tema",t);})();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Diseño web, identidad visual y comunicación | GENEOS</title>
   <meta name="description" content="Diseño de sitios web UX/UI, identidades visuales y estrategia de comunicación digital para cooperativas, pymes e instituciones de Argentina y Latinoamérica.">

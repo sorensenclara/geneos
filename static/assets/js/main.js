@@ -19,6 +19,14 @@
     try { localStorage.setItem("geneos-tema", nuevo); } catch (e) { /* sin almacenamiento: vale solo para esta página */ }
     rotular();
   });
+  /* Si el visitante todavía no eligió con el botón, seguir los cambios de modo de su sistema */
+  const sistemaOscuro = window.matchMedia?.("(prefers-color-scheme: dark)");
+  const eligio = () => { try { const t = localStorage.getItem("geneos-tema"); return t === "claro" || t === "oscuro"; } catch (e) { return false; } };
+  sistemaOscuro?.addEventListener?.("change", (e) => {
+    if (eligio()) return;
+    raiz.setAttribute("data-tema", e.matches ? "oscuro" : (raiz.getAttribute("data-tema-predeterminado") || "claro"));
+    rotular();
+  });
   requestAnimationFrame(() => requestAnimationFrame(() => raiz.classList.add("tema-listo")));
 
   /* Menú móvil */
